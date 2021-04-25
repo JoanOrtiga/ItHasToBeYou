@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ObjectPlace : MonoBehaviour
 {
+
+    
+    public Vector3 rotation;
+   
+
     public bool isStartPlace = true;
 
     //public string callEventWhenPickedUp;
@@ -15,7 +20,8 @@ public class ObjectPlace : MonoBehaviour
 
     private void Awake()
     {
-      
+
+       
 
         startPos = transform.position;
         startRot = transform.rotation;
