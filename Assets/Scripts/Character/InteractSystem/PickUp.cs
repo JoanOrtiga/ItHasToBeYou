@@ -23,6 +23,7 @@ public class PickUp : MonoBehaviour
     Transform objectPickUp;
     Rigidbody objectPickUpRigidBody;
     ObjectPlace objectPlace;
+    Quaternion objectRotation;
 
     public enum Interaction
     {
@@ -111,12 +112,20 @@ public class PickUp : MonoBehaviour
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectPlace = objectPickUp.GetComponent<ObjectPlace>();
 
+     
+        objectPickUp.localRotation = Quaternion.identity;
+        print(objectPickUp.localRotation.eulerAngles.x + " " + objectPickUp.rotation.eulerAngles.y + " " + objectPickUp.rotation.eulerAngles.z + " ");
+        //objectPickUp.localRotation = Quaternion.Euler(objectPlace.rotation);
+        objectPickUp.Rotate(objectPlace.rotation);
+        print(objectPickUp.rotation.eulerAngles.x + " " + objectPickUp.rotation.eulerAngles.y + " " + objectPickUp.rotation.eulerAngles.z + " ");
+
         objectPickUpRigidBody.isKinematic = true;
         objectPickUpRigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
         objectPickUp.SetParent(handCenter.transform);
 
         objectPickUp.position = handCenter.transform.position;
+
     }
 
     private void PlaceObject()
