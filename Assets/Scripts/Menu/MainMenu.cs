@@ -4,8 +4,25 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public void Start()
+    public GameObject options;
+    
+    public void StartGame()
     {
-        GameObject.FindObjectOfType<LoadNewScene>().LoadNextScene("");
+        GameObject.FindObjectOfType<LoadNewScene>().LoadNextScene("LoadScreen");
+    }
+
+    public void ShowOptions()
+    {
+        options.SetActive(true);
+    }
+
+    public void HideOptions()
+    {
+        options.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
