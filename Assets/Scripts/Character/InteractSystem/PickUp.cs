@@ -67,10 +67,10 @@ public class PickUp : MonoBehaviour
             }
 
         }
-        else if(Input.GetButtonDown("Interact") && onHand)
+    /*    else if(Input.GetButtonDown("Interact"))
         {
             PlaceObject();
-        }
+        }*/
     }
 
     IEnumerator CheckForObject()
@@ -82,6 +82,7 @@ public class PickUp : MonoBehaviour
 
             if (hitted)
             {
+                
                 if (rayCastHit.transform.gameObject.layer == objectLayer)
                 {
                     interaction = Interaction.pickUp;
@@ -112,8 +113,17 @@ public class PickUp : MonoBehaviour
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectPlace = objectPickUp.GetComponent<ObjectPlace>();
 
-     
+        Debug.Log(objectPickUp.tag);
+
         
+       
+
+     
+        objectPickUp.localRotation = Quaternion.identity;
+        print(objectPickUp.localRotation.eulerAngles.x + " " + objectPickUp.rotation.eulerAngles.y + " " + objectPickUp.rotation.eulerAngles.z + " ");
+        //objectPickUp.localRotation = Quaternion.Euler(objectPlace.rotation);
+        objectPickUp.Rotate(objectPlace.rotation);
+        print(objectPickUp.rotation.eulerAngles.x + " " + objectPickUp.rotation.eulerAngles.y + " " + objectPickUp.rotation.eulerAngles.z + " ");
 
         objectPickUpRigidBody.isKinematic = true;
         objectPickUpRigidBody.constraints = RigidbodyConstraints.FreezeAll;
@@ -122,11 +132,6 @@ public class PickUp : MonoBehaviour
 
         objectPickUp.position = handCenter.transform.position;
 
-
-        objectPickUp.localRotation = Quaternion.identity;
-        objectPickUp.localRotation = Quaternion.Euler(objectPlace.rotation);
-      
-        onHand = true;
     }
 
     private void PlaceObject()
@@ -153,6 +158,6 @@ public class PickUp : MonoBehaviour
 
     private void Interact()
     {
-
+        rayCastHit.transform.GetComponent<IInteractable>().Interact();
     }
 }
