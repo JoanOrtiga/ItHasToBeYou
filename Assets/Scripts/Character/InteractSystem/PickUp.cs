@@ -67,10 +67,10 @@ public class PickUp : MonoBehaviour
             }
 
         }
-    /*    else if(Input.GetButtonDown("Interact"))
+        else if (Input.GetButtonDown("Interact") && onHand)
         {
             PlaceObject();
-        }*/
+        }
     }
 
     IEnumerator CheckForObject()
@@ -115,16 +115,6 @@ public class PickUp : MonoBehaviour
 
         Debug.Log(objectPickUp.tag);
 
-        
-       
-
-     
-        objectPickUp.localRotation = Quaternion.identity;
-        print(objectPickUp.localRotation.eulerAngles.x + " " + objectPickUp.rotation.eulerAngles.y + " " + objectPickUp.rotation.eulerAngles.z + " ");
-        //objectPickUp.localRotation = Quaternion.Euler(objectPlace.rotation);
-        objectPickUp.Rotate(objectPlace.rotation);
-        print(objectPickUp.rotation.eulerAngles.x + " " + objectPickUp.rotation.eulerAngles.y + " " + objectPickUp.rotation.eulerAngles.z + " ");
-
         objectPickUpRigidBody.isKinematic = true;
         objectPickUpRigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
@@ -132,6 +122,10 @@ public class PickUp : MonoBehaviour
 
         objectPickUp.position = handCenter.transform.position;
 
+        objectPickUp.localRotation = Quaternion.identity;
+        objectPickUp.localRotation = Quaternion.Euler(objectPlace.rotation);
+
+        onHand = true;
     }
 
     private void PlaceObject()
