@@ -25,9 +25,9 @@ public class LoadNewScene : MonoBehaviour
         StartCoroutine(LoadScene(sceneToLoad));
     }
 
-    private IEnumerator LoadScene(string _sceneToLoad)
+    private IEnumerator LoadScene(string sceneToLoad)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_sceneToLoad);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
         
         asyncLoad.allowSceneActivation = false;
         
@@ -39,6 +39,7 @@ public class LoadNewScene : MonoBehaviour
 
             if (progress >= 0.9f)
             {
+                //We add extra time in loading screen.
                 yield return new WaitForSeconds(2);
                 asyncLoad.allowSceneActivation = true;
 
