@@ -20,9 +20,9 @@ public class LoadNewScene : MonoBehaviour
     }
     #endif
 
-    public void LoadNextScene()
+    public void LoadNextScene(string _sceneToLoad)
     {
-        StartCoroutine(LoadScene(sceneToLoad));
+        StartCoroutine(LoadScene(_sceneToLoad));
     }
 
     private IEnumerator LoadScene(string sceneToLoad)
