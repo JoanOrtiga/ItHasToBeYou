@@ -2,58 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using System;
 
 public class CSVLoader
 {
-    static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
-    static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
-    static char[] TRIM_CHARS = {'\"'};
+    private static char endLine = '\n';
+    private static char separator = ',';
     
-    public static Dictionary<Localization.Languages, Dictionary<string, string>> LoadCSV(TextAsset data) //filePath
+    public static Dictionary<string, LanguageData> ReadSheet(TextAsset data)
     {
-        var list = new Dictionary<Localization.Languages, Dictionary<string, string>>();
-
-        if (data is null)
+        Dictionary<string, LanguageData> languageDatas = new Dictionary<string, LanguageData>();
+        
+        string[] lines = data.text.Split(new char[]{endLine});
+        for (int i = 1; i < lines.Length; i++)
         {
-            return null;
+            if(lines.Length > 1)
+                AddNewDataEntry(lines[i], ref languageDatas);
         }
-        
-        var lines = Regex.Split(data.text, LINE_SPLIT_RE);
-        
 
-        if (lines.Length <= 1) return list;
-
-        var header = Regex.Split(lines[0], SPLIT_RE); //key	EN	ESP	CAT
-
-        for (var i = 1; i < lines.Length; i++) //Comença per menu_language	English	Castellano	Català
-        {
-            var values = Regex.Split(lines[i], SPLIT_RE);
-
-            if (values.Length == 0 || values[0] == "") continue;
-
-            var entry = new Dictionary<string, string>();
-            for (var j = 0; j < header.Length && j < values.Length; j++)
-            {
-                string value = values[j];
-                value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", "");
-                object finalvalue = value;
-                int n;
-                float f;
-                if (int.TryParse(value, out n))
-                {
-                    finalvalue = n;
-                }
-                else if (float.TryParse(value, out f))
-                {
-                    finalvalue = f;
-                }
-
-              //  entry[header[j]] = finalvalue;
-            }
-
-           // list.Add(entry);
-        }
-        
-        return list;
+        return languageDatas;
     }
+
+    private static void AddNewDataEntry(string s, ref Dictionary<string, LanguageData> languageDatas)
+    {
+        string[] t = s.Split(new char[] { separator });
+        var languageData = new LanguageData(t); 
+        
+        languageDatas.Add(t[0], languageData);
+    }
+    
 }
+
+
+

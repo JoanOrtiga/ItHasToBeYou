@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     private HeadBob headBob;
 
     private bool mIsGrounded;
-    
+
     private void Awake()
     {
         cameraController = GetComponentInChildren<CameraController>();
@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        
         if (yawTransform != null)
             RotateTowardsCamera();
 
@@ -72,7 +74,9 @@ public class PlayerController : MonoBehaviour
 
     private void HeadBobbing()
     {
-        if (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) != Vector2.zero &&
+        
+        
+        if (inputVector != Vector2.zero &&
             mIsGrounded)
         {
             headBob.ScrollHeadBob(inputVector);
@@ -93,7 +97,7 @@ public class PlayerController : MonoBehaviour
                 new Vector3(0f, headBob.currentStateHeight, 0f), Time.deltaTime * smoothHeadBobSpeed);
         }
 
-        if (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) == Vector2.zero &&
+        if (inputVector == Vector2.zero &&
             characterController.isGrounded)
         {
             if (!headBob.Resetted)
@@ -126,10 +130,10 @@ public class PlayerController : MonoBehaviour
     
     private void Move()
     {
-        inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        Vector2 normalizedInputVector = inputVector.normalized;
+        
 
-
-        smoothInputVector = Vector2.Lerp(smoothInputVector, inputVector, Time.deltaTime * smoothInputSpeed);
+        smoothInputVector = Vector2.Lerp(smoothInputVector, normalizedInputVector, Time.deltaTime * smoothInputSpeed);
 
         smoothCurrentSpeed = Mathf.Lerp(smoothCurrentSpeed, currentSpeed, Time.deltaTime * smoothVelocitySpeed);
 
@@ -147,9 +151,9 @@ public class PlayerController : MonoBehaviour
         finalMoveDir = _flattenDir;
 
         currentSpeed = walkSpeed;
-        currentSpeed = !(inputVector != Vector2.zero) ? 0f : currentSpeed;
-        currentSpeed = inputVector.y == -1 ? currentSpeed * moveBackwardsSpeedPercent : currentSpeed;
-        currentSpeed = inputVector.x != 0 && inputVector.y == 0 ? currentSpeed * moveSideSpeedPercent : currentSpeed;
+        currentSpeed = !(normalizedInputVector != Vector2.zero) ? 0f : currentSpeed;
+        currentSpeed = normalizedInputVector.y == -1 ? currentSpeed * moveBackwardsSpeedPercent : currentSpeed;
+        currentSpeed = normalizedInputVector.x != 0 && normalizedInputVector.y == 0 ? currentSpeed * moveSideSpeedPercent : currentSpeed;
 
         Vector3 _finalVector = smoothFinalMoveDir * smoothCurrentSpeed;
 
