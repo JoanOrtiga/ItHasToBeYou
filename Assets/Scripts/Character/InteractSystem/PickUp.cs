@@ -67,10 +67,10 @@ public class PickUp : MonoBehaviour
             }
 
         }
-        else if(Input.GetButtonDown("Interact"))
+    /*    else if(Input.GetButtonDown("Interact"))
         {
             PlaceObject();
-        }
+        }*/
     }
 
     IEnumerator CheckForObject()
@@ -82,6 +82,7 @@ public class PickUp : MonoBehaviour
 
             if (hitted)
             {
+                
                 if (rayCastHit.transform.gameObject.layer == objectLayer)
                 {
                     interaction = Interaction.pickUp;
@@ -111,6 +112,11 @@ public class PickUp : MonoBehaviour
 
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectPlace = objectPickUp.GetComponent<ObjectPlace>();
+
+        Debug.Log(objectPickUp.tag);
+
+        
+       
 
      
         objectPickUp.localRotation = Quaternion.identity;
@@ -152,6 +158,6 @@ public class PickUp : MonoBehaviour
 
     private void Interact()
     {
-
+        rayCastHit.transform.GetComponent<IInteractable>().Interact();
     }
 }
