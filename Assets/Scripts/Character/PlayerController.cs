@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-           // print("Xd");
+           
             if (!headBob.Resetted)
             {
                 headBob.ResetHeadBob();
