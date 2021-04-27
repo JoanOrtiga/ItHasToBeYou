@@ -10,7 +10,7 @@
     {
         Tags
         {
-            "Queue" = "AlphaTest" "IgnoreProjector" = "True" "RenderType" = "TransparentCutout"
+            "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"
         }
         /*
         Lighting Off
@@ -19,7 +19,7 @@
         ZTest Less
         Fog{ Mode Off }*/
        
-        UsePass "Transparent/Diffuse/FORWARD"
+        //UsePass "Transparent/Diffuse/FORWARD"
         
         Blend SrcAlpha OneMinusSrcAlpha
 
@@ -69,7 +69,6 @@
                 col.a = (step(0.9, col.x));
                 return col;
             }
-
             
             ENDCG
         }
