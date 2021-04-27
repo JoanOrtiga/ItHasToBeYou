@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class InteractPlanetarium : MonoBehaviour, IInteractable
 {
-    public Transform viewCamara;
-    public float transitionSpeed;
-    public Material SelectedMat;
-    public Material NormalMat;
-
-    public Transform playerCamara;
+    [SerializeField]private Transform viewCamara;
+    [SerializeField]private float transitionSpeed;
+    [SerializeField]private Material SelectedMat;
+    [SerializeField]private Material NormalMat;
+    
+    [SerializeField]private Transform playerCamara;
     private GameObject player;
     private GameObject cameraController;
-
+    [SerializeField]private Transform initialPositionCam;
     private int interactingRing;
     private float time;
 
     private bool activePuzzle = false;
+    private bool activeCameraTransition = false;
+    private bool onTrigger = false;
 
-    public Transform initialPositionCam;
-
-    public GameObject puzzle;
+    [SerializeField]private GameObject puzzle;
     private Transform ringZero;
     private Transform ringOne;
     private Transform ringTwo;
@@ -50,6 +50,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     }
 
+  
 
     void Update()
     {
@@ -57,7 +58,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         if (activePuzzle)
         {
-            if (Input.GetButtonDown("QuitInteract"))
+            if (Input.GetButtonDown("QuitInteract") && activeCameraTransition == false)
             {
                 activePuzzle = false;
                 
@@ -97,7 +98,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     {
         if (ringZero.rotation.eulerAngles.y == 0 && ringOne.rotation.eulerAngles.y == 0 && ringTwo.rotation.eulerAngles.y == 0)
         {
-            print("wiiin");
+            print("wiiin");     
         }
     }
    
@@ -109,13 +110,13 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                
                 if (rotationWay == 0)
                 {
-                    ringZero.transform.Rotate(0, 90, 0, Space.Self);
-                    ringOne.transform.Rotate(0, 30, 0, Space.Self);
+                    ringZero.transform.Rotate(0, 0, 60, Space.Self);
+                    ringOne.transform.Rotate(0, 0, 30, Space.Self);
                 }
                 else
                 {
-                    ringZero.transform.Rotate(0, -90, 0, Space.Self);
-                    ringOne.transform.Rotate(0, -30, 0, Space.Self);
+                    ringZero.transform.Rotate(0, 0, -60, Space.Self);
+                    ringOne.transform.Rotate(0, 0, -30, Space.Self);
                 }
                 break;
 
@@ -123,15 +124,15 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                
                 if (rotationWay == 0)
                 {
-                    ringZero.transform.Rotate(0, 30, 0, Space.Self);
-                    ringOne.transform.Rotate(0, 90, 0, Space.Self);
-                    ringTwo.transform.Rotate(0, 30, 0, Space.Self);
+                    ringZero.transform.Rotate(0, 0, 30, Space.Self);
+                    ringOne.transform.Rotate(0, 0, 60, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, 30, Space.Self);
                 }
                 else
                 { 
-                    ringZero.transform.Rotate(0, -30, 0, Space.Self);
-                    ringOne.transform.Rotate(0, -90, 0, Space.Self);
-                    ringTwo.transform.Rotate(0, -30, 0, Space.Self);
+                    ringZero.transform.Rotate(0, 0, -30, Space.Self);
+                    ringOne.transform.Rotate(0, 0, -60, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, -30, Space.Self);
                 }
                 break;
 
@@ -139,15 +140,15 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
                 if (rotationWay == 0)
                 {
-                    ringZero.transform.Rotate(0, 10, 0, Space.Self);
-                    ringOne.transform.Rotate(0, 30, 0, Space.Self);
-                    ringTwo.transform.Rotate(0, 90, 0, Space.Self);
+                    ringZero.transform.Rotate(0, 0, 30, Space.Self);
+                    ringOne.transform.Rotate(0, 0, 30, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, 60, Space.Self);
                 }
                 else
                 {
-                    ringZero.transform.Rotate(0, -10, 0, Space.Self);
-                    ringOne.transform.Rotate(0, -30, 0, Space.Self);
-                    ringTwo.transform.Rotate(0, -90, 0, Space.Self);
+                    ringZero.transform.Rotate(0, 0, -30, Space.Self);
+                    ringOne.transform.Rotate(0, 0, -30, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, -60, Space.Self);
                 }
                 break;
 
@@ -188,7 +189,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         while (Vector3.Distance(pointA.position, pointB.position) > 0.05f)
         {
-
+            activeCameraTransition = true;
             playerCamara.GetComponent<BreathCamera>().enabled = false;
             player.GetComponent<PlayerController>().enabled = false;
             cameraController.GetComponent<CameraController>().enabled = false;
@@ -211,7 +212,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             player.GetComponent<PlayerController>().enabled = true;
             cameraController.GetComponent<CameraController>().enabled = true;
         }
-
+        activeCameraTransition = false;
         StopCoroutine("CamaraTransition");
     }
 
