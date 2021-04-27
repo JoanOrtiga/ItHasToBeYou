@@ -29,5 +29,6 @@ public class InteractBooks : MonoBehaviour , IInteractable
         
         if(bookCounts)
             deActivating.Invoke();
+        
     }
 }
