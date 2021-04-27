@@ -14,7 +14,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private GameObject player;
     private GameObject cameraController;
     [SerializeField]private Transform initialPositionCam;
-    private int interactingRing;
+    private int interactingRing = 3;
     private float time;
 
     private bool activePuzzle = false;
