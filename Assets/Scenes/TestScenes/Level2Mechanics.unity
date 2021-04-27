@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh39940
+  m_Name: pb_Mesh20762
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -395,7 +395,7 @@ GameObject:
   m_Layer: 7
   m_Name: Camara View
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -406,13 +406,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500699377}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.100354716, y: 1.1742518, z: 0.11764252}
+  m_LocalRotation: {x: 0.29171315, y: -0, z: -0, w: 0.9565059}
+  m_LocalPosition: {x: -0.10093622, y: 1.3321269, z: -0.38558233}
   m_LocalScale: {x: 0.35713422, y: 0.16060327, z: 0.35713422}
   m_Children: []
   m_Father: {fileID: 2105948569}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 33.921, y: 0, z: 0}
 --- !u!1 &511221438
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,10 +522,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewCamara: {fileID: 500699378}
-  transitionSpeed: 1
+  transitionSpeed: 3
   SelectedMat: {fileID: 2100000, guid: e13fea98ccfc02246b4f370e7df330b2, type: 2}
   NormalMat: {fileID: 2100000, guid: d0f99e11ffdb9724386c47e24bb58891, type: 2}
   playerCamara: {fileID: 1223093280}
+  initialPositionCam: {fileID: 1570198139}
   puzzle: {fileID: 1608488309}
 --- !u!1 &546356587
 GameObject:
@@ -725,7 +726,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh39976
+  m_Name: pb_Mesh20798
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2753,7 +2754,7 @@ RectTransform:
   m_Children:
   - {fileID: 1473874830}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6430,6 +6431,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473874829}
   m_CullTransparentMesh: 1
+--- !u!1 &1570198138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570198139}
+  m_Layer: 0
+  m_Name: InitialCam
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570198139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570198138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.453, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2105948569}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1608488309
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,7 +6471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1608488310}
   m_Layer: 0
-  m_Name: Puzzle
+  m_Name: PuzzleRings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6454,14 +6485,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608488309}
   m_LocalRotation: {x: -0.10435141, y: -0, z: -0, w: 0.9945405}
-  m_LocalPosition: {x: 0, y: -0.27447927, z: 0.18687153}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.27, z: -1.6731285}
+  m_LocalScale: {x: 1, y: 0.43924698, z: 0.9456474}
   m_Children:
   - {fileID: 546356588}
   - {fileID: 119898239}
   - {fileID: 619804695}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 2105948569}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -11.98, y: 0, z: 0}
 --- !u!1 &1847328837
 GameObject:
@@ -6572,7 +6603,7 @@ GameObject:
   - component: {fileID: 2105948567}
   - component: {fileID: 2105948566}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Puzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6651,8 +6682,10 @@ Transform:
   m_LocalPosition: {x: -0, y: -0.48, z: 1.86}
   m_LocalScale: {x: 1, y: 2.3341, z: 1}
   m_Children:
-  - {fileID: 500699378}
+  - {fileID: 1608488310}
   - {fileID: 511221439}
+  - {fileID: 500699378}
+  - {fileID: 1570198139}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

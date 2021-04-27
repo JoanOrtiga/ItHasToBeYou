@@ -19,6 +19,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     private bool activePuzzle = false;
 
+    public Transform initialPositionCam;
+
     public GameObject puzzle;
     private Transform ringZero;
     private Transform ringOne;
@@ -29,6 +31,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     {
         player = FindObjectOfType<PlayerController>().gameObject;
         cameraController = player.transform.Find("Camera Controller").gameObject;
+        
 
         ringZero = puzzle.transform.GetChild(0);
         ringOne= puzzle.transform.GetChild(1);
@@ -38,6 +41,11 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
+       
+        initialPositionCam.position = playerCamara.position;
+        initialPositionCam.rotation = playerCamara.rotation;
+
+        StartCoroutine(CamaraTransition(playerCamara, viewCamara,false));
         activePuzzle = true;
 
     }
@@ -49,13 +57,14 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         if (activePuzzle)
         {
-            CameraTransition();
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetButtonDown("QuitInteract"))
             {
                 activePuzzle = false;
+                
+                StartCoroutine(CamaraTransition(playerCamara, initialPositionCam,true));
                 player.GetComponent<PlayerController>().enabled = true;
                 cameraController.GetComponent<CameraController>().enabled = true;
-                print("Exit game");
+
             }
 
             
@@ -78,12 +87,20 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 
                 ColorMat();
             }
-           
 
+            Win();
            
         }
     }
 
+    private void Win()
+    {
+        if (ringZero.rotation.eulerAngles.y == 0 && ringOne.rotation.eulerAngles.y == 0 && ringTwo.rotation.eulerAngles.y == 0)
+        {
+            print("wiiin");
+        }
+    }
+   
     private void RotateRing(float rotationWay) // 0 Derecha & 1 Izquierda
     {
         switch (interactingRing)
@@ -92,14 +109,11 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                
                 if (rotationWay == 0)
                 {
-                    print("Muevo 1 a la derecha");
-                    
                     ringZero.transform.Rotate(0, 90, 0, Space.Self);
                     ringOne.transform.Rotate(0, 30, 0, Space.Self);
                 }
                 else
                 {
-                    print("Muevo 1 a la izquierda");
                     ringZero.transform.Rotate(0, -90, 0, Space.Self);
                     ringOne.transform.Rotate(0, -30, 0, Space.Self);
                 }
@@ -109,14 +123,12 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                
                 if (rotationWay == 0)
                 {
-                    print("Muevo 1 i 2 a la derecha");
                     ringZero.transform.Rotate(0, 30, 0, Space.Self);
                     ringOne.transform.Rotate(0, 90, 0, Space.Self);
                     ringTwo.transform.Rotate(0, 30, 0, Space.Self);
                 }
                 else
-                {
-                    print("Muevo 1 i 2 a la derecha");
+                { 
                     ringZero.transform.Rotate(0, -30, 0, Space.Self);
                     ringOne.transform.Rotate(0, -90, 0, Space.Self);
                     ringTwo.transform.Rotate(0, -30, 0, Space.Self);
@@ -171,21 +183,37 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 break;
         }
     }
-    private void CameraTransition()
+    IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle)
     {
-        player.GetComponent<PlayerController>().enabled = false;
-        cameraController.GetComponent<CameraController>().enabled = false;
 
-        playerCamara.position = Vector3.Lerp(playerCamara.position, viewCamara.position, Time.deltaTime * transitionSpeed);
+        while (Vector3.Distance(pointA.position, pointB.position) > 0.05f)
+        {
 
-        Vector3 currentAngle = new Vector3(
-            Mathf.LerpAngle(playerCamara.rotation.eulerAngles.x, viewCamara.rotation.eulerAngles.x, Time.deltaTime * transitionSpeed),
-            Mathf.LerpAngle(playerCamara.rotation.eulerAngles.y, viewCamara.rotation.eulerAngles.y, Time.deltaTime * transitionSpeed),
-            Mathf.LerpAngle(playerCamara.rotation.eulerAngles.z, viewCamara.rotation.eulerAngles.z, Time.deltaTime * transitionSpeed));
+            playerCamara.GetComponent<BreathCamera>().enabled = false;
+            player.GetComponent<PlayerController>().enabled = false;
+            cameraController.GetComponent<CameraController>().enabled = false;
 
-        playerCamara.eulerAngles = currentAngle;
+            pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
+
+            Vector3 currentAngle = new Vector3(
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x, Time.deltaTime * transitionSpeed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y, Time.deltaTime * transitionSpeed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z, Time.deltaTime * transitionSpeed));
+
+            pointA.eulerAngles = currentAngle;
+            yield return null;
+
+
+        }
+        if (activePuzzle)
+        {
+            playerCamara.GetComponent<BreathCamera>().enabled = true;
+            player.GetComponent<PlayerController>().enabled = true;
+            cameraController.GetComponent<CameraController>().enabled = true;
+        }
+
+        StopCoroutine("CamaraTransition");
     }
-    
 
 
 }
