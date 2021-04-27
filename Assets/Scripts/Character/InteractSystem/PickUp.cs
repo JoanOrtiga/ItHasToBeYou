@@ -58,6 +58,7 @@ public class PickUp : MonoBehaviour
             }
             else if (interaction == Interaction.interact)
             {
+                print("Interaction");
                 //UI "E to Interact"
                 if (Input.GetButtonDown("Interact"))
                 {
