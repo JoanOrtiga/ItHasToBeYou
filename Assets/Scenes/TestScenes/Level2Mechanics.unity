@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34232
+  m_Name: pb_Mesh39940
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 119898241}
   - component: {fileID: 119898240}
   m_Layer: 0
-  m_Name: Cylinder (2)
+  m_Name: Ring One
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ Transform:
   m_LocalScale: {x: 2.1196406, y: 0.12745318, z: 2.1196406}
   m_Children: []
   m_Father: {fileID: 1608488310}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &119898240
 CapsuleCollider:
@@ -353,7 +353,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4be05c61dcc46c84f9128797d21de410, type: 2}
+  - {fileID: 2100000, guid: d0f99e11ffdb9724386c47e24bb58891, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -407,10 +407,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500699377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.21, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.100354716, y: 1.1742518, z: 0.11764252}
+  m_LocalScale: {x: 0.35713422, y: 0.16060327, z: 0.35713422}
   m_Children: []
-  m_Father: {fileID: 511221439}
+  m_Father: {fileID: 2105948569}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511221438
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 511221440}
   - component: {fileID: 511221443}
   m_Layer: 7
-  m_Name: Sphere
+  m_Name: ButtonTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,10 +443,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.479, z: 0.103}
   m_LocalScale: {x: 0.35713422, y: 0.16060326, z: 0.35713422}
-  m_Children:
-  - {fileID: 500699378}
+  m_Children: []
   m_Father: {fileID: 2105948569}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &511221440
 SphereCollider:
@@ -524,7 +523,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewCamara: {fileID: 500699378}
   transitionSpeed: 1
+  SelectedMat: {fileID: 2100000, guid: e13fea98ccfc02246b4f370e7df330b2, type: 2}
+  NormalMat: {fileID: 2100000, guid: d0f99e11ffdb9724386c47e24bb58891, type: 2}
   playerCamara: {fileID: 1223093280}
+  puzzle: {fileID: 1608488309}
 --- !u!1 &546356587
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +540,7 @@ GameObject:
   - component: {fileID: 546356590}
   - component: {fileID: 546356589}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Ring Zero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -591,7 +593,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd8469c345f4a0e47991531bc11f17a7, type: 2}
+  - {fileID: 2100000, guid: d0f99e11ffdb9724386c47e24bb58891, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -634,7 +636,7 @@ GameObject:
   - component: {fileID: 619804697}
   - component: {fileID: 619804696}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: Ring Two
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -648,11 +650,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619804694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000016818, y: 0.42494, z: 4.07}
+  m_LocalPosition: {x: -0, y: 0.42494, z: 4.07}
   m_LocalScale: {x: 3.0059226, y: 0.11418021, z: 3.0059226}
   m_Children: []
   m_Father: {fileID: 1608488310}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &619804696
 CapsuleCollider:
@@ -687,7 +689,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e19f8f220008c54e8c44883c35d2fd0, type: 2}
+  - {fileID: 2100000, guid: d0f99e11ffdb9724386c47e24bb58891, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -723,7 +725,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34256
+  m_Name: pb_Mesh39976
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6456,8 +6458,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 546356588}
-  - {fileID: 619804695}
   - {fileID: 119898239}
+  - {fileID: 619804695}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -11.98, y: 0, z: 0}
@@ -6608,7 +6610,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 368c3404d9d616b40bc537d1b23e9ce7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6649,6 +6651,7 @@ Transform:
   m_LocalPosition: {x: -0, y: -0.48, z: 1.86}
   m_LocalScale: {x: 1, y: 2.3341, z: 1}
   m_Children:
+  - {fileID: 500699378}
   - {fileID: 511221439}
   m_Father: {fileID: 0}
   m_RootOrder: 7
