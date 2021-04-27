@@ -26,8 +26,6 @@ public class PuzzleDoor1 : MonoBehaviour
     {
         booksCounter++;
 
-        print(booksCounter);
-        
         if (booksCounter >= booksToOpen)
         {
             opening = true;
