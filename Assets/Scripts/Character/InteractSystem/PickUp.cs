@@ -48,17 +48,16 @@ public class PickUp : MonoBehaviour
         {
             if (interaction == Interaction.pickUp)
             {
-                print("Object");
+           
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
-                    print("PickUp");
+              
                     PickUpObject();
                 }
             }
             else if (interaction == Interaction.interact)
             {
-                print("Interaction");
                 //UI "E to Interact"
                 if (Input.GetButtonDown("Interact"))
                 {
@@ -113,8 +112,7 @@ public class PickUp : MonoBehaviour
 
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectPlace = objectPickUp.GetComponent<ObjectPlace>();
-
-        Debug.Log(objectPickUp.tag);
+        
 
         objectPickUpRigidBody.isKinematic = true;
         objectPickUpRigidBody.constraints = RigidbodyConstraints.FreezeAll;
