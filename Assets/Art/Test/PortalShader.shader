@@ -60,12 +60,12 @@
             fixed4 frag(v2f i) : SV_Target
             {
                 i.screenPos /= i.screenPos.w;
-                fixed4 l_MaskColor = tex2D(_MaskTex, i.uv);
+              /*  fixed4 l_MaskColor = tex2D(_MaskTex, i.uv);
                 if (l_MaskColor.a < _Cutout)
-                    clip(-1);
+                    clip(-1);*/
                 fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
 
-                col = col > fixed4(0.9, 0.9, 0.9, 1) ? col : fixed4(0, 0, 0, 0.1);
+                col = col > fixed4(0.1, 0.1, 0.1, 1) ? col : fixed4(0, 0, 0, 0.1);
                 col.a = (step(0.9, col.x));
                 return col;
             }
