@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,8 @@ public class PickUp : MonoBehaviour
     Object objectPlace;
     Quaternion objectRotation;
 
+    private Camera mainCamera;
+
     public enum Interaction
     {
         drop, interact,placeObject, none
@@ -35,7 +38,8 @@ public class PickUp : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(CheckForObject());
+        mainCamera = Camera.main;
+        //StartCoroutine(CheckForObject());
     }
     private void Start()
     {
@@ -54,7 +58,6 @@ public class PickUp : MonoBehaviour
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
-              
                     PickUpObject();
                 }
             }
@@ -87,7 +90,7 @@ public class PickUp : MonoBehaviour
     {
         while (true)
         {
-            ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
+            ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
             hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
 
             if (hitted)
@@ -124,7 +127,17 @@ public class PickUp : MonoBehaviour
             }
         }
     }
-    
+
+    private void OnDisable()
+    {
+        StopCoroutine(CheckForObject());
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(CheckForObject());
+    }
+
     private void PlaceObject()
     {
         objectPickUp.transform.parent = placeObjectPosition.transform;
