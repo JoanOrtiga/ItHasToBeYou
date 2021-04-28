@@ -50,8 +50,12 @@ public class MoveableStatue : MonoBehaviour
     private Sides lastSide;
 
     [SerializeField] private Transform[] otherStatues;
+    [SerializeField] private Transform[] obstacles;
 
     [SerializeField] private float collisionRange = 1f;
+
+    [SerializeField] private GameObject target;
+    [SerializeField] private float targetRange;
 
     public void ChangeSide(Sides side)
     {
@@ -290,15 +294,29 @@ public class MoveableStatue : MonoBehaviour
     {
         for (int i = 0; i < otherStatues.Length; i++)
         {
-            print((otherStatues[i].position - moveTo).sqrMagnitude);
             if ((otherStatues[i].position - moveTo).sqrMagnitude < collisionRange * collisionRange)
             {
-                
-              
+                return false;
+            }
+        }
+        
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            if ((obstacles[i].position - moveTo).sqrMagnitude < collisionRange * collisionRange)
+            {
                 return false;
             }
         }
 
+        if ((target.transform.position - moveTo).sqrMagnitude < targetRange * targetRange)
+        {
+            target.SetActive(true);
+        }
+        else
+        {
+            target.SetActive(false);
+        }
+        
         return true;
     }
 }
