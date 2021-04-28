@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using PathCreation;
 using UnityEngine;
 
-public class MoveableStatue : MonoBehaviour , IInteractable
+public class MoveableStatue : MonoBehaviour
 {
-    private enum Sides
+    public enum Sides
     {
         front, left, right, back
     }
@@ -26,6 +26,20 @@ public class MoveableStatue : MonoBehaviour , IInteractable
     [SerializeField] private float speed = 0.1f;
 
     private Transform playerTransform;
+
+    private bool active = false;
+
+    public void ChangeSide(Sides side)
+    {
+        this.playerSide = side;
+        StartCoroutine(WaitForActivation());
+    }
+
+    IEnumerator WaitForActivation()
+    {
+        yield return new WaitForSeconds(0.01f);
+        active = true;
+    }
     
     private void Awake()
     {
@@ -38,44 +52,53 @@ public class MoveableStatue : MonoBehaviour , IInteractable
 
     private void Update()
     {
-        if (Input.GetAxisRaw("Vertical") > 0.3f)
+        if (active)
         {
-            closestTimeOnPath += speed * Time.deltaTime;
-            transform.position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
-            transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
+            if (Input.GetButtonDown("Interact"))
+            {
+                active = false;
+            }
         }
-        else if (Input.GetAxisRaw("Vertical") < -0.3f)
-        {
-            closestTimeOnPath -= speed * Time.deltaTime;
-            transform.position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
-            transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
-        }
-    }
 
-    public void Interact()
-    {
-        float angle = AngleDir(transform.forward, playerTransform.forward, transform.up);
+        if(!active)
+            return;
         
-        print(angle);
-        if (angle >= 0.8)
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        
+        
+        
+        switch (playerSide)
         {
-            
-        }   
-    }
-    
-    
-    //returns -1 when to the left, 1 to the right, and 0 for forward/backward
-    public float AngleDir(Vector3 fwd, Vector3 targetDir, Vector3 up)
-    {
-        Vector3 perp = Vector3.Cross(fwd, targetDir);
-        float dir = Vector3.Dot(perp, up);
- 
-        if (dir > 0.0f) {
-            return 1.0f;
-        } else if (dir < 0.0f) {
-            return -1.0f;
-        } else {
-            return 0.0f;
+                case Sides.front:
+                    if (verticalInput < -0.3f)
+                    {
+                        closestTimeOnPath += speed * Time.deltaTime;
+                        transform.position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
+                        transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
+                    }
+                    else if (verticalInput > 0.3f)
+                    {
+                        closestTimeOnPath -= speed * Time.deltaTime;
+                        transform.position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
+                        transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
+                    }
+                    break;
+                case Sides.back:
+                    if (verticalInput > 0.3f)
+                    {
+                        closestTimeOnPath += speed * Time.deltaTime;
+                        transform.position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
+                        transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
+                    }
+                    else if (verticalInput < -0.3f)
+                    {
+                        closestTimeOnPath -= speed * Time.deltaTime;
+                        transform.position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
+                        transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
+                    }
+                    break;
         }
-    }  
+        
+        
+    }
 }
