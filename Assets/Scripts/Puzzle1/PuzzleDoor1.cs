@@ -10,6 +10,10 @@ public class PuzzleDoor1 : MonoBehaviour
 
     private bool opening = false;
 
+    [SerializeField] private Transform endTransform;
+
+    [SerializeField] private float speed = 50f;
+
     private void Update()
     {
         if (opening)
@@ -22,8 +26,6 @@ public class PuzzleDoor1 : MonoBehaviour
     {
         booksCounter++;
 
-        print(booksCounter);
-        
         if (booksCounter >= booksToOpen)
         {
             opening = true;
@@ -37,6 +39,6 @@ public class PuzzleDoor1 : MonoBehaviour
 
     private void Open()
     {
-        transform.position += new Vector3(10, 0, 0) * Time.deltaTime;
+        transform.position = Vector3.Lerp(transform.position, endTransform.position, speed * Time.deltaTime);
     }
 }

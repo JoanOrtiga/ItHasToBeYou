@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObjectPlace : MonoBehaviour
 {
-
-    
     public Vector3 rotation;
    
 
@@ -20,9 +18,6 @@ public class ObjectPlace : MonoBehaviour
 
     private void Awake()
     {
-
-       
-
         startPos = transform.position;
         startRot = transform.rotation;
     }
