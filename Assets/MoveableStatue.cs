@@ -49,13 +49,14 @@ public class MoveableStatue : MonoBehaviour
 
     private Sides lastSide;
 
+    [SerializeField] private Transform[] otherStatues;
+
+    [SerializeField] private float collisionRange = 1f;
+
     public void ChangeSide(Sides side)
     {
         this.playerSide = side;
         StartCoroutine(WaitForActivation());
-        
-        print(currentRoadType + " " + side.ToString());
-
 
         if ((currentRoadType == RoadType.circular && (side == Sides.back || side == Sides.front)) ||
             (currentRoadType == RoadType.line && (side == Sides.left || side == Sides.right)))
@@ -63,8 +64,6 @@ public class MoveableStatue : MonoBehaviour
             lineActive = true;
             return;
         }
-           
-        
 
         if (side == Sides.left || side == Sides.right)
         {
@@ -101,8 +100,6 @@ public class MoveableStatue : MonoBehaviour
             closestTimeOnPath = pathCreator.path.GetClosestTimeOnPath(transform.position);
             transform.position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
         }
-        
-        print(currentRoadType);
 
     }
 
@@ -142,15 +139,26 @@ public class MoveableStatue : MonoBehaviour
 
         float verticalInput = Input.GetAxisRaw("Vertical");
 
+        float lastTime = closestTimeOnPath;
+        
         switch (playerSide)
         {
             case Sides.front:
                 if (verticalInput < -0.3f)
                 {
+                    
                     closestTimeOnPath += speed * Time.deltaTime;
 
                     Vector3 position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
                     position.y = transform.position.y;
+
+                    if (!CanIKeepMoving(position))
+                    {
+                        closestTimeOnPath = lastTime;
+                        return;
+                    }
+                        
+                    
                     transform.position = position;
                     transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
                 }
@@ -159,6 +167,13 @@ public class MoveableStatue : MonoBehaviour
                     closestTimeOnPath -= speed * Time.deltaTime;
                     Vector3 position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
                     position.y = transform.position.y;
+                    
+                    if (!CanIKeepMoving(position))
+                    {
+                        closestTimeOnPath = lastTime;
+                        return;
+                    }
+                    
                     transform.position = position;
                     transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
                 }
@@ -170,6 +185,13 @@ public class MoveableStatue : MonoBehaviour
                     closestTimeOnPath += speed * Time.deltaTime;
                     Vector3 position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
                     position.y = transform.position.y;
+                    
+                    if (!CanIKeepMoving(position))
+                    {
+                        closestTimeOnPath = lastTime;
+                        return;
+                    }
+                    
                     transform.position = position;
                     transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
                 }
@@ -178,6 +200,13 @@ public class MoveableStatue : MonoBehaviour
                     closestTimeOnPath -= speed * Time.deltaTime;
                     Vector3 position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
                     position.y = transform.position.y;
+                    
+                    if (!CanIKeepMoving(position))
+                    {
+                        closestTimeOnPath = lastTime;
+                        return;
+                    }
+                    
                     transform.position = position;
                     transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
                 }
@@ -192,6 +221,13 @@ public class MoveableStatue : MonoBehaviour
                     closestTimeOnPath += speed * Time.deltaTime;
                     Vector3 position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Stop);
                     position.y = transform.position.y;
+                   
+                    if (!CanIKeepMoving(position))
+                    {
+                        closestTimeOnPath = lastTime;
+                        return;
+                    }
+                    
                     transform.position = position;
                     //   transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, Reversep);
                 }
@@ -200,6 +236,13 @@ public class MoveableStatue : MonoBehaviour
                     closestTimeOnPath -= speed * Time.deltaTime;
                     Vector3 position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Stop);
                     position.y = transform.position.y;
+                    
+                    if (!CanIKeepMoving(position))
+                    {
+                        closestTimeOnPath = lastTime;
+                        return;
+                    }
+                    
                     transform.position = position;
                     //   transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, Reversep);
                 }
@@ -214,6 +257,13 @@ public class MoveableStatue : MonoBehaviour
                     closestTimeOnPath += speed * Time.deltaTime;
                     Vector3 position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Stop);
                     position.y = transform.position.y;
+                    
+                    if (!CanIKeepMoving(position))
+                    {
+                        closestTimeOnPath = lastTime;
+                        return;
+                    }
+                    
                     transform.position = position;
                     //   transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, Reversep);
                 }
@@ -222,11 +272,33 @@ public class MoveableStatue : MonoBehaviour
                     closestTimeOnPath -= speed * Time.deltaTime;
                     Vector3 position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Stop);
                     position.y = transform.position.y;
+                    
+                    if (!CanIKeepMoving(position))
+                    {
+                        closestTimeOnPath = lastTime;
+                        return;
+                    }
+                    
                     transform.position = position;
                     // transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Stop);
                 }
-
                 break;
         }
+    }
+    
+    private bool CanIKeepMoving(Vector3 moveTo)
+    {
+        for (int i = 0; i < otherStatues.Length; i++)
+        {
+            print((otherStatues[i].position - moveTo).sqrMagnitude);
+            if ((otherStatues[i].position - moveTo).sqrMagnitude < collisionRange * collisionRange)
+            {
+                
+              
+                return false;
+            }
+        }
+
+        return true;
     }
 }

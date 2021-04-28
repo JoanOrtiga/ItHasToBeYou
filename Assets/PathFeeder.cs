@@ -40,7 +40,6 @@ public class PathFeeder : MonoBehaviour
                
                 if (currentDistance < shortestDistance)
                 {
-                    print(pathing.name + " " + points[i] + " " +  position  + "  " + (points[i]  - position).magnitude);
                     if (currentDistance <= maxRange)
                         lineActive = true;
                     
