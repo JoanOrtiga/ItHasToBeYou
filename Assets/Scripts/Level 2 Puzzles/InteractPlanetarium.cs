@@ -26,9 +26,10 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private Transform ringOne;
     private Transform ringTwo;
 
-
+    public bool[] allClues;
     private void Start()
     {
+        allClues = new bool[3];
         player = FindObjectOfType<PlayerController>().gameObject;
         cameraController = player.transform.Find("Camera Controller").gameObject;
         
@@ -89,16 +90,21 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 ColorMat();
             }
 
-            Win();
+            
            
         }
+
+        Win();
     }
 
     private void Win()
     {
-        if (ringZero.rotation.eulerAngles.y == 0 && ringOne.rotation.eulerAngles.y == 0 && ringTwo.rotation.eulerAngles.y == 0)
+        if (ringZero.rotation.eulerAngles.z == 0 && ringOne.rotation.eulerAngles.z == 0 && ringTwo.rotation.eulerAngles.z == 0)
         {
-            print("wiiin");     
+            if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
+            {
+                print("WIN");
+            }  
         }
     }
    
