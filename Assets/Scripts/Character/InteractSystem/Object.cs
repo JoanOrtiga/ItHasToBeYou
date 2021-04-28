@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPlace : MonoBehaviour
+public class Object : MonoBehaviour
 {
     public Vector3 rotation;
-   
+    public bool hasBeenPlaced;
 
-    public bool isStartPlace = true;
+    [HideInInspector] public bool isStartPlace = true;
 
     //public string callEventWhenPickedUp;
 
