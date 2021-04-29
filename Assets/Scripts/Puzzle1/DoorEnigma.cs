@@ -15,6 +15,7 @@ public class DoorEnigma : MonoBehaviour
     [SerializeField] private int[] slotRing = new int[4];
 
     int ringSelected;
+    int ringZeroDone, ringOneDone, ringTwoDone, ringThreeDone;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class DoorEnigma : MonoBehaviour
         }
 
         Rotate(ringSelected);
+        Win();
     }
 
     private void Rotate(int ring)
@@ -55,6 +57,7 @@ public class DoorEnigma : MonoBehaviour
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0) //Gira derecha
             {
+                
                 ringFour[0] = ringZero[2 - slotRing[0]];
                 ringFour[1] = ringOne[0 - slotRing[1]];
                 ringFour[2] = ringOne[4 - slotRing[1]];
@@ -135,4 +138,53 @@ public class DoorEnigma : MonoBehaviour
         }
         
     }
+
+
+
+
+    private void Win()
+    {
+        ringZeroDone = 0;
+        ringOneDone = 0;
+        ringTwoDone = 0;
+        ringThreeDone = 0;
+
+        for (int i = 0; i < ringZero.Length; i++)
+        {
+            if (ringZero[i].GetComponent<Sphere>().ring == 0)
+            {
+                ringZeroDone++;
+            }
+        }
+
+        for (int i = 0; i < ringOne.Length; i++)
+        {
+            if (ringOne[i].GetComponent<Sphere>().ring == 1)
+            {
+                ringOneDone++;
+            }
+        }
+
+        for (int i = 0; i < ringTwo.Length; i++)
+        {
+            if (ringTwo[i].GetComponent<Sphere>().ring == 2)
+            {
+                ringTwoDone++;
+            }
+        }
+
+        for (int i = 0; i < ringThree.Length; i++)
+        {
+            if (ringThree[i].GetComponent<Sphere>().ring == 3)
+            {
+                ringThreeDone++;
+            }
+        }
+
+        if (ringZeroDone == 8 && ringOneDone == 8 && ringTwoDone == 8 && ringThreeDone == 8)
+        {
+            print("WIN");
+        }
+    }
+
 }
