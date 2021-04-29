@@ -51,18 +51,40 @@ public class DoorEnigma : MonoBehaviour
     {
         if (ring == 4)
         {
-           
+            if (slotRing[0] > 4)
+            {
+                ringFour[0] = ringZero[slotRing[0] +2];
+
+                ringFour[1] = ringOne[slotRing[1]];
+                ringFour[2] = ringOne[slotRing[1] + 4];
+
+                ringFour[2] = ringTwo[slotRing[2] + 2];
+                ringFour[3] = ringTwo[slotRing[2] + 4];
+
+                ringFour[5] = ringThree[slotRing[3] + 6];
+                ringFour[6] = ringThree[slotRing[3]];
+
+                ringFour[7] = ringZero[slotRing[0] + 6];
+            }
+            ringFour[0] = ringZero[slotRing[0] + 2];
+            ringFour[1] = ringOne[slotRing[1]];
+            ringFour[2] = ringOne[slotRing[1] + 4];
+            ringFour[3] = ringTwo[slotRing[2] + 2];
+            ringFour[4] = ringTwo[slotRing[2] + 6];
+            ringFour[5] = ringThree[slotRing[3] + 4];
+            ringFour[6] = ringThree[slotRing[3]];
+            ringFour[7] = ringZero[slotRing[0] + 6];
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0) //Gira derecha
             {
-                ringFour[0] = ringZero[2 - slotRing[0]];
-                ringFour[1] = ringOne[0 - slotRing[1]];
-                ringFour[2] = ringOne[4 - slotRing[1]];
-                ringFour[3] = ringTwo[2 - slotRing[2]];
-                ringFour[4] = ringTwo[6 - slotRing[2]];
-                ringFour[5] = ringThree[4 - slotRing[3]];
-                ringFour[6] = ringThree[0 - slotRing[3]];
-                ringFour[7] = ringZero[6 - slotRing[0]];
+                //ringFour[0] = ringZero[2 - slotRing[0]];
+                //ringFour[1] = ringOne[0 - slotRing[1]];
+                //ringFour[2] = ringOne[4 - slotRing[1]];
+                //ringFour[3] = ringTwo[2 - slotRing[2]];
+                //ringFour[4] = ringTwo[6 - slotRing[2]];
+                //ringFour[5] = ringThree[4 - slotRing[3]];
+                //ringFour[6] = ringThree[0 - slotRing[3]];
+                //ringFour[7] = ringZero[6 - slotRing[0]];
 
 
                 //ringZero[slotRing[0] + 2].transform.parent = gameObject.transform.GetChild(4).transform;
@@ -104,14 +126,7 @@ public class DoorEnigma : MonoBehaviour
 
                 
 
-                ringFour[0] = ringZero[slotRing[0] + 2];
-                ringFour[1] = ringOne[slotRing[1]];
-                ringFour[2] = ringOne[slotRing[1] + 4];
-                ringFour[3] = ringTwo[slotRing[2] + 2];
-                ringFour[4] = ringTwo[slotRing[2] + 6];
-                ringFour[5] = ringThree[slotRing[3] + 4];
-                ringFour[6] = ringThree[slotRing[3]];
-                ringFour[7] = ringZero[slotRing[0] + 6];
+                
             }
         }
         else
