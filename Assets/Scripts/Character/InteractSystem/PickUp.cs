@@ -145,7 +145,6 @@ public class PickUp : MonoBehaviour
         objectPickUp.GetComponent<Object>().hasBeenPlaced = true;
         placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
         onHand = false;
-        print("Place Object;");
     }
 
     private void PickUpObject()
@@ -193,12 +192,9 @@ public class PickUp : MonoBehaviour
             {
                 objectPlace.ReLocate();
             }
-
-            
         }
 
         onHand = false;
-
     }
 
     private void Interact()
