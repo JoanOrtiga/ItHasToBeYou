@@ -3,8 +3,6 @@
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
-        _MaskTex("Mask texture", 2D) = "white" {}
-        _Cutout("Cutout", Range(0.0, 1.0)) = 0.5
     }
     SubShader
     {
@@ -25,7 +23,6 @@
 
         Pass
         {
-           
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -65,8 +62,8 @@
                     clip(-1);*/
                 fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
 
-                col = col > fixed4(0.1, 0.1, 0.1, 1) ? col : fixed4(0, 0, 0, 0.1);
-                col.a = (step(0.9, col.x));
+                col = col > fixed4(0.1, 0.1, 0.1, 1) ? col : fixed4(0, 0, 0, 1);
+                col.a = (step(0.1, col.x));
                 return col;
             }
             
