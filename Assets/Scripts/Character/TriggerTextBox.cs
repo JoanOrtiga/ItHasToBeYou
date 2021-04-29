@@ -15,11 +15,12 @@ public class TextBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+            
             textBox.gameObject.transform.parent.gameObject.SetActive(true);
             textBox.GetComponent<Text>().text = text;
             textTrigged = true;
             time = 0;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 

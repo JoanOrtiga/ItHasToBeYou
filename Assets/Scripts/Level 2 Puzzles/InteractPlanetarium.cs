@@ -28,8 +28,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     public bool[] allClues;
 
-    public int degreeBig;
-    public int degreeSmall;
+    public int degreeBig = 90;
+    public int degreeSmall = 45;
     private void Start()
     {
         allClues = new bool[3];
@@ -75,10 +75,12 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             
             if (Input.GetAxis("Mouse ScrollWheel") > 0) //Gira derecha
             {
+                print("MOUSE");
                 RotateRing(0);
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0) //Gira izquierda
             {
+                print("MOUSE2");
                 RotateRing(1);            
             }
 
@@ -132,6 +134,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                     //Quaternion watedRotation = Quaternion.Euler(0, 0, 60);
                     //Quaternion currentRotation = ringZero.transform.rotation;
                     //ringZero.transform.rotation = Quaternion.RotateTowards(currentRotation, watedRotation, Time.deltaTime * 1);
+
+
 
                 }
                 else

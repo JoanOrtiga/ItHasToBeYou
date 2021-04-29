@@ -211,5 +211,10 @@ public class PickUp : MonoBehaviour
     private void Interact()
     {
         rayCastHit.transform.GetComponent<IInteractable>().Interact();
+
+        if (rayCastHit.transform.GetComponent<InteractionTextBox>() != null)
+        {
+            rayCastHit.transform.GetComponent<InteractionTextBox>().StartText();
+        }
     }
 }
