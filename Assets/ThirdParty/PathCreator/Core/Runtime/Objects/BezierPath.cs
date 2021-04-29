@@ -48,6 +48,11 @@ namespace PathCreation {
 
  #region Constructors
 
+ public List<Vector3> GetAllPoints()
+ {
+     return points;
+ }
+
  /// <summary> Creates a two-anchor path centred around the given centre point </summary>
  ///<param name="isClosed"> Should the end point connect back to the start point? </param>
  ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>

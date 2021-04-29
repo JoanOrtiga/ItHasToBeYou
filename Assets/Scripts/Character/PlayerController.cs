@@ -48,8 +48,11 @@ public class PlayerController : MonoBehaviour
 
     private bool mIsGrounded;
 
+    private PickUp _pickUp;
+
     private void Awake()
     {
+        _pickUp = GetComponent<PickUp>();
         cameraController = GetComponentInChildren<CameraController>();
         yawTransform = cameraController.transform;
         characterController = GetComponent<CharacterController>();
@@ -58,6 +61,22 @@ public class PlayerController : MonoBehaviour
 
         mIsGrounded = true;
         finalRayLength = rayLength + characterController.center.y;
+    }
+
+    public void DisableController()
+    {
+        characterController.enabled = false;
+        cameraController.enabled = false;
+        this.enabled = false;
+        _pickUp.enabled = false;
+    }
+
+    public void EnableController()
+    {
+        this.enabled = true;
+        characterController.enabled = true;
+        cameraController.enabled = true;
+        _pickUp.enabled = true;
     }
 
     private void Update()
