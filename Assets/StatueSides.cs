@@ -34,7 +34,6 @@ public class StatueSides : MonoBehaviour , IInteractable
 
     public void Interact()
     {
-
         if(ActiveSide)
             return;
 
