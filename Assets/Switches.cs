@@ -21,7 +21,11 @@ public class Switches : MonoBehaviour
 
     public UnityEvent goingUp;
     public UnityEvent goingDown;
-    
+
+    public bool Solved()
+    {
+        return currentPosition == SwitchesPosition.mid;
+    }
     
     public void GoUp(bool button)
     {
