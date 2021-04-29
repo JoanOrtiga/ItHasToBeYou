@@ -177,8 +177,6 @@ public class PickUp : MonoBehaviour
         objectPickUp.localRotation = Quaternion.Euler(objectPlace.rotation);
 
         onHand = true;
-
-       
     }
 
     private void DropObject()
