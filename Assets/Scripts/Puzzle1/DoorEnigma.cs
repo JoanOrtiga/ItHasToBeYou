@@ -218,6 +218,8 @@ public class DoorEnigma : MonoBehaviour, IInteractable
     private State currentState = State.selecting;
 
     [SerializeField] private Transform[] rings;
+    
+    
 
     private Circle[] _circles;
 

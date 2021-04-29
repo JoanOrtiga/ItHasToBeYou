@@ -101,9 +101,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         Win();
 
-        print((ringZero.localRotation.eulerAngles.z % 360 == 0)+ "Local Euler: " + ringZero.localEulerAngles.z + " Rotation: "+ ringZero.eulerAngles.z);
-        print((ringOne.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringOne.localEulerAngles.z + " Rotation: " + ringOne.eulerAngles.z);
-        print((ringTwo.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringTwo.localEulerAngles.z + " Rotation: " + ringTwo.eulerAngles.z);
+     //   print((ringZero.localRotation.eulerAngles.z % 360 == 0)+ "Local Euler: " + ringZero.localEulerAngles.z + " Rotation: "+ ringZero.eulerAngles.z);
+    //    print((ringOne.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringOne.localEulerAngles.z + " Rotation: " + ringOne.eulerAngles.z);
+//        print((ringTwo.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringTwo.localEulerAngles.z + " Rotation: " + ringTwo.eulerAngles.z);
     }
 
     private void Win()
