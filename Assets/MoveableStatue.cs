@@ -117,7 +117,7 @@ public class MoveableStatue : MonoBehaviour
     {
         pathCreator = _pathFeeder.GetCircularPath(transform.position, out lineActive);
 
-        playerTransform = GameObject.FindObjectOfType<PlayerController>().transform;
+        playerTransform = FindObjectOfType<PlayerController>().transform;
         closestTimeOnPath = pathCreator.path.GetClosestTimeOnPath(transform.position);
         transform.rotation = pathCreator.path.GetRotation(closestTimeOnPath, EndOfPathInstruction.Loop);
         transform.position = pathCreator.path.GetPointAtTime(closestTimeOnPath, EndOfPathInstruction.Loop);
