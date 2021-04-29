@@ -156,6 +156,11 @@ public class PickUp : MonoBehaviour
             objectPickUp.GetComponent<Object>().hasBeenPlaced = false;
         }
 
+
+        if (objectPickUp.GetComponent<InteractionTextBox>() != null)
+        {
+            objectPickUp.GetComponent<InteractionTextBox>().StartText();
+        }
         objectPickUp.SetParent(handCenter.transform);
 
         objectPickUp.position = handCenter.transform.position;
