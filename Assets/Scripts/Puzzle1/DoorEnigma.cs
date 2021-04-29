@@ -16,8 +16,12 @@ public class DoorEnigma : MonoBehaviour
     public GameObject ringThree_;
     public GameObject ringFour_;
 
-    [SerializeField] private int[] OneSlotRing = new int[5];
+    [SerializeField] private int[] OneSlotRing = new int[4];
     [SerializeField] private int[] TwoSlotRing = new int[4];
+
+    [SerializeField] private int[] SlotRingFour = new int[8];
+
+
 
     int ringSelected;
     // Start is called before the first frame update
@@ -48,6 +52,15 @@ public class DoorEnigma : MonoBehaviour
         ringThree[TwoSlotRing[3]] = ringFour[6];
 
         ringZero[TwoSlotRing[0]] = ringFour[7];
+
+        SlotRingFour[0] = 0;
+        SlotRingFour[1] = 1;
+        SlotRingFour[2] = 2;
+        SlotRingFour[3] = 3;
+        SlotRingFour[4] = 4;
+        SlotRingFour[5] = 5;
+        SlotRingFour[6] = 6;
+        SlotRingFour[7] = 7;
     }
 
     // Update is called once per frame
@@ -139,18 +152,25 @@ public class DoorEnigma : MonoBehaviour
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0)  //Gira derecha
             {
-                OneSlotRing[4]++;
-                if (OneSlotRing[4] > 7) { OneSlotRing[4] = 0; }
+                
+                
 
-
+                for (int i = 0; i < SlotRingFour.Length; i++)
+                {
+                    SlotRingFour[i]++;
+                    if (SlotRingFour[i] > 7) { SlotRingFour[i] = 0; }
+                }
 
                 ringFour_.transform.Rotate(0, 0, -90, Space.Self);
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0) //Gira izquierda
             {
-                OneSlotRing[4]--;
-                if (OneSlotRing[4] < 0) { OneSlotRing[4] = 7; }
 
+                for (int i = 0; i < SlotRingFour.Length; i++)
+                {
+                    SlotRingFour[i]--;
+                    if (SlotRingFour[i] < 0) { SlotRingFour[i] = 7; }
+                }
 
                 ringFour_.transform.Rotate(0, 0, 90, Space.Self);
             }
