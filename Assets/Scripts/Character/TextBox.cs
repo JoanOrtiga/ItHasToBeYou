@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextBox : MonoBehaviour
+public class TriggerTextBox : MonoBehaviour
 {
     public GameObject textBox;
     public string text;

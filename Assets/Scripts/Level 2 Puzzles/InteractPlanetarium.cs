@@ -27,6 +27,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private Transform ringTwo;
 
     public bool[] allClues;
+
+    public int degreeBig = 90;
+    public int degreeSmall = 45;
     private void Start()
     {
         allClues = new bool[3];
@@ -72,10 +75,12 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             
             if (Input.GetAxis("Mouse ScrollWheel") > 0) //Gira derecha
             {
+                print("MOUSE");
                 RotateRing(0);
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0) //Gira izquierda
             {
+                print("MOUSE2");
                 RotateRing(1);            
             }
 
@@ -95,12 +100,19 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         }
 
         Win();
+
+        //print((ringZero.transform.localRotation.eulerAngles.z % 360 == 0)+ "Local Euler: " + ringTwo.transform.localRotation.eulerAngles.z);
+        //print((ringOne.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringTwo.transform.localRotation.eulerAngles.z);
+        //print((ringTwo.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringTwo.transform.localRotation.eulerAngles.z);
     }
 
     private void Win()
     {
-        if (ringZero.rotation.eulerAngles.z == 0 && ringOne.rotation.eulerAngles.z == 0 && ringTwo.rotation.eulerAngles.z == 0)
+        
+
+        if (ringZero.rotation.eulerAngles.z % 360 ==  0 && ringOne.rotation.eulerAngles.z % 360 == 0 && ringTwo.rotation.eulerAngles.z % 360 == 0)
         {
+            print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
             {
                 print("WIN");
@@ -116,13 +128,21 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                
                 if (rotationWay == 0)
                 {
-                    ringZero.transform.Rotate(0, 0, 60, Space.Self);
-                    ringOne.transform.Rotate(0, 0, 30, Space.Self);
+                    ringZero.transform.Rotate(0, 0, degreeBig, Space.Self);
+                    ringOne.transform.Rotate(0, 0, degreeSmall, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, degreeSmall, Space.Self);
+                    //Quaternion watedRotation = Quaternion.Euler(0, 0, 60);
+                    //Quaternion currentRotation = ringZero.transform.rotation;
+                    //ringZero.transform.rotation = Quaternion.RotateTowards(currentRotation, watedRotation, Time.deltaTime * 1);
+
+
+
                 }
                 else
                 {
-                    ringZero.transform.Rotate(0, 0, -60, Space.Self);
-                    ringOne.transform.Rotate(0, 0, -30, Space.Self);
+                    ringZero.transform.Rotate(0, 0, -degreeBig, Space.Self);
+                    ringOne.transform.Rotate(0, 0, -degreeSmall, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, -degreeSmall, Space.Self);
                 }
                 break;
 
@@ -130,15 +150,15 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                
                 if (rotationWay == 0)
                 {
-                    ringZero.transform.Rotate(0, 0, 30, Space.Self);
-                    ringOne.transform.Rotate(0, 0, 60, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, 30, Space.Self);
+                    ringZero.transform.Rotate(0, 0, degreeSmall, Space.Self);
+                    ringOne.transform.Rotate(0, 0, degreeBig, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, degreeSmall, Space.Self);
                 }
                 else
                 { 
-                    ringZero.transform.Rotate(0, 0, -30, Space.Self);
-                    ringOne.transform.Rotate(0, 0, -60, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, -30, Space.Self);
+                    ringZero.transform.Rotate(0, 0, -degreeSmall, Space.Self);
+                    ringOne.transform.Rotate(0, 0, -degreeBig, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, -degreeSmall, Space.Self);
                 }
                 break;
 
@@ -146,15 +166,15 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
                 if (rotationWay == 0)
                 {
-                    ringZero.transform.Rotate(0, 0, 30, Space.Self);
-                    ringOne.transform.Rotate(0, 0, 30, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, 60, Space.Self);
+                    ringZero.transform.Rotate(0, 0, degreeSmall, Space.Self);
+                    ringOne.transform.Rotate(0, 0, degreeSmall, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, degreeBig, Space.Self);
                 }
                 else
                 {
-                    ringZero.transform.Rotate(0, 0, -30, Space.Self);
-                    ringOne.transform.Rotate(0, 0, -30, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, -60, Space.Self);
+                    ringZero.transform.Rotate(0, 0, -degreeSmall, Space.Self);
+                    ringOne.transform.Rotate(0, 0, -degreeSmall, Space.Self);
+                    ringTwo.transform.Rotate(0, 0, -degreeBig, Space.Self);
                 }
                 break;
 

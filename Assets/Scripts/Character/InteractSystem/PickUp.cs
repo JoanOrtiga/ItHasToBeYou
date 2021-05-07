@@ -165,7 +165,6 @@ public class PickUp : MonoBehaviour
         {
             objectPickUp.GetComponent<InteractionTextBox>().StartText();
         }
-
         objectPickUp.SetParent(handCenter.transform);
 
         objectPickUp.position = handCenter.transform.position;
@@ -198,5 +197,10 @@ public class PickUp : MonoBehaviour
     private void Interact()
     {
         rayCastHit.transform.GetComponent<IInteractable>().Interact();
+
+        if (rayCastHit.transform.GetComponent<InteractionTextBox>() != null)
+        {
+            rayCastHit.transform.GetComponent<InteractionTextBox>().StartText();
+        }
     }
 }
