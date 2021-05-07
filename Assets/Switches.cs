@@ -35,7 +35,6 @@ public class Switches : MonoBehaviour
             if(button)
                     goingUp.Invoke();
         }
-
     }
 
     public void GoDown(bool button)

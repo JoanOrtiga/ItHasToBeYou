@@ -23,6 +23,7 @@ public class PickUp : MonoBehaviour
 
     [Header("The pick up object propeties")]
     Transform objectPickUp;
+
     Rigidbody objectPickUpRigidBody;
     Object objectPlace;
     Quaternion objectRotation;
@@ -31,7 +32,10 @@ public class PickUp : MonoBehaviour
 
     public enum Interaction
     {
-        drop, interact,placeObject, none
+        drop,
+        interact,
+        placeObject,
+        none
     }
 
     Interaction interaction;
@@ -40,13 +44,16 @@ public class PickUp : MonoBehaviour
     {
         mainCamera = Camera.main;
         //StartCoroutine(CheckForObject());
+        InvokeRepeating("CheckForObject", 0f, 0.2f);
     }
+
     private void Start()
     {
         objectLayer = LayerMask.NameToLayer("Object");
         interactLayer = LayerMask.NameToLayer("Interactable");
         placeObjectLayer = LayerMask.NameToLayer("PlaceObject");
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -54,7 +61,6 @@ public class PickUp : MonoBehaviour
         {
             if (interaction == Interaction.drop && onHand == false)
             {
-           
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
@@ -68,7 +74,6 @@ public class PickUp : MonoBehaviour
                 {
                     Interact();
                 }
-                
             }
             else if (interaction == Interaction.placeObject && onHand)
             {
@@ -77,65 +82,53 @@ public class PickUp : MonoBehaviour
                     PlaceObject();
                 }
             }
-
         }
         else if (Input.GetButtonDown("Interact") && onHand)
         {
             DropObject();
-            
         }
     }
 
-    IEnumerator CheckForObject()
+    private void CheckForObject()
     {
-        while (true)
+        ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
+        hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
+
+        if (hitted)
         {
-            ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
-            hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
-
-            if (hitted)
+            if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
-                
-                if (rayCastHit.transform.gameObject.layer == objectLayer)
-                {
-                    interaction = Interaction.drop;
-                }
-                else if (rayCastHit.transform.gameObject.layer == interactLayer)
-                {
-                    interaction = Interaction.interact;
-                }
-                else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
-                {
-                    if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false)
-                    {
-                        interaction = Interaction.placeObject;
-                        placeObjectPosition = rayCastHit.transform.gameObject;
-
-                    }
-                    
-                }
+                interaction = Interaction.drop;
             }
-            else
+            else if (rayCastHit.transform.gameObject.layer == interactLayer)
             {
-                interaction = Interaction.none;
-                
+                interaction = Interaction.interact;
             }
-
-            for (int i = 0; i < 5; i++)
+            else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
             {
-                yield return null;
+                if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false)
+                {
+                    interaction = Interaction.placeObject;
+                    placeObjectPosition = rayCastHit.transform.gameObject;
+                }
             }
         }
+        else
+        {
+            interaction = Interaction.none;
+        }
+
+       // yield return null;
     }
 
     private void OnDisable()
     {
-        StopCoroutine(CheckForObject());
+       // StopCoroutine(CheckForObject());
     }
 
     private void OnEnable()
     {
-        StartCoroutine(CheckForObject());
+       // StartCoroutine(CheckForObject());
     }
 
     private void PlaceObject()
@@ -149,15 +142,14 @@ public class PickUp : MonoBehaviour
 
     private void PickUpObject()
     {
-        StopCoroutine(CheckForObject());
-        
+     //   StopCoroutine(CheckForObject());
+
 
         objectPickUp = rayCastHit.transform;
 
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectPlace = objectPickUp.GetComponent<Object>();
 
-       
 
         objectPickUpRigidBody.isKinematic = true;
         objectPickUpRigidBody.constraints = RigidbodyConstraints.FreezeAll;
@@ -166,6 +158,12 @@ public class PickUp : MonoBehaviour
         {
             objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced = false;
             objectPickUp.GetComponent<Object>().hasBeenPlaced = false;
+        }
+
+
+        if (objectPickUp.GetComponent<InteractionTextBox>() != null)
+        {
+            objectPickUp.GetComponent<InteractionTextBox>().StartText();
         }
 
         objectPickUp.SetParent(handCenter.transform);
