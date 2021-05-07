@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class InteractPlanetarium : MonoBehaviour, IInteractable
 {
-    [SerializeField]private Transform viewCamara;
-    [SerializeField]private float transitionSpeed;
-    [SerializeField]private Material SelectedMat;
-    [SerializeField]private Material NormalMat;
-    
-    [SerializeField]private Transform playerCamara;
+    [SerializeField] private Transform viewCamara;
+    [SerializeField] private float transitionSpeed;
+    [SerializeField] private Material SelectedMat;
+    [SerializeField] private Material NormalMat;
+
+    [SerializeField] private Transform playerCamara;
     private GameObject player;
     private GameObject cameraController;
-    [SerializeField]private Transform initialPositionCam;
+    [SerializeField] private Transform initialPositionCam;
     private int interactingRing = 3;
     private float time;
 
@@ -21,7 +21,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private bool activeCameraTransition = false;
     private bool onTrigger = false;
 
-    [SerializeField]private GameObject puzzle;
+    [SerializeField] private GameObject puzzle;
     private Transform ringZero;
     private Transform ringOne;
     private Transform ringTwo;
@@ -35,53 +35,53 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         allClues = new bool[3];
         player = FindObjectOfType<PlayerController>().gameObject;
         cameraController = player.transform.Find("Camera Controller").gameObject;
-        
+
 
         ringZero = puzzle.transform.GetChild(0);
-        ringOne= puzzle.transform.GetChild(1);
+        ringOne = puzzle.transform.GetChild(1);
         ringTwo = puzzle.transform.GetChild(2);
-        
+
 
     }
     public void Interact()
     {
-       
+
         initialPositionCam.position = playerCamara.position;
         initialPositionCam.rotation = playerCamara.rotation;
 
-        StartCoroutine(CamaraTransition(playerCamara, viewCamara,false));
+        StartCoroutine(CamaraTransition(playerCamara, viewCamara, false));
         activePuzzle = true;
 
     }
 
-  
+
 
     void Update()
     {
-       
+
 
         if (activePuzzle)
         {
             if (Input.GetButtonDown("QuitInteract") && activeCameraTransition == false)
             {
                 activePuzzle = false;
-                
-                StartCoroutine(CamaraTransition(playerCamara, initialPositionCam,true));
+
+                StartCoroutine(CamaraTransition(playerCamara, initialPositionCam, true));
                 player.GetComponent<PlayerController>().enabled = true;
                 cameraController.GetComponent<CameraController>().enabled = true;
 
             }
 
-            
+
             if (Input.GetAxis("Mouse ScrollWheel") > 0) //Gira derecha
             {
                 print("MOUSE");
-                RotateRing(0);
+                RotateRing(true);
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0) //Gira izquierda
             {
                 print("MOUSE2");
-                RotateRing(1);            
+                RotateRing(false);
             }
 
             if (Input.GetButtonDown("Interact"))
@@ -91,95 +91,57 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 {
                     interactingRing = 0;
                 }
-                
+
                 ColorMat();
             }
 
-            
-           
+
+
         }
 
         Win();
 
-        //print((ringZero.transform.localRotation.eulerAngles.z % 360 == 0)+ "Local Euler: " + ringTwo.transform.localRotation.eulerAngles.z);
-        //print((ringOne.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringTwo.transform.localRotation.eulerAngles.z);
+        //print((ringZero.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringZero.transform.localRotation.eulerAngles.z);
+        //print((ringOne.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringOne.transform.localRotation.eulerAngles.z);
         //print((ringTwo.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringTwo.transform.localRotation.eulerAngles.z);
     }
 
     private void Win()
     {
-        
 
-        if (ringZero.rotation.eulerAngles.z % 360 ==  0 && ringOne.rotation.eulerAngles.z % 360 == 0 && ringTwo.rotation.eulerAngles.z % 360 == 0)
+
+        if (ringZero.rotation.eulerAngles.z % 360 == 0 && ringOne.rotation.eulerAngles.z % 360 == 0 && ringTwo.rotation.eulerAngles.z % 360 == 0)
         {
             print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
             {
                 print("WIN");
-            }  
+            }
         }
     }
-   
-    private void RotateRing(float rotationWay) // 0 Derecha & 1 Izquierda
+
+    private void RotateRing(bool rotationUp) // 0 Derecha & 1 Izquierda
     {
         switch (interactingRing)
         {
             case 0:
-               
-                if (rotationWay == 0)
-                {
-                    ringZero.transform.Rotate(0, 0, degreeBig, Space.Self);
-                    ringOne.transform.Rotate(0, 0, degreeSmall, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, degreeSmall, Space.Self);
-                    //Quaternion watedRotation = Quaternion.Euler(0, 0, 60);
-                    //Quaternion currentRotation = ringZero.transform.rotation;
-                    //ringZero.transform.rotation = Quaternion.RotateTowards(currentRotation, watedRotation, Time.deltaTime * 1);
-
-
-
-                }
-                else
-                {
-                    ringZero.transform.Rotate(0, 0, -degreeBig, Space.Self);
-                    ringOne.transform.Rotate(0, 0, -degreeSmall, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, -degreeSmall, Space.Self);
-                }
+                ringZero.transform.Rotate(0, 0, (rotationUp ? degreeBig : -degreeBig), Space.Self);
+                ringOne.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
+                ringTwo.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
                 break;
 
             case 1:
-               
-                if (rotationWay == 0)
-                {
-                    ringZero.transform.Rotate(0, 0, degreeSmall, Space.Self);
-                    ringOne.transform.Rotate(0, 0, degreeBig, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, degreeSmall, Space.Self);
-                }
-                else
-                { 
-                    ringZero.transform.Rotate(0, 0, -degreeSmall, Space.Self);
-                    ringOne.transform.Rotate(0, 0, -degreeBig, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, -degreeSmall, Space.Self);
-                }
+                ringZero.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
+                ringOne.transform.Rotate(0, 0, (rotationUp ? degreeBig : -degreeBig), Space.Self);
+                ringTwo.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
                 break;
 
             case 2:
-
-                if (rotationWay == 0)
-                {
-                    ringZero.transform.Rotate(0, 0, degreeSmall, Space.Self);
-                    ringOne.transform.Rotate(0, 0, degreeSmall, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, degreeBig, Space.Self);
-                }
-                else
-                {
-                    ringZero.transform.Rotate(0, 0, -degreeSmall, Space.Self);
-                    ringOne.transform.Rotate(0, 0, -degreeSmall, Space.Self);
-                    ringTwo.transform.Rotate(0, 0, -degreeBig, Space.Self);
-                }
+                ringZero.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
+                ringOne.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
+                ringTwo.transform.Rotate(0, 0, (rotationUp ? degreeBig : -degreeBig), Space.Self);     
                 break;
 
-            default:
-                break;
         }
     }
 

@@ -15,6 +15,7 @@ public class PickUp : MonoBehaviour
     private int objectLayer;
     private int interactLayer;
     private int placeObjectLayer;
+    private int LookObjectLayer;
 
     private bool onHand;
 
@@ -46,6 +47,7 @@ public class PickUp : MonoBehaviour
         objectLayer = LayerMask.NameToLayer("Object");
         interactLayer = LayerMask.NameToLayer("Interactable");
         placeObjectLayer = LayerMask.NameToLayer("PlaceObject");
+        LookObjectLayer = LayerMask.NameToLayer("LookObject");
     }
     // Update is called once per frame
     void Update()
@@ -113,6 +115,10 @@ public class PickUp : MonoBehaviour
 
                     }
                     
+                }
+                else if (rayCastHit.transform.gameObject.layer == LookObjectLayer)
+                {
+                    rayCastHit.transform.gameObject.GetComponent<TextBoxLook>().textBoxStart();
                 }
             }
             else
