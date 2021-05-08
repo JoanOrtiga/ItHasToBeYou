@@ -184,9 +184,9 @@ public class PickUp : MonoBehaviour
         }
 
 
-        if (objectPickUp.GetComponent<InteractionTextBox>() != null)
+        if (objectPickUp.GetComponent<TextBox>() != null)
         {
-            objectPickUp.GetComponent<InteractionTextBox>().StartText();
+            objectPickUp.GetComponent<TextBox>().StartText();
         }
         objectPickUp.SetParent(handCenter.transform);
 
@@ -221,9 +221,9 @@ public class PickUp : MonoBehaviour
     {
         rayCastHit.transform.GetComponent<IInteractable>().Interact();
 
-        if (rayCastHit.transform.GetComponent<InteractionTextBox>() != null)
+        if (rayCastHit.transform.GetComponent<TextBox>() != null)
         {
-            rayCastHit.transform.GetComponent<InteractionTextBox>().StartText();
+            rayCastHit.transform.GetComponent<TextBox>().StartText();
         }
     }
 }
