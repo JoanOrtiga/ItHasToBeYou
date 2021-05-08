@@ -127,7 +127,7 @@ public class PickUp : MonoBehaviour
                 }
                 else if (rayCastHit.transform.gameObject.layer == LookObjectLayer)
                 {
-                    rayCastHit.transform.gameObject.GetComponent<TextBoxLook>().textBoxStart();
+                    rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
                 }
             }
             else
@@ -183,7 +183,7 @@ public class PickUp : MonoBehaviour
             objectPickUp.GetComponent<Object>().hasBeenPlaced = false;
         }
 
-
+       
         if (objectPickUp.GetComponent<TextBox>() != null)
         {
             objectPickUp.GetComponent<TextBox>().StartText();

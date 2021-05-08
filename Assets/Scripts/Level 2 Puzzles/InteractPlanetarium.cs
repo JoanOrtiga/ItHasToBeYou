@@ -30,6 +30,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     public int degreeBig = 90;
     public int degreeSmall = 45;
+    public float rotationSpeedHigh = 5f;
+    public float rotationSpeedLow= 5f;
     private void Start()
     {
         allClues = new bool[3];
@@ -128,21 +130,22 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         switch (interactingRing)
         {
             case 0:
-                ringZero.transform.Rotate(0, 0, (rotationUp ? degreeBig : -degreeBig), Space.Self);
-                ringOne.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
-                ringTwo.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
+                ringZero.transform.Rotate(0,0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh), Space.Self);
+                ringOne.transform.Rotate(0,0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
+                ringTwo.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
+             
                 break;
-
+        
             case 1:
-                ringZero.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
-                ringOne.transform.Rotate(0, 0, (rotationUp ? degreeBig : -degreeBig), Space.Self);
-                ringTwo.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
+                ringZero.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
+                ringOne.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh), Space.Self);
+                ringTwo.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
                 break;
 
             case 2:
-                ringZero.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
-                ringOne.transform.Rotate(0, 0, (rotationUp ? degreeSmall : -degreeSmall), Space.Self);
-                ringTwo.transform.Rotate(0, 0, (rotationUp ? degreeBig : -degreeBig), Space.Self);     
+                ringZero.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
+                ringOne.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
+                ringTwo.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh), Space.Self);
                 break;
 
         }
