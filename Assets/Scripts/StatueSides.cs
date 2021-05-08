@@ -6,9 +6,11 @@ using UnityEngine;
 public class StatueSides : MonoBehaviour , IInteractable
 {
 
-    public MoveableStatue.Sides side;
+  //  public MoveableStatue.Sides side;
+    public MovingStatue.Sides side;
 
-    [SerializeField] private MoveableStatue statue;
+    //[SerializeField] private MoveableStatue statue;
+    [SerializeField] private MovingStatue statue;
 
     private Transform playerTransform;
     private PlayerController playerController;
