@@ -41,12 +41,12 @@ public class PlaceMaterial : MonoBehaviour
             if (time > timeDuration)
             {
  
-                textBox.gameObject.transform.parent.gameObject.SetActive(false);
+                textBox.SetActive(false);
             }
             else
             {
                 textBox.GetComponent<Text>().text = text;
-                textBox.gameObject.transform.parent.gameObject.SetActive(true);
+                textBox.SetActive(true);
                 
             }
         }

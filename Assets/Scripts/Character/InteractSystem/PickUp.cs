@@ -30,6 +30,8 @@ public class PickUp : MonoBehaviour
 
     private Camera mainCamera;
 
+    public GameObject crosshair;
+
     public enum Interaction
     {
         drop, interact,placeObject, none
@@ -54,6 +56,9 @@ public class PickUp : MonoBehaviour
     {
         if (hitted)
         {
+            
+           
+
             if (interaction == Interaction.drop && onHand == false)
             {
            
@@ -86,6 +91,7 @@ public class PickUp : MonoBehaviour
             DropObject();
             
         }
+      
     }
 
     IEnumerator CheckForObject()
@@ -98,13 +104,16 @@ public class PickUp : MonoBehaviour
             if (hitted)
             {
                 
+
                 if (rayCastHit.transform.gameObject.layer == objectLayer)
                 {
                     interaction = Interaction.drop;
+                    crosshair.SetActive(true);
                 }
                 else if (rayCastHit.transform.gameObject.layer == interactLayer)
                 {
                     interaction = Interaction.interact;
+                    //crosshair.SetActive(true);
                 }
                 else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
                 {
@@ -112,7 +121,7 @@ public class PickUp : MonoBehaviour
                     {
                         interaction = Interaction.placeObject;
                         placeObjectPosition = rayCastHit.transform.gameObject;
-
+                        crosshair.SetActive(true);
                     }
                     
                 }
@@ -124,7 +133,7 @@ public class PickUp : MonoBehaviour
             else
             {
                 interaction = Interaction.none;
-                
+                crosshair.SetActive(false);
             }
 
             for (int i = 0; i < 5; i++)
