@@ -41,7 +41,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         ringOne = puzzle.transform.GetChild(1);
         ringTwo = puzzle.transform.GetChild(2);
 
-
+        //ringOne.transform.Rotate(0, 0, 90, Space.Self);
+        //ringTwo.transform.Rotate(0, 0, -90, Space.Self);
     }
     public void Interact()
     {
@@ -101,20 +102,22 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         Win();
 
-        //print((ringZero.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringZero.transform.localRotation.eulerAngles.z);
-        //print((ringOne.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringOne.transform.localRotation.eulerAngles.z);
-        //print((ringTwo.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler: " + ringTwo.transform.localRotation.eulerAngles.z);
+        print((ringZero.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.z);
+        print((ringOne.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler RING ONE: " + ringOne.transform.localEulerAngles.z);
+        print((ringTwo.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.z);
+        // ringTwo.transform.localEulerAngles.z // 
     }
 
     private void Win()
     {
 
 
-        if (ringZero.rotation.eulerAngles.z % 360 == 0 && ringOne.rotation.eulerAngles.z % 360 == 0 && ringTwo.rotation.eulerAngles.z % 360 == 0)
+        if (ringZero.transform.localEulerAngles.z < 6 && ringOne.transform.localEulerAngles.z < 6 && ringTwo.transform.localEulerAngles.z < 6)
         {
             print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
             {
+                this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
                 print("WIN");
             }
         }

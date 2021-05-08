@@ -32,15 +32,25 @@ public class TextBox : MonoBehaviour
 
     public void StartText()
     {
-        if (textDone == false)
+        if (textDone == false && !isCompletePuzzle)
         {
             player.textBoxActive++;
             StopCoroutine(TextBoxStart());
             StartCoroutine(TextBoxStart());
         }
-
+     
     }
 
+
+    public void StartTextPuzzle()
+    {
+        if (textDone == false && isCompletePuzzle)
+        {
+            player.textBoxActive++;
+            StopCoroutine(TextBoxStart());
+            StartCoroutine(TextBoxStart());
+        }
+    }
     IEnumerator TextBoxStart()
     {
 
@@ -48,12 +58,35 @@ public class TextBox : MonoBehaviour
         {
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
-
+       
         print("TEXT BOX");
         textDone = true;
         textBox.gameObject.SetActive(true);
         textBox.gameObject.GetComponent<Text>().text = text;
         
+        yield return new WaitForSeconds(textDuration);
+
+        if (player.textBoxActive - 1 == 0)
+        {
+            textBox.gameObject.SetActive(false);
+        }
+        player.textBoxActive--;
+
+        if (isTrigger || isLook)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator TextBoxPuzzle()
+    {
+
+
+        print("TEXT BOX");
+        textDone = true;
+        textBox.gameObject.SetActive(true);
+        textBox.gameObject.GetComponent<Text>().text = text;
+
         yield return new WaitForSeconds(textDuration);
 
         if (player.textBoxActive - 1 == 0)

@@ -10,15 +10,14 @@ public class PlaceMaterial : MonoBehaviour
     public int materialNumber;
     public bool correctMaterial;
 
-    public GameObject textBox;
-    public string text;
-    public float timeDuration;
+ 
     private bool textDone = false;
     private float time;
+    private TextBox textBox;
     // Start is called before the first frame update
     void Start()
     {
-        
+        textBox = gameObject.GetComponent<TextBox>();
     }
 
     // Update is called once per frame
@@ -33,22 +32,10 @@ public class PlaceMaterial : MonoBehaviour
             if (textDone == false)
             {
                 textDone = true;
-                time = 0;
+                textBox.StartText();
             }
 
-           
-
-            if (time > timeDuration)
-            {
- 
-                textBox.SetActive(false);
-            }
-            else
-            {
-                textBox.GetComponent<Text>().text = text;
-                textBox.SetActive(true);
-                
-            }
+       
         }
 
         if (hasBeenPlaced ==false)
