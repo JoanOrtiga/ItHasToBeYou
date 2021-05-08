@@ -15,7 +15,8 @@ public class PickUp : MonoBehaviour
     private int objectLayer;
     private int interactLayer;
     private int placeObjectLayer;
-    private int LookObjectLayer;
+    private int lookObjectLayer;
+    private int observeObjectLayer;
 
     private bool onHand;
 
@@ -31,10 +32,11 @@ public class PickUp : MonoBehaviour
     private Camera mainCamera;
 
     public GameObject crosshair;
+    public GameObject observeCanvas;
 
     public enum Interaction
     {
-        drop, interact,placeObject, none
+        drop, interact,placeObject, observe, none
     }
 
     Interaction interaction;
@@ -46,19 +48,19 @@ public class PickUp : MonoBehaviour
     }
     private void Start()
     {
+       
         objectLayer = LayerMask.NameToLayer("Object");
         interactLayer = LayerMask.NameToLayer("Interactable");
         placeObjectLayer = LayerMask.NameToLayer("PlaceObject");
-        LookObjectLayer = LayerMask.NameToLayer("LookObject");
+        lookObjectLayer = LayerMask.NameToLayer("LookObject");
+        observeObjectLayer = LayerMask.NameToLayer("ObserveObject");
     }
     // Update is called once per frame
     void Update()
     {
         if (hitted)
         {
-            
            
-
             if (interaction == Interaction.drop && onHand == false)
             {
            
@@ -84,6 +86,14 @@ public class PickUp : MonoBehaviour
                     PlaceObject();
                 }
             }
+            else if (interaction == Interaction.observe)
+            {
+                if (Input.GetButtonDown("Interact"))
+                {
+                    ObservObject();
+                }
+               
+            }
 
         }
         else if (Input.GetButtonDown("Interact") && onHand)
@@ -108,12 +118,12 @@ public class PickUp : MonoBehaviour
                 if (rayCastHit.transform.gameObject.layer == objectLayer)
                 {
                     interaction = Interaction.drop;
-                    crosshair.SetActive(true);
+                    crosshair.transform.GetChild(0).gameObject.SetActive(true);
                 }
                 else if (rayCastHit.transform.gameObject.layer == interactLayer)
                 {
                     interaction = Interaction.interact;
-                    //crosshair.SetActive(true);
+                   
                 }
                 else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
                 {
@@ -121,19 +131,25 @@ public class PickUp : MonoBehaviour
                     {
                         interaction = Interaction.placeObject;
                         placeObjectPosition = rayCastHit.transform.gameObject;
-                        crosshair.SetActive(true);
+                        crosshair.transform.GetChild(0).gameObject.SetActive(true);
                     }
                     
                 }
-                else if (rayCastHit.transform.gameObject.layer == LookObjectLayer)
+                else if (rayCastHit.transform.gameObject.layer == lookObjectLayer)
                 {
                     rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
+                }
+                else if (rayCastHit.transform.gameObject.layer == observeObjectLayer)
+                {
+                    crosshair.transform.GetChild(1).gameObject.SetActive(true);
+                    interaction = Interaction.observe;
                 }
             }
             else
             {
                 interaction = Interaction.none;
-                crosshair.SetActive(false);
+                crosshair.transform.GetChild(0).gameObject.SetActive(false);
+                crosshair.transform.GetChild(1).gameObject.SetActive(false);
             }
 
             for (int i = 0; i < 5; i++)
@@ -162,6 +178,13 @@ public class PickUp : MonoBehaviour
         onHand = false;
     }
 
+    private void ObservObject()
+    {
+        print("OBSERVE");
+        observeCanvas.SetActive(true);
+        observeCanvas.GetComponent<ObserveController>().observingObject = rayCastHit.transform.gameObject;
+        observeCanvas.GetComponent<IInteractable>().Interact();
+    }
     private void PickUpObject()
     {
         StopCoroutine(CheckForObject());

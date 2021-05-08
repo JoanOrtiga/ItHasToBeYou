@@ -5,19 +5,33 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     private bool isPaused;
+    public GameObject pauseMenu;
+
+    private void Awake()
+    {
+        pauseMenu.SetActive(false);
+    }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape) && isPaused )
-        //{
-        //    isPaused = false;
-        //    Time.timeScale = 1;
-        //}
+        if (Input.GetKeyDown(KeyCode.P) && isPaused == false)
+        {
+            isPaused = true;
+            pauseMenu.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.P) && isPaused)
+        {
+            isPaused = false;
+            pauseMenu.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1;
 
-        //if (Input.GetKeyDown(KeyCode.Escape) && isPaused == false)
-        //{
-        //    isPaused= true;
-        //    Time.timeScale = 0;
-        //}
+        }
+
+    
 
     }
 
