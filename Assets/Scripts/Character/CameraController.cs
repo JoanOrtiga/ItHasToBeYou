@@ -26,9 +26,15 @@ public class CameraController : MonoBehaviour
         
         yaw = transform.eulerAngles.y;
         desiredYaw = yaw;
-        
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private void Start()
+    {
+        pitch = pitchTransform.localRotation.eulerAngles.x;
+        desiredPitch = pitch;
     }
 
     private void Update()
@@ -48,5 +54,27 @@ public class CameraController : MonoBehaviour
         
         transform.eulerAngles = new Vector3(0f,yaw,0f);
         pitchTransform.localEulerAngles = new Vector3(pitch,0f,0f);
+    }
+
+    public bool LookAt(Vector3 point, float speed)
+    {
+        Vector3 direction = point - pitchTransform.position;
+        Quaternion toRotation = Quaternion.LookRotation(direction, transform.up);
+        
+        Vector3 totalRotation = new Vector3(pitchTransform.localRotation.eulerAngles.x, transform.rotation.eulerAngles.y);
+        Quaternion finalRotation = Quaternion.Lerp(Quaternion.Euler(totalRotation), toRotation, speed * Time.deltaTime);
+
+        pitchTransform.localRotation = Quaternion.Euler(finalRotation.eulerAngles.x, 0, 0);
+        transform.rotation = Quaternion.Euler(0, finalRotation.eulerAngles.y, 0);
+        
+        yaw = transform.rotation.eulerAngles.y;
+        pitch = pitchTransform.localRotation.eulerAngles.x;
+
+        desiredYaw = yaw;
+        desiredPitch = pitch;
+        
+        bool veryClose = Mathf.Approximately(Mathf.Abs(Quaternion.Dot(pitchTransform.rotation, toRotation)), 1.0f);
+
+        return veryClose;
     }
 }

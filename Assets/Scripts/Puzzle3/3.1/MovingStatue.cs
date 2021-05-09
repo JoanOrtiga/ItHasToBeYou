@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MovingStatue : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class MovingStatue : MonoBehaviour
     [SerializeField] private Transform rotationPoint;
     [SerializeField] private StatuePathFinder statuePathFinder;
 
-    [SerializeField] private float circularMovingSpeed = 100f;
+    [SerializeField] private float[] circularMovingSpeed;
     [SerializeField] private float linearMovingSpeed = 10f;
 
     [SerializeField] private Transform torre;
@@ -135,7 +136,7 @@ public class MovingStatue : MonoBehaviour
         Quaternion lastRotation = transform.rotation;
 
         transform.RotateAround(rotationPoint.position, Vector3.up,
-            verticalInput * direction * circularMovingSpeed * Time.deltaTime);
+            verticalInput * direction * GetCircularSpeed() * Time.deltaTime);
 
         torre.LookAt(rotationPoint, Vector3.up);
 
@@ -159,5 +160,10 @@ public class MovingStatue : MonoBehaviour
             transform.position = lastPosition;
             transform.rotation = lastRotation;
         }
+    }
+
+    private float GetCircularSpeed()
+    {
+        return circularMovingSpeed[statuePathFinder.WhatCircularPath(transform.position)];
     }
 }
