@@ -64,12 +64,10 @@ public class ObserveController : MonoBehaviour, IInteractable
     {
         if (active)
         {
-            if (Input.GetButtonDown("QuitInteract") && doneTransition == true)
+            if (Input.GetButtonDown("Interact") && doneTransition == true) //Quit menu
             {
 
                 AblePlayer(true);
-                
-                //observingObject.transform.position = observingObject.GetComponent<Object>().startPos;
                 objectTransform.position = observingObject.GetComponent<Object>().startPos;
                 objectTransform.rotation = observingObject.GetComponent<Object>().startRot;
 
@@ -88,35 +86,11 @@ public class ObserveController : MonoBehaviour, IInteractable
         }
         if (Input.GetMouseButton(0))
         {
-            OnDrag();
+            draging = true;
         }
 
+        RayCastCheck();
 
-        if (observingObject != null)
-        {
-            hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, player.GetComponent<Transform>().position, out rayCastHit, DetectLayerMask.value);
-            print(hit);
-            if (hit)
-            {
-                print(rayCastHit.transform.name);
-                //Physics.Linecast(observingObject.transform.GetChild(0).transform.position, player.GetComponent<Transform>().position, out rayCastHit, DetectLayerMask.value)
-                print("BOOK LINE");
-            }
-        }
-       
-
-      
-
-
-    }
-
-   
-   
-
-  
-    void OnDrag()
-    {
-        draging = true;
     }
 
     private void FixedUpdate()
@@ -133,6 +107,30 @@ public class ObserveController : MonoBehaviour, IInteractable
         }
     }
 
+
+
+    void RayCastCheck()
+    {
+        if (observingObject != null)
+        {
+            hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, mainCamara.transform.position, out rayCastHit, DetectLayerMask.value);
+            Debug.DrawLine(observingObject.transform.GetChild(0).transform.position, mainCamara.GetComponent<Transform>().position, Color.green);
+            if (!hit && doneTransition)
+            {
+                // print(rayCastHit.transform.name);
+                //Physics.Linecast(observingObject.transform.GetChild(0).transform.position, player.GetComponent<Transform>().position, out rayCastHit, DetectLayerMask.value)
+                observerCanvas.transform.GetChild(0).gameObject.SetActive(true);
+                print("SHOw");
+            }
+            else
+            {
+                observerCanvas.transform.GetChild(0).gameObject.SetActive(false);
+                print("HIDE");
+            }
+        }
+    }
+  
+  
     void AblePlayer(bool unable)
     {
         crosshair.SetActive(unable);
@@ -159,7 +157,7 @@ public class ObserveController : MonoBehaviour, IInteractable
 
         while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
         {
-
+            doneTransition = false;
 
             pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
 
@@ -179,9 +177,6 @@ public class ObserveController : MonoBehaviour, IInteractable
         if (activePuzzle)
         {
             observingObject.GetComponent<ObserveObject>().isObserving = false;
-
-
-
         }
 
         doneTransition = true;
