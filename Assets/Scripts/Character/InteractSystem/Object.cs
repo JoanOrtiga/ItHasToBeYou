@@ -11,8 +11,9 @@ public class Object : MonoBehaviour
 
     //public string callEventWhenPickedUp;
 
+   
     public Vector3 startPos { get; private set; }
-    private Quaternion startRot;
+    public Quaternion startRot;
 
     //public bool falseWhenDropped = true;
 

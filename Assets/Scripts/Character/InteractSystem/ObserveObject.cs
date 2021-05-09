@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ObserveObject : MonoBehaviour
 {
-
+    //[HideInInspector]
+    public bool isObserving = false;
     public string text;
     // Start is called before the first frame update
     void Start()

@@ -32,7 +32,7 @@ public class PickUp : MonoBehaviour
     private Camera mainCamera;
 
     public GameObject crosshair;
-    public GameObject observeCanvas;
+    public GameObject observeController;
 
     public enum Interaction
     {
@@ -88,7 +88,7 @@ public class PickUp : MonoBehaviour
             }
             else if (interaction == Interaction.observe)
             {
-                if (Input.GetButtonDown("Interact"))
+                if (Input.GetButtonDown("Interact") && rayCastHit.transform.gameObject.GetComponent<ObserveObject>().isObserving == false)
                 {
                     ObservObject();
                 }
@@ -181,9 +181,9 @@ public class PickUp : MonoBehaviour
     private void ObservObject()
     {
         print("OBSERVE");
-        observeCanvas.SetActive(true);
-        observeCanvas.GetComponent<ObserveController>().observingObject = rayCastHit.transform.gameObject;
-        observeCanvas.GetComponent<IInteractable>().Interact();
+        
+        observeController.GetComponent<ObserveController>().observingObject = rayCastHit.transform.gameObject;
+        observeController.GetComponent<IInteractable>().Interact();
     }
     private void PickUpObject()
     {
