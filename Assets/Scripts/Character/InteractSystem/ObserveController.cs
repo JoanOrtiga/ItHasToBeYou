@@ -21,9 +21,13 @@ public class ObserveController : MonoBehaviour, IInteractable
     public GameObject observerCanvas;
     public GameObject crosshair;
 
+    private Transform textView;
+
     [HideInInspector]
     public GameObject observingObject;
-
+    [SerializeField] private LayerMask DetectLayerMask;
+    RaycastHit rayCastHit;
+    bool hit;
 
 
     [Header("Values")]
@@ -31,7 +35,7 @@ public class ObserveController : MonoBehaviour, IInteractable
     public float rotationSpeed = 100f;
 
    
-    public bool draging;
+    bool draging;
     bool doneTransition = false;
     private bool active = false;
 
@@ -86,57 +90,30 @@ public class ObserveController : MonoBehaviour, IInteractable
         {
             OnDrag();
         }
-        
-    }
 
-   
-   
 
-    IEnumerator ObjetTransition(Transform pointA, Transform pointB, bool activePuzzle)
-    {
-        if (activePuzzle)
+        if (observingObject != null)
         {
-            observerCanvas.SetActive(false);
-            observingObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, player.GetComponent<Transform>().position, out rayCastHit, DetectLayerMask.value);
+            print(hit);
+            if (hit)
+            {
+                print(rayCastHit.transform.name);
+                //Physics.Linecast(observingObject.transform.GetChild(0).transform.position, player.GetComponent<Transform>().position, out rayCastHit, DetectLayerMask.value)
+                print("BOOK LINE");
+            }
         }
-        else
-        {
-            observerCanvas.SetActive(true);
-            observingObject.GetComponent<ObserveObject>().isObserving = true;
-            observingObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        }
-
-        while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
-        {
-            
-
-            pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
-
-            Vector3 currentAngle = new Vector3(
-                Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x, Time.deltaTime * transitionSpeed),
-                Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y, Time.deltaTime * transitionSpeed),
-                Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z, Time.deltaTime * transitionSpeed));
-
-            pointA.eulerAngles = currentAngle;
-
-            
-            yield return null;
-
-
-        }
-
-        if (activePuzzle)
-        {
-            observingObject.GetComponent<ObserveObject>().isObserving =false;
-           
-
-
-        }
-
-        doneTransition = true;
        
-        StopCoroutine("ObjetTransition");
+
+      
+
+
     }
+
+   
+   
+
+  
     void OnDrag()
     {
         draging = true;
@@ -164,5 +141,51 @@ public class ObserveController : MonoBehaviour, IInteractable
         camaraController.enabled = unable;
         active = !unable;
         
+    }
+
+    IEnumerator ObjetTransition(Transform pointA, Transform pointB, bool activePuzzle)
+    {
+        if (activePuzzle)
+        {
+            observerCanvas.SetActive(false);
+            observingObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+        else
+        {
+            observerCanvas.SetActive(true);
+            observingObject.GetComponent<ObserveObject>().isObserving = true;
+            observingObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        }
+
+        while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
+        {
+
+
+            pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
+
+            Vector3 currentAngle = new Vector3(
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x, Time.deltaTime * transitionSpeed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y, Time.deltaTime * transitionSpeed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z, Time.deltaTime * transitionSpeed));
+
+            pointA.eulerAngles = currentAngle;
+
+
+            yield return null;
+            
+
+        }
+
+        if (activePuzzle)
+        {
+            observingObject.GetComponent<ObserveObject>().isObserving = false;
+
+
+
+        }
+
+        doneTransition = true;
+
+        StopCoroutine("ObjetTransition");
     }
 }

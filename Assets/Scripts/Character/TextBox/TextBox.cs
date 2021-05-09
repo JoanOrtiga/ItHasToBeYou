@@ -59,7 +59,7 @@ public class TextBox : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
        
-        print("TEXT BOX");
+        //print("TEXT BOX");
         textDone = true;
         textBox.gameObject.SetActive(true);
         textBox.gameObject.GetComponent<Text>().text = text;
