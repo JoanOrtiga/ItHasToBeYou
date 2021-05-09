@@ -15,6 +15,7 @@ public class StatueSides : MonoBehaviour , IInteractable
     private Transform playerTransform;
     private PlayerController playerController;
     private CharacterController characterController;
+    private CameraController cameraController;
 
     private bool ActiveSide;
 
@@ -24,13 +25,19 @@ public class StatueSides : MonoBehaviour , IInteractable
     [SerializeField] private GameObject otherSide2;
     [SerializeField] private GameObject otherSide3;
 
+    [SerializeField] private Transform lockCameraPoint;
+    
     private bool deActivated = true;
 
     private bool cooldowned = false;
+
+    [SerializeField] private float moveToSpeed = 1f;
+    
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
         characterController = FindObjectOfType<CharacterController>();
+        cameraController = playerController.transform.GetComponentInChildren<CameraController>();
         playerTransform = playerController.transform;
     }
 
@@ -43,26 +50,48 @@ public class StatueSides : MonoBehaviour , IInteractable
             return;
 
         cooldowned = false;
-        
-        statue.ChangeSide(side);
 
         deActivated = false;
         ActiveSide = true;
-        characterController.enabled = false;
-        playerTransform.position = positonChild.position;
-        playerTransform.forward = positonChild.forward;
-        playerTransform.parent = positonChild;
-        playerController.enabled = false;
+
+        StartCoroutine(AttachPlayer());
+        StartCoroutine(LookAt());
         
         otherSide1.SetActive(false);
         otherSide2.SetActive(false);
         otherSide3.SetActive(false);
 
         StartCoroutine(Cooldown());
-
     }
 
-    IEnumerator Cooldown()
+    private IEnumerator LookAt()
+    {
+        while (!cameraController.LookAt(lockCameraPoint.position, 3f))
+        {
+            yield return null;
+        }
+    }
+
+    private IEnumerator AttachPlayer()
+    {
+        characterController.enabled = false;
+        playerController.enabled = false;
+        cameraController.enabled = false;
+        
+        while ((positonChild.position - playerTransform.position).sqrMagnitude > 0.01 * 0.01)
+        {
+            playerTransform.position = Vector3.MoveTowards(playerTransform.position, positonChild.position, moveToSpeed * Time.deltaTime);
+            
+            yield return null;
+        }
+        
+        statue.ChangeSide(side);
+        
+        playerTransform.position = positonChild.position;
+        playerTransform.parent = positonChild;
+    }
+
+    private IEnumerator Cooldown()
     {
         yield return new WaitForSeconds(0.01f);
         cooldowned = true;
@@ -74,12 +103,15 @@ public class StatueSides : MonoBehaviour , IInteractable
         {
             if (Input.GetButtonDown("Interact") && cooldowned)
             {
+                StopAllCoroutines();
+                
                 deActivated = false;
                 
                 ActiveSide = false;
                 characterController.enabled = true;
                 playerTransform.parent = null;
                 playerController.enabled = true;
+                cameraController.enabled = true;
                 
                 otherSide1.SetActive(true);
                 otherSide2.SetActive(true);

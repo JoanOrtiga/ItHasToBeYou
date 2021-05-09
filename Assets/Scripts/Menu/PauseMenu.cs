@@ -1,48 +1,85 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    private bool isPaused;
+    public static bool IsPaused { get; private set; }
+
+    [SerializeField] private AudioMixer mixer;
+
     public GameObject pauseMenu;
 
-    private void Awake()
+    [SerializeField] private Slider[] soundSliders;
+
+    private void Start()
     {
-        pauseMenu.SetActive(false);
+        soundSliders[0].value = PlayerPrefs.GetFloat("MasterVolume");
+        soundSliders[1].value = PlayerPrefs.GetFloat("MusicVolume");
+        soundSliders[2].value = PlayerPrefs.GetFloat("SFXVolume");
+        soundSliders[3].value = PlayerPrefs.GetFloat("VoicesVolume");
     }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && isPaused == false)
+        if (Input.GetKeyDown(KeyCode.T) && IsPaused)
         {
-            isPaused = true;
-            pauseMenu.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
-        }
-        else if (Input.GetKeyDown(KeyCode.P) && isPaused)
-        {
-            isPaused = false;
-            pauseMenu.SetActive(false);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1;
-
+            UnPause();
         }
 
-    
+        if (Input.GetKeyDown(KeyCode.T) && IsPaused is false)
+        {
+            Pause();
+        }
+    }
 
+    private void Pause()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        IsPaused = true;
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+
+    private void UnPause()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        IsPaused = false;
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
     }
 
     public void continueGame()
     {
-        Time.timeScale = 1;
+        UnPause();
     }
 
     public void goToMainMenu()
     {
-        Time.timeScale = 1;
+        UnPause();
     }
 
+    public void MasterSlider(float value)
+    {
+        mixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);
+        PlayerPrefs.SetFloat("MasterVolume", value);
+    }
+    public void SFXSlider(float value)
+    {
+        mixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20);
+        PlayerPrefs.SetFloat("SFXVolume", value);
+    }
+    public void VoicesSlider(float value)
+    {
+        mixer.SetFloat("VoicesVolume", Mathf.Log10(value) * 20);
+        PlayerPrefs.SetFloat("VoicesVolume", value);
+    }
+    public void MusicSlider(float value)
+    {
+        mixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20);
+        PlayerPrefs.SetFloat("MusicVolume", value);
+    }
 }

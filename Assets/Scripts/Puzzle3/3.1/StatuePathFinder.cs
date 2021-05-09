@@ -9,6 +9,8 @@ public class StatuePathFinder : MonoBehaviour
     [SerializeField] private LinearPath[] intersectionPoints;
     [SerializeField] private Transform[] obstaclePoints;
     [SerializeField] private Transform[] movingStatues;
+
+    [SerializeField] private float[] circularRanges;
     
     [SerializeField] private float stopRange = 0.2f;
     [SerializeField] private float intersectionRange = 0.2f;
@@ -87,6 +89,21 @@ public class StatuePathFinder : MonoBehaviour
         }
 
         return true;
+    }
+
+    public int WhatCircularPath(Vector3 position)
+    {
+        float magnitude = (position - transform.position).magnitude;
+        
+        for (int i = 0; i < circularRanges.Length-1; i++)
+        {
+            if (magnitude > circularRanges[i] && magnitude < circularRanges[i+1])
+            {
+                return i;
+            }
+        }
+        
+        return -1;
     }
 }
 
