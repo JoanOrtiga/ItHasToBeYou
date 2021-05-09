@@ -10,20 +10,20 @@ public class PlayerController : MonoBehaviour
     [Range(1f, 100f)] [SerializeField] private float smoothInputSpeed = 5f;
     [Range(1f, 100f)] [SerializeField] private float smoothVelocitySpeed = 5f;
     [Range(1f, 100f)] [SerializeField] private float smoothFinalDirectionSpeed = 5f;
-    [Range(0f, 1f)] [SerializeField] private float moveBackwardsSpeedPercent = 0.5f;
-    [Range(0f, 1f)] [SerializeField] private float moveSideSpeedPercent = 0.75f;
+    [Range(0f, 1f)]   [SerializeField] private float moveBackwardsSpeedPercent = 0.5f;
+    [Range(0f, 1f)]   [SerializeField] private float moveSideSpeedPercent = 0.75f;
     [Range(1f, 100f)] [SerializeField] private float smoothHeadBobSpeed = 5f;
 
     [SerializeField] private HeadBobData headBobData;
 
     [Range(0.01f, 1f)] [SerializeField] private float rayLength = 0.1f;
-    [Range(0.01f,1f)][SerializeField] private float raySphereRadius = 0.2f;
+    [Range(0.01f,1f)]  [SerializeField] private float raySphereRadius = 0.2f;
 
     [SerializeField] private LayerMask groundLayer = ~0;
 
     private CharacterController characterController;
 
-    private float stickToGroundForce;
+    private float stickToGroundForce = 1f;
     private Vector3 finalMove;
 
     private float gravity = -9.8f;
@@ -93,15 +93,12 @@ public class PlayerController : MonoBehaviour
 
     private void HeadBobbing()
     {
-        
-        
         if (inputVector != Vector2.zero &&
             mIsGrounded)
         {
             headBob.ScrollHeadBob(inputVector);
             yawTransform.localPosition = Vector3.Lerp(yawTransform.localPosition,
                 (Vector3.up * headBob.currentStateHeight) + headBob.finalOffset, Time.deltaTime * smoothHeadBobSpeed);
-           // print(headBob.finalOffset);
         }
         else
         {
@@ -110,7 +107,6 @@ public class PlayerController : MonoBehaviour
             {
                 headBob.ResetHeadBob();
             }
-
 
             yawTransform.localPosition = Vector3.Lerp(yawTransform.localPosition,
                 new Vector3(0f, headBob.currentStateHeight, 0f), Time.deltaTime * smoothHeadBobSpeed);
@@ -127,8 +123,6 @@ public class PlayerController : MonoBehaviour
             yawTransform.localPosition = Vector3.Lerp(yawTransform.localPosition,
                 new Vector3(0f, headBob.currentStateHeight, 0f), Time.deltaTime * smoothHeadBobSpeed);
         }
-        
-       
     }
 
     private void RotateTowardsCamera()
@@ -176,15 +170,11 @@ public class PlayerController : MonoBehaviour
 
         Vector3 _finalVector = smoothFinalMoveDir * smoothCurrentSpeed;
 
-        // We have to assign individually in order to make our character jump properly because before it was overwriting Y value and that's why it was jerky now we are adding to Y value and it's working
         finalMove.x = _finalVector.x;
         finalMove.z = _finalVector.z;
 
-        if (characterController.isGrounded
-        ) // Thanks to this check we are not applying extra y velocity when in air so jump will be consistent
-            finalMove.y +=
-                _finalVector
-                    .y; //so this makes our player go in forward dir using slope normal but when jumping this is making it go higher so this is weird
+        if (characterController.isGrounded)
+            finalMove.y += _finalVector.y; 
 
         //Gravity
         if (characterController.isGrounded)
