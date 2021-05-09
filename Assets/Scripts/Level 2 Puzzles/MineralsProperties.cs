@@ -6,12 +6,7 @@ public class MineralsProperties : MonoBehaviour
 {
     public int materialNumber;
     
-   
-    void Start()
-    {
-        
-    }
-
+  
   
     void Update()
     {

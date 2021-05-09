@@ -9,10 +9,10 @@ public class ObserveController : MonoBehaviour, IInteractable
 {
 
     [Header("Player components")]
-    private GameObject player;
+    private PlayerController player;
     public GameObject pivotPlayerView;
-    public GameObject mainCamara;
-    public GameObject camaraController;
+    public BreathCamera mainCamara;
+    public CameraController camaraController;
 
 
     [Header("Observer components")]
@@ -31,7 +31,7 @@ public class ObserveController : MonoBehaviour, IInteractable
     public float rotationSpeed = 100f;
 
    
-    bool draging;
+    public bool draging;
     bool doneTransition = false;
     private bool active = false;
 
@@ -39,7 +39,7 @@ public class ObserveController : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerController>().gameObject;
+        player = FindObjectOfType<PlayerController>();
     }
 
 
@@ -47,8 +47,8 @@ public class ObserveController : MonoBehaviour, IInteractable
     {
         AblePlayer(false);    
         textObserver.text = observingObject.GetComponent<ObserveObject>().text;
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         doneTransition = false;
         StartCoroutine(ObjetTransition(observingObject.transform, pivotPlayerView.transform, false));
 
@@ -68,15 +68,23 @@ public class ObserveController : MonoBehaviour, IInteractable
                 //observingObject.transform.position = observingObject.GetComponent<Object>().startPos;
                 objectTransform.position = observingObject.GetComponent<Object>().startPos;
                 objectTransform.rotation = observingObject.GetComponent<Object>().startRot;
+
+                
                 doneTransition = false;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 StartCoroutine(ObjetTransition(observingObject.transform, objectTransform, true));
 
                
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && active == true){
+        if (Input.GetMouseButtonUp(0)){
             draging = false;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            OnDrag();
         }
         
     }
@@ -89,11 +97,13 @@ public class ObserveController : MonoBehaviour, IInteractable
         if (activePuzzle)
         {
             observerCanvas.SetActive(false);
+            observingObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
         else
         {
             observerCanvas.SetActive(true);
             observingObject.GetComponent<ObserveObject>().isObserving = true;
+            observingObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
 
         while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
@@ -118,6 +128,9 @@ public class ObserveController : MonoBehaviour, IInteractable
         if (activePuzzle)
         {
             observingObject.GetComponent<ObserveObject>().isObserving =false;
+           
+
+
         }
 
         doneTransition = true;
@@ -139,15 +152,16 @@ public class ObserveController : MonoBehaviour, IInteractable
             observingObject.GetComponent<Rigidbody>().AddTorque(Vector3.down * x);
             observingObject.GetComponent<Rigidbody>().AddTorque(Vector3.right * y);
 
+
         }
     }
 
     void AblePlayer(bool unable)
     {
         crosshair.SetActive(unable);
-        mainCamara.GetComponent<BreathCamera>().enabled = unable;
-        player.GetComponent<PlayerController>().enabled = unable;
-        camaraController.GetComponent<CameraController>().enabled = unable;
+        mainCamara.enabled = unable;
+        player.enabled = unable;
+        camaraController.enabled = unable;
         active = !unable;
         
     }
