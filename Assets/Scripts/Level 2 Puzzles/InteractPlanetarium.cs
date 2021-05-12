@@ -65,7 +65,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         if (activePuzzle)
         {
-            if (Input.GetButtonDown("QuitInteract") && activeCameraTransition == false)
+            if (Input.GetButtonDown("Interact") && activeCameraTransition == false)
             {
                 activePuzzle = false;
 
@@ -76,18 +76,18 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             }
 
 
-            if (Input.GetAxis("Mouse ScrollWheel") > 0) //Gira derecha
+            if (Input.GetAxisRaw("Horizontal") >= 0.3f) //Gira derecha
             {
-                print("MOUSE");
+                print("Right");
                 RotateRing(true);
             }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0) //Gira izquierda
+            else if (Input.GetAxisRaw("Horizontal") <= -0.3f) //Gira izquierda
             {
-                print("MOUSE2");
+                print("Left");
                 RotateRing(false);
             }
 
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Select"))
             {
                 interactingRing++;
                 if (interactingRing >= 3)
@@ -125,7 +125,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         }
     }
 
-    private void RotateRing(bool rotationUp) // 0 Derecha & 1 Izquierda
+    private void RotateRing(bool rotationUp) // true Derecha & False Izquierda
     {
         switch (interactingRing)
         {
