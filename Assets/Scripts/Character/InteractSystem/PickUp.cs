@@ -17,6 +17,7 @@ public class PickUp : MonoBehaviour
     private int placeObjectLayer;
     private int lookObjectLayer;
     private int observeObjectLayer;
+    private Animator handAnimator;
 
     private bool onHand;
 
@@ -34,6 +35,7 @@ public class PickUp : MonoBehaviour
     public GameObject crosshair;
     public GameObject observeController;
 
+    
     public enum Interaction
     {
         drop, interact,placeObject, observe, none
@@ -48,7 +50,7 @@ public class PickUp : MonoBehaviour
     }
     private void Start()
     {
-       
+        handAnimator = handCenter.GetComponent<Animator>();
         objectLayer = LayerMask.NameToLayer("Object");
         interactLayer = LayerMask.NameToLayer("Interactable");
         placeObjectLayer = LayerMask.NameToLayer("PlaceObject");
@@ -60,7 +62,7 @@ public class PickUp : MonoBehaviour
     {
         if (hitted)
         {
-           
+            
             if (interaction == Interaction.drop && onHand == false)
             {
            
@@ -96,12 +98,26 @@ public class PickUp : MonoBehaviour
             }
 
         }
-        else if (Input.GetButtonDown("Interact") && onHand)
+        if (Input.GetButtonDown("Interact") && onHand)
         {
             DropObject();
             
         }
-      
+        
+        if (onHand)
+        {
+            print(handAnimator.GetBool("LookClose"));
+            if (Input.GetMouseButtonDown(0) && handAnimator.GetBool("LookClose"))
+            {
+                handAnimator.SetBool("LookClose", false);
+            }
+            else if (Input.GetMouseButtonDown(0) && !handAnimator.GetBool("LookClose"))
+            {
+                handAnimator.SetBool("LookClose", true);
+            }
+
+        }
+
     }
 
     IEnumerator CheckForObject()
@@ -175,12 +191,13 @@ public class PickUp : MonoBehaviour
         objectPickUp.position = placeObjectPosition.transform.position;
         objectPickUp.GetComponent<Object>().hasBeenPlaced = true;
         placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
+        handAnimator.SetBool("LookClose", false);
         onHand = false;
     }
 
     private void ObservObject()
     {
-        print("OBSERVE");
+        
         
         observeController.GetComponent<ObserveController>().observingObject = rayCastHit.transform.gameObject;
         observeController.GetComponent<IInteractable>().Interact();
@@ -188,8 +205,8 @@ public class PickUp : MonoBehaviour
     private void PickUpObject()
     {
         StopCoroutine(CheckForObject());
-        
 
+       
         objectPickUp = rayCastHit.transform;
 
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();

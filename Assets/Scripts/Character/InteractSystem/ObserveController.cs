@@ -79,17 +79,21 @@ public class ObserveController : MonoBehaviour, IInteractable
 
                
             }
+
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                draging = false;
+            }
+            if (Input.GetMouseButton(0))
+            {
+                draging = true;
+            }
+
+            RayCastCheck();
         }
 
-        if (Input.GetMouseButtonUp(0)){
-            draging = false;
-        }
-        if (Input.GetMouseButton(0))
-        {
-            draging = true;
-        }
-
-        RayCastCheck();
+       
 
     }
 

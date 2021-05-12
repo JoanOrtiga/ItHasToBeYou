@@ -10,6 +10,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     [SerializeField] private Material SelectedMat;
     [SerializeField] private Material NormalMat;
 
+
     [SerializeField] private Transform playerCamara;
     private GameObject player;
     private GameObject cameraController;
@@ -32,6 +33,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     public int degreeSmall = 45;
     public float rotationSpeedHigh = 5f;
     public float rotationSpeedLow= 5f;
+
+    public Animator door;
     private void Start()
     {
         allClues = new bool[3];
@@ -114,11 +117,12 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     {
 
 
-        if (ringZero.transform.localEulerAngles.z < 6 && ringOne.transform.localEulerAngles.z < 6 && ringTwo.transform.localEulerAngles.z < 6)
+        if (ringZero.transform.localEulerAngles.z < 10 && ringOne.transform.localEulerAngles.z < 10 && ringTwo.transform.localEulerAngles.z < 10)
         {
             print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
             {
+                door.Play("EndPuzzleDoorOpen");
                 this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
                 print("WIN");
             }
