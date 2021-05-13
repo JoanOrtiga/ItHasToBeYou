@@ -69,7 +69,6 @@ public class PickUp : MonoBehaviour
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
-                    print("pick up");
                     PickUpObject();
                 }
             }
@@ -86,7 +85,6 @@ public class PickUp : MonoBehaviour
             {
                 if (Input.GetButtonDown("Interact"))
                 {
-                    print("place");
                     PlaceObject();
                 }
             }
@@ -108,11 +106,8 @@ public class PickUp : MonoBehaviour
         
         if (onHand)
         {
-            print(handAnimator.GetBool("LookClose"));
             if (Input.GetMouseButtonDown(0) && handAnimator.GetBool("LookClose"))
             {
-                
-                
                 handAnimator.SetBool("LookClose", false);
             }
             else if (Input.GetMouseButtonDown(0) && !handAnimator.GetBool("LookClose"))
