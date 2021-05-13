@@ -12,7 +12,7 @@ public class Telescope : MonoBehaviour , IInteractable
 
     private bool cancelCooldown = false;
 
-    private CameraController _cameraController;
+    private TelescopeRotation _cameraController;
 
     private Camera mainCamera;
     [SerializeField] private Camera telescopeCamera;
@@ -27,7 +27,7 @@ public class Telescope : MonoBehaviour , IInteractable
         mainCamera = Camera.main;
         
         _playerController = FindObjectOfType<PlayerController>();
-        _cameraController = GetComponentInChildren<CameraController>();
+        _cameraController = GetComponentInChildren<TelescopeRotation>();
     }
 
     public void Interact()
