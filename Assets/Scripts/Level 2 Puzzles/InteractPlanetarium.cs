@@ -101,6 +101,10 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 ColorMat();
             }
 
+            if (allClues[0] == true && allClues[1] == true && allClues[2] == true && activeCameraTransition)
+            {
+                PlayAnimation();
+            }
 
 
         }
@@ -113,6 +117,12 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         // ringTwo.transform.localEulerAngles.z // 
     }
 
+
+    private void PlayAnimation()
+    {
+        print("Animation play puzzle 2.2");
+        //puzzle.GetComponent<Animator>().Play();
+    }
     private void Win()
     {
 
