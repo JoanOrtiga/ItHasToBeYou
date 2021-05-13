@@ -7,7 +7,7 @@ public class RotateStatues : MonoBehaviour , IInteractable
 {
     public enum StatueSide
     {
-        Front_Left, Front, Front_Right, Right, Back_Right, Back, Back_Left, Left
+        Front_Left, Front, Front_Right, Back_Right, Back, Back_Left
     }
 
     public StatueSide currentState;
@@ -28,7 +28,7 @@ public class RotateStatues : MonoBehaviour , IInteractable
 
         finalRotation = transform.rotation.eulerAngles;
 
-        finalRotation.y = finalRotation.y + 45;
+        finalRotation.y = finalRotation.y + 60;
     }
 
     private void Update()
@@ -53,7 +53,7 @@ public class RotateStatues : MonoBehaviour , IInteractable
 
     private void UpdateStatueSide()
     {
-        if ((int) currentState == 7)
+        if ((int) currentState == 5)
         {
             currentState = StatueSide.Front_Left;
         }
