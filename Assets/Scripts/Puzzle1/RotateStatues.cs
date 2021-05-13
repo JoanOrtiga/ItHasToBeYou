@@ -26,7 +26,7 @@ public class RotateStatues : MonoBehaviour , IInteractable
         
         rotating = true;
 
-        finalRotation = transform.rotation.eulerAngles;
+        finalRotation = transform.localRotation.eulerAngles;
 
         finalRotation.y = finalRotation.y + 45;
     }
@@ -35,9 +35,9 @@ public class RotateStatues : MonoBehaviour , IInteractable
     {
         if (rotating)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(finalRotation), rotationSpeed * Time.deltaTime);
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(finalRotation), rotationSpeed * Time.deltaTime);
 
-            if (transform.rotation == Quaternion.Euler(finalRotation))
+            if (transform.localRotation == Quaternion.Euler(finalRotation))
             {
                 rotating = false;
                 

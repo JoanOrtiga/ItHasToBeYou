@@ -17,10 +17,14 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        soundSliders[0].value = PlayerPrefs.GetFloat("MasterVolume");
-        soundSliders[1].value = PlayerPrefs.GetFloat("MusicVolume");
-        soundSliders[2].value = PlayerPrefs.GetFloat("SFXVolume");
-        soundSliders[3].value = PlayerPrefs.GetFloat("VoicesVolume");
+        if (soundSliders.Length <= 1)
+        {
+            soundSliders[0].value = PlayerPrefs.GetFloat("MasterVolume");
+            soundSliders[1].value = PlayerPrefs.GetFloat("MusicVolume");
+            soundSliders[2].value = PlayerPrefs.GetFloat("SFXVolume");
+            soundSliders[3].value = PlayerPrefs.GetFloat("VoicesVolume");
+        }
+        
     }
 
     private void Update()
