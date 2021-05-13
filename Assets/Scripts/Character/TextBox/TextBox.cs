@@ -61,6 +61,7 @@ public class TextBox : MonoBehaviour
             StartCoroutine(TextBoxStart());
         }
 
+       
     }
 
 

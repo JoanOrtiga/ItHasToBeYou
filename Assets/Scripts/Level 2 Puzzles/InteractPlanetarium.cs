@@ -29,14 +29,18 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     public bool[] allClues;
 
-    public int degreeBig = 90;
-    public int degreeSmall = 45;
+    //public int degreeBig = 90;
+    //public int degreeSmall = 45;
     public float rotationSpeedHigh = 5f;
     public float rotationSpeedLow= 5f;
 
     public Animator door;
+
+    private Animator puzzleAnimator;
     private void Start()
     {
+        puzzleAnimator = puzzle.GetComponent<Animator>();
+
         allClues = new bool[3];
         player = FindObjectOfType<PlayerController>().gameObject;
         cameraController = player.transform.Find("Camera Controller").gameObject;
@@ -70,9 +74,16 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         {
             if (Input.GetButtonDown("Interact") && activeCameraTransition == false)
             {
-                activePuzzle = false;
+                if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
+                {
+                    puzzle.GetComponent<Animator>().Play("PuzzleTwoGetDown");
 
+                }
+                activePuzzle = false;
+                puzzleAnimator.enabled = true;
+                
                 StartCoroutine(CamaraTransition(playerCamara, initialPositionCam, true));
+                
                 player.GetComponent<PlayerController>().enabled = true;
                 cameraController.GetComponent<CameraController>().enabled = true;
 
@@ -82,11 +93,13 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             if (Input.GetAxisRaw("Horizontal") >= 0.3f) //Gira derecha
             {
                 print("Right");
+                puzzleAnimator.enabled = false;
                 RotateRing(true);
             }
             else if (Input.GetAxisRaw("Horizontal") <= -0.3f) //Gira izquierda
             {
                 print("Left");
+                puzzleAnimator.enabled = false;
                 RotateRing(false);
             }
 
@@ -111,23 +124,28 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         Win();
 
-        //print((ringZero.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.z);
-        //print((ringOne.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler RING ONE: " + ringOne.transform.localEulerAngles.z);
-        //print((ringTwo.transform.localRotation.eulerAngles.z % 360 == 0) + "Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.z);
+        //print( "Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.z);
+        //print( "Local Euler RING ONE: " + ringOne.transform.localEulerAngles.z);
+        //print( "Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.z);
         // ringTwo.transform.localEulerAngles.z // 
     }
 
 
     private void PlayAnimation()
     {
-        print("Animation play puzzle 2.2");
-        //puzzle.GetComponent<Animator>().Play();
+       
+        // door.Play("DoorOpen");
+        puzzleAnimator.enabled = true;
+        puzzle.GetComponent<Animator>().Play("PuzzleTwoGetUp");
     }
+
     private void Win()
     {
 
 
-        if (ringZero.transform.localEulerAngles.z < 10 && ringOne.transform.localEulerAngles.z < 10 && ringTwo.transform.localEulerAngles.z < 10)
+        if ((ringZero.transform.localEulerAngles.z < 171 && ringZero.transform.localEulerAngles.z > 151) && 
+            ( ringOne.transform.localEulerAngles.z < 348 && ringOne.transform.localEulerAngles.z > 338)
+            && (ringTwo.transform.localEulerAngles.z < 65 && ringTwo.transform.localEulerAngles.z > 45))
         {
             print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
