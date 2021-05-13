@@ -6,18 +6,24 @@ using UnityEngine.UI;
 public class TextBox : MonoBehaviour
 {
 
-    public bool isTrigger, isInteraction, isPickUp, isLook, isCompletePuzzle, isPlaceObject;
+    public bool isTrigger, isInteraction, isPickUp, isLook, isCompletePuzzle, isPlaceObject, isTriggerWithAPreCondition, lookCloseObject;
     public GameObject textBox;
     public string text;
     public float textDuration;
 
-    private bool textDone;
+   [HideInInspector] public bool textDone;
+    public TextBox preTrigger;
 
     TextBoxController player;
-
+    private bool activeTrigger;
     private void Awake()
     {
         player = FindObjectOfType<TextBoxController>();
+        if (isTriggerWithAPreCondition)
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -27,6 +33,14 @@ public class TextBox : MonoBehaviour
             player.textBoxActive++;
             StartCoroutine(TextBoxStart());
          
+        }
+
+        if (isTriggerWithAPreCondition && other.CompareTag("Player") && textDone == false  )
+        {
+            textDone = true;
+            player.textBoxActive++;
+            
+            StartCoroutine(TextBoxStart());
         }
     }
 
@@ -38,7 +52,14 @@ public class TextBox : MonoBehaviour
             StopCoroutine(TextBoxStart());
             StartCoroutine(TextBoxStart());
         }
-     
+
+        if (textDone == false && lookCloseObject)
+        {
+            player.textBoxActive++;
+            StopCoroutine(TextBoxStart());
+            StartCoroutine(TextBoxStart());
+        }
+
     }
 
 
@@ -54,7 +75,7 @@ public class TextBox : MonoBehaviour
     IEnumerator TextBoxStart()
     {
 
-        if (isTrigger)
+        if (isTrigger ||isTriggerWithAPreCondition)
         {
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
@@ -72,7 +93,7 @@ public class TextBox : MonoBehaviour
         }
         player.textBoxActive--;
 
-        if (isTrigger || isLook)
+        if (isTrigger || isLook || isTriggerWithAPreCondition)
         {
             Destroy(gameObject);
         }
@@ -98,6 +119,17 @@ public class TextBox : MonoBehaviour
         if (isTrigger || isLook)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (isTriggerWithAPreCondition)
+        {
+            if (preTrigger.textDone)
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
         }
     }
 }

@@ -69,6 +69,7 @@ public class PickUp : MonoBehaviour
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
+                    print("pick up");
                     PickUpObject();
                 }
             }
@@ -85,6 +86,7 @@ public class PickUp : MonoBehaviour
             {
                 if (Input.GetButtonDown("Interact"))
                 {
+                    print("place");
                     PlaceObject();
                 }
             }
@@ -98,7 +100,7 @@ public class PickUp : MonoBehaviour
             }
 
         }
-        if (Input.GetButtonDown("Interact") && onHand)
+        else if (Input.GetButtonDown("Interact") && onHand)
         {
             DropObject();
             
@@ -109,10 +111,17 @@ public class PickUp : MonoBehaviour
             print(handAnimator.GetBool("LookClose"));
             if (Input.GetMouseButtonDown(0) && handAnimator.GetBool("LookClose"))
             {
+                
+                
                 handAnimator.SetBool("LookClose", false);
             }
             else if (Input.GetMouseButtonDown(0) && !handAnimator.GetBool("LookClose"))
             {
+                if (objectPickUp.GetComponent<TextBox>() != null && objectPickUp.GetComponent<TextBox>().lookCloseObject)
+                {
+                    objectPickUp.GetComponent<TextBox>().StartText();
+                }
+                
                 handAnimator.SetBool("LookClose", true);
             }
 
@@ -226,7 +235,11 @@ public class PickUp : MonoBehaviour
        
         if (objectPickUp.GetComponent<TextBox>() != null)
         {
-            objectPickUp.GetComponent<TextBox>().StartText();
+            if (!objectPickUp.GetComponent<TextBox>().lookCloseObject)
+            {
+                objectPickUp.GetComponent<TextBox>().StartText();
+            }
+           
         }
         objectPickUp.SetParent(handCenter.transform);
 
