@@ -70,7 +70,7 @@ public class StatuePathFinder : MonoBehaviour
         return new LinearPath();
     }
     
-    public bool CanIKeepMoving(Vector3 moveTo)
+    public bool CanIKeepMoving(Vector3 moveTo, Transform me)
     {
         foreach (var obstacle in obstaclePoints)
         {
@@ -82,6 +82,9 @@ public class StatuePathFinder : MonoBehaviour
         
         foreach (var statue in movingStatues)
         {
+            if(statue == me)
+                continue;
+            
             if ((statue.position - moveTo).sqrMagnitude < collisionRange * collisionRange)
             {
                 return false;
