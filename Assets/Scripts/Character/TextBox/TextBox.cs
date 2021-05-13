@@ -18,6 +18,7 @@ public class TextBox : MonoBehaviour
     private bool activeTrigger;
     private void Awake()
     {
+        textBox = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
         player = FindObjectOfType<TextBoxController>();
         if (isTriggerWithAPreCondition)
         {
