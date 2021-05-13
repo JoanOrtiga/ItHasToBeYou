@@ -122,7 +122,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
             {
-                door.Play("EndPuzzleDoorOpen");
+                door.Play("DoorOpen");
                 this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
                 print("WIN");
             }

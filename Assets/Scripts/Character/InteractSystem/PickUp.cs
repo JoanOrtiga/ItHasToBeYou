@@ -152,7 +152,7 @@ public class PickUp : MonoBehaviour
                 }
                 else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
                 {
-                    if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false)
+                    if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false && onHand)
                     {
                         interaction = Interaction.placeObject;
                         placeObjectPosition = rayCastHit.transform.gameObject;
