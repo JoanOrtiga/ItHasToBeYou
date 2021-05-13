@@ -148,7 +148,8 @@ public class PickUp : MonoBehaviour
                 else if (rayCastHit.transform.gameObject.layer == interactLayer)
                 {
                     interaction = Interaction.interact;
-                   
+                    crosshair.transform.GetChild(0).gameObject.SetActive(true);
+
                 }
                 else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
                 {
