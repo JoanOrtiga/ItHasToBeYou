@@ -6,6 +6,7 @@ public class ObserveObject : MonoBehaviour
 {
     [HideInInspector]
     public bool isObserving = false;
+    public bool hasText;
     public string text;
 
     private void Update()

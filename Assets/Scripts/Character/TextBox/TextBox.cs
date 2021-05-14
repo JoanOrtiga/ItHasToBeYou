@@ -7,7 +7,7 @@ public class TextBox : MonoBehaviour
 {
 
     public bool isTrigger, isInteraction, isPickUp, isLook, isCompletePuzzle, isPlaceObject, isTriggerWithAPreCondition, lookCloseObject;
-    public GameObject textBox;
+    private GameObject textBox;
     public string text;
     public float textDuration;
 
@@ -18,7 +18,7 @@ public class TextBox : MonoBehaviour
     private bool activeTrigger;
     private void Awake()
     {
-        textBox = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
+        textBox = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
         player = FindObjectOfType<TextBoxController>();
         if (isTriggerWithAPreCondition)
         {

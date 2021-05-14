@@ -117,20 +117,24 @@ public class ObserveController : MonoBehaviour, IInteractable
     {
         if (observingObject != null)
         {
-            hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, mainCamara.transform.position, out rayCastHit, DetectLayerMask.value);
-            Debug.DrawLine(observingObject.transform.GetChild(0).transform.position, mainCamara.GetComponent<Transform>().position, Color.green);
-            if (!hit && doneTransition)
+            if (observingObject.GetComponent<ObserveObject>().hasText == true)
             {
-                // print(rayCastHit.transform.name);
-                //Physics.Linecast(observingObject.transform.GetChild(0).transform.position, player.GetComponent<Transform>().position, out rayCastHit, DetectLayerMask.value)
-                observerCanvas.transform.GetChild(0).gameObject.SetActive(true);
-                print("SHOw");
+                hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, mainCamara.transform.position, out rayCastHit, DetectLayerMask.value);
+                Debug.DrawLine(observingObject.transform.GetChild(0).transform.position, mainCamara.GetComponent<Transform>().position, Color.green);
+                if (!hit && doneTransition)
+                {
+                    // print(rayCastHit.transform.name);
+                    //Physics.Linecast(observingObject.transform.GetChild(0).transform.position, player.GetComponent<Transform>().position, out rayCastHit, DetectLayerMask.value)
+                    observerCanvas.transform.GetChild(0).gameObject.SetActive(true);
+                    print("SHOw");
+                }
+                else
+                {
+                    observerCanvas.transform.GetChild(0).gameObject.SetActive(false);
+                    print("HIDE");
+                }
             }
-            else
-            {
-                observerCanvas.transform.GetChild(0).gameObject.SetActive(false);
-                print("HIDE");
-            }
+          
         }
     }
   
