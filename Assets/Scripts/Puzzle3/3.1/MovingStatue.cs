@@ -72,10 +72,10 @@ public class MovingStatue : MonoBehaviour
 
     private void Awake()
     {
-        transform.LookAt(rotationPoint, Vector3.up);
+        //transform.LookAt(rotationPoint, Vector3.up);
 
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 90,
-            transform.rotation.eulerAngles.z);
+      /*  transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
+            transform.rotation.eulerAngles.z);*/
     }
 
     IEnumerator WaitForActivation()
@@ -138,9 +138,9 @@ public class MovingStatue : MonoBehaviour
         transform.RotateAround(rotationPoint.position, Vector3.up,
             verticalInput * direction * GetCircularSpeed() * Time.deltaTime);
 
-        torre.LookAt(rotationPoint, Vector3.up);
+      //  torre.LookAt(rotationPoint, Vector3.up);
 
-        if (!statuePathFinder.CanIKeepMoving(transform.position))
+        if (!statuePathFinder.CanIKeepMoving(transform.position, transform))
         {
             transform.position = lastPosition;
             transform.rotation = lastRotation;
@@ -155,7 +155,7 @@ public class MovingStatue : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, point,
             linearMovingSpeed * Time.deltaTime);
 
-        if (!statuePathFinder.CanIKeepMoving(transform.position))
+        if (!statuePathFinder.CanIKeepMoving(transform.position, transform))
         {
             transform.position = lastPosition;
             transform.rotation = lastRotation;

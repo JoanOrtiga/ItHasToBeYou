@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -28,6 +29,12 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     private bool dial1Correct = false;
     private bool dial2Correct = false;
+    
+    private Vector3 targetRotation;
+    private bool rotating;
+
+    [SerializeField] private float angleAtATime = 10f;
+
 
 
     private enum DialState
@@ -85,6 +92,11 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
             case DialState.dial1:
                 if (Input.GetAxisRaw("Horizontal") >= 0.3f)
                 {
+                    if (rotating)
+                    {
+                        dial1.localRotation= Quaternion.Euler(targetRotation);
+                        rotating = false;
+                    }
                     state = DialState.transitioningDial2;
                 }
 
@@ -94,12 +106,19 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
                 if (Input.GetAxisRaw("Horizontal") <= -0.3f)
                 {
+                    if (rotating)
+                    {
+                        dial2.localRotation= Quaternion.Euler(targetRotation);
+                        rotating = false;
+                    }
+                    
                     state = DialState.transitioningDial1;
                 }
 
                 RotateDial(dial2, direction);
                 break;
             case DialState.transitioningDial1:
+               
                 dialsCamera.transform.localPosition = Vector3.Lerp(dialsCamera.transform.localPosition,
                     cameraDial1.transform.localPosition, cameraSpeed * Time.deltaTime);
 
@@ -113,12 +132,17 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
                 if (Input.GetAxisRaw("Horizontal") >= 0.3f)
                 {
+                    if (rotating)
+                    {
+                        dial1.localRotation= Quaternion.Euler(targetRotation);
+                        rotating = false;
+                    }
                     state = DialState.transitioningDial2;
                 }
                 break;
             
             case DialState.transitioningDial2:
-
+                
                 dialsCamera.transform.localPosition = Vector3.Lerp(dialsCamera.transform.localPosition,
                     cameraDial2.transform.localPosition, cameraSpeed * Time.deltaTime);
 
@@ -132,6 +156,11 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
                 if (Input.GetAxisRaw("Horizontal") <= -0.3f)
                 {
+                    if (rotating)
+                    {
+                        dial2.localRotation= Quaternion.Euler(targetRotation);
+                        rotating = false;
+                    }
                     state = DialState.transitioningDial1;
                 }
                 break;
@@ -161,7 +190,29 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     private void RotateDial(Transform dial, float direction)
     {
-        dial.Rotate(new Vector3(0, direction * dialSpeed * Time.deltaTime, 0));
+       // dial.Rotate(new Vector3(0, direction * dialSpeed * Time.deltaTime, 0));
+
+       if (!rotating)
+       {
+           if (direction != 0)
+           {
+               rotating = true;
+               targetRotation = dial.localRotation.eulerAngles;
+               targetRotation.y += direction * angleAtATime;
+           }
+           
+       }
+       else
+       {
+           dial.localRotation = Quaternion.RotateTowards(dial.localRotation, Quaternion.Euler(targetRotation), dialSpeed * Time.deltaTime);
+
+           if (dial.localRotation == Quaternion.Euler(targetRotation))
+           {
+               dial.localRotation = Quaternion.Euler(targetRotation);
+               rotating = false;
+           }
+       }
+        
     }
 
     public bool Solved()
