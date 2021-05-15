@@ -13,8 +13,10 @@ public class StatuePathFinder : MonoBehaviour
     [SerializeField] private float[] circularRanges;
     
     [SerializeField] private float stopRange = 0.2f;
+    [SerializeField] private float nearStopRange = 0.4f;
     [SerializeField] private float intersectionRange = 0.2f;
     [SerializeField] private float collisionRange = 0.2f;
+    [SerializeField] private float obstaclesRange = 0.2f;
 
     /// <summary>
     /// Is statue near a stop point?
@@ -30,8 +32,23 @@ public class StatuePathFinder : MonoBehaviour
             }
         }
 
-       // return false;
-        return true;
+       return false;
+    }
+
+    public bool NearStopPoint(Vector3 statuePosition, out Vector3 nearStopPoint)
+    {
+        nearStopPoint = new Vector3();
+
+        foreach (var point in stopPoints)
+        {
+            if ((point.position - statuePosition).sqrMagnitude < nearStopRange * nearStopRange)
+            {
+                nearStopPoint = point.position;
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public bool IsInIntersection(Vector3 statuePosition)
@@ -74,7 +91,7 @@ public class StatuePathFinder : MonoBehaviour
     {
         foreach (var obstacle in obstaclePoints)
         {
-            if ((obstacle.position - moveTo).sqrMagnitude < collisionRange * collisionRange)
+            if ((obstacle.position - moveTo).sqrMagnitude < obstaclesRange * obstaclesRange)
             {
                 return false;
             }

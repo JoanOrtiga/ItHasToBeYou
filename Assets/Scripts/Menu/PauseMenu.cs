@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
         if(soundSliders == null)
             return;
         
-        if (soundSliders.Length <= 1)
+        if (soundSliders.Length > 0)
         {
             soundSliders[0].value = PlayerPrefs.GetFloat("MasterVolume");
             soundSliders[1].value = PlayerPrefs.GetFloat("MusicVolume");

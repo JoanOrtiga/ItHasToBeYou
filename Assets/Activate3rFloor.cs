@@ -17,4 +17,9 @@ public class Activate3rFloor : MonoBehaviour
             floor1.SetActive(false);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        floor2.SetActive(false);
+    }
 }

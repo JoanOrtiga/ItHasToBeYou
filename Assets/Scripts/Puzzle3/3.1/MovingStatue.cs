@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class MovingStatue : MonoBehaviour
+public class MovingStatue : MonoBehaviour , IPuzzleSolver
 {
     public enum Sides
     {
@@ -21,6 +21,8 @@ public class MovingStatue : MonoBehaviour
         circular
     }
 
+    [SerializeField] private Transform target;
+    [SerializeField] private float targetRange;
     [SerializeField] private Transform rotationPoint;
     [SerializeField] private StatuePathFinder statuePathFinder;
 
@@ -39,6 +41,11 @@ public class MovingStatue : MonoBehaviour
 
     private LinearPath linearPath;
 
+    private bool imNearStopPoint;
+    private Vector3 nearStopPoint;
+
+    private float lastDirection;
+    
     public void ChangeSide(Sides side)
     {
         this.playerSide = side;
@@ -72,10 +79,11 @@ public class MovingStatue : MonoBehaviour
 
     private void Awake()
     {
+        nearStopPoint = new Vector3();
         //transform.LookAt(rotationPoint, Vector3.up);
 
-      /*  transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
-            transform.rotation.eulerAngles.z);*/
+        /*  transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
+              transform.rotation.eulerAngles.z);*/
     }
 
     IEnumerator WaitForActivation()
@@ -84,8 +92,47 @@ public class MovingStatue : MonoBehaviour
         active = true;
     }
 
+    public bool IsActive()
+    {
+        return active;
+    }
+    
+    public static float GetAngleOnAxis(Vector3 self, Vector3 other, Vector3 axis)
+    {
+        Vector3 perpendicularSelf = Vector3.Cross(axis, self);
+        Vector3 perpendicularOther = Vector3.Cross(axis, other);
+        return Vector3.SignedAngle(perpendicularSelf, perpendicularOther, axis);
+    }
+
     private void Update()
     {
+        if (imNearStopPoint)
+        {
+            if (currentRoadType == RoadType.circular)
+            {
+
+             /*   transform.RotateAround(rotationPoint.position, Vector3.up,
+                    lastDirection * GetCircularSpeed() * Time.deltaTime);*/
+                MoveToPoint(nearStopPoint);
+
+            }
+            else if (currentRoadType == RoadType.line)
+            {
+                MoveToPoint(nearStopPoint);
+            }
+            
+            if ((nearStopPoint - transform.position).sqrMagnitude <= 0.06f * 0.06f)
+            {
+                transform.position = nearStopPoint;
+                imNearStopPoint = false;
+                active = false;
+                return;
+            }
+            
+            return;
+            
+        }
+        
         if (active is false)
             return;
 
@@ -96,9 +143,20 @@ public class MovingStatue : MonoBehaviour
                 active = false;
                 return;
             }
+            else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
+            {
+                imNearStopPoint = true;
+                active = false;
+                return;
+            }
         }
 
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if (verticalInput != 0)
+        {
+            lastDirection = verticalInput;
+        }
 
         if (currentRoadType == RoadType.circular)
         {
@@ -165,5 +223,15 @@ public class MovingStatue : MonoBehaviour
     private float GetCircularSpeed()
     {
         return circularMovingSpeed[statuePathFinder.WhatCircularPath(transform.position)];
+    }
+
+    public bool Solved()
+    {
+        if ((target.position - transform.position).sqrMagnitude <= targetRange * targetRange)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

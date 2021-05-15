@@ -101,7 +101,7 @@ public class StatueSides : MonoBehaviour , IInteractable
     {
         if (ActiveSide)
         {
-            if (Input.GetButtonDown("Interact") && cooldowned)
+            if (Input.GetButtonDown("Interact") && cooldowned && !statue.IsActive())
             {
                 StopAllCoroutines();
                 
