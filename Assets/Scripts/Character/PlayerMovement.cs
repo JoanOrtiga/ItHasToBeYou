@@ -41,8 +41,6 @@ public class PlayerMovement : MonoBehaviour
     private float finalRayLength;
 
     private Transform yawTransform;
-    private CameraController cameraController;
-
     private HeadBob headBob;
 
     private bool mIsGrounded;
@@ -51,9 +49,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _pickUp = GetComponent<PickUp>();
-        cameraController = GetComponentInChildren<CameraController>();
-        yawTransform = cameraController.transform;
         characterController = GetComponent<CharacterController>();
 
         headBob = new HeadBob(headBobData, moveBackwardsSpeedPercent, moveSideSpeedPercent);
@@ -61,8 +56,6 @@ public class PlayerMovement : MonoBehaviour
         mIsGrounded = true;
         finalRayLength = rayLength + characterController.center.y;
     }
-
-    
 
     private void Update()
     {
