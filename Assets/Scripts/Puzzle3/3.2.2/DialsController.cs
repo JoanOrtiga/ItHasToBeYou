@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 {
-    private PlayerController _playerController;
+    private PlayerController playerController;
     private Camera mainCamera;
 
     private bool active;
@@ -50,13 +50,13 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
     private void Awake()
     {
         mainCamera = Camera.main;
-        _playerController = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
 
     public void Interact()
     {
-        _playerController.DisableController();
+        playerController.DisableController(true, true, true);
         active = true;
         dialsCamera.enabled = true;
         mainCamera.enabled = false;
@@ -79,7 +79,7 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
         if (Input.GetButtonDown("Interact") && cooldown)
         {
-            _playerController.EnableController();
+            playerController.EnableController(true, true, true);
             mainCamera.enabled = true;
             dialsCamera.enabled = false;
             active = false;

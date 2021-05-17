@@ -10,10 +10,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     [SerializeField] private Material SelectedMat;
     [SerializeField] private Material NormalMat;
 
-
-    [SerializeField] private Transform playerCamara;
-    private GameObject player;
-    private GameObject cameraController;
+    private PlayerController playerController;
     [SerializeField] private Transform initialPositionCam;
     private int interactingRing = 3;
     private float time;
@@ -32,18 +29,18 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     //public int degreeBig = 90;
     //public int degreeSmall = 45;
     public float rotationSpeedHigh = 5f;
-    public float rotationSpeedLow= 5f;
+    public float rotationSpeedLow = 5f;
 
     public Animator door;
 
     private Animator puzzleAnimator;
+
     private void Start()
     {
         puzzleAnimator = puzzle.GetComponent<Animator>();
 
         allClues = new bool[3];
-        player = FindObjectOfType<PlayerController>().gameObject;
-        cameraController = player.transform.Find("Camera Controller").gameObject;
+        playerController = FindObjectOfType<PlayerController>();
 
 
         ringZero = puzzle.transform.GetChild(0);
@@ -53,23 +50,19 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         //ringOne.transform.Rotate(0, 0, 90, Space.Self);
         //ringTwo.transform.Rotate(0, 0, -90, Space.Self);
     }
+
     public void Interact()
     {
+        initialPositionCam.position = playerController.cameraController.transform.position;
+        initialPositionCam.rotation = playerController.cameraController.transform.rotation;
 
-        initialPositionCam.position = playerCamara.position;
-        initialPositionCam.rotation = playerCamara.rotation;
-
-        StartCoroutine(CamaraTransition(playerCamara, viewCamara, false));
+        StartCoroutine(CamaraTransition(playerController.cameraController.transform, viewCamara, false));
         activePuzzle = true;
-
     }
-
 
 
     void Update()
     {
-
-
         if (activePuzzle)
         {
             if (Input.GetButtonDown("Interact") && activeCameraTransition == false)
@@ -77,16 +70,14 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
                 {
                     puzzle.GetComponent<Animator>().Play("PuzzleTwoGetDown");
-
                 }
+
                 activePuzzle = false;
                 puzzleAnimator.enabled = true;
-                
-                StartCoroutine(CamaraTransition(playerCamara, initialPositionCam, true));
-                
-                player.GetComponent<PlayerController>().enabled = true;
-                cameraController.GetComponent<CameraController>().enabled = true;
 
+                StartCoroutine(CamaraTransition(playerController.cameraController.transform, initialPositionCam, true));
+
+                playerController.EnableController(true, true);
             }
 
 
@@ -118,8 +109,6 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             {
                 PlayAnimation();
             }
-
-
         }
 
         Win();
@@ -127,14 +116,11 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         //print( "Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.z);
         //print( "Local Euler RING ONE: " + ringOne.transform.localEulerAngles.z);
         //print( "Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.z);
-       
-       
     }
 
 
     private void PlayAnimation()
     {
-       
         // door.Play("DoorOpen");
         puzzleAnimator.enabled = true;
         puzzle.GetComponent<Animator>().Play("PuzzleTwoGetUp");
@@ -142,10 +128,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     private void Win()
     {
-
-
-        if ((ringZero.transform.localEulerAngles.z < 168 && ringZero.transform.localEulerAngles.z > 152) && 
-            ( ringOne.transform.localEulerAngles.z < 348 && ringOne.transform.localEulerAngles.z > 338)
+        if ((ringZero.transform.localEulerAngles.z < 168 && ringZero.transform.localEulerAngles.z > 152) &&
+            (ringOne.transform.localEulerAngles.z < 348 && ringOne.transform.localEulerAngles.z > 338)
             && (ringTwo.transform.localEulerAngles.z < 65 && ringTwo.transform.localEulerAngles.z > 45))
         {
             print("Correct rotation");
@@ -163,24 +147,28 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         switch (interactingRing)
         {
             case 0:
-                ringZero.transform.Rotate(0,0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh), Space.Self);
-                ringOne.transform.Rotate(0,0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
+                ringZero.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh),
+                    Space.Self);
+                ringOne.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
                 ringTwo.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
-             
+
                 break;
-        
+
             case 1:
-                ringZero.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
-                ringOne.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh), Space.Self);
+                ringZero.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow),
+                    Space.Self);
+                ringOne.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh),
+                    Space.Self);
                 ringTwo.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
                 break;
 
             case 2:
-                ringZero.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
+                ringZero.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow),
+                    Space.Self);
                 ringOne.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedLow : 1 * -rotationSpeedLow), Space.Self);
-                ringTwo.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh), Space.Self);
+                ringTwo.transform.Rotate(0, 0, (rotationUp ? 1 * rotationSpeedHigh : 1 * -rotationSpeedHigh),
+                    Space.Self);
                 break;
-
         }
     }
 
@@ -211,37 +199,34 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 break;
         }
     }
+
     IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle)
     {
-
         while (Vector3.Distance(pointA.position, pointB.position) > 0.05f)
         {
             activeCameraTransition = true;
-            playerCamara.GetComponent<BreathCamera>().enabled = false;
-            player.GetComponent<PlayerController>().enabled = false;
-            cameraController.GetComponent<CameraController>().enabled = false;
+            playerController.DisableController(true, true, true, true);
 
             pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
 
             Vector3 currentAngle = new Vector3(
-                Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x, Time.deltaTime * transitionSpeed),
-                Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y, Time.deltaTime * transitionSpeed),
-                Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z, Time.deltaTime * transitionSpeed));
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x,
+                    Time.deltaTime * transitionSpeed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y,
+                    Time.deltaTime * transitionSpeed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z,
+                    Time.deltaTime * transitionSpeed));
 
             pointA.eulerAngles = currentAngle;
             yield return null;
-
-
         }
+
         if (activePuzzle)
         {
-            playerCamara.GetComponent<BreathCamera>().enabled = true;
-            player.GetComponent<PlayerController>().enabled = true;
-            cameraController.GetComponent<CameraController>().enabled = true;
+            playerController.EnableController(true, true, true, true);
         }
+
         activeCameraTransition = false;
         StopCoroutine("CamaraTransition");
     }
-
-
 }

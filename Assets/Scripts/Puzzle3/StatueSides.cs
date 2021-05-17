@@ -14,8 +14,6 @@ public class StatueSides : MonoBehaviour , IInteractable
 
     private Transform playerTransform;
     private PlayerController playerController;
-    private CharacterController characterController;
-    private CameraController cameraController;
 
     private bool ActiveSide;
 
@@ -36,8 +34,6 @@ public class StatueSides : MonoBehaviour , IInteractable
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
-        characterController = FindObjectOfType<CharacterController>();
-        cameraController = playerController.transform.GetComponentInChildren<CameraController>();
         playerTransform = playerController.transform;
     }
 
@@ -66,7 +62,7 @@ public class StatueSides : MonoBehaviour , IInteractable
 
     private IEnumerator LookAt()
     {
-        while (!cameraController.LookAt(lockCameraPoint.position, 3f))
+        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 3f))
         {
             yield return null;
         }
@@ -74,10 +70,8 @@ public class StatueSides : MonoBehaviour , IInteractable
 
     private IEnumerator AttachPlayer()
     {
-        characterController.enabled = false;
-        playerController.enabled = false;
-        cameraController.enabled = false;
-        
+        playerController.DisableController(true, true, true);
+
         while ((positonChild.position - playerTransform.position).sqrMagnitude > 0.01 * 0.01)
         {
             playerTransform.position = Vector3.MoveTowards(playerTransform.position, positonChild.position, moveToSpeed * Time.deltaTime);
@@ -108,10 +102,9 @@ public class StatueSides : MonoBehaviour , IInteractable
                 deActivated = false;
                 
                 ActiveSide = false;
-                characterController.enabled = true;
+                
                 playerTransform.parent = null;
-                playerController.enabled = true;
-                cameraController.enabled = true;
+                playerController.EnableController(true,true,true);
                 
                 otherSide1.SetActive(true);
                 otherSide2.SetActive(true);

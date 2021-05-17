@@ -33,7 +33,7 @@ public class Telescope : MonoBehaviour , IInteractable
     public void Interact()
     {
         active = true;
-        _playerController.DisableController();
+        _playerController.DisableController(true, true, true);
         cancelCooldown = false;
         StartCoroutine(Cooldown());
 
@@ -67,7 +67,7 @@ public class Telescope : MonoBehaviour , IInteractable
 
     private void Cancel()
     {
-        _playerController.EnableController();
+        _playerController.EnableController(true, true, true);
         telescopeCanvas.SetActive(false);
         
         active = false;

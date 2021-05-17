@@ -227,7 +227,7 @@ public class DoorEnigma : MonoBehaviour, IInteractable
 
     private bool active = false;
 
-    private PlayerController _playerController;
+    private PlayerController playerController;
 
     private bool waitForNewInput = false;
 
@@ -240,7 +240,7 @@ public class DoorEnigma : MonoBehaviour, IInteractable
         AddNewCircle(2, 2, 6);
         AddNewCircle(3, 4, 0);
 
-        _playerController = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     private void AddNewCircle(int index, int initialSlot1, int initialSlot2)
@@ -295,7 +295,7 @@ public class DoorEnigma : MonoBehaviour, IInteractable
     public void Interact()
     {
         active = true;
-        _playerController.DisableController();
+        playerController.DisableController(true, true, true);
     }
 
     private void Selecting(Vector2 input, bool interact)
@@ -413,7 +413,7 @@ public class DoorEnigma : MonoBehaviour, IInteractable
 
     private void Exit()
     {
-        _playerController.EnableController();
+        playerController.EnableController(true, true, true);
         active = false;
     }
 }
