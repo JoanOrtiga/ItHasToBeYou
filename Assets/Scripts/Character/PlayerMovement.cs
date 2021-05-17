@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit hitInfo;
     private float finalRayLength;
 
-    private Transform yawTransform;
+    public Transform yawTransform;
     private HeadBob headBob;
 
     private bool mIsGrounded;
@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
             mIsGrounded)
         {
             headBob.ScrollHeadBob(inputVector);
+
             yawTransform.localPosition = Vector3.Lerp(yawTransform.localPosition,
                 (Vector3.up * headBob.currentStateHeight) + headBob.finalOffset, Time.deltaTime * smoothHeadBobSpeed);
         }
