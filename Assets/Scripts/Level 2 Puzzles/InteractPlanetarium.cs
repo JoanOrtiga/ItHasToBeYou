@@ -127,7 +127,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         //print( "Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.z);
         //print( "Local Euler RING ONE: " + ringOne.transform.localEulerAngles.z);
         //print( "Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.z);
-        // ringTwo.transform.localEulerAngles.z // 
+       
+       
     }
 
 
@@ -143,7 +144,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     {
 
 
-        if ((ringZero.transform.localEulerAngles.z < 171 && ringZero.transform.localEulerAngles.z > 151) && 
+        if ((ringZero.transform.localEulerAngles.z < 168 && ringZero.transform.localEulerAngles.z > 152) && 
             ( ringOne.transform.localEulerAngles.z < 348 && ringOne.transform.localEulerAngles.z > 338)
             && (ringTwo.transform.localEulerAngles.z < 65 && ringTwo.transform.localEulerAngles.z > 45))
         {
