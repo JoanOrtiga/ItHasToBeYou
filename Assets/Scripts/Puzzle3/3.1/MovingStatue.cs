@@ -80,7 +80,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
     private void Awake()
     {
         nearStopPoint = new Vector3();
-        //transform.LookAt(rotationPoint, Vector3.up);
+        transform.LookAt(rotationPoint, Vector3.up);
 
         /*  transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
               transform.rotation.eulerAngles.z);*/
@@ -196,7 +196,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         transform.RotateAround(rotationPoint.position, Vector3.up,
             verticalInput * direction * GetCircularSpeed() * Time.deltaTime);
 
-      //  torre.LookAt(rotationPoint, Vector3.up);
+        torre.LookAt(rotationPoint, Vector3.up);
 
         if (!statuePathFinder.CanIKeepMoving(transform.position, transform))
         {
