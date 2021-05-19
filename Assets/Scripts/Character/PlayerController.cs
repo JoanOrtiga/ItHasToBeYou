@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         
         if(camera)
             cameraController.enabled = true;
+        
         if(pickUp)
             pickUpSystem.enabled = true;
         
