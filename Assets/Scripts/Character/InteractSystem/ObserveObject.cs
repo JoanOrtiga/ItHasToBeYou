@@ -9,11 +9,17 @@ public class ObserveObject : MonoBehaviour
     public bool hasText;
     public string text;
 
-    private void Update()
+    public GameObject popUp;
+
+    public void DisablePopUp(bool Disable)
     {
-        if (isObserving)
+        if (Disable)
         {
-            //RAYCAST
+            popUp.gameObject.SetActive(false);
+        }
+        else
+        {
+            popUp.gameObject.SetActive(true);
         }
     }
 }
