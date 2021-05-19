@@ -12,14 +12,14 @@ public class ObserveController : MonoBehaviour, IInteractable
     private PlayerController player;
     public GameObject pivotPlayerView;
     public BreathCamera mainCamara;
-    public CameraController camaraController;
+   // public CameraController camaraController;
 
 
     [Header("Observer components")]
     public Text textObserver;
     public Transform objectTransform;
     public GameObject observerCanvas;
-    public GameObject crosshair;
+    public Crosshair crosshair;
 
     private Transform textView;
 
@@ -49,11 +49,15 @@ public class ObserveController : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        AblePlayer(false);    
+        player.DisableController(true, true, true, true);
+        print("DIsable player");
+        crosshair.InteractCrosshair(false);
         textObserver.text = observingObject.GetComponent<ObserveObject>().text;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         doneTransition = false;
+        active = true;
+        observingObject.GetComponent<ObserveObject>().DisablePopUp(true);
         StartCoroutine(ObjetTransition(observingObject.transform, pivotPlayerView.transform, false));
 
     }
@@ -64,10 +68,14 @@ public class ObserveController : MonoBehaviour, IInteractable
     {
         if (active)
         {
+            print("WOrking");
+
             if (Input.GetButtonDown("Interact") && doneTransition == true) //Quit menu
             {
-
-                AblePlayer(true);
+                crosshair.InteractCrosshair(true);
+                
+                player.DisableController(true, true, true, true);
+                print("Able player contrleer");
                 objectTransform.position = observingObject.GetComponent<Object>().startPos;
                 objectTransform.rotation = observingObject.GetComponent<Object>().startRot;
 
@@ -75,6 +83,7 @@ public class ObserveController : MonoBehaviour, IInteractable
                 doneTransition = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+                active = false;
                 StartCoroutine(ObjetTransition(observingObject.transform, objectTransform, true));
 
                
@@ -83,10 +92,12 @@ public class ObserveController : MonoBehaviour, IInteractable
 
             if (Input.GetMouseButtonUp(0))
             {
+                print("Not drag");
                 draging = false;
             }
             if (Input.GetMouseButton(0))
             {
+                print("Drag");
                 draging = true;
             }
 
@@ -139,16 +150,7 @@ public class ObserveController : MonoBehaviour, IInteractable
     }
   
   
-    void AblePlayer(bool unable)
-    {
-        crosshair.SetActive(unable);
-        mainCamara.enabled = unable;
-        player.enabled = unable;
-        camaraController.enabled = unable;
-        active = !unable;
-        
-    }
-
+   
     IEnumerator ObjetTransition(Transform pointA, Transform pointB, bool activePuzzle)
     {
         if (activePuzzle)
@@ -185,6 +187,7 @@ public class ObserveController : MonoBehaviour, IInteractable
         if (activePuzzle)
         {
             observingObject.GetComponent<ObserveObject>().isObserving = false;
+            observingObject.GetComponent<ObserveObject>().DisablePopUp(false);
         }
 
         doneTransition = true;

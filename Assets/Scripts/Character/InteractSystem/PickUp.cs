@@ -143,7 +143,7 @@ public class PickUp : MonoBehaviour
                 if (rayCastHit.transform.gameObject.layer == objectLayer)
                 {
                     interaction = Interaction.drop;
-                    crosshair.transform.GetChild(0).gameObject.SetActive(true);
+                 
                 }
                 else if (rayCastHit.transform.gameObject.layer == interactLayer)
                 {
@@ -157,7 +157,7 @@ public class PickUp : MonoBehaviour
                     {
                         interaction = Interaction.placeObject;
                         placeObjectPosition = rayCastHit.transform.gameObject;
-                        crosshair.transform.GetChild(0).gameObject.SetActive(true);
+                       
                     }
                     
                 }
@@ -167,7 +167,7 @@ public class PickUp : MonoBehaviour
                 }
                 else if (rayCastHit.transform.gameObject.layer == observeObjectLayer)
                 {
-                    crosshair.transform.GetChild(1).gameObject.SetActive(true);
+                  
                     interaction = Interaction.observe;
                 }
             }

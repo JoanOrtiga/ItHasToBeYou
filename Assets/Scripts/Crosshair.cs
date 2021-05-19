@@ -5,25 +5,22 @@ using UnityEngine;
 public class Crosshair : MonoBehaviour
 {
     private Transform player;
-    private float distance;
-    private Animator crosshairAnimator;
-    [SerializeField] public AnimationCurve animation;
+    public GameObject crosshairCanvas;
 
 
 
-    void Start()
+    public void InteractCrosshair(bool active)
     {
-        crosshairAnimator = GetComponent<Animator>();
-        player = FindObjectOfType<CameraController>().gameObject.transform.GetChild(0);
-        
-    }  
-
-    void Update()
-    {
-        distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
-    
-        crosshairAnimator.SetFloat("Distance", animation.Evaluate(distance));   
-        transform.LookAt(2 * transform.position - player.position);
+        if (active)
+        {
+            crosshairCanvas.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            crosshairCanvas.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
         
     }
+
+   
 }
