@@ -68,13 +68,13 @@ public class ObserveController : MonoBehaviour, IInteractable
     {
         if (active)
         {
-            print("WOrking");
+           
 
             if (Input.GetButtonDown("Interact") && doneTransition == true) //Quit menu
             {
                 crosshair.InteractCrosshair(true);
-                
-                player.DisableController(true, true, true, true);
+
+                player.EnableController(true, true, true, true);
                 print("Able player contrleer");
                 objectTransform.position = observingObject.GetComponent<Object>().startPos;
                 objectTransform.rotation = observingObject.GetComponent<Object>().startRot;
