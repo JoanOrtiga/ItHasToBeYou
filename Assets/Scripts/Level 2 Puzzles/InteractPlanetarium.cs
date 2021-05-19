@@ -24,6 +24,10 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private Transform ringOne;
     private Transform ringTwo;
 
+    private MeshRenderer ringZeroMesh;
+    private MeshRenderer ringOneMesh;
+    private MeshRenderer ringTwoMesh;
+
     public bool[] allClues;
 
     //public int degreeBig = 90;
@@ -47,6 +51,10 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         ringOne = puzzle.transform.GetChild(1);
         ringTwo = puzzle.transform.GetChild(2);
 
+        ringZeroMesh = puzzle.transform.GetChild(0).GetComponent<MeshRenderer>();
+        ringOneMesh = puzzle.transform.GetChild(1).GetComponent<MeshRenderer>();
+        ringTwoMesh = puzzle.transform.GetChild(2).GetComponent<MeshRenderer>();
+
         //ringOne.transform.Rotate(0, 0, 90, Space.Self);
         //ringTwo.transform.Rotate(0, 0, -90, Space.Self);
     }
@@ -69,7 +77,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             {
                 if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
                 {
-                    puzzle.GetComponent<Animator>().Play("PuzzleTwoGetDown");
+                    puzzleAnimator.Play("PuzzleTwoGetDown");
                 }
 
                 activePuzzle = false;
@@ -121,9 +129,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     private void PlayAnimation()
     {
-        // door.Play("DoorOpen");
         puzzleAnimator.enabled = true;
-        puzzle.GetComponent<Animator>().Play("PuzzleTwoGetUp");
+        puzzleAnimator.Play("PuzzleTwoGetUp");
     }
 
     private void Win()
@@ -135,9 +142,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
             {
-                door.Play("DoorOpen");
-                this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
-                print("WIN");
+                   this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
             }
         }
     }
@@ -177,22 +182,22 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         switch (interactingRing)
         {
             case 0:
-                ringZero.GetComponent<MeshRenderer>().material = SelectedMat;
-                ringOne.GetComponent<MeshRenderer>().material = NormalMat;
-                ringTwo.GetComponent<MeshRenderer>().material = NormalMat;
+                ringZeroMesh.material = SelectedMat;
+                ringOneMesh.material = NormalMat;
+                ringTwoMesh.material = NormalMat;
                 break;
 
             case 1:
-                ringZero.GetComponent<MeshRenderer>().material = NormalMat;
-                ringOne.GetComponent<MeshRenderer>().material = SelectedMat;
-                ringTwo.GetComponent<MeshRenderer>().material = NormalMat;
+                ringZeroMesh.material = NormalMat;
+                ringOneMesh.material = SelectedMat;
+                ringTwoMesh.material = NormalMat;
                 break;
 
 
             case 2:
-                ringZero.GetComponent<MeshRenderer>().material = NormalMat;
-                ringOne.GetComponent<MeshRenderer>().material = NormalMat;
-                ringTwo.GetComponent<MeshRenderer>().material = SelectedMat;
+                ringZeroMesh.material = NormalMat;
+                ringOneMesh.material = NormalMat;
+                ringTwoMesh.material = SelectedMat;
                 break;
 
             default:
