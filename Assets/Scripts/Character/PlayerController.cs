@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="movement"></param>
     /// <param name="camera"></param>
     /// <param name="pickUp"></param>
+    /// <param name="breath"></param>
     public void DisableController(bool movement = false, bool camera = false, bool pickUp = false, bool breath = false)
     {
         if (movement)
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="movement"></param>
     /// <param name="camera"></param>
     /// <param name="pickUp"></param>
+    /// <param name="breath"></param>
     public void EnableController(bool movement = false, bool camera = false, bool pickUp= false, bool breath = false)
     {
         if (movement)
