@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class RotateStatues : MonoBehaviour , IInteractable
@@ -18,15 +19,17 @@ public class RotateStatues : MonoBehaviour , IInteractable
     private bool rotating = false;
 
     private Vector3 finalRotation;
-
+    
     public void Interact()
     {
         if(rotating)
             return;
         
         rotating = true;
-
+        
         finalRotation = transform.localRotation.eulerAngles;
+
+        finalRotation.y = Mathf.RoundToInt(finalRotation.y);
 
         finalRotation.y = finalRotation.y + 60;
     }
@@ -35,14 +38,20 @@ public class RotateStatues : MonoBehaviour , IInteractable
     {
         if (rotating)
         {
-            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(finalRotation), rotationSpeed * Time.deltaTime);
 
-            if (transform.localRotation == Quaternion.Euler(finalRotation))
+            
+            
+            
+         //  transform.localRotation = Quaternion.RotateTowards(transform.localRotation, quater.Euler(finalRotation), rotationSpeed * Time.deltaTime);
+
+           print(transform.localRotation.eulerAngles.y + " " + Quaternion.Euler(finalRotation).eulerAngles.y);
+
+           /* if (Math.Abs(transform.localRotation.y - Quaternion.Euler(finalRotation).y) < Mathf.Epsilon)
             {
                 rotating = false;
                 
                 UpdateStatueSide();
-            }
+            }*/
         }
     }
 
