@@ -13,7 +13,7 @@ public class ObserveObject : MonoBehaviour
 
     private void Start()
     {
-        popUp = gameObject.transform.GetChild(1).gameObject;
+       // popUp = gameObject.transform.GetChild(1).gameObject;
     }
     public void DisablePopUp(bool Disable)
     {

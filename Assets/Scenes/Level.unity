@@ -2311,7 +2311,7 @@ PrefabInstance:
     - target: {fileID: 727639893349052535, guid: 4b2d0859ca7dc2d41ac06b3fb3a6f135, type: 3}
       propertyPath: crosshair
       value: 
-      objectReference: {fileID: 1710425118}
+      objectReference: {fileID: 0}
     - target: {fileID: 727639893349052535, guid: 4b2d0859ca7dc2d41ac06b3fb3a6f135, type: 3}
       propertyPath: mainCamara
       value: 
@@ -2332,6 +2332,10 @@ PrefabInstance:
       propertyPath: camaraController
       value: 
       objectReference: {fileID: 1588607823}
+    - target: {fileID: 727639893349052535, guid: 4b2d0859ca7dc2d41ac06b3fb3a6f135, type: 3}
+      propertyPath: crosshairController
+      value: 
+      objectReference: {fileID: 2096890463}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2d0859ca7dc2d41ac06b3fb3a6f135, type: 3}
 --- !u!1 &259229577
@@ -4931,7 +4935,7 @@ GameObject:
   - component: {fileID: 590328467}
   - component: {fileID: 590328470}
   - component: {fileID: 590328469}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13266,10 +13270,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextObject(4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2700549725417469070, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2700549725417469070, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
+      propertyPath: m_TagString
+      value: ObserveObject
+      objectReference: {fileID: 0}
     - target: {fileID: 3007048282066250236, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
       propertyPath: popUp
       value: 
-      objectReference: {fileID: 6092843017775461664}
+      objectReference: {fileID: 1270243288}
     - target: {fileID: 3007048282066250236, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
       propertyPath: hasText
       value: 1
@@ -13679,7 +13691,7 @@ GameObject:
   - component: {fileID: 1147723354}
   m_Layer: 7
   m_Name: Rotator
-  m_TagString: Untagged
+  m_TagString: PuzzleInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14644,6 +14656,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTrigger (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7159455111086105476, guid: 104e2ed6dc4166c47bbb0a5a4e67f4c7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159455111086105476, guid: 104e2ed6dc4166c47bbb0a5a4e67f4c7, type: 3}
+      propertyPath: m_TagString
+      value: ObserveObject
+      objectReference: {fileID: 0}
     - target: {fileID: 7498685592831801662, guid: 104e2ed6dc4166c47bbb0a5a4e67f4c7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -14836,6 +14856,11 @@ Transform:
   m_Father: {fileID: 1320141358}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1270243288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8579453564151436391, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
+  m_PrefabInstance: {fileID: 1110096893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1273323761
 GameObject:
   m_ObjectHideFlags: 0
@@ -16354,7 +16379,7 @@ GameObject:
   - component: {fileID: 1412579829}
   m_Layer: 7
   m_Name: Rotator
-  m_TagString: Untagged
+  m_TagString: PuzzleInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17266,11 +17291,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3983843036428787637, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983843036493738872, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
+      propertyPath: m_Name
+      value: CrosshairCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 4979243653137697164, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: crosshairCanvas
       value: 
       objectReference: {fileID: 589173529}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4979243653137697164, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
 --- !u!1 &1515188595
 GameObject:
@@ -18241,7 +18275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4360924
+      value: -2.801
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18278,11 +18312,15 @@ PrefabInstance:
     - target: {fileID: 4300158160264332802, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: crosshair
       value: 
-      objectReference: {fileID: 589173529}
+      objectReference: {fileID: 2096890462}
     - target: {fileID: 4300158160264332802, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: observeController
       value: 
       objectReference: {fileID: 1027494921}
+    - target: {fileID: 4300158160264332802, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: crosshairController
+      value: 
+      objectReference: {fileID: 2096890463}
     - target: {fileID: 4300158160264332831, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_Name
       value: Player
@@ -19665,7 +19703,7 @@ GameObject:
   - component: {fileID: 1705967126}
   m_Layer: 7
   m_Name: Rotator
-  m_TagString: Untagged
+  m_TagString: PuzzleInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19797,17 +19835,6 @@ Transform:
   m_Father: {fileID: 762167488}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1710425118 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4979243653137697164, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
-  m_PrefabInstance: {fileID: 1515070288}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0fec5ba82b23ec4da97dc3f1affb670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1712173020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20980,6 +21007,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0220d1006fb49c34786914483adff1b9, type: 3}
   m_PrefabInstance: {fileID: 1233788978}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1823180096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3983843036524765395, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
+  m_PrefabInstance: {fileID: 1515070288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823668556
 GameObject:
   m_ObjectHideFlags: 0
@@ -21246,6 +21278,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1833579002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3983843035280124908, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
+  m_PrefabInstance: {fileID: 1515070288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1839884797
 GameObject:
   m_ObjectHideFlags: 0
@@ -22855,6 +22892,52 @@ Transform:
   m_Father: {fileID: 826533016}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!1 &2096890462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096890464}
+  - component: {fileID: 2096890463}
+  m_Layer: 0
+  m_Name: CrosshairController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2096890463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096890462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fec5ba82b23ec4da97dc3f1affb670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshairCanvas: {fileID: 589173529}
+  observeCrosshair_: {fileID: 1833579002}
+  interactCrosshair_: {fileID: 1823180096}
+--- !u!4 &2096890464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096890462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5889993, y: -1.9213089, z: -2.2234254}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099185229
 GameObject:
   m_ObjectHideFlags: 0
@@ -39486,9 +39569,9 @@ GameObject:
   - component: {fileID: 3007048282435867251}
   - component: {fileID: 3007048282435867254}
   - component: {fileID: 6092843018043230564}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: TextObject(4) (1)
-  m_TagString: Untagged
+  m_TagString: ObserveObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41663,7 +41746,7 @@ GameObject:
   - component: {fileID: 3007048282262506788}
   - component: {fileID: 3007048282262506789}
   - component: {fileID: 3007048282262506786}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59363,6 +59446,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextPergamino5
       objectReference: {fileID: 0}
+    - target: {fileID: 2909304642422201885, guid: 7aeff72265a7f574aa6dc0cc7823256d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909304642422201885, guid: 7aeff72265a7f574aa6dc0cc7823256d, type: 3}
+      propertyPath: m_TagString
+      value: ObserveObject
+      objectReference: {fileID: 0}
     - target: {fileID: 5475626717226656494, guid: 7aeff72265a7f574aa6dc0cc7823256d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -62723,7 +62814,7 @@ GameObject:
   - component: {fileID: 6092843019569984135}
   - component: {fileID: 6092843019569984130}
   - component: {fileID: 6092843019569984129}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77232,6 +77323,10 @@ PrefabInstance:
     - target: {fileID: 2522699548842520806, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
       propertyPath: m_Name
       value: PopUpIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520806, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
       propertyPath: m_RootOrder
