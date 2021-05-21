@@ -537,7 +537,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0637f76272f9b754ba3bad3791989160, type: 2}
+  - {fileID: 2100000, guid: c7b9b271584e1d249aca3ff5fedcd0b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -821,7 +821,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0637f76272f9b754ba3bad3791989160, type: 2}
+  - {fileID: 2100000, guid: c7b9b271584e1d249aca3ff5fedcd0b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -858,6 +858,7 @@ GameObject:
   - component: {fileID: 2038471882642824397}
   - component: {fileID: 2038471882642824396}
   - component: {fileID: 6818924222302278170}
+  - component: {fileID: 549793026}
   m_Layer: 8
   m_Name: MineralThree
   m_TagString: Untagged
@@ -873,7 +874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038471882642824402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38, y: -0.637, z: -9.33}
+  m_LocalPosition: {x: -5.207, y: -0.407, z: -8.658}
   m_LocalScale: {x: 0.091559835, y: 0.091559835, z: 0.091559835}
   m_Children: []
   m_Father: {fileID: 2038471883007379155}
@@ -969,7 +970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: {x: 0, y: 0, z: 0}
   hasBeenPlaced: 0
   isStartPlace: 1
   startRot: {x: 0, y: 0, z: 0, w: 0}
@@ -986,6 +986,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialNumber: 3
+--- !u!114 &549793026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038471882642824402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec335ed0d2b9fe4ca13abf66d0dc8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &2038471882854761480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1081,7 @@ GameObject:
   - component: {fileID: 2038471883047698730}
   - component: {fileID: 2038471883047698729}
   - component: {fileID: 6818924223010481580}
+  - component: {fileID: 513409631}
   m_Layer: 8
   m_Name: MineralOne
   m_TagString: Untagged
@@ -1083,7 +1097,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038471883047698735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.91, y: -0.476, z: -8.88}
+  m_LocalPosition: {x: -0.485, y: -0.476, z: -7.711}
   m_LocalScale: {x: 0.1737467, y: 0.17374678, z: 0.17374678}
   m_Children: []
   m_Father: {fileID: 2038471883007379155}
@@ -1179,7 +1193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: {x: 0, y: 0, z: 0}
   hasBeenPlaced: 0
   isStartPlace: 1
   startRot: {x: 0, y: 0, z: 0, w: 0}
@@ -1196,6 +1209,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialNumber: 1
+--- !u!114 &513409631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038471883047698735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec335ed0d2b9fe4ca13abf66d0dc8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &2038471883105509985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1238,7 @@ GameObject:
   - component: {fileID: 6818924221736607984}
   m_Layer: 7
   m_Name: PuzzleTrigger
-  m_TagString: Untagged
+  m_TagString: PuzzleInteractable
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1310,7 +1336,6 @@ MonoBehaviour:
   transitionSpeed: 5
   SelectedMat: {fileID: 2100000, guid: 3184afa45ae13214598a5e68c352c515, type: 2}
   NormalMat: {fileID: 2100000, guid: e9b22d348f618ab458924711c0a7218d, type: 2}
-  playerCamara: {fileID: 0}
   initialPositionCam: {fileID: 2038471884207550116}
   puzzle: {fileID: 5496743741585762527}
   allClues: 000000
@@ -1337,7 +1362,6 @@ MonoBehaviour:
   isPlaceObject: 0
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  textBox: {fileID: 0}
   text: Ahora todos los planetas tienen su metal
   textDuration: 5
   textDone: 0
@@ -1387,6 +1411,7 @@ GameObject:
   - component: {fileID: 2038471883834170663}
   - component: {fileID: 2038471883834170662}
   - component: {fileID: 6818924223491802150}
+  - component: {fileID: 1343483307}
   m_Layer: 8
   m_Name: MineralTwo
   m_TagString: Untagged
@@ -1402,7 +1427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038471883834170668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.53, y: -0.6, z: -9.74}
+  m_LocalPosition: {x: -4.064, y: -0.6, z: -9.504}
   m_LocalScale: {x: 0.14110626, y: 0.14110626, z: 0.14110626}
   m_Children: []
   m_Father: {fileID: 2038471883007379155}
@@ -1498,7 +1523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: {x: 0, y: 0, z: 0}
   hasBeenPlaced: 0
   isStartPlace: 1
   startRot: {x: 0, y: 0, z: 0, w: 0}
@@ -1515,6 +1539,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialNumber: 2
+--- !u!114 &1343483307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038471883834170668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec335ed0d2b9fe4ca13abf66d0dc8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &2038471884207550117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,8 +1923,7 @@ MonoBehaviour:
   isPlaceObject: 1
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  textBox: {fileID: 0}
-  text: Este es saturno
+  text: This will be Saturn
   textDuration: 5
   textDone: 0
   preTrigger: {fileID: 0}
@@ -2024,8 +2060,7 @@ MonoBehaviour:
   isPlaceObject: 1
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  textBox: {fileID: 0}
-  text: Este sera Marte
+  text: This will be Mars
   textDuration: 4
   textDone: 0
   preTrigger: {fileID: 0}
@@ -2146,8 +2181,7 @@ MonoBehaviour:
   isPlaceObject: 1
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  textBox: {fileID: 0}
-  text: Este sera jupiter
+  text: This will be Jupiter
   textDuration: 4
   textDone: 0
   preTrigger: {fileID: 0}

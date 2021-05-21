@@ -10,7 +10,7 @@ public class MineralsProperties : MonoBehaviour
   
     void Update()
     {
-        if (this.gameObject.GetComponent<Object>().hasBeenPlaced == true)
+        if (this.gameObject.GetComponent<ObjectParameters>().hasBeenPlaced == true)
         {
             if (transform.parent.gameObject.GetComponent<PlaceMaterial>().materialNumber == materialNumber)
             {

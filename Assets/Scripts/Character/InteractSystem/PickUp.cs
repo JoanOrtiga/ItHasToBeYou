@@ -27,7 +27,7 @@ public class PickUp : MonoBehaviour
     [Header("The pick up object propeties")]
     Transform objectPickUp;
     Rigidbody objectPickUpRigidBody;
-    Object objectPlace;
+    GameObject objectPlace;
     Quaternion objectRotation;
 
     private Camera mainCamera;
@@ -206,7 +206,7 @@ public class PickUp : MonoBehaviour
     {
         objectPickUp.transform.parent = placeObjectPosition.transform;
         objectPickUp.position = placeObjectPosition.transform.position;
-        objectPickUp.GetComponent<Object>().hasBeenPlaced = true;
+        objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = true;
         placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
         handAnimator.SetBool("LookClose", false);
         onHand = false;
@@ -230,17 +230,17 @@ public class PickUp : MonoBehaviour
         objectPickUp = rayCastHit.transform;
 
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
-        objectPlace = objectPickUp.GetComponent<Object>();
+        objectPlace = objectPickUp.GetComponent<GameObject>();
 
        
 
         objectPickUpRigidBody.isKinematic = true;
         objectPickUpRigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
-        if (objectPickUp.GetComponent<Object>().hasBeenPlaced == true)
+        if (objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced == true)
         {
             objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced = false;
-            objectPickUp.GetComponent<Object>().hasBeenPlaced = false;
+            objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = false;
         }
 
        
@@ -257,14 +257,14 @@ public class PickUp : MonoBehaviour
         objectPickUp.position = handCenter.transform.position;
 
         objectPickUp.localRotation = Quaternion.identity;
-        objectPickUp.localRotation = Quaternion.Euler(objectPlace.rotation);
+        objectPickUp.localRotation = Quaternion.Euler(objectPlace.GetComponent<ObjectOnHand>().rotation);
 
         onHand = true;
     }
 
     private void DropObject()
     {
-        float dist = Vector3.Distance(handCenter.transform.position, objectPlace.startPos);
+        float dist = Vector3.Distance(handCenter.transform.position, objectPlace.GetComponent<ObjectParameters>().startPos);
 
         if (objectPickUp != null)
         {
@@ -274,7 +274,7 @@ public class PickUp : MonoBehaviour
 
             if (dist < leaveDistance)
             {
-                objectPlace.ReLocate();
+                objectPlace.GetComponent<ObjectParameters>().ReLocate();
             }
         }
 
