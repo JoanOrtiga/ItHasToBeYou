@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object : MonoBehaviour
+public class ObjectParameters : MonoBehaviour
 {
-    public Vector3 rotation;
+    
     public bool hasBeenPlaced;
 
     [HideInInspector] public bool isStartPlace = true;
@@ -13,7 +13,7 @@ public class Object : MonoBehaviour
 
    
     public Vector3 startPos { get; private set; }
-    public Quaternion startRot;
+    [HideInInspector] public Quaternion startRot;
 
     //public bool falseWhenDropped = true;
 

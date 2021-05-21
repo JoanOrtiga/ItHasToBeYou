@@ -75,8 +75,8 @@ public class ObserveController : MonoBehaviour, IInteractable
               
                 player.EnableController(true, true, true, true);
                 print("Able player contrleer");
-                objectTransform.position = observingObject.GetComponent<Object>().startPos;
-                objectTransform.rotation = observingObject.GetComponent<Object>().startRot;
+                objectTransform.position = observingObject.GetComponent<ObjectParameters>().startPos;
+                objectTransform.rotation = observingObject.GetComponent<ObjectParameters>().startRot;
 
                 
                 doneTransition = false;
