@@ -16,16 +16,13 @@ public class Crosshair : MonoBehaviour
     }
 
 
-    public void EnableCrosshair( bool interactCrosshair, bool observeCrosshair)
+    public void ChangeCrosshairState(bool interactCrosshair, bool observeCrosshair)
     {
         interactCrosshair_.SetActive(interactCrosshair ? true : false);
         observeCrosshair_.SetActive(observeCrosshair ? true : false);
     }
-    public void DisableCrosshair(bool interactCrosshair, bool observeCrosshair)
-    {
-        interactCrosshair_.SetActive(interactCrosshair ? true : false);
-        observeCrosshair_.SetActive(observeCrosshair ? true : false);
-    }
+
+    
 
 
 

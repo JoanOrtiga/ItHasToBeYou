@@ -9,13 +9,10 @@ public class Object : MonoBehaviour
 
     [HideInInspector] public bool isStartPlace = true;
 
-    //public string callEventWhenPickedUp;
-
-   
     public Vector3 startPos { get; private set; }
     public Quaternion startRot;
 
-    //public bool falseWhenDropped = true;
+
 
     private void Awake()
     {
