@@ -51,7 +51,7 @@ public class ObserveController : MonoBehaviour, IInteractable
     {
         player.DisableController(true, true, true, true);
         print("DIsable player");
-        crosshairController.DisableCrosshair(false,false);
+        crosshairController.ChangeCrosshairState(false, false);
         textObserver.text = observingObject.GetComponent<ObserveObject>().text;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

@@ -18,40 +18,38 @@ public class RotateStatues : MonoBehaviour , IInteractable
 
     private bool rotating = false;
 
-    private Vector3 finalRotation;
-    
+    private Transform rotateObjective;
+
+    private void Awake()
+    {
+        rotateObjective = new GameObject().transform;
+        rotateObjective.parent = transform.parent;
+        rotateObjective.localRotation = transform.localRotation;
+    }
+
     public void Interact()
     {
         if(rotating)
             return;
         
         rotating = true;
-        
-        finalRotation = transform.localRotation.eulerAngles;
 
-        finalRotation.y = Mathf.RoundToInt(finalRotation.y);
-
-        finalRotation.y = finalRotation.y + 60;
+        rotateObjective.localRotation = Quaternion.Euler(rotateObjective.eulerAngles.x, rotateObjective.eulerAngles.y + 60, rotateObjective.eulerAngles.z);
     }
 
     private void Update()
     {
         if (rotating)
-        {
-
+        { 
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, rotateObjective.localRotation, rotationSpeed * Time.deltaTime);
             
-            
-            
-         //  transform.localRotation = Quaternion.RotateTowards(transform.localRotation, quater.Euler(finalRotation), rotationSpeed * Time.deltaTime);
 
-           print(transform.localRotation.eulerAngles.y + " " + Quaternion.Euler(finalRotation).eulerAngles.y);
-
-           /* if (Math.Abs(transform.localRotation.y - Quaternion.Euler(finalRotation).y) < Mathf.Epsilon)
+            if (Math.Abs(transform.localRotation.eulerAngles.y - rotateObjective.localRotation.eulerAngles.y) < Mathf.Epsilon)
             {
                 rotating = false;
                 
                 UpdateStatueSide();
-            }*/
+            }
         }
     }
 

@@ -69,7 +69,7 @@ public class PickUp : MonoBehaviour
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
-                    print("pick up");
+
                     PickUpObject();
                 }
             }
@@ -84,9 +84,10 @@ public class PickUp : MonoBehaviour
             }
             else if (interaction == Interaction.placeObject && onHand)
             {
+                crosshairController.ChangeCrosshairState(true, false);
+
                 if (Input.GetButtonDown("Interact"))
                 {
-                    print("place");
                     PlaceObject();
                 }
             }
@@ -143,6 +144,7 @@ public class PickUp : MonoBehaviour
                 if (rayCastHit.transform.gameObject.layer == objectLayer)
                 {
                     interaction = Interaction.drop;
+
                  
                 }
                 else if (rayCastHit.transform.gameObject.layer == interactLayer)
@@ -156,7 +158,7 @@ public class PickUp : MonoBehaviour
                     else if (rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable"))
                     {
                         interaction = Interaction.interactPuzzle;
-                        crosshairController.EnableCrosshair(true, false);
+                        crosshairController.ChangeCrosshairState(true, false);
                     }
                     
 
@@ -180,8 +182,7 @@ public class PickUp : MonoBehaviour
             else
             {
                 interaction = Interaction.none;
-               
-                crosshairController.DisableCrosshair(false, false);
+                crosshairController.ChangeCrosshairState(false, false);
             }
 
             for (int i = 0; i < 5; i++)
