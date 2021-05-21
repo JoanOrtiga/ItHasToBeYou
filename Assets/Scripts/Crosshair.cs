@@ -7,20 +7,23 @@ public class Crosshair : MonoBehaviour
     private Transform player;
     public GameObject crosshairCanvas;
 
-
-
-    public void InteractCrosshair(bool active)
+   public GameObject observeCrosshair_;
+   public GameObject interactCrosshair_;
+    private void Start()
     {
-        if (active)
-        {
-            crosshairCanvas.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        }
-        else
-        {
-            crosshairCanvas.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        }
-        
+        interactCrosshair_ = crosshairCanvas.transform.GetChild(0).gameObject;
+        observeCrosshair_ = crosshairCanvas.transform.GetChild(1).gameObject;
     }
 
-   
+
+    public void ChangeCrosshairState(bool interactCrosshair, bool observeCrosshair)
+    {
+        interactCrosshair_.SetActive(interactCrosshair ? true : false);
+        observeCrosshair_.SetActive(observeCrosshair ? true : false);
+    }
+
+    
+
+
+
 }

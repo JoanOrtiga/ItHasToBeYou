@@ -19,7 +19,7 @@ public class ObserveController : MonoBehaviour, IInteractable
     public Text textObserver;
     public Transform objectTransform;
     public GameObject observerCanvas;
-    public Crosshair crosshair;
+    public Crosshair crosshairController;
 
     private Transform textView;
 
@@ -51,7 +51,7 @@ public class ObserveController : MonoBehaviour, IInteractable
     {
         player.DisableController(true, true, true, true);
         print("DIsable player");
-        crosshair.InteractCrosshair(false);
+        crosshairController.ChangeCrosshairState(false, false);
         textObserver.text = observingObject.GetComponent<ObserveObject>().text;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -72,8 +72,7 @@ public class ObserveController : MonoBehaviour, IInteractable
 
             if (Input.GetButtonDown("Interact") && doneTransition == true) //Quit menu
             {
-                crosshair.InteractCrosshair(true);
-
+              
                 player.EnableController(true, true, true, true);
                 print("Able player contrleer");
                 objectTransform.position = observingObject.GetComponent<Object>().startPos;
@@ -92,12 +91,11 @@ public class ObserveController : MonoBehaviour, IInteractable
 
             if (Input.GetMouseButtonUp(0))
             {
-                print("Not drag");
+              
                 draging = false;
             }
             if (Input.GetMouseButton(0))
             {
-                print("Drag");
                 draging = true;
             }
 
