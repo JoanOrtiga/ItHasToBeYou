@@ -7,14 +7,4 @@ public class ObjectOnHand : MonoBehaviour
     public Vector3 rotation;
    
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

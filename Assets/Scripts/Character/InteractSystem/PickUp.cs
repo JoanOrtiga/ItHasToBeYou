@@ -27,8 +27,9 @@ public class PickUp : MonoBehaviour
     [Header("The pick up object propeties")]
     Transform objectPickUp;
     Rigidbody objectPickUpRigidBody;
-    GameObject objectPlace;
-    Quaternion objectRotation;
+    ObjectParameters objectParameters;
+    ObjectOnHand objectRotation;
+   // Quaternion objectRotation;
 
     private Camera mainCamera;
 
@@ -109,11 +110,10 @@ public class PickUp : MonoBehaviour
         
         if (onHand)
         {
-            print(handAnimator.GetBool("LookClose"));
+
             if (Input.GetMouseButtonDown(0) && handAnimator.GetBool("LookClose"))
             {
-                
-                
+
                 handAnimator.SetBool("LookClose", false);
             }
             else if (Input.GetMouseButtonDown(0) && !handAnimator.GetBool("LookClose"))
@@ -230,7 +230,8 @@ public class PickUp : MonoBehaviour
         objectPickUp = rayCastHit.transform;
 
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
-        objectPlace = objectPickUp.GetComponent<GameObject>();
+        objectRotation = objectPickUp.GetComponent<ObjectOnHand>();
+        objectParameters = objectPickUp.GetComponent<ObjectParameters>();
 
        
 
@@ -257,14 +258,14 @@ public class PickUp : MonoBehaviour
         objectPickUp.position = handCenter.transform.position;
 
         objectPickUp.localRotation = Quaternion.identity;
-        objectPickUp.localRotation = Quaternion.Euler(objectPlace.GetComponent<ObjectOnHand>().rotation);
+        objectPickUp.localRotation = Quaternion.Euler(objectRotation.rotation);
 
         onHand = true;
     }
 
     private void DropObject()
     {
-        float dist = Vector3.Distance(handCenter.transform.position, objectPlace.GetComponent<ObjectParameters>().startPos);
+        float dist = Vector3.Distance(handCenter.transform.position, objectParameters.startPos);
 
         if (objectPickUp != null)
         {
@@ -274,7 +275,7 @@ public class PickUp : MonoBehaviour
 
             if (dist < leaveDistance)
             {
-                objectPlace.GetComponent<ObjectParameters>().ReLocate();
+                objectParameters.ReLocate();
             }
         }
 
