@@ -9,21 +9,6 @@ public class ObserveObject : MonoBehaviour
     public bool hasText;
     public string text;
 
-    public GameObject popUp;
-
-    private void Start()
-    {
-       // popUp = gameObject.transform.GetChild(1).gameObject;
-    }
-    public void DisablePopUp(bool Disable)
-    {
-        if (Disable)
-        {
-            popUp.gameObject.SetActive(false);
-        }
-        else
-        {
-            popUp.gameObject.SetActive(true);
-        }
-    }
+  
+    
 }

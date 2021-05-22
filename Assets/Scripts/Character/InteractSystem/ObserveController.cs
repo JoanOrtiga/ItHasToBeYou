@@ -50,14 +50,14 @@ public class ObserveController : MonoBehaviour, IInteractable
     public void Interact()
     {
         player.DisableController(true, true, true, true);
-        print("DIsable player");
+
         crosshairController.ChangeCrosshairState(false, false);
         textObserver.text = observingObject.GetComponent<ObserveObject>().text;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         doneTransition = false;
         active = true;
-        observingObject.GetComponent<ObserveObject>().DisablePopUp(true);
+        observingObject.GetComponent<ObjectParameters>().DisablePopUp(true);
         StartCoroutine(ObjetTransition(observingObject.transform, pivotPlayerView.transform, false));
 
     }
@@ -74,7 +74,6 @@ public class ObserveController : MonoBehaviour, IInteractable
             {
               
                 player.EnableController(true, true, true, true);
-                print("Able player contrleer");
                 objectTransform.position = observingObject.GetComponent<ObjectParameters>().startPos;
                 objectTransform.rotation = observingObject.GetComponent<ObjectParameters>().startRot;
 
@@ -129,18 +128,19 @@ public class ObserveController : MonoBehaviour, IInteractable
             if (observingObject.GetComponent<ObserveObject>().hasText == true)
             {
                 hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, mainCamara.transform.position, out rayCastHit, DetectLayerMask.value);
+               
                 Debug.DrawLine(observingObject.transform.GetChild(0).transform.position, mainCamara.GetComponent<Transform>().position, Color.green);
                 if (!hit && doneTransition)
                 {
                     // print(rayCastHit.transform.name);
                     //Physics.Linecast(observingObject.transform.GetChild(0).transform.position, player.GetComponent<Transform>().position, out rayCastHit, DetectLayerMask.value)
                     observerCanvas.transform.GetChild(0).gameObject.SetActive(true);
-                    print("SHOw");
+                
                 }
                 else
                 {
                     observerCanvas.transform.GetChild(0).gameObject.SetActive(false);
-                    print("HIDE");
+                  
                 }
             }
           
@@ -185,7 +185,7 @@ public class ObserveController : MonoBehaviour, IInteractable
         if (activePuzzle)
         {
             observingObject.GetComponent<ObserveObject>().isObserving = false;
-            observingObject.GetComponent<ObserveObject>().DisablePopUp(false);
+            observingObject.GetComponent<ObjectParameters>().DisablePopUp(false);
         }
 
         doneTransition = true;

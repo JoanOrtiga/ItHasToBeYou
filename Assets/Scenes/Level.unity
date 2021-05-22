@@ -2336,6 +2336,10 @@ PrefabInstance:
       propertyPath: crosshairController
       value: 
       objectReference: {fileID: 2096890463}
+    - target: {fileID: 727639893349052535, guid: 4b2d0859ca7dc2d41ac06b3fb3a6f135, type: 3}
+      propertyPath: DetectLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2d0859ca7dc2d41ac06b3fb3a6f135, type: 3}
 --- !u!1 &259229577
@@ -2534,6 +2538,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7498685592831801662, guid: 104e2ed6dc4166c47bbb0a5a4e67f4c7, type: 3}
   m_PrefabInstance: {fileID: 1244094032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &303052079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2522699548842520806, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+  m_PrefabInstance: {fileID: 1612500193}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &304115509
 GameObject:
@@ -13243,7 +13252,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 43938828545085858, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2700549725417469070, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
       propertyPath: m_Name
@@ -13257,6 +13266,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ObserveObject
       objectReference: {fileID: 0}
+    - target: {fileID: 3007048282066250233, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
+      propertyPath: popUp
+      value: 
+      objectReference: {fileID: 1270243288}
     - target: {fileID: 3007048282066250236, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
       propertyPath: popUp
       value: 
@@ -13264,6 +13277,22 @@ PrefabInstance:
     - target: {fileID: 3007048282066250236, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
       propertyPath: hasText
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007048282363705004, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.008892091
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007048282363705004, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0063570165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007048282363705004, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0018720332
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007048282363705004, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00593
       objectReference: {fileID: 0}
     - target: {fileID: 3328607653029555764, guid: 21cb3545641520043aed808653d0c2fa, type: 3}
       propertyPath: m_RootOrder
@@ -14331,7 +14360,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55450
+  m_Name: pb_Mesh468932
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14739,6 +14768,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8041766113696636634, guid: 104e2ed6dc4166c47bbb0a5a4e67f4c7, type: 3}
+      propertyPath: popUp
+      value: 
+      objectReference: {fileID: 431819252}
     - target: {fileID: 8041766113696636635, guid: 104e2ed6dc4166c47bbb0a5a4e67f4c7, type: 3}
       propertyPath: text
       value: I remeber how many time she told me to not play her staff, but i still
@@ -18385,6 +18418,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4300158160549236839, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_ShowToolkit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160549236839, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_ShowCustomSorter
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
 --- !u!4 &1588607822 stripped
@@ -18622,6 +18663,67 @@ Transform:
   m_Father: {fileID: 1355343748}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -0.084, y: -51.911, z: -0.118}
+--- !u!1001 &1612500193
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5497394655785617182}
+    m_Modifications:
+    - target: {fileID: 2522699548842520806, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_Name
+      value: PopUpObserve
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.191
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.17453372
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.16835403
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.67352825
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.6982511
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -87.935
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -151.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092843017775461667, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
 --- !u!1 &1617041365
 GameObject:
   m_ObjectHideFlags: 0
@@ -18958,6 +19060,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640740000}
   m_Mesh: {fileID: -7176667889198578055, guid: 8a0d252458c77f94ea19a5edc3039f56, type: 3}
+--- !u!1 &1641155895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1713921286416294698, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
+  m_PrefabInstance: {fileID: 6228747973606836330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1649429248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41919,7 +42026,6 @@ MonoBehaviour:
   isObserving: 0
   hasText: 1
   text: Gnostic Christian by Mary the Jewess
-  popUp: {fileID: 6092843017775461664}
 --- !u!54 &3007048282435867252
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41962,6 +42068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenPlaced: 0
+  popUp: {fileID: 6092843017775461664}
   isStartPlace: 1
   startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &3007945077795066027
@@ -51366,6 +51473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenPlaced: 0
+  popUp: {fileID: 0}
   isStartPlace: 1
   startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &4100854971618818215
@@ -59522,9 +59630,17 @@ PrefabInstance:
       value: Hieroglyphical Figures by Nicolas Flamel
       objectReference: {fileID: 0}
     - target: {fileID: 2638692640090587546, guid: 7aeff72265a7f574aa6dc0cc7823256d, type: 3}
+      propertyPath: popUp
+      value: 
+      objectReference: {fileID: 303052079}
+    - target: {fileID: 2638692640090587546, guid: 7aeff72265a7f574aa6dc0cc7823256d, type: 3}
       propertyPath: hasText
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2638692640090587547, guid: 7aeff72265a7f574aa6dc0cc7823256d, type: 3}
+      propertyPath: popUp
+      value: 
+      objectReference: {fileID: 303052079}
     - target: {fileID: 2638692640090587547, guid: 7aeff72265a7f574aa6dc0cc7823256d, type: 3}
       propertyPath: hasBeenPlaced
       value: 0
@@ -63710,27 +63826,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1713921286416294696, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
       propertyPath: animation.m_Curve.Array.data[0].time
-      value: 0.0034153908
+      value: -0.006877091
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713921286416294696, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
+      propertyPath: animation.m_Curve.Array.data[1].time
+      value: 2.2580824
       objectReference: {fileID: 0}
     - target: {fileID: 1713921286416294696, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
       propertyPath: animation.m_Curve.Array.data[0].value
-      value: 9.992706
+      value: 1.994389
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713921286416294696, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
+      propertyPath: animation.m_Curve.Array.data[1].value
+      value: 0.030520834
       objectReference: {fileID: 0}
     - target: {fileID: 1713921286416294696, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
       propertyPath: animation.m_Curve.Array.data[0].inSlope
-      value: -2.5028675
+      value: -0.8670655
       objectReference: {fileID: 0}
     - target: {fileID: 1713921286416294696, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
       propertyPath: animation.m_Curve.Array.data[1].inSlope
-      value: -2.5028675
+      value: -0.8670655
       objectReference: {fileID: 0}
     - target: {fileID: 1713921286416294696, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
       propertyPath: animation.m_Curve.Array.data[0].outSlope
-      value: -2.5028675
+      value: -0.8670655
       objectReference: {fileID: 0}
     - target: {fileID: 1713921286416294696, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
       propertyPath: animation.m_Curve.Array.data[1].outSlope
-      value: -2.5028675
+      value: -0.8670655
       objectReference: {fileID: 0}
     - target: {fileID: 1713921286416294699, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63744,6 +63868,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.04
       objectReference: {fileID: 0}
+    - target: {fileID: 2481175553259727368, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
+      propertyPath: popUp
+      value: 
+      objectReference: {fileID: 1641155895}
     - target: {fileID: 2481175553259727371, guid: b46b70ac577f4f543956185eb33067a1, type: 3}
       propertyPath: m_Name
       value: Puzle1.1Poema

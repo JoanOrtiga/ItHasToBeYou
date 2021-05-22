@@ -228,7 +228,7 @@ public class PickUp : MonoBehaviour
 
        
         objectPickUp = rayCastHit.transform;
-
+        objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(true);
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectRotation = objectPickUp.GetComponent<ObjectOnHand>();
         objectParameters = objectPickUp.GetComponent<ObjectParameters>();
@@ -272,6 +272,7 @@ public class PickUp : MonoBehaviour
             objectPickUp.SetParent(null);
             objectPickUpRigidBody.constraints = RigidbodyConstraints.None;
             objectPickUpRigidBody.isKinematic = false;
+            objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
 
             if (dist < leaveDistance)
             {

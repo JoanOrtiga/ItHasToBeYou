@@ -6,6 +6,7 @@ public class ObjectParameters : MonoBehaviour
 {
     
     public bool hasBeenPlaced;
+    public GameObject popUp;
 
     [HideInInspector] public bool isStartPlace = true;
 
@@ -25,6 +26,16 @@ public class ObjectParameters : MonoBehaviour
         transform.position = startPos;
         transform.rotation = startRot;
     }
+    public void DisablePopUp(bool Disable)
+    {
+        if (Disable)
+        {
+            popUp.gameObject.SetActive(false);
+        }
+        else
+        {
+            popUp.gameObject.SetActive(true);
+        }
+    }
 
-  
 }
