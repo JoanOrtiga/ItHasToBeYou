@@ -41,6 +41,8 @@ public class PickUp : MonoBehaviour
     public Crosshair crosshairController;
     public GameObject observeController;
 
+    [HideInInspector] public bool activePuzzle;
+
 
     public enum Interaction
     {
@@ -141,7 +143,7 @@ public class PickUp : MonoBehaviour
         ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
         hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
 
-        if (hitted)
+        if (hitted && activePuzzle == false)
         {
             if (rayCastHit.transform.gameObject.layer == objectLayer)
             {

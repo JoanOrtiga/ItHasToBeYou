@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public class StatueSides : MonoBehaviour , IInteractable
 {
@@ -30,15 +31,21 @@ public class StatueSides : MonoBehaviour , IInteractable
     private bool cooldowned = false;
 
     [SerializeField] private float moveToSpeed = 1f;
+
+    private PickUp pickController;
     
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
+        pickController = FindObjectOfType<PickUp>();
         playerTransform = playerController.transform;
     }
 
     public void Interact()
     {
+        
+        pickController.activePuzzle = true;
+
         if(ActiveSide)
             return;
 
@@ -97,6 +104,8 @@ public class StatueSides : MonoBehaviour , IInteractable
         {
             if (Input.GetButtonDown("Interact") && cooldowned && !statue.IsActive())
             {
+                pickController.activePuzzle = false;
+
                 StopAllCoroutines();
                 
                 deActivated = false;
