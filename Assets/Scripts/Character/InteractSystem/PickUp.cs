@@ -94,9 +94,10 @@ public class PickUp : MonoBehaviour
             else if (interaction == Interaction.placeObject && onHand)
             {
                 crosshairController.ChangeCrosshairState(true, false);
-
+                
                 if (Input.GetButtonDown("Interact"))
                 {
+                
                     PlaceObject();
                 }
             }
@@ -108,11 +109,13 @@ public class PickUp : MonoBehaviour
                     ObservObject();
                 }
             }
+            else if (Input.GetButtonDown("Interact") && onHand)
+            {
+                print("DROP OBJECT");
+                DropObject();
+            }
         }
-        else if (Input.GetButtonDown("Interact") && onHand)
-        {
-            DropObject();
-        }
+        
 
         if (onHand)
         {
