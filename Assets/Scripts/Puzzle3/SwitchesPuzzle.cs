@@ -6,7 +6,17 @@ using UnityEngine;
 public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
 {
     [SerializeField] private Switches[] allSwitchesMid;
+
+    private Animator animator;
     
+    private void Update()
+    {
+        if (Solved())
+        {
+            animator.SetTrigger("PlaceLens");
+        }
+    }
+
     public bool Solved()
     {
         for (int i = 0; i < allSwitchesMid.Length; i++)
