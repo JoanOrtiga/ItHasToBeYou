@@ -142,10 +142,12 @@ public class PickUp : MonoBehaviour
         ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
         hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
 
-       
+       // print(rayCastHit.transform.name);
         if (hitted && activePuzzle == false)
         {
-   
+
+           
+            
             if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
                
