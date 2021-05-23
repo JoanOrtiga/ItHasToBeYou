@@ -171,11 +171,11 @@ public class PickUp : MonoBehaviour
             {
                 rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
             }
-        }
-        else
-        {
-            interaction = Interaction.none;
-            crosshairController.ChangeCrosshairState(false, false);
+            else
+            {
+                interaction = Interaction.none;
+                crosshairController.ChangeCrosshairState(false, false);
+            }
         }
     }
 

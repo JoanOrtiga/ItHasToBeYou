@@ -26,8 +26,6 @@ public class Crosshair : MonoBehaviour
         //interactCrosshair_.SetActive(interactCrosshair ? true : false);
         observeCrosshair_.SetActive(observeCrosshair ? true : false);
         crosshairIntractAnim.SetBool("Active", interactCrosshair ? true : false);
-       
-       
     }
 
     
