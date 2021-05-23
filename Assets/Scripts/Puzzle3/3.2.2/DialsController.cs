@@ -198,7 +198,7 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
            {
                rotating = true;
                targetRotation = dial.localRotation.eulerAngles;
-               targetRotation.y += direction * angleAtATime;
+               targetRotation.z += direction * angleAtATime;
            }
            
        }

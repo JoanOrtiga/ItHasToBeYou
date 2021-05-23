@@ -166,6 +166,10 @@ public class PickUp : MonoBehaviour
                     interaction = Interaction.interactPuzzle;
                     crosshairController.ChangeCrosshairState(true, false);
                 }
+                else if (rayCastHit.transform.CompareTag("PuzzleInteractableWithoutIcon"))
+                {
+                    interaction = Interaction.interactPuzzle;
+                }
                
             }
             else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
