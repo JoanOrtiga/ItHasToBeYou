@@ -8,6 +8,9 @@ public class PickUp : MonoBehaviour
     Ray ray;
     RaycastHit rayCastHit;
     bool hitted = false;
+    
+    [SerializeField] private float checkEveryTime = 0.02f;
+    
     [SerializeField] private float pickUpDistance = 3f;
     [SerializeField] private float leaveDistance = 3f;
     [SerializeField] private LayerMask DetectLayerMask;
@@ -16,7 +19,7 @@ public class PickUp : MonoBehaviour
     private int interactLayer;
     private int placeObjectLayer;
     private int lookObjectLayer;
-    
+
     private Animator handAnimator;
 
     private bool onHand;
@@ -26,20 +29,26 @@ public class PickUp : MonoBehaviour
 
     [Header("The pick up object propeties")]
     Transform objectPickUp;
+
     Rigidbody objectPickUpRigidBody;
     ObjectParameters objectParameters;
+
     ObjectOnHand objectRotation;
-   // Quaternion objectRotation;
+    // Quaternion objectRotation;
 
     private Camera mainCamera;
 
     public Crosshair crosshairController;
     public GameObject observeController;
 
-    
+
     public enum Interaction
     {
-        drop, interactPuzzle,placeObject, observe, none
+        drop,
+        interactPuzzle,
+        placeObject,
+        observe,
+        none
     }
 
     Interaction interaction;
@@ -48,7 +57,10 @@ public class PickUp : MonoBehaviour
     {
         mainCamera = Camera.main;
         //StartCoroutine(CheckForObject());
+        
+        InvokeRepeating("CheckForObject", checkEveryTime,checkEveryTime);
     }
+
     private void Start()
     {
         handAnimator = handCenter.GetComponent<Animator>();
@@ -56,21 +68,18 @@ public class PickUp : MonoBehaviour
         interactLayer = LayerMask.NameToLayer("Interactable");
         placeObjectLayer = LayerMask.NameToLayer("PlaceObject");
         lookObjectLayer = LayerMask.NameToLayer("LookObject");
-     
     }
+
     // Update is called once per frame
     void Update()
     {
         if (hitted)
         {
-            
             if (interaction == Interaction.drop && onHand == false)
             {
-           
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
-
                     PickUpObject();
                 }
             }
@@ -81,7 +90,6 @@ public class PickUp : MonoBehaviour
                 {
                     Interact();
                 }
-                
             }
             else if (interaction == Interaction.placeObject && onHand)
             {
@@ -94,112 +102,78 @@ public class PickUp : MonoBehaviour
             }
             else if (interaction == Interaction.observe)
             {
-                if (Input.GetButtonDown("Interact") && rayCastHit.transform.gameObject.GetComponent<ObserveObject>().isObserving == false)
+                if (Input.GetButtonDown("Interact") &&
+                    rayCastHit.transform.gameObject.GetComponent<ObserveObject>().isObserving == false)
                 {
                     ObservObject();
                 }
-               
             }
-
         }
         else if (Input.GetButtonDown("Interact") && onHand)
         {
             DropObject();
-            
         }
-        
+
         if (onHand)
         {
-
             if (Input.GetMouseButtonDown(0) && handAnimator.GetBool("LookClose"))
             {
-
                 handAnimator.SetBool("LookClose", false);
             }
             else if (Input.GetMouseButtonDown(0) && !handAnimator.GetBool("LookClose"))
             {
-                if (objectPickUp.GetComponent<TextBox>() != null && objectPickUp.GetComponent<TextBox>().lookCloseObject)
+                if (objectPickUp.GetComponent<TextBox>() != null &&
+                    objectPickUp.GetComponent<TextBox>().lookCloseObject)
                 {
                     objectPickUp.GetComponent<TextBox>().StartText();
                 }
-                
+
                 handAnimator.SetBool("LookClose", true);
             }
-
         }
-
     }
 
-    IEnumerator CheckForObject()
+    void CheckForObject()
     {
-        while (true)
+        ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
+        hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
+
+        if (hitted)
         {
-            ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
-            hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
-
-            if (hitted)
+            if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
-                
-
-                if (rayCastHit.transform.gameObject.layer == objectLayer)
-                {
-                    interaction = Interaction.drop;
-
-                 
-                }
-                else if (rayCastHit.transform.gameObject.layer == interactLayer)
-                {
-                    
-
-                    if (rayCastHit.transform.gameObject.CompareTag("ObserveObject"))
-                    {
-                        interaction = Interaction.observe;
-                    }
-                    else if (rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable"))
-                    {
-                        interaction = Interaction.interactPuzzle;
-                        crosshairController.ChangeCrosshairState(true, false);
-                    }
-                    
-
-                }
-                else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
-                {
-                    if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false && onHand)
-                    {
-                        interaction = Interaction.placeObject;
-                        placeObjectPosition = rayCastHit.transform.gameObject;
-                       
-                    }
-                    
-                }
-                else if (rayCastHit.transform.gameObject.layer == lookObjectLayer)
-                {
-                    rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
-                }
-              
+                interaction = Interaction.drop;
             }
-            else
+            else if (rayCastHit.transform.gameObject.layer == interactLayer)
             {
-                interaction = Interaction.none;
-                crosshairController.ChangeCrosshairState(false, false);
+                if (rayCastHit.transform.gameObject.CompareTag("ObserveObject"))
+                {
+                    interaction = Interaction.observe;
+                }
+                else if (rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable"))
+                {
+                    interaction = Interaction.interactPuzzle;
+                    crosshairController.ChangeCrosshairState(true, false);
+                }
             }
-
-            for (int i = 0; i < 5; i++)
+            else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
             {
-                yield return null;
+                if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false && onHand)
+                {
+                    interaction = Interaction.placeObject;
+                    placeObjectPosition = rayCastHit.transform.gameObject;
+                }
+            }
+            else if (rayCastHit.transform.gameObject.layer == lookObjectLayer)
+            {
+                rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
             }
         }
-    }
-
-    private void OnDisable()
-    {
-        StopCoroutine(CheckForObject());
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(CheckForObject());
+        else
+        {
+            interaction = Interaction.none;
+            crosshairController.ChangeCrosshairState(false, false);
+        }
     }
 
     private void PlaceObject()
@@ -214,26 +188,25 @@ public class PickUp : MonoBehaviour
 
     private void ObservObject()
     {
-
         if (rayCastHit.transform.gameObject.GetComponent<TextBox>() != null)
         {
             rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
         }
+
         observeController.GetComponent<ObserveController>().observingObject = rayCastHit.transform.gameObject;
         observeController.GetComponent<IInteractable>().Interact();
     }
+
     private void PickUpObject()
     {
-        StopCoroutine(CheckForObject());
+        CancelInvoke("CheckForObject");
 
-       
-        objectPickUp = rayCastHit.transform;
+            objectPickUp = rayCastHit.transform;
         objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(true);
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectRotation = objectPickUp.GetComponent<ObjectOnHand>();
         objectParameters = objectPickUp.GetComponent<ObjectParameters>();
 
-       
 
         objectPickUpRigidBody.isKinematic = true;
         objectPickUpRigidBody.constraints = RigidbodyConstraints.FreezeAll;
@@ -244,15 +217,15 @@ public class PickUp : MonoBehaviour
             objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = false;
         }
 
-       
+
         if (objectPickUp.GetComponent<TextBox>() != null)
         {
             if (!objectPickUp.GetComponent<TextBox>().lookCloseObject)
             {
                 objectPickUp.GetComponent<TextBox>().StartText();
             }
-           
         }
+
         objectPickUp.SetParent(handCenter.transform);
 
         objectPickUp.position = handCenter.transform.position;
@@ -281,6 +254,8 @@ public class PickUp : MonoBehaviour
         }
 
         onHand = false;
+        
+        InvokeRepeating("CheckForObject", checkEveryTime, checkEveryTime);
     }
 
     private void Interact()
