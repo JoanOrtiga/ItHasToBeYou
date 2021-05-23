@@ -41,7 +41,7 @@ public class PickUp : MonoBehaviour
     public Crosshair crosshairController;
     public GameObject observeController;
 
-    [HideInInspector] public bool activePuzzle;
+    [HideInInspector] public bool activePuzzle = false;
 
 
     public enum Interaction
@@ -105,8 +105,7 @@ public class PickUp : MonoBehaviour
             }
             else if (interaction == Interaction.observe)
             {
-                if (Input.GetButtonDown("Interact") &&
-                    rayCastHit.transform.gameObject.GetComponent<ObserveObject>().isObserving == false)
+                if (Input.GetButtonDown("Interact") && rayCastHit.transform.gameObject.GetComponent<ObserveObject>().isObserving == false)
                 {
                     ObservObject();
                 }
@@ -143,17 +142,22 @@ public class PickUp : MonoBehaviour
         ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
         hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
 
+       
         if (hitted && activePuzzle == false)
         {
+   
             if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
+               
                 interaction = Interaction.drop;
             }
             else if (rayCastHit.transform.gameObject.layer == interactLayer)
             {
+                
                 if (rayCastHit.transform.gameObject.CompareTag("ObserveObject"))
                 {
                     interaction = Interaction.observe;
+                   
                 }
                 else if (rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable"))
                 {
@@ -177,12 +181,9 @@ public class PickUp : MonoBehaviour
 
             if (!(rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable")))
             {
-                print("NO CROSHAIR");
-                
+              
                 crosshairController.ChangeCrosshairState(false, false);
             }
-           
-
         }
         else
         {
