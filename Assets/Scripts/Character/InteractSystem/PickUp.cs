@@ -158,6 +158,7 @@ public class PickUp : MonoBehaviour
                     interaction = Interaction.interactPuzzle;
                     crosshairController.ChangeCrosshairState(true, false);
                 }
+               
             }
             else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
             {
@@ -171,11 +172,20 @@ public class PickUp : MonoBehaviour
             {
                 rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
             }
-            else
+
+            if (!(rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable")))
             {
-                interaction = Interaction.none;
+                print("NO CROSHAIR");
+                
                 crosshairController.ChangeCrosshairState(false, false);
             }
+           
+
+        }
+        else
+        {
+            interaction = Interaction.none;
+            crosshairController.ChangeCrosshairState(false, false);
         }
     }
 
