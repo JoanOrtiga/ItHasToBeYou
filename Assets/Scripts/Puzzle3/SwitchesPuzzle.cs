@@ -7,7 +7,7 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
 {
     [SerializeField] private Switches[] allSwitchesMid;
 
-    private Animator animator;
+    [SerializeField] private Animator animator;
     
     private void Update()
     {
