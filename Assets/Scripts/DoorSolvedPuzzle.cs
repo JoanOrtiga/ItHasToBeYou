@@ -10,23 +10,19 @@ public class DoorSolvedPuzzle : MonoBehaviour
     private IPuzzleSolver puzzle;
     
     private Animator animator;
-
-    private bool opened = false;
     
     private void Awake()
     {
         animator = GetComponent<Animator>();
         puzzle = puzzleController.GetComponent<IPuzzleSolver>();
-        
-        
     }
 
     private void Update()
     {
-        if(puzzle.Solved() && opened is false)
+        if(puzzle.Solved() || Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("OpenDoor");
-            opened = true;
+            this.enabled = false;
         }
     }
 }

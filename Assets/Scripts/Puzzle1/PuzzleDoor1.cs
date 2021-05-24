@@ -8,17 +8,19 @@ public class PuzzleDoor1 : MonoBehaviour
     private int booksCounter = 0;
     [SerializeField] private int booksToOpen = 3;
 
-    private bool opening = false;
+    private Animator animator;
 
-    [SerializeField] private Transform endTransform;
-
-    [SerializeField] private float speed = 50f;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
-        if (opening)
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            Open();
+            animator.SetTrigger("OpenDoor");
+            this.enabled = false;
         }
     }
 
@@ -28,17 +30,13 @@ public class PuzzleDoor1 : MonoBehaviour
 
         if (booksCounter >= booksToOpen)
         {
-            opening = true;
+            animator.SetTrigger("OpenDoor");
+            this.enabled = false;
         }
     }
     
     public void SubstractBook()
     {
         booksCounter--;
-    }
-
-    private void Open()
-    {
-        transform.position = Vector3.Lerp(transform.position, endTransform.position, speed * Time.deltaTime);
     }
 }
