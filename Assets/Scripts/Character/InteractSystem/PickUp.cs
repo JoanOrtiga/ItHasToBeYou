@@ -75,6 +75,10 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //print(interaction);
+        //print(hitted);
+
         if (hitted)
         {
             if (interaction == Interaction.drop && onHand == false)
@@ -142,7 +146,7 @@ public class PickUp : MonoBehaviour
         ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
         hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
 
-       // print(rayCastHit.transform.name);
+
         if (hitted && activePuzzle == false)
         {
 
@@ -155,7 +159,7 @@ public class PickUp : MonoBehaviour
             }
             else if (rayCastHit.transform.gameObject.layer == interactLayer)
             {
-                
+             
                 if (rayCastHit.transform.gameObject.CompareTag("ObserveObject"))
                 {
                     interaction = Interaction.observe;
@@ -184,6 +188,11 @@ public class PickUp : MonoBehaviour
             {
                 rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
             }
+            else
+            {
+               
+                interaction = Interaction.none;
+            }
 
             if (!(rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable")))
             {
@@ -193,6 +202,7 @@ public class PickUp : MonoBehaviour
         }
         else
         {
+           
             interaction = Interaction.none;
             crosshairController.ChangeCrosshairState(false, false);
         }
