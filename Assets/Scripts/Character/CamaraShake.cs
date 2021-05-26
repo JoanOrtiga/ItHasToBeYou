@@ -38,6 +38,7 @@ public class CamaraShake : MonoBehaviour
     protected float nextFoV;
     protected bool destroyAfterPlay;
 
+    public bool active;
   
     /// <summary>
     /// awake
@@ -65,6 +66,16 @@ public class CamaraShake : MonoBehaviour
         //one time
         instance.destroyAfterPlay = true;
         instance.Shake();
+    }
+
+
+    private void Update()
+    {
+        if (active)
+        {
+            ShakeOnce();
+            active = false;
+        }
     }
 
     /// <summary>

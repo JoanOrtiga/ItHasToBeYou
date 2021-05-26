@@ -14,6 +14,8 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
                 return false;
         }
 
+
+        CamaraShake.ShakeOnce(3, 3);
         return true;
     }
 }

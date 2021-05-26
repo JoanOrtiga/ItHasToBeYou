@@ -146,7 +146,7 @@ public class PickUp : MonoBehaviour
         ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
         hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
 
-
+       
         if (hitted && activePuzzle == false)
         {
 
