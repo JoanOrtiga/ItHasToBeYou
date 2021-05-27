@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 3007048282066250234}
   - component: {fileID: 3007048282066250236}
   - component: {fileID: 3007048282066250233}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: TextObject(4)
-  m_TagString: Untagged
+  m_TagString: ObserveObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,9 +29,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2700549725417469070}
-  m_LocalRotation: {x: -0.000001899898, y: -0.7071069, z: -0.70710677, w: 0.0000018626451}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -3.4693031, y: -42.69638, z: -6.8274536}
-  m_LocalScale: {x: 10.922221, y: 12.038472, z: 10.922219}
+  m_LocalScale: {x: 8.265343, y: 9.11006, z: 8.265341}
   m_Children:
   - {fileID: 3007048282363705004}
   - {fileID: 8579453564151436390}
@@ -129,14 +129,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObserving: 0
-  hasText: 0
+  hasText: 1
   text: "La alquimia occidental ha estado siempre estrechamente relacionada con el
     hermetismo, un sistema filos\xF3fico y espiritual que tiene sus ra\xEDces en
     Hermes Trismegisto, una deidad sincr\xE9tica grecoegipcia y legendario alquimista.
     Estas dos disciplinas influyeron en el nacimiento del rosacrucismo, un importante
     movimiento esot\xE9rico del siglo xvii. En el transcurso de los comienzos de
     la \xE9poca moderna, la alquimia dominante evolucion\xF3 en la actual qu\xEDmica."
-  popUp: {fileID: 0}
 --- !u!114 &3007048282066250233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: {x: 0, y: 0, z: 0}
   hasBeenPlaced: 0
+  popUp: {fileID: 8579453564151436391}
   isStartPlace: 1
   startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3007048282363705007
@@ -165,7 +164,7 @@ GameObject:
   - component: {fileID: 3007048282363705003}
   - component: {fileID: 3007048282363705002}
   - component: {fileID: 3007048282363705005}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,8 +179,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3007048282363705007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.0012, z: 0.0047}
-  m_LocalScale: {x: 0.0322577, y: 0.019844592, z: 0.0007125312}
+  m_LocalPosition: {x: -0, y: -0.0012, z: 0.00593}
+  m_LocalScale: {x: 0.008892091, y: 0.0063570165, z: 0.0018720332}
   m_Children: []
   m_Father: {fileID: 3328607653029555764}
   m_RootOrder: 0
@@ -259,21 +258,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopUPIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520806, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0019495342
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0019495342
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0019495342
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0091
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0038
+      value: -0.0013
       objectReference: {fileID: 0}
     - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0008
+      value: 0.0161
       objectReference: {fileID: 0}
     - target: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -305,6 +320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+--- !u!1 &8579453564151436391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2522699548842520806, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}
+  m_PrefabInstance: {fileID: 6057968565011571841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8579453564151436390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2522699548842520807, guid: 6fba8ee81f9f25147ae16d2d25ff888c, type: 3}

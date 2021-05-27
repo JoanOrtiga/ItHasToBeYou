@@ -83,6 +83,7 @@ public class PickUp : MonoBehaviour
         {
             if (interaction == Interaction.drop && onHand == false)
             {
+                print("I CAN PICK UP");
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
@@ -146,15 +147,15 @@ public class PickUp : MonoBehaviour
         ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
         hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
 
-       
+
         if (hitted && activePuzzle == false)
         {
-
+            
            
             
             if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
-               
+                print("OBJECT");
                 interaction = Interaction.drop;
             }
             else if (rayCastHit.transform.gameObject.layer == interactLayer)
@@ -178,8 +179,11 @@ public class PickUp : MonoBehaviour
             }
             else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
             {
+
                 if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false && onHand)
                 {
+
+                  
                     interaction = Interaction.placeObject;
                     placeObjectPosition = rayCastHit.transform.gameObject;
                 }
@@ -231,9 +235,10 @@ public class PickUp : MonoBehaviour
 
     private void PickUpObject()
     {
-        CancelInvoke("CheckForObject");
+        //CancelInvoke("CheckForObject");
 
-            objectPickUp = rayCastHit.transform;
+       
+        objectPickUp = rayCastHit.transform;
         objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(true);
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectRotation = objectPickUp.GetComponent<ObjectOnHand>();
@@ -248,6 +253,8 @@ public class PickUp : MonoBehaviour
             objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced = false;
             objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = false;
         }
+      
+      
 
 
         if (objectPickUp.GetComponent<TextBox>() != null)
