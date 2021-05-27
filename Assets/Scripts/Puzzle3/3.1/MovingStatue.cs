@@ -234,4 +234,6 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
         return false;
     }
+
+  
 }

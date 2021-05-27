@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour
     public CharacterController characterController { get; private set; }
 
     public BreathCamera breathCamera { get; private set; }
-    
-    
-    
+
+    [SerializeField] private Animator handAnimator;
+
+    private AnimationTouch puzzleTouchController;
     
     private void Awake() 
     {
@@ -72,5 +73,37 @@ public class PlayerController : MonoBehaviour
         
         if (breath)
             breathCamera.enabled = false;
+    }
+    
+    public void AnimatorSetFloat(string name, float value)
+    {
+        handAnimator.SetFloat(name, value);
+    }
+    public void AnimatorSetBool(string name, bool value)
+    {
+        handAnimator.SetBool(name, value);
+    }
+    public void AnimatorSetInteger(string name, int value)
+    {
+        handAnimator.SetInteger(name, value);
+    }
+    public void AnimatorSetTrigger(string name)
+    {
+        handAnimator.SetTrigger(name);
+    }
+
+    public void SetCurrentPuzzle(AnimationTouch touch)
+    {
+        puzzleTouchController = touch;
+    }
+
+    public void CancelCurrentPuzzle()
+    {
+        puzzleTouchController = null;
+    }
+    
+    public void Touch()
+    {
+        puzzleTouchController.Touch();
     }
 }
