@@ -37,7 +37,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
 
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);
-        
+    
+
         StartCoroutine(LookAt());
         StartCoroutine(AttachPlayer());
     }
@@ -74,9 +75,11 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
 
         if (Input.GetButtonDown("Interact") && inControl)
         {
+            playerController.ChangeLookCloserState(false);
             playerController.EnableController(true,true,true,true);
             playerController.CancelCurrentPuzzle();
             playerController.AnimatorSetBool("P1", false);
+            playerController.ReAttachHand();
             inControl = false;
         }
     }
@@ -121,6 +124,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
         }
 
         inControl = true;
+        playerController.DettachHand();
+        playerController.ChangeLookCloserState(true);
     }
 
     private IEnumerator AttachPlayer()

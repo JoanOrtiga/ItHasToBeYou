@@ -13,8 +13,16 @@ public class PlayerController : MonoBehaviour
     public BreathCamera breathCamera { get; private set; }
 
     [SerializeField] private Animator handAnimator;
+    private Transform hand;
 
     private AnimationTouch puzzleTouchController;
+    
+    private Vector3 initialHandPosition;
+    private Quaternion initialHandRotation;
+    
+    Quaternion saveCameraRot;
+    Quaternion savePivotRot;
+    private Transform pivot;
     
     private void Awake() 
     {
@@ -23,6 +31,11 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         pickUpSystem = GetComponent<PickUp>();
         breathCamera = GetComponentInChildren<BreathCamera>();
+        
+        pivot = cameraController.transform.GetChild(0);
+        
+        hand = handAnimator.transform;
+       
     }
 
     /// <summary>
@@ -102,8 +115,46 @@ public class PlayerController : MonoBehaviour
         puzzleTouchController = null;
     }
     
+    public void DettachHand()
+    {
+        initialHandPosition = hand.position;
+        initialHandRotation = hand.rotation;
+        
+        saveCameraRot = cameraController.transform.rotation;
+        savePivotRot = pivot.rotation;
+
+        hand.parent = playerMovement.transform;
+        
+        hand.position = initialHandPosition;
+        hand.rotation = initialHandRotation;
+    }
+    
+    public void ReAttachHand()
+    {
+        Quaternion currentCameraRot = cameraController.transform.rotation;
+        Quaternion currentPivotRot = pivot.rotation;
+
+        cameraController.transform.rotation = saveCameraRot;
+        pivot.rotation = savePivotRot;
+        
+        hand.parent = breathCamera.transform;
+        
+        hand.position = initialHandPosition;
+        hand.rotation = initialHandRotation;
+        
+        cameraController.transform.rotation = currentCameraRot;
+        pivot.rotation = currentPivotRot;
+    }
+    
     public void Touch()
     {
         puzzleTouchController.Touch();
+    }
+
+    public void ChangeLookCloserState(bool state)
+    {
+        cameraController.enabled = state;
+        cameraController.lookCloser = state;
+        cameraController.ChangeInitialYaw();
     }
 }
