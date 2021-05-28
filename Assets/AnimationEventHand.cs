@@ -16,4 +16,9 @@ public class AnimationEventHand : MonoBehaviour
     {
         playerController.Touch();
     }
+
+    public void Finished()
+    {
+        playerController.Finished();
+    }
 }

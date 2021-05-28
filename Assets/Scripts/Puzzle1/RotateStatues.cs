@@ -22,6 +22,15 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
     private Transform rotateObjective;
 
     private bool waitNoOtherInput = false;
+    
+    
+    private PlayerController playerController;
+    private Transform playerTransform;
+    [SerializeField] private Transform lockCameraPoint;
+
+    [SerializeField] private Transform[] lockPoints;
+    
+    private float moveToSpeed = 1f;
 
     private void Awake()
     {
@@ -73,7 +82,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
             }
         }
 
-        if (Input.GetButtonDown("Interact") && inControl)
+        if (Input.GetButtonDown("Interact") && inControl && !waitNoOtherInput )
         {
             playerController.ChangeLookCloserState(false);
             playerController.EnableController(true,true,true,true);
@@ -99,17 +108,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
             currentState = (StatueSide) ((int) currentState + 1);
     }
     
-    
-    
-    
-    private PlayerController playerController;
-    private Transform playerTransform;
-    [SerializeField] private Transform lockCameraPoint;
-
-    [SerializeField] private Transform[] lockPoints;
-    
-    private float moveToSpeed = 1f;
-
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -130,8 +128,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
 
     private IEnumerator AttachPlayer()
     {
-        playerController.DisableController(true, true, true);
-
         float lastMagnitude;
         float currentMagnitude;
         Transform positionChild = null;
@@ -171,13 +167,17 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
         else
         {
             rotateObjective.localRotation = Quaternion.Euler(rotateObjective.eulerAngles.x, rotateObjective.eulerAngles.y - 60, rotateObjective.eulerAngles.z);
-
         }
     }
 
     public void Touch()
     {
         rotating = true;
+        
+    }
+
+    public void Finished()
+    {
         waitNoOtherInput = false;
     }
 }

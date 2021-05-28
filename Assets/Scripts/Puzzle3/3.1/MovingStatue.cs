@@ -45,6 +45,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
     private Vector3 nearStopPoint;
 
     private float lastDirection;
+    private PlayerController playerController;
     
     public void ChangeSide(Sides side)
     {
@@ -79,6 +80,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
     private void Awake()
     {
+        playerController = FindObjectOfType<PlayerController>();
         nearStopPoint = new Vector3();
         transform.LookAt(rotationPoint, Vector3.up);
 
@@ -140,6 +142,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             if (statuePathFinder.IsInStopPoint(transform.position))
             {
+                playerController.AnimatorSetBool("P3.1", false);
                 active = false;
                 return;
             }
