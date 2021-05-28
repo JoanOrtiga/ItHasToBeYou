@@ -633,6 +633,20 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &261074932986091549
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f50bf6aaffcd3d43808a2e9d9fcd44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveEulerRot: {x: 11.488, y: -20.081, z: -6.577}
+  objectivePosition: {x: 0.1670721, y: -1.037472, z: -0.2322167}
 --- !u!1102 &444970765449034641
 AnimatorState:
   serializedVersion: 6
@@ -668,7 +682,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Loop P1 1
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8835925655945870197}
@@ -746,7 +760,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5999101894249068763}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 261074932986091549}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
