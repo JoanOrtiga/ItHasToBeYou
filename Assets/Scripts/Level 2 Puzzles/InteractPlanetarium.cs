@@ -21,9 +21,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private bool onTrigger = false;
 
     [SerializeField] private GameObject puzzle;
-    public Transform ringZero;
-    public Transform ringOne;
-    public Transform ringTwo;
+    private Transform ringZero;
+    private Transform ringOne;
+    private Transform ringTwo;
 
     private MeshRenderer ringZeroMesh;
     private MeshRenderer ringOneMesh;
@@ -78,7 +78,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             {
                 if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
                 {
-                    puzzleAnimator.Play("PuzzleTwoGetDown");
+                    puzzleAnimator.Play("Puzzle2GetDown");
+                    print("PLAY ANIMATION");
                 }
 
                 activePuzzle = false;
@@ -131,7 +132,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private void PlayAnimation()
     {
         puzzleAnimator.enabled = true;
-        puzzleAnimator.Play("PuzzleTwoGetUp");
+        puzzleAnimator.Play("Puzzle2GetUp");
     }
 
     private void Win()
