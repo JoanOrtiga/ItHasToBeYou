@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
 {
+    public Transform secretDoor; 
     [SerializeField] private RotateStatues[] statues;
-    
+    public string finishPuzzlePath;
+
+
     public bool Solved()
     {
         foreach (var statue in statues)
@@ -14,7 +17,7 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
                 return false;
         }
 
-
+        FMODUnity.RuntimeManager.PlayOneShot(finishPuzzlePath, secretDoor.position);
         CamaraShake.ShakeOnce(3, 3);
         return true;
     }

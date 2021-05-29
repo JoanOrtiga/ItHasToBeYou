@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlaceMaterial : MonoBehaviour
 {
+    public string placeSoundPath;
+
     public GameObject puzzle;
     public bool hasBeenPlaced;
     public int materialNumber;

@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7893174187501069031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Videojoc FMOD_actual/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637579068138671143
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-209343483564294137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Puzzle 2/Bolas/Coger
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Puzzle 2/Bolas/Coger
+  guid: 4e3a851267e5944fa724cd60adfc53eb
+  Banks:
+  - {fileID: -7893174187501069031}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 5126992845014649584}
+  - {fileID: -7893174187501069031}
+  EditorEvents:
+  - {fileID: -209343483564294137}
+  - {fileID: 6620630493082883001}
+  - {fileID: 7308067665021179906}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -7893174187501069031}
+  StringsBanks:
+  - {fileID: 5126992845014649584}
+  stringsBankWriteTime: 637579068138701079
+  cacheVersion: 6
+--- !u!114 &5126992845014649584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Videojoc FMOD_actual/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637579068138701079
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 894
+  Exists: 1
+--- !u!114 &6620630493082883001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+  guid: f6c09963fbbc8443bf9ab38b2c832e2f
+  Banks:
+  - {fileID: -7893174187501069031}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2480
+--- !u!114 &7308067665021179906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Puzzle 1/Objetos/Estanteria se Abre
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Puzzle 1/Objetos/Estanteria se Abre
+  guid: bca5fdb92c9d9b449fd0d659f3fc4990
+  Banks:
+  - {fileID: -7893174187501069031}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5320

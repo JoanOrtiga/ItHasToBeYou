@@ -72,6 +72,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     void Update()
     {
+
+        
         if (activePuzzle)
         {
             if (Input.GetButtonDown("Interact") && activeCameraTransition == false)
@@ -207,7 +209,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         }
     }
 
-    IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle)
+    IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle_)
     {
         while (Vector3.Distance(pointA.position, pointB.position) > 0.05f)
         {
@@ -228,12 +230,13 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             yield return null;
         }
 
-        if (activePuzzle)
+        if (activePuzzle_)
         {
             playerController.EnableController(true, true, true, true);
         }
 
         activeCameraTransition = false;
+        
         StopCoroutine("CamaraTransition");
     }
 }
