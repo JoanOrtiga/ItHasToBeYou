@@ -211,7 +211,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle_)
     {
-        while (Vector3.Distance(pointA.position, pointB.position) > 0.05f)
+        while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
         {
             activeCameraTransition = true;
             playerController.DisableController(true, true, true, true);

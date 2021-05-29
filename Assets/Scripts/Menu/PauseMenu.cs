@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+
+    private Transform player;
     public static bool IsPaused { get; private set; }
 
     [SerializeField] private AudioMixer mixer;
@@ -17,6 +19,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        player = FindObjectOfType<PlayerController>().transform;
+
         if(soundSliders == null)
             return;
         
@@ -34,17 +38,19 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T) && IsPaused)
         {
+          
             UnPause();
         }
-
-        if (Input.GetKeyDown(KeyCode.T) && IsPaused is false)
+        else if (Input.GetKeyDown(KeyCode.T) && IsPaused == false)
         {
+          
             Pause();
         }
     }
 
     private void Pause()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MENU/Select/Tracks", player.position);
         Cursor.lockState = CursorLockMode.Confined;
         IsPaused = true;
         Time.timeScale = 0;
@@ -53,6 +59,7 @@ public class PauseMenu : MonoBehaviour
 
     private void UnPause()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MENU/Return/Tracks", player.position);
         Cursor.lockState = CursorLockMode.Locked;
         IsPaused = false;
         Time.timeScale = 1;
