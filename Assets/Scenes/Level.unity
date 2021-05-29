@@ -1405,13 +1405,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164791345}
-  m_LocalRotation: {x: -0, y: 0.19410336, z: -0, w: 0.98098105}
-  m_LocalPosition: {x: 1.075, y: 3.998, z: 1.901}
-  m_LocalScale: {x: 2.1126356, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.37682512, z: -0, w: 0.9262845}
+  m_LocalPosition: {x: 1.721, y: 3.998, z: 1.727}
+  m_LocalScale: {x: 2.1126356, y: 1, z: 0.61816}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 22.385, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 44.274, z: 0}
 --- !u!1 &165217821
 GameObject:
   m_ObjectHideFlags: 0
@@ -4436,10 +4436,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5d031b54c9c77488ae44e7060b2487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secretDoor: {fileID: 8107716251808747624}
   statues:
   - {fileID: 1221115919}
   - {fileID: 141158716}
   - {fileID: 2005839087}
+  finishPuzzlePath: event:/INGAME/Puzzle 1/Objetos/Estanteria se Abre
 --- !u!1 &564379841
 GameObject:
   m_ObjectHideFlags: 0
@@ -15834,7 +15836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.147
+      value: 1.002
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15842,7 +15844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.926
+      value: -4.474
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16115,6 +16117,20 @@ MonoBehaviour:
     m_RotationOrder: 4
   DeltaMovement: 1
   active: 0
+--- !u!114 &1588607832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588607822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &1590570190
 GameObject:
   m_ObjectHideFlags: 0
@@ -36703,6 +36719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpPath: 
+  dropPath: 
   hasBeenPlaced: 0
   popUp: {fileID: 6092843017775461664}
   isStartPlace: 1
@@ -42155,6 +42173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpPath: 
+  dropPath: 
   hasBeenPlaced: 0
   popUp: {fileID: 2067489107}
   isStartPlace: 1
@@ -45881,6 +45901,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5636847587903251943, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeSoundPath
+      value: event:/INGAME/Puzzle 2/Bolas/Coger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636847587926783190, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeSoundPath
+      value: event:/INGAME/Puzzle 2/Bolas/Coger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636847588186280104, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeSoundPath
+      value: event:/INGAME/Puzzle 2/Bolas/Coger
+      objectReference: {fileID: 0}
     - target: {fileID: 7725258897049369297, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -45889,6 +45921,54 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95c022c80b81f13488c3ce7d915f67b2, type: 2}
+    - target: {fileID: 8720789752311194565, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: dropPath
+      value: event:/INGAME/Puzzle 2/Bolas/Coger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789752311194565, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: pickUpPath
+      value: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789752311194571, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.914
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789752311194571, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789753097666504, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.261
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789753097666504, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.588
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789753097666506, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: dropPath
+      value: event:/INGAME/Puzzle 2/Bolas/Coger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789753097666506, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: pickUpPath
+      value: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789753502540333, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.484
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789753502540333, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.355
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789753502540335, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: dropPath
+      value: event:/INGAME/Puzzle 2/Bolas/Coger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720789753502540335, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: pickUpPath
+      value: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+      objectReference: {fileID: 0}
     - target: {fileID: 8838408241926446678, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
       propertyPath: door
       value: 
@@ -58043,6 +58123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bd1bf943f9bf841804d611c9edb492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeSoundPath: 
   puzzle: {fileID: 4188230259612858177}
   hasBeenPlaced: 0
   materialNumber: 2
@@ -58277,6 +58358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bd1bf943f9bf841804d611c9edb492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeSoundPath: 
   puzzle: {fileID: 4188230259612858177}
   hasBeenPlaced: 0
   materialNumber: 3
@@ -58438,6 +58520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bd1bf943f9bf841804d611c9edb492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeSoundPath: 
   puzzle: {fileID: 4188230259612858177}
   hasBeenPlaced: 0
   materialNumber: 1

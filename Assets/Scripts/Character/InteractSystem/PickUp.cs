@@ -220,6 +220,9 @@ public class PickUp : MonoBehaviour
         objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = true;
         placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
         handAnimator.SetBool("LookClose", false);
+
+        FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlaceMaterial>().placeSoundPath, transform.position);
+
         onHand = false;
     }
 
@@ -237,9 +240,12 @@ public class PickUp : MonoBehaviour
     private void PickUpObject()
     {
         //CancelInvoke("CheckForObject");
-
+        
        
         objectPickUp = rayCastHit.transform;
+
+        FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().pickUpPath, transform.position);
+
         objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(true);
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectRotation = objectPickUp.GetComponent<ObjectOnHand>();
@@ -286,6 +292,8 @@ public class PickUp : MonoBehaviour
             objectPickUpRigidBody.constraints = RigidbodyConstraints.None;
             objectPickUpRigidBody.isKinematic = false;
             objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
+
+            FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().dropPath, transform.position);
 
             if (dist < leaveDistance)
             {
