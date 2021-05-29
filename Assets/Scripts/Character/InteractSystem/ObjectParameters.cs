@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ObjectParameters : MonoBehaviour
 {
-    
+
+    public string pickUpSoundPath;
+    public string dropSoundPath;
+
     public bool hasBeenPlaced;
     public GameObject popUp;
 
@@ -23,6 +26,9 @@ public class ObjectParameters : MonoBehaviour
 
     public void ReLocate()
     {
+
+        //DROP
+        print("Drop");
         transform.position = startPos;
         transform.rotation = startRot;
     }
@@ -30,6 +36,7 @@ public class ObjectParameters : MonoBehaviour
     {
         if (Disable)
         {
+
             popUp.gameObject.SetActive(false);
         }
         else

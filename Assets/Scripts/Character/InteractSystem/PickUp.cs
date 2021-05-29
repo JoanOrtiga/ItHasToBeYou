@@ -83,7 +83,8 @@ public class PickUp : MonoBehaviour
         {
             if (interaction == Interaction.drop && onHand == false)
             {
-                print("I CAN PICK UP");
+
+
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
@@ -117,7 +118,8 @@ public class PickUp : MonoBehaviour
             }
             else if (Input.GetButtonDown("Interact") && onHand)
             {
-                print("DROP OBJECT");
+                
+
                 DropObject();
             }
         }
@@ -155,7 +157,7 @@ public class PickUp : MonoBehaviour
             
             if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
-                print("OBJECT");
+
                 interaction = Interaction.drop;
             }
             else if (rayCastHit.transform.gameObject.layer == interactLayer)
@@ -218,8 +220,12 @@ public class PickUp : MonoBehaviour
         objectPickUp.position = placeObjectPosition.transform.position;
         objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = true;
         placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
+        FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlaceMaterial>().soundPlacePath, gameObject.transform.position);
+        
         handAnimator.SetBool("LookClose", false);
         onHand = false;
+
+        
     }
 
     private void ObservObject()
@@ -236,9 +242,12 @@ public class PickUp : MonoBehaviour
     private void PickUpObject()
     {
         //CancelInvoke("CheckForObject");
+        print("SOUND PICK UP");
 
        
         objectPickUp = rayCastHit.transform;
+
+        FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().pickUpSoundPath, gameObject.transform.position);
         objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(true);
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectRotation = objectPickUp.GetComponent<ObjectOnHand>();
@@ -281,6 +290,8 @@ public class PickUp : MonoBehaviour
 
         if (objectPickUp != null)
         {
+            
+            FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().dropSoundPath, gameObject.transform.position);
             objectPickUp.SetParent(null);
             objectPickUpRigidBody.constraints = RigidbodyConstraints.None;
             objectPickUpRigidBody.isKinematic = false;

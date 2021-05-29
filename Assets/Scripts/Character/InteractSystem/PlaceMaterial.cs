@@ -9,7 +9,7 @@ public class PlaceMaterial : MonoBehaviour
     public bool hasBeenPlaced;
     public int materialNumber;
     public bool correctMaterial;
-
+    public string soundPlacePath;
  
     private bool textDone = false;
     private float time;
