@@ -214,6 +214,7 @@ public class PickUp : MonoBehaviour
 
     private void PlaceObject()
     {
+        objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
         objectPickUp.transform.parent = placeObjectPosition.transform;
         objectPickUp.position = placeObjectPosition.transform.position;
         objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = true;

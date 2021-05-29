@@ -52,9 +52,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         ringOne = puzzle.transform.GetChild(1);
         ringTwo = puzzle.transform.GetChild(2);
 
-        ringZeroMesh = puzzle.transform.GetChild(0).GetComponent<MeshRenderer>();
-        ringOneMesh = puzzle.transform.GetChild(1).GetComponent<MeshRenderer>();
-        ringTwoMesh = puzzle.transform.GetChild(2).GetComponent<MeshRenderer>();
+        ringZeroMesh = ringZero.GetChild(0).GetComponent<MeshRenderer>();
+        ringOneMesh = ringOne.GetChild(0).GetComponent<MeshRenderer>();
+        ringTwoMesh = ringTwo.GetChild(0).GetComponent<MeshRenderer>();
 
         //ringOne.transform.Rotate(0, 0, 90, Space.Self);
         //ringTwo.transform.Rotate(0, 0, -90, Space.Self);
@@ -112,7 +112,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                     interactingRing = 0;
                 }
 
-            //    ColorMat();
+                ColorMat();
             }
 
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true && activeCameraTransition)
@@ -179,33 +179,33 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         }
     }
 
-    //private void ColorMat()
-    //{
-    //    switch (interactingRing)
-    //    {
-    //        case 0:
-    //            ringZeroMesh.material = SelectedMat;
-    //            ringOneMesh.material = NormalMat;
-    //            ringTwoMesh.material = NormalMat;
-    //            break;
+    private void ColorMat()
+    {
+        switch (interactingRing)
+        {
+            case 0:
+                ringZeroMesh.material = SelectedMat;
+                ringOneMesh.material = NormalMat;
+                ringTwoMesh.material = NormalMat;
+                break;
 
-    //        case 1:
-    //            ringZeroMesh.material = NormalMat;
-    //            ringOneMesh.material = SelectedMat;
-    //            ringTwoMesh.material = NormalMat;
-    //            break;
+            case 1:
+                ringZeroMesh.material = NormalMat;
+                ringOneMesh.material = SelectedMat;
+                ringTwoMesh.material = NormalMat;
+                break;
 
 
-    //        case 2:
-    //            ringZeroMesh.material = NormalMat;
-    //            ringOneMesh.material = NormalMat;
-    //            ringTwoMesh.material = SelectedMat;
-    //            break;
+            case 2:
+                ringZeroMesh.material = NormalMat;
+                ringOneMesh.material = NormalMat;
+                ringTwoMesh.material = SelectedMat;
+                break;
 
-    //        default:
-    //            break;
-    //    }
-    //}
+            default:
+                break;
+        }
+    }
 
     IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle)
     {
