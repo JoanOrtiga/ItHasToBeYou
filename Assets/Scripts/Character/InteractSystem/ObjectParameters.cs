@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ObjectParameters : MonoBehaviour
 {
-    
+    public string pickUpPath;
+    public string dropPath;
+
     public bool hasBeenPlaced;
     public GameObject popUp;
 
