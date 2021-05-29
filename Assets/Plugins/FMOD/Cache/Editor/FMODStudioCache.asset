@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8352134375757274377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Puzzle 1/Ambiente/AmbietOne
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Puzzle 1/Ambiente/AmbietOne
+  guid: 815910c792a4234c94711baf6cd21b10
+  Banks:
+  - {fileID: -7893174187501069031}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 27083
 --- !u!114 &-7893174187501069031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +38,7 @@ MonoBehaviour:
   Path: Videojoc FMOD_actual/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637579083041329414
+  lastModified: 637579241537750325
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -61,13 +84,64 @@ MonoBehaviour:
   - {fileID: -209343483564294137}
   - {fileID: 6620630493082883001}
   - {fileID: 7308067665021179906}
+  - {fileID: 9092760801611488053}
+  - {fileID: 430185692109930678}
+  - {fileID: 7634392604464444869}
+  - {fileID: -8352134375757274377}
+  - {fileID: 3047076880933059917}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7893174187501069031}
   StringsBanks:
   - {fileID: 5126992845014649584}
-  stringsBankWriteTime: 637579083041488998
+  stringsBankWriteTime: 637579241537780225
   cacheVersion: 6
+--- !u!114 &430185692109930678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MENU/Return/Tracks
+  m_EditorClassIdentifier: 
+  Path: event:/MENU/Return/Tracks
+  guid: 2c7538c2599483439f314e09fa413899
+  Banks:
+  - {fileID: -7893174187501069031}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 520
+--- !u!114 &3047076880933059917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Puzzle 3/Mecanismos/Macnismo
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Puzzle 3/Mecanismos/Macnismo
+  guid: f3d743b16ab7614e9e8b7d2da786e27f
+  Banks:
+  - {fileID: -7893174187501069031}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3400
 --- !u!114 &5126992845014649584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,11 +157,11 @@ MonoBehaviour:
   Path: Videojoc FMOD_actual/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637579083041488998
+  lastModified: 637579241537780225
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 894
+    Value: 1176
   Exists: 1
 --- !u!114 &6620630493082883001
 MonoBehaviour:
@@ -135,3 +209,49 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5320
+--- !u!114 &7634392604464444869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MENU/Select/Tracks
+  m_EditorClassIdentifier: 
+  Path: event:/MENU/Select/Tracks
+  guid: f31d78ec39dc5443b17e490659c3bc0e
+  Banks:
+  - {fileID: -7893174187501069031}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 840
+--- !u!114 &9092760801611488053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Puzzle 1/Objetos/Pergamino
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Puzzle 1/Objetos/Pergamino
+  guid: 99d4272597dc2d41af354be3385bb66e
+  Banks:
+  - {fileID: -7893174187501069031}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1593
