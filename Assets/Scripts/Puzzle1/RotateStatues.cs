@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
+public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 {
     public enum StatueSide
     {

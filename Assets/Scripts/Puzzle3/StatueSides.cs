@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder;
 
-public class StatueSides : MonoBehaviour , IInteractable , AnimationTouch
+public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
 {
 
   //  public MoveableStatue.Sides side;
@@ -77,6 +77,9 @@ public class StatueSides : MonoBehaviour , IInteractable , AnimationTouch
         {
             yield return null;
         }
+        
+       /* playerController.DettachHand();
+        playerController.ChangeLookCloserState(true);*/
     }
 
     private IEnumerator AttachPlayer()

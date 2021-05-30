@@ -144,12 +144,20 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
             {
                 playerController.AnimatorSetBool("P3.1", false);
                 active = false;
+                
+                /* playerController.ReAttachHand();
+                 playerController.ChangeLookCloserState(false);*/
+                playerController.CancelCurrentPuzzle();
                 return;
             }
             else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
             {
+                playerController.AnimatorSetBool("P3.1", false);
                 imNearStopPoint = true;
                 active = false;
+                /*playerController.ReAttachHand();
+                playerController.ChangeLookCloserState(false);*/
+                playerController.CancelCurrentPuzzle();
                 return;
             }
         }
@@ -160,6 +168,22 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             lastDirection = verticalInput;
         }
+
+        if (verticalInput < 0.1f && verticalInput > -0.1f)
+        {
+            playerController.AnimatorSetBool("P3.1_PushBackward", false);
+            playerController.AnimatorSetBool("P3.1_PushForward", false); 
+        }
+        else if (verticalInput > 0.1f)
+        {
+            playerController.AnimatorSetBool("P3.1_PushBackward", false);
+            playerController.AnimatorSetBool("P3.1_PushForward", true);
+        }
+        else if (verticalInput < -0.1f)
+        {
+            playerController.AnimatorSetBool("P3.1_PushForward", false);
+            playerController.AnimatorSetBool("P3.1_PushBackward", true);
+        } 
 
         if (currentRoadType == RoadType.circular)
         {
@@ -238,5 +262,6 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         return false;
     }
 
-  
+
+    
 }

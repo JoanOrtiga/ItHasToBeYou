@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour , AnimationTouch
+public class PlayerController : MonoBehaviour , IAnimationTouch
 {
     public CameraController cameraController { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour , AnimationTouch
     [SerializeField] private Animator handAnimator;
     private Transform hand;
 
-    private AnimationTouch puzzleTouchController;
+    private IAnimationTouch puzzleTouchController;
 
     private Vector3 initialHandPosition;
     private Quaternion initialHandRotation;
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour , AnimationTouch
 
    
 
-    public void SetCurrentPuzzle(AnimationTouch touch)
+    public void SetCurrentPuzzle(IAnimationTouch touch)
     {
         puzzleTouchController = touch;
     }
