@@ -232,7 +232,11 @@ public class PickUp : MonoBehaviour
     {
         if (rayCastHit.transform.gameObject.GetComponent<TextBox>() != null)
         {
-            rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
+            if (rayCastHit.transform.gameObject.GetComponent<TextBox>().textDone == false)
+            {
+                rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
+            }
+           
         }
 
         observeController.GetComponent<ObserveController>().observingObject = rayCastHit.transform.gameObject;

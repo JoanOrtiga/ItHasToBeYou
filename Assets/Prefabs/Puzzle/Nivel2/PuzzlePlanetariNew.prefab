@@ -1809,6 +1809,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textOne: 
+  pathSoundFmodOne: 
+  textTwo: 
+  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -1817,7 +1821,6 @@ MonoBehaviour:
   isPlaceObject: 1
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  text: This will be Jupiter
   textDuration: 4
   textDone: 0
   preTrigger: {fileID: 0}
@@ -1833,6 +1836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bd1bf943f9bf841804d611c9edb492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeSoundPath: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+  correctSoundPath: 
   puzzle: {fileID: 8838408241926446679}
   hasBeenPlaced: 0
   materialNumber: 1
@@ -1946,6 +1951,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bd1bf943f9bf841804d611c9edb492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeSoundPath: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+  correctSoundPath: 
   puzzle: {fileID: 8838408241926446679}
   hasBeenPlaced: 0
   materialNumber: 2
@@ -1962,6 +1969,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textOne: 
+  pathSoundFmodOne: 
+  textTwo: 
+  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -1970,7 +1981,6 @@ MonoBehaviour:
   isPlaceObject: 1
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  text: This will be Mars
   textDuration: 4
   textDone: 0
   preTrigger: {fileID: 0}
@@ -1987,7 +1997,6 @@ GameObject:
   - component: {fileID: 5636847588186280111}
   - component: {fileID: 5636847588186280108}
   - component: {fileID: 5636847588186280104}
-  - component: {fileID: 5636847588186280105}
   m_Layer: 10
   m_Name: PlaceSaturno
   m_TagString: PuzzleInteractable
@@ -2083,34 +2092,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bd1bf943f9bf841804d611c9edb492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeSoundPath: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+  correctSoundPath: event:/Narrativa/Puzzles/2-2-2
   puzzle: {fileID: 8838408241926446679}
   hasBeenPlaced: 0
   materialNumber: 3
   correctMaterial: 0
---- !u!114 &5636847588186280105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5636847588186280098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isTrigger: 0
-  isInteraction: 0
-  isPickUp: 0
-  isLook: 0
-  isCompletePuzzle: 0
-  isPlaceObject: 1
-  isTriggerWithAPreCondition: 0
-  lookCloseObject: 0
-  text: This will be Saturn
-  textDuration: 5
-  textDone: 0
-  preTrigger: {fileID: 0}
 --- !u!1 &5688231209738805913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,6 +3449,7 @@ GameObject:
   - component: {fileID: 8720789752311194565}
   - component: {fileID: 4318331918097038021}
   - component: {fileID: 4835156431736489576}
+  - component: {fileID: 793383455}
   m_Layer: 8
   m_Name: MineralTwo
   m_TagString: Untagged
@@ -3574,6 +3562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpPath: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+  dropPath: event:/INGAME/Puzzle 2/Bolas/Coger
   hasBeenPlaced: 0
   popUp: {fileID: 6143476450108915637}
   isStartPlace: 1
@@ -3604,6 +3594,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 0, z: 0}
+--- !u!114 &793383455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720789752311194575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Okey, there are so many metals, and it's not exactly my speciality...
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-6
+  textTwo: 
+  pathSoundFmodTwo: 
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 1
+  isLook: 0
+  isCompletePuzzle: 0
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 3.3
+  textDone: 0
+  preTrigger: {fileID: 0}
 --- !u!1 &8720789753097666508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,6 +3749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpPath: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+  dropPath: event:/INGAME/Puzzle 2/Bolas/Coger
   hasBeenPlaced: 0
   popUp: {fileID: 6143476450160942946}
   isStartPlace: 1
@@ -3890,6 +3909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4e9aa77a621544f918ccd2871f52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpPath: event:/INGAME/Puzzle 2/Bolas/Dejar Caer Bola
+  dropPath: event:/INGAME/Puzzle 2/Bolas/Coger
   hasBeenPlaced: 0
   popUp: {fileID: 6143476450048365416}
   isStartPlace: 1
@@ -4121,14 +4142,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
---- !u!4 &6143476450048365417 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
-  m_PrefabInstance: {fileID: 4835156432946103964}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6143476450048365416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1611143389144602100, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
+  m_PrefabInstance: {fileID: 4835156432946103964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6143476450048365417 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
   m_PrefabInstance: {fileID: 4835156432946103964}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4835156433003014721
@@ -4303,13 +4324,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
---- !u!4 &6143476450160942947 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
-  m_PrefabInstance: {fileID: 4835156433060022934}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6143476450160942946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1611143389144602100, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
+  m_PrefabInstance: {fileID: 4835156433060022934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6143476450160942947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
   m_PrefabInstance: {fileID: 4835156433060022934}
   m_PrefabAsset: {fileID: 0}
