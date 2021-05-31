@@ -6,9 +6,5 @@ public class TextBoxController : MonoBehaviour
 {
 
     public int textBoxActive;
-    private void Update()
-    {
-        print(textBoxActive);
-    }
 
 }

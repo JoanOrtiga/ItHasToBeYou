@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,15 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
     [SerializeField] private RotateStatues[] statues;
     public string finishPuzzlePath;
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            CamaraShake.ShakeOnce(3, 3, new Vector3(0.1f, 0.1f));
+
+        }
+    }
 
     public bool Solved()
     {
