@@ -14,6 +14,7 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
         if (Solved())
         {
             //animator.SetTrigger("PlaceLens");
+            this.enabled = false;
         }
     }
 

@@ -10,6 +10,11 @@ public class StatuesSolver : MonoBehaviour
     [SerializeField] private Transform die;
  
     [SerializeField] private Animator animator;
+
+    [SerializeField] private Transform centralPoint;
+    [SerializeField] private Transform playerTransform;
+
+    [SerializeField] private float radius;
     private void Update()
     {
         bool solved = true;
@@ -23,9 +28,20 @@ public class StatuesSolver : MonoBehaviour
 
         if (solved || Input.GetKeyDown(KeyCode.L))
         {
-            animator.SetTrigger("OpenDoor");
-            StartCoroutine(Die());
+            if ((playerTransform.position - centralPoint.position).sqrMagnitude > radius * radius)
+            {
+                animator.SetTrigger("OpenDoor");
+                StartCoroutine(Die());
+                
+            }
+            
+            
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(centralPoint.position, radius);
     }
 
     private IEnumerator Die()
@@ -35,6 +51,8 @@ public class StatuesSolver : MonoBehaviour
             die.position = die.position - (Vector3.up * Time.deltaTime);
             yield return null;
         }
-       
+
+        this.enabled = false;
+
     }
 }
