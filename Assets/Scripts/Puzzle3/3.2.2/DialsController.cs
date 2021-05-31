@@ -35,6 +35,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     [SerializeField] private float angleAtATime = 10f;
 
+    public string SoundPath;
+
 
 
     private enum DialState
@@ -56,6 +58,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     public void Interact()
     {
+        
+        //FMODUnity.RuntimeManager.PlayOneShot(NarrativePath,gameObject.transform.position);
         playerController.DisableController(true, true, true);
         active = true;
         dialsCamera.enabled = true;

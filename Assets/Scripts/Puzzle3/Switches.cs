@@ -46,6 +46,8 @@ public class Switches : MonoBehaviour
                 goingUp.Invoke();
             }
 
+            
+
             anim.SetBool("Moving", true);
         }
     }

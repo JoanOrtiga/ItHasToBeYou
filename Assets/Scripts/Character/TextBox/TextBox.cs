@@ -5,18 +5,31 @@ using UnityEngine.UI;
 
 public class TextBox : MonoBehaviour
 {
-    public string pathSoundFmod;
+    [Header("Text One")]
+    public string textOne;
+    public string pathSoundFmodOne;
+
+    [Header("Text Two")]
+    public string textTwo;
+    public string pathSoundFmodTwo;
+
+   
+    
 
     public bool isTrigger, isInteraction, isPickUp, isLook, isCompletePuzzle, isPlaceObject, isTriggerWithAPreCondition, lookCloseObject;
     private GameObject textBox;
-    public string text;
+
     public float textDuration;
 
-   [HideInInspector] public bool textDone;
+    public bool textDone;
     public TextBox preTrigger;
 
     TextBoxController player;
     private bool activeTrigger;
+
+
+
+
     private void Awake()
     {
         textBox = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
@@ -34,14 +47,14 @@ public class TextBox : MonoBehaviour
             textDone = true;
             player.textBoxActive++;
             StartCoroutine(TextBoxStart());
-         
+
         }
 
-        if (isTriggerWithAPreCondition && other.CompareTag("Player") && textDone == false  )
+        if (isTriggerWithAPreCondition && other.CompareTag("Player") && textDone == false)
         {
             textDone = true;
             player.textBoxActive++;
-            
+
             StartCoroutine(TextBoxStart());
         }
     }
@@ -55,15 +68,23 @@ public class TextBox : MonoBehaviour
             StartCoroutine(TextBoxStart());
         }
 
-        if (textDone == false && lookCloseObject)
-        {
-            player.textBoxActive++;
-            StopCoroutine(TextBoxStart());
-            StartCoroutine(TextBoxStart());
-        }
 
     }
 
+
+    public void StartTextGetClose()
+    {
+        if (textDone == false)
+        {
+
+            player.textBoxActive++;
+            textDone = true;
+            StopCoroutine(TextCloseFace());
+            StartCoroutine(TextCloseFace());
+
+        }
+
+    }
 
     public void StartTextPuzzle()
     {
@@ -76,23 +97,27 @@ public class TextBox : MonoBehaviour
     }
     IEnumerator TextBoxStart()
     {
-        if (pathSoundFmod != "")
+        if (pathSoundFmodOne != "")
         {
-            FMODUnity.RuntimeManager.PlayOneShot(pathSoundFmod, player.transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot(pathSoundFmodOne, player.transform.position);
         }
 
-        if (isTrigger ||isTriggerWithAPreCondition)
+        if (isTrigger || isTriggerWithAPreCondition)
         {
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
-       
-        print("TEXT BOX");
-        textDone = true;
+
+
+        if (!isPickUp && !lookCloseObject)
+        {
+            print("TRUE");
+            textDone = true;
+        }
+
         textBox.gameObject.SetActive(true);
-        textBox.gameObject.GetComponent<Text>().text = text;
-   
-        print(textBox.gameObject.activeSelf);
-        
+        textBox.gameObject.GetComponent<Text>().text = textOne;
+
+
         yield return new WaitForSeconds(textDuration);
 
         if (player.textBoxActive - 1 == 0)
@@ -107,19 +132,41 @@ public class TextBox : MonoBehaviour
         }
     }
 
-    IEnumerator TextBoxPuzzle()
+
+    IEnumerator TextCloseFace()
     {
 
+        if (pathSoundFmodOne != "")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(pathSoundFmodTwo, player.transform.position);
+        }
 
-        print("TEXT BOX PUZZLE");
-        textDone = true;
         textBox.gameObject.SetActive(true);
-        textBox.gameObject.GetComponent<Text>().text = text;
+        textBox.gameObject.GetComponent<Text>().text = textTwo;
+
 
         yield return new WaitForSeconds(textDuration);
 
         if (player.textBoxActive - 1 == 0)
-        { 
+        {
+            textBox.gameObject.SetActive(false);
+        }
+        player.textBoxActive--;
+    }
+
+
+    IEnumerator TextBoxPuzzle()
+    {
+
+
+        textDone = true;
+        textBox.gameObject.SetActive(true);
+        textBox.gameObject.GetComponent<Text>().text = textTwo;
+
+        yield return new WaitForSeconds(textDuration);
+
+        if (player.textBoxActive - 1 == 0)
+        {
             textBox.gameObject.SetActive(false);
         }
         player.textBoxActive--;
