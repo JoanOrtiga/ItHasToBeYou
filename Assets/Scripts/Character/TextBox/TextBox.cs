@@ -110,10 +110,11 @@ public class TextBox : MonoBehaviour
 
         if (!isPickUp && !lookCloseObject)
         {
-            print("TRUE");
+
             textDone = true;
         }
 
+        textDone = true;
         textBox.gameObject.SetActive(true);
         textBox.gameObject.GetComponent<Text>().text = textOne;
 

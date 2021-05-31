@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlaceMaterial : MonoBehaviour
 {
     public string placeSoundPath;
+    public string correctSoundPath;
 
     public GameObject puzzle;
     public bool hasBeenPlaced;
@@ -35,7 +36,9 @@ public class PlaceMaterial : MonoBehaviour
 
             if (textDone == false)
             {
+                print("LETS START");
                 textDone = true;
+                FMODUnity.RuntimeManager.PlayOneShot(correctSoundPath, this.gameObject.transform.position);
                 textBox.StartText();
             }
 
