@@ -32,7 +32,6 @@ public class ObjectParameters : MonoBehaviour
     }
     public void DisablePopUp(bool Disable)
     {
-        print("hola");
         popUp.gameObject.SetActive(!Disable);
 
         if(changeAnim)
