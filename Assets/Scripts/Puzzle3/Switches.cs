@@ -11,7 +11,14 @@ public class Switches : MonoBehaviour
     [SerializeField] private Transform bot;
 
     [SerializeField] private float speed = 1.0f;
-    
+
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = gameObject.GetComponent<Animator>();
+    }
+
     private enum SwitchesPosition
     {
         bot, mid, top
@@ -32,8 +39,16 @@ public class Switches : MonoBehaviour
         if (currentPosition != SwitchesPosition.top)
         {
             currentPosition = (SwitchesPosition)((int)currentPosition + 1);
-            if(button)
-                    goingUp.Invoke();
+            if (button)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Mecanismos/Macnismo", transform.position);
+                
+                goingUp.Invoke();
+            }
+
+            
+
+            anim.SetBool("Moving", true);
         }
     }
 
@@ -42,8 +57,15 @@ public class Switches : MonoBehaviour
         if (currentPosition != SwitchesPosition.bot)
         {
             currentPosition = (SwitchesPosition)((int)currentPosition - 1);
-            if(button)
+            if (button)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Mecanismos/Macnismo", transform.position);
+                
                 goingDown.Invoke();
+            }
+
+            anim.SetBool("Moving", true);
+
         }
     }
 
@@ -53,13 +75,21 @@ public class Switches : MonoBehaviour
         {
             case SwitchesPosition.top:
                 transform.position = Vector3.Lerp(transform.position, top.position, speed * Time.deltaTime);
+                
                 break;
             case SwitchesPosition.mid:
                 transform.position = Vector3.Lerp(transform.position, mid.position, speed * Time.deltaTime);
+                print("DONE");
                 break;
             case SwitchesPosition.bot:
                 transform.position = Vector3.Lerp(transform.position, bot.position, speed * Time.deltaTime);
                 break;
         }
+    }
+
+
+    public void stopAnim()
+    {
+        anim.SetBool("Moving", false);  
     }
 }

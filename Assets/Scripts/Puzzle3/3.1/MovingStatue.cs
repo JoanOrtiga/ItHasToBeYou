@@ -45,6 +45,9 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
     private Vector3 nearStopPoint;
 
     private float lastDirection;
+    private PlayerController playerController;
+    
+    [SerializeField] private Transform lockCameraPoint;
     
     public void ChangeSide(Sides side)
     {
@@ -79,6 +82,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
     private void Awake()
     {
+        playerController = FindObjectOfType<PlayerController>();
         nearStopPoint = new Vector3();
         transform.LookAt(rotationPoint, Vector3.up);
 
@@ -140,23 +144,57 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             if (statuePathFinder.IsInStopPoint(transform.position))
             {
+                playerController.AnimatorSetBool("P3.1", false);
                 active = false;
+                
+                /* playerController.ReAttachHand();
+                 playerController.ChangeLookCloserState(false);*/
+                playerController.CancelCurrentPuzzle();
                 return;
             }
             else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
             {
+                playerController.AnimatorSetBool("P3.1", false);
                 imNearStopPoint = true;
                 active = false;
+                /*playerController.ReAttachHand();
+                playerController.ChangeLookCloserState(false);*/
+                playerController.CancelCurrentPuzzle();
                 return;
             }
         }
 
         verticalInput = Input.GetAxisRaw("Vertical");
 
+       
+
         if (verticalInput != 0)
         {
             lastDirection = verticalInput;
+            
+          //  playerController.cameraController.transform.rotation = rotation;
         }
+
+        Quaternion rotation = playerController.cameraController.transform.rotation;
+        playerController.cameraController.transform.LookAt(lockCameraPoint);
+        playerController.cameraController.GetPitchObject().LookAt(lockCameraPoint);
+        playerController.ChangeLookCloserState(true);
+        
+        if (verticalInput < 0.1f && verticalInput > -0.1f)
+        {
+            playerController.AnimatorSetBool("P3.1_PushBackward", false);
+            playerController.AnimatorSetBool("P3.1_PushForward", false); 
+        }
+        else if (verticalInput > 0.1f)
+        {
+            playerController.AnimatorSetBool("P3.1_PushBackward", false);
+            playerController.AnimatorSetBool("P3.1_PushForward", true);
+        }
+        else if (verticalInput < -0.1f)
+        {
+            playerController.AnimatorSetBool("P3.1_PushForward", false);
+            playerController.AnimatorSetBool("P3.1_PushBackward", true);
+        } 
 
         if (currentRoadType == RoadType.circular)
         {
@@ -235,5 +273,6 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         return false;
     }
 
-  
+
+    
 }

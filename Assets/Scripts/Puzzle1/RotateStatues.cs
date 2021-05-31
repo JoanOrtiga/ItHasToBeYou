@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
+public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 {
     public enum StatueSide
     {
@@ -22,6 +22,15 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
     private Transform rotateObjective;
 
     private bool waitNoOtherInput = false;
+    
+    
+    private PlayerController playerController;
+    private Transform playerTransform;
+    [SerializeField] private Transform lockCameraPoint;
+
+    [SerializeField] private Transform[] lockPoints;
+    
+    private float moveToSpeed = 1f;
 
     private void Awake()
     {
@@ -37,7 +46,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
 
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);
-    
 
         StartCoroutine(LookAt());
         StartCoroutine(AttachPlayer());
@@ -47,12 +55,12 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
     {
         if (inControl && !rotating && !waitNoOtherInput)
         {
-            if (Input.GetAxisRaw("Horizontal") > 0.5f)
+           /* if (Input.GetAxisRaw("Horizontal") > 0.5f)
             {
                 RotateObjective(false);
                 waitNoOtherInput = true;
-            }
-            else if (Input.GetAxisRaw("Horizontal") < -0.5f)
+            }*/
+           if (Input.GetAxisRaw("Horizontal") < -0.5f)
             {
                 playerController.AnimatorSetTrigger("P1_MoveLeft");
                 RotateObjective(true);
@@ -73,7 +81,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
             }
         }
 
-        if (Input.GetButtonDown("Interact") && inControl)
+        if (Input.GetButtonDown("Interact") && inControl && !waitNoOtherInput )
         {
             playerController.ChangeLookCloserState(false);
             playerController.EnableController(true,true,true,true);
@@ -99,17 +107,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
             currentState = (StatueSide) ((int) currentState + 1);
     }
     
-    
-    
-    
-    private PlayerController playerController;
-    private Transform playerTransform;
-    [SerializeField] private Transform lockCameraPoint;
-
-    [SerializeField] private Transform[] lockPoints;
-    
-    private float moveToSpeed = 1f;
-
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -118,7 +115,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
 
     private IEnumerator LookAt()
     {
-        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 3f))
+        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 8f))
         {
             yield return null;
         }
@@ -130,8 +127,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
 
     private IEnumerator AttachPlayer()
     {
-        playerController.DisableController(true, true, true);
-
         float lastMagnitude;
         float currentMagnitude;
         Transform positionChild = null;
@@ -144,12 +139,10 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
             
             if (currentMagnitude < lastMagnitude)
             {
-                currentMagnitude = lastMagnitude;
+                lastMagnitude = currentMagnitude;
                 positionChild = trans;
             }
         }
-        
-        playerController.AnimatorSetBool("P1", true);
 
         while ((positionChild.position - playerTransform.position).sqrMagnitude > 0.01 * 0.01)
         {
@@ -157,6 +150,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
             
             yield return null;
         }
+        
+        playerController.AnimatorSetBool("P1", true);
         
         playerTransform.position = positionChild.position;
     }
@@ -171,13 +166,17 @@ public class RotateStatues : MonoBehaviour , IInteractable , AnimationTouch
         else
         {
             rotateObjective.localRotation = Quaternion.Euler(rotateObjective.eulerAngles.x, rotateObjective.eulerAngles.y - 60, rotateObjective.eulerAngles.z);
-
         }
     }
 
     public void Touch()
     {
         rotating = true;
+        
+    }
+
+    public void Finished()
+    {
         waitNoOtherInput = false;
     }
 }

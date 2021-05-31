@@ -6,5 +6,5 @@ public class TextBoxController : MonoBehaviour
 {
 
     public int textBoxActive;
-  
+
 }

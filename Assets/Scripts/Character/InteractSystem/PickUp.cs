@@ -83,7 +83,6 @@ public class PickUp : MonoBehaviour
         {
             if (interaction == Interaction.drop && onHand == false)
             {
-                print("I CAN PICK UP");
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
@@ -131,10 +130,10 @@ public class PickUp : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && !handAnimator.GetBool("LookClose"))
             {
-                if (objectPickUp.GetComponent<TextBox>() != null &&
-                    objectPickUp.GetComponent<TextBox>().lookCloseObject)
+                if (objectPickUp.GetComponent<TextBox>() != null && objectPickUp.GetComponent<TextBox>().lookCloseObject && objectPickUp.GetComponent<TextBox>().isPickUp)
                 {
-                    objectPickUp.GetComponent<TextBox>().StartText();
+                    print("Start Text");
+                    objectPickUp.GetComponent<TextBox>().StartTextGetClose();
                 }
 
                 handAnimator.SetBool("LookClose", true);
@@ -155,7 +154,6 @@ public class PickUp : MonoBehaviour
             
             if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
-                print("OBJECT");
                 interaction = Interaction.drop;
             }
             else if (rayCastHit.transform.gameObject.layer == interactLayer)
@@ -214,11 +212,15 @@ public class PickUp : MonoBehaviour
 
     private void PlaceObject()
     {
+        objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
         objectPickUp.transform.parent = placeObjectPosition.transform;
         objectPickUp.position = placeObjectPosition.transform.position;
         objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = true;
         placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
         handAnimator.SetBool("LookClose", false);
+
+        FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlaceMaterial>().placeSoundPath, transform.position);
+
         onHand = false;
     }
 
@@ -236,9 +238,12 @@ public class PickUp : MonoBehaviour
     private void PickUpObject()
     {
         //CancelInvoke("CheckForObject");
-
+        
        
         objectPickUp = rayCastHit.transform;
+
+        FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().pickUpPath, transform.position);
+
         objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(true);
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectRotation = objectPickUp.GetComponent<ObjectOnHand>();
@@ -259,10 +264,8 @@ public class PickUp : MonoBehaviour
 
         if (objectPickUp.GetComponent<TextBox>() != null)
         {
-            if (!objectPickUp.GetComponent<TextBox>().lookCloseObject)
-            {
-                objectPickUp.GetComponent<TextBox>().StartText();
-            }
+            objectPickUp.GetComponent<TextBox>().StartText();
+           
         }
 
         objectPickUp.SetParent(handCenter.transform);
@@ -285,6 +288,8 @@ public class PickUp : MonoBehaviour
             objectPickUpRigidBody.constraints = RigidbodyConstraints.None;
             objectPickUpRigidBody.isKinematic = false;
             objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
+
+            FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().dropPath, transform.position);
 
             if (dist < leaveDistance)
             {

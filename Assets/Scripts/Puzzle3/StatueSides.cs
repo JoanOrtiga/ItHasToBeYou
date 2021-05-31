@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder;
 
-public class StatueSides : MonoBehaviour , IInteractable
+public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
 {
 
   //  public MoveableStatue.Sides side;
@@ -56,7 +56,11 @@ public class StatueSides : MonoBehaviour , IInteractable
 
         deActivated = false;
         ActiveSide = true;
-
+        
+        playerController.SetCurrentPuzzle(this);
+        playerController.DisableController(true, true, true, true);        
+        playerController.AnimatorSetBool("P3.1", true);
+        
         StartCoroutine(AttachPlayer());
         StartCoroutine(LookAt());
         
@@ -73,12 +77,16 @@ public class StatueSides : MonoBehaviour , IInteractable
         {
             yield return null;
         }
+        
+        playerController.DettachHand();
+        playerController.ChangeLookCloserState(true);
+        
+       /* playerController.DettachHand();
+        playerController.ChangeLookCloserState(true);*/
     }
 
     private IEnumerator AttachPlayer()
     {
-        playerController.DisableController(true, true, true);
-
         while ((positonChild.position - playerTransform.position).sqrMagnitude > 0.01 * 0.01)
         {
             playerTransform.position = Vector3.MoveTowards(playerTransform.position, positonChild.position, moveToSpeed * Time.deltaTime);
@@ -124,5 +132,15 @@ public class StatueSides : MonoBehaviour , IInteractable
         {
             deActivated = true;
         }
+    }
+
+    public void Touch()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Finished()
+    {
+        throw new NotImplementedException();
     }
 }
