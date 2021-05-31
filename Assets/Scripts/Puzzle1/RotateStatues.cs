@@ -55,12 +55,12 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     {
         if (inControl && !rotating && !waitNoOtherInput)
         {
-            if (Input.GetAxisRaw("Horizontal") > 0.5f)
+           /* if (Input.GetAxisRaw("Horizontal") > 0.5f)
             {
                 RotateObjective(false);
                 waitNoOtherInput = true;
-            }
-            else if (Input.GetAxisRaw("Horizontal") < -0.5f)
+            }*/
+           if (Input.GetAxisRaw("Horizontal") < -0.5f)
             {
                 playerController.AnimatorSetTrigger("P1_MoveLeft");
                 RotateObjective(true);
