@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TextBox : MonoBehaviour
 {
+    public string pathSoundFmod;
 
     public bool isTrigger, isInteraction, isPickUp, isLook, isCompletePuzzle, isPlaceObject, isTriggerWithAPreCondition, lookCloseObject;
     private GameObject textBox;
@@ -62,6 +63,7 @@ public class TextBox : MonoBehaviour
         }
 
        
+
     }
 
 
@@ -76,6 +78,10 @@ public class TextBox : MonoBehaviour
     }
     IEnumerator TextBoxStart()
     {
+        if (pathSoundFmod != "")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(pathSoundFmod, player.transform.position);
+        }
 
         if (isTrigger ||isTriggerWithAPreCondition)
         {
@@ -86,6 +92,7 @@ public class TextBox : MonoBehaviour
         textDone = true;
         textBox.gameObject.SetActive(true);
         textBox.gameObject.GetComponent<Text>().text = text;
+   
         
         yield return new WaitForSeconds(textDuration);
 
