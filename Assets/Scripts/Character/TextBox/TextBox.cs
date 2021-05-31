@@ -113,7 +113,7 @@ public class TextBox : MonoBehaviour
             print("TRUE");
             textDone = true;
         }
-
+       
         textBox.gameObject.SetActive(true);
         textBox.gameObject.GetComponent<Text>().text = textOne;
 

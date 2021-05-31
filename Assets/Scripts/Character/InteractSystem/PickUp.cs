@@ -188,7 +188,11 @@ public class PickUp : MonoBehaviour
             }
             else if (rayCastHit.transform.gameObject.layer == lookObjectLayer)
             {
-                rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
+                if (rayCastHit.transform.gameObject.GetComponent<TextBox>().textDone == false)
+                {
+                    rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
+                }
+                
             }
             else
             {
