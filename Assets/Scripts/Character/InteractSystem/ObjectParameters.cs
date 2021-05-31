@@ -14,9 +14,7 @@ public class ObjectParameters : MonoBehaviour
 
     public Vector3 startPos { get; private set; }
     [HideInInspector] public Quaternion startRot;
-
-
-
+    
     private void Awake()
     {
         startPos = transform.position;
@@ -39,5 +37,4 @@ public class ObjectParameters : MonoBehaviour
             popUp.gameObject.SetActive(true);
         }
     }
-
 }
