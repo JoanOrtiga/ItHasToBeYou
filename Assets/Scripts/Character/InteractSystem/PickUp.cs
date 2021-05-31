@@ -83,7 +83,6 @@ public class PickUp : MonoBehaviour
         {
             if (interaction == Interaction.drop && onHand == false)
             {
-                print("I CAN PICK UP");
                 //UI " E to Pick Up Object"
                 if (Input.GetButtonDown("Interact"))
                 {
@@ -155,7 +154,6 @@ public class PickUp : MonoBehaviour
             
             if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
-                print("OBJECT");
                 interaction = Interaction.drop;
             }
             else if (rayCastHit.transform.gameObject.layer == interactLayer)
