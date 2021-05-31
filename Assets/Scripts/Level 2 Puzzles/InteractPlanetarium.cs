@@ -155,6 +155,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     private void PlayAnimation()
     {
+        print("MAKE ANIMATION Go down");
         if (playSoundOne == false)
         {
             playSoundOne = true;
