@@ -46,7 +46,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);
-    
 
         StartCoroutine(LookAt());
         StartCoroutine(AttachPlayer());
@@ -116,7 +115,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
     private IEnumerator LookAt()
     {
-        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 3f))
+        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 8f))
         {
             yield return null;
         }
@@ -145,7 +144,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
             }
         }
         
-        playerController.AnimatorSetBool("P1", true);
+       
 
         while ((positionChild.position - playerTransform.position).sqrMagnitude > 0.01 * 0.01)
         {
@@ -153,6 +152,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
             
             yield return null;
         }
+        
+        playerController.AnimatorSetBool("P1", true);
         
         playerTransform.position = positionChild.position;
     }

@@ -25,6 +25,11 @@ public class CameraController : MonoBehaviour
     public bool lookCloser;
     private float initialYaw;
 
+    public Transform GetPitchObject()
+    {
+        return pitchTransform;
+    }
+    
     private void Awake()
     {
         pitchTransform = transform.GetChild(0).transform;

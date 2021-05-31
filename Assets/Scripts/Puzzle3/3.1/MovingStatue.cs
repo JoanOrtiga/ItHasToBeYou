@@ -47,6 +47,8 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
     private float lastDirection;
     private PlayerController playerController;
     
+    [SerializeField] private Transform lockCameraPoint;
+    
     public void ChangeSide(Sides side)
     {
         this.playerSide = side;
@@ -164,11 +166,20 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
         verticalInput = Input.GetAxisRaw("Vertical");
 
+       
+
         if (verticalInput != 0)
         {
             lastDirection = verticalInput;
+            
+          //  playerController.cameraController.transform.rotation = rotation;
         }
 
+        Quaternion rotation = playerController.cameraController.transform.rotation;
+        playerController.cameraController.transform.LookAt(lockCameraPoint);
+        playerController.cameraController.GetPitchObject().LookAt(lockCameraPoint);
+        playerController.ChangeLookCloserState(true);
+        
         if (verticalInput < 0.1f && verticalInput > -0.1f)
         {
             playerController.AnimatorSetBool("P3.1_PushBackward", false);
