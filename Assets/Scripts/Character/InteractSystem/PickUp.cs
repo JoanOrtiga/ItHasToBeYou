@@ -130,10 +130,10 @@ public class PickUp : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && !handAnimator.GetBool("LookClose"))
             {
-                if (objectPickUp.GetComponent<TextBox>() != null &&
-                    objectPickUp.GetComponent<TextBox>().lookCloseObject)
+                if (objectPickUp.GetComponent<TextBox>() != null && objectPickUp.GetComponent<TextBox>().lookCloseObject && objectPickUp.GetComponent<TextBox>().isPickUp)
                 {
-                    objectPickUp.GetComponent<TextBox>().StartText();
+                    print("Start Text");
+                    objectPickUp.GetComponent<TextBox>().StartTextGetClose();
                 }
 
                 handAnimator.SetBool("LookClose", true);
@@ -264,10 +264,8 @@ public class PickUp : MonoBehaviour
 
         if (objectPickUp.GetComponent<TextBox>() != null)
         {
-            if (!objectPickUp.GetComponent<TextBox>().lookCloseObject)
-            {
-                objectPickUp.GetComponent<TextBox>().StartText();
-            }
+            objectPickUp.GetComponent<TextBox>().StartText();
+           
         }
 
         objectPickUp.SetParent(handCenter.transform);
