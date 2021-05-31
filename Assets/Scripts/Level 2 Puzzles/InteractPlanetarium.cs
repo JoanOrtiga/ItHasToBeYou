@@ -89,6 +89,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 {
                     puzzleAnimator.Play("Puzzle2GetDown");
                     playSoundOne = false;
+                    print(playSoundOne);
+                    print("Make play sound false");
                     FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
 
                     correctMetals = false;
@@ -130,6 +132,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
             if (Input.GetButtonDown("Select"))
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/SelectRing", ringOne.position);
                 interactingRing++;
                 if (interactingRing >= 3)
                 {
@@ -155,7 +158,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     private void PlayAnimation()
     {
-        print("MAKE ANIMATION Go down");
+        print(playSoundOne);
         if (playSoundOne == false)
         {
             playSoundOne = true;
@@ -266,7 +269,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         {
             playerController.EnableController(true, true, true, true);
         }
-
+        playSoundOne = false;
         activeCameraTransition = false;
         
         StopCoroutine("CamaraTransition");
