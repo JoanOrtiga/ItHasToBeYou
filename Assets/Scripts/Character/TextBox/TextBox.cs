@@ -62,8 +62,6 @@ public class TextBox : MonoBehaviour
             StartCoroutine(TextBoxStart());
         }
 
-       
-
     }
 
 
@@ -88,11 +86,12 @@ public class TextBox : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
        
-        //print("TEXT BOX");
+        print("TEXT BOX");
         textDone = true;
         textBox.gameObject.SetActive(true);
         textBox.gameObject.GetComponent<Text>().text = text;
    
+        print(textBox.gameObject.activeSelf);
         
         yield return new WaitForSeconds(textDuration);
 
@@ -112,7 +111,7 @@ public class TextBox : MonoBehaviour
     {
 
 
-        print("TEXT BOX");
+        print("TEXT BOX PUZZLE");
         textDone = true;
         textBox.gameObject.SetActive(true);
         textBox.gameObject.GetComponent<Text>().text = text;
@@ -120,7 +119,7 @@ public class TextBox : MonoBehaviour
         yield return new WaitForSeconds(textDuration);
 
         if (player.textBoxActive - 1 == 0)
-        {
+        { 
             textBox.gameObject.SetActive(false);
         }
         player.textBoxActive--;
