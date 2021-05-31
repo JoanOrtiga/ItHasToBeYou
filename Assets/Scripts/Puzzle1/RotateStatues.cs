@@ -139,12 +139,10 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
             
             if (currentMagnitude < lastMagnitude)
             {
-                currentMagnitude = lastMagnitude;
+                lastMagnitude = currentMagnitude;
                 positionChild = trans;
             }
         }
-        
-       
 
         while ((positionChild.position - playerTransform.position).sqrMagnitude > 0.01 * 0.01)
         {
