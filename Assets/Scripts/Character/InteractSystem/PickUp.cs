@@ -43,6 +43,7 @@ public class PickUp : MonoBehaviour
 
     [HideInInspector] public bool activePuzzle = false;
 
+    [SerializeField] private Color pickupColor = Color.yellow;
 
     public enum Interaction
     {
@@ -141,16 +142,87 @@ public class PickUp : MonoBehaviour
         }
     }
 
+    private SpriteRenderer popupSPR;
+    private bool changingColor = false;
+
+    IEnumerator FromWhiteToPickUpColor()
+    {
+        for (int i = 0; i < 130; i++)
+        {
+            if(popupSPR != null)
+                popupSPR.color = Color.Lerp(popupSPR.color, pickupColor, 0.04f);
+            yield return new WaitForSeconds(0.01f); 
+        }
+       
+    }
+
     void CheckForObject()
     {
         ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
         hitted = Physics.Raycast(ray, out rayCastHit, pickUpDistance, DetectLayerMask.value);
 
-
         if (hitted && activePuzzle == false)
         {
+            SpriteRenderer x = rayCastHit.transform.GetComponent<ObjectParameters>()?.popUp.GetComponent<SpriteRenderer>();
+            if (x != null)
+            {
+                if (popupSPR == null)
+                {
+                    StopCoroutine(FromWhiteToPickUpColor());
+                    popupSPR = x;
+                    StartCoroutine(FromWhiteToPickUpColor());
+                }
+                else if (x != popupSPR)
+                {
+                    StopCoroutine(FromWhiteToPickUpColor());
+                    popupSPR.color = Color.white;
+                    popupSPR = x;
+                    StartCoroutine(FromWhiteToPickUpColor());
+                }
+            }
+            else
+            {
+                if (popupSPR != null)
+                {
+                    StopCoroutine(FromWhiteToPickUpColor());
+                    popupSPR.color = Color.white;
+                    popupSPR = null; 
+                }
+            }
             
-           
+            /*
+            if (popupSPR == null)
+            {
+                popupSPR = rayCastHit.transform.GetComponent<ObjectParameters>()?.popUp.GetComponent<SpriteRenderer>();
+                if (popupSPR != null)
+                {
+                    if(!changingColor)
+                        StartCoroutine(FromWhiteToPickUpColor());
+                }
+                else
+                {
+                    StopCoroutine(FromWhiteToPickUpColor());
+                    changingColor = false;
+                }
+            }
+            else
+            {
+                if (rayCastHit.transform.GetComponent<ObjectParameters>()?.popUp.GetComponent<SpriteRenderer>() != popupSPR)
+                {
+                    StopCoroutine(FromWhiteToPickUpColor());
+                    changingColor = false;
+                    popupSPR.color = Color.white;
+                    popupSPR = rayCastHit.transform.GetComponent<ObjectParameters>()?.popUp.GetComponent<SpriteRenderer>();
+                } 
+            }
+
+
+            if (popupSPR != null)
+            {
+                if(!changingColor)
+                    StartCoroutine(FromWhiteToPickUpColor());
+            
+            }*/
             
             if (rayCastHit.transform.gameObject.layer == objectLayer)
             {
@@ -196,19 +268,23 @@ public class PickUp : MonoBehaviour
             }
             else
             {
-               
                 interaction = Interaction.none;
             }
 
             if (!(rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable")))
             {
-              
                 crosshairController.ChangeCrosshairState(false, false);
             }
         }
         else
         {
-           
+            if (popupSPR != null)
+            {
+                StopCoroutine(FromWhiteToPickUpColor());
+                popupSPR.color = Color.white;
+                popupSPR = null; 
+            }
+            
             interaction = Interaction.none;
             crosshairController.ChangeCrosshairState(false, false);
         }
