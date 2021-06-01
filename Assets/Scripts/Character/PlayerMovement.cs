@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = -9.8f;
 
 
-    private Vector2 inputVector;
+    [HideInInspector] public Vector2 inputVector;
     private Vector2 smoothInputVector;
 
     private float smoothCurrentSpeed;
