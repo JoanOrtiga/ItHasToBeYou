@@ -77,12 +77,9 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         {
             yield return null;
         }
-        
-        playerController.DettachHand();
-        playerController.ChangeLookCloserState(true);
-        
-       /* playerController.DettachHand();
-        playerController.ChangeLookCloserState(true);*/
+
+        /* playerController.DettachHand();
+         playerController.ChangeLookCloserState(true);*/
     }
 
     private IEnumerator AttachPlayer()
