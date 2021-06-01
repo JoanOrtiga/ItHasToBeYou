@@ -8,12 +8,8 @@ public class AmbietSound : MonoBehaviour
     void Start()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Sonido Ambiente/CreakyWood");
-        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Sonido Ambiente/Ambiet ");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Sonido Ambiente/Ambiet");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
