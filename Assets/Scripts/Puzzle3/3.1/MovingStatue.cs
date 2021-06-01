@@ -146,8 +146,6 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
             {
                 playerController.AnimatorSetBool("P3.1", false);
                 active = false;
-                
-                
                 playerController.CancelCurrentPuzzle();
                 return;
             }
@@ -156,7 +154,6 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
                 playerController.AnimatorSetBool("P3.1", false);
                 imNearStopPoint = true;
                 active = false;
-                
                 playerController.CancelCurrentPuzzle();
                 return;
             }
@@ -168,9 +165,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
         if (verticalInput != 0)
         {
-            lastDirection = verticalInput;
-            
-          //  playerController.cameraController.transform.rotation = rotation;
+            lastDirection = verticalInput; 
         }
         
         
@@ -266,7 +261,4 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
         return false;
     }
-
-
-    
 }
