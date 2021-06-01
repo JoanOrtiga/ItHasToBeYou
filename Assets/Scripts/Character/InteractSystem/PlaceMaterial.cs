@@ -36,7 +36,7 @@ public class PlaceMaterial : MonoBehaviour
 
             if (textDone == false)
             {
-                print("LETS START");
+
                 textDone = true;
                 FMODUnity.RuntimeManager.PlayOneShot(correctSoundPath, this.gameObject.transform.position);
                 textBox.StartText();

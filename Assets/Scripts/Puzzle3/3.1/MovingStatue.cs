@@ -147,8 +147,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
                 playerController.AnimatorSetBool("P3.1", false);
                 active = false;
                 
-                /* playerController.ReAttachHand();
-                 playerController.ChangeLookCloserState(false);*/
+                
                 playerController.CancelCurrentPuzzle();
                 return;
             }
@@ -157,8 +156,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
                 playerController.AnimatorSetBool("P3.1", false);
                 imNearStopPoint = true;
                 active = false;
-                /*playerController.ReAttachHand();
-                playerController.ChangeLookCloserState(false);*/
+                
                 playerController.CancelCurrentPuzzle();
                 return;
             }
@@ -174,11 +172,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
             
           //  playerController.cameraController.transform.rotation = rotation;
         }
-
-        Quaternion rotation = playerController.cameraController.transform.rotation;
-        playerController.cameraController.transform.LookAt(lockCameraPoint);
-        playerController.cameraController.GetPitchObject().LookAt(lockCameraPoint);
-        playerController.ChangeLookCloserState(true);
+        
         
         if (verticalInput < 0.1f && verticalInput > -0.1f)
         {
