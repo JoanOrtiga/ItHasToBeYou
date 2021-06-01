@@ -99,11 +99,11 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
 
     private IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.1f);
         cooldowned = true;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (ActiveSide)
         {
@@ -118,7 +118,7 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
                 ActiveSide = false;
                 
                 playerTransform.parent = null;
-                playerController.EnableController(true,true,true);
+                playerController.EnableController(true,true,true, true);
                 
                 otherSide1.SetActive(true);
                 otherSide2.SetActive(true);
