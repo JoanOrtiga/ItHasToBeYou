@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
@@ -13,7 +14,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         myAnimator = GetComponent<Animator>();
         playerController = FindObjectOfType<PlayerController>();
         playerController.SetCurrentPuzzle(this);
-        playerController.DisableController(true,true,true);
+        playerController.DisableController(true,true,true, true);
     }
 
     private void Update()
@@ -22,7 +23,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         {
             myAnimator.SetTrigger("P0 OpenDoor");
             playerController.AnimatorSetTrigger("P0 OpenDoor");
-            //this.enabled = false;
+            this.enabled = false;
         }
     }
 
@@ -31,12 +32,20 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         print("Nothing To touch");
     }
 
+    private IEnumerator CoolDown()
+    {
+        yield return new WaitForSeconds(3f);
+        playerController.CancelCurrentPuzzle();
+        myAnimator.enabled = false;
+        playerController.transform.parent = null;
+        playerController.EnableController(true,true,true, true);
+    }
+    
     public void Finished()
     {
         //Control player parenting.
-        playerController.CancelCurrentPuzzle();
-        playerController.transform.parent = null;
-        playerController.EnableController(true,true,true);
+        StartCoroutine(CoolDown());
+        
 
     }
 }

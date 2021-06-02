@@ -105,7 +105,7 @@ public class PickUp : MonoBehaviour
                 if (Input.GetButtonDown("Interact"))
                 {
                 
-                    PlaceObject();
+                    PlaceObject(1);
                 }
             }
             else if (interaction == Interaction.observe)
@@ -245,14 +245,23 @@ public class PickUp : MonoBehaviour
             }
             else if (rayCastHit.transform.gameObject.layer == placeObjectLayer)
             {
-
-                if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false && onHand)
+                if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>() != null)
                 {
-
-                  
-                    interaction = Interaction.placeObject;
-                    placeObjectPosition = rayCastHit.transform.gameObject;
+                    if (rayCastHit.transform.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced == false && onHand)
+                    {
+                        interaction = Interaction.placeObject;
+                        placeObjectPosition = rayCastHit.transform.gameObject;
+                    }
                 }
+                else if (rayCastHit.transform.gameObject.GetComponent<PlacePlate>() != null)
+                {
+                    if (rayCastHit.transform.gameObject.GetComponent<PlacePlate>().hasBeenPlaced == false && onHand)
+                    {
+                        interaction = Interaction.placeObject;
+                        placeObjectPosition = rayCastHit.transform.gameObject;
+                    }
+                }
+               
             }
             else if (rayCastHit.transform.gameObject.layer == lookObjectLayer)
             {
@@ -286,16 +295,31 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    private void PlaceObject()
+    private void PlaceObject(int puzzlePlace) //1 is balance y 2
     {
+
         objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
         objectPickUp.transform.parent = placeObjectPosition.transform;
         objectPickUp.position = placeObjectPosition.transform.position;
         objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = true;
-        placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
-        handAnimator.SetBool("LookClose", false);
 
-        FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlaceMaterial>().placeSoundPath, transform.position);
+
+        print(objectPickUp.transform.name);
+        if (puzzlePlace == 1)
+        {
+            placeObjectPosition.GetComponent<PlacePlate>().hasBeenPlaced = true;
+            FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlacePlate>().placeSoundPath, transform.position);
+        }
+        else if (puzzlePlace == 2)
+        {
+           
+            placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
+            FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlaceMaterial>().placeSoundPath, transform.position);
+            handAnimator.SetBool("LookClose", false);
+        }
+       
+
+
 
         onHand = false;
     }
@@ -335,7 +359,16 @@ public class PickUp : MonoBehaviour
 
         if (objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced == true)
         {
-            objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced = false;
+            if (objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>() != null)
+            {
+                objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced = false;
+
+            }
+            else if (objectPickUp.transform.parent.gameObject.GetComponent<PlacePlate>() != null)
+            {
+                objectPickUp.transform.parent.gameObject.GetComponent<PlacePlate>().hasBeenPlaced = false;
+
+            }
             objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = false;
         }
       
