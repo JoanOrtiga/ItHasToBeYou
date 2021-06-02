@@ -28,7 +28,7 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
         }
 
         FMODUnity.RuntimeManager.PlayOneShot(finishPuzzlePath, secretDoor.position);
-        CamaraShake.ShakeOnce(3, 3);
+        CamaraShake.ShakeOnce(3, 3, new Vector3(0.1f, 0.1f));
         return true;
     }
 }
