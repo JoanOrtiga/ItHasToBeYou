@@ -1,14 +1,17 @@
 fileFormatVersion: 2
-guid: 2a5e1132d5a6a444c9d5df46246b7474
+guid: 258c1c22271c675479d94602ceeecde9
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: P1.2_GlassIn
+    second: P1.2_HandIn
   - first:
       74: -5405653242291790180
-    second: P1.2_GlassOut
+    second: P1.2_Mantain
+  - first:
+      74: 4854180139978558704
+    second: P1.2_HandOut
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -29,7 +32,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -38,11 +41,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: P1.2_GlassIn
+      name: P1.2_HandIn
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -67,11 +70,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: P1.2_GlassOut
+      name: P1.2_Mantain
       takeName: Take 001
       internalID: 0
-      firstFrame: 50
-      lastFrame: 100
+      firstFrame: 44
+      lastFrame: 131
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: P1.2_HandOut
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 131
+      lastFrame: 178
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
