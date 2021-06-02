@@ -129,11 +129,11 @@ public class PickUp : MonoBehaviour
             {
                 if (objectPickUp.GetComponent<TextBox>() != null && objectPickUp.GetComponent<TextBox>().lookCloseObject && objectPickUp.GetComponent<TextBox>().isPickUp)
                 {
-                    print("Start Text");
+                    
                     objectPickUp.GetComponent<TextBox>().StartTextGetClose();
                 }
 
-                handAnimator.SetBool("LookClose", true);
+               // handAnimator.SetBool("LookClose", true);
             }
         }
     }
