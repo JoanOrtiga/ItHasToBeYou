@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObjectOnHand : MonoBehaviour
 {
-    public Vector3 rotation;
-   
-
+    public Vector3 desiredRotation;
+    public Vector3 desiredPosition;
 }
