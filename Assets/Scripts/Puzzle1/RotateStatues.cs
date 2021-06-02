@@ -32,6 +32,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     
     private float moveToSpeed = 1f;
 
+    public string soundPathRotation = "event:/INGAME/Puzzle 1/1.1/Rotate";
+
     private void Awake()
     {
         rotateObjective = new GameObject().transform;
@@ -61,11 +63,12 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
                 waitNoOtherInput = true;
             }*/
            if (Input.GetAxisRaw("Horizontal") < -0.5f)
-            {
-                playerController.AnimatorSetTrigger("P1_MoveLeft");
-                RotateObjective(true);
-                waitNoOtherInput = true;
-            }
+           {
+               FMODUnity.RuntimeManager.PlayOneShot(soundPathRotation, gameObject.transform.position);
+               playerController.AnimatorSetTrigger("P1_MoveLeft");
+               RotateObjective(true);
+               waitNoOtherInput = true;
+           }
         }
         
         if (rotating)

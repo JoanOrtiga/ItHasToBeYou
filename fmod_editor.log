@@ -7,100 +7,13 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000215F0F8BF48 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000002116ACB09A8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] SystemI::createSound                     : filename = Videojoc FMOD_actual\Build\Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Affinity: 0x8000000000000003, Priority: 0xFFFF7FFC, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
-[LOG] SystemI::createSound                     : setdata soundi = 0000021677EAD158 : node = 00000215A2EDFB70
-[LOG] SystemI::createSound                     : add node to async list : head = 00000215A1CB4988.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000021677EAD158
-[LOG] SystemI::createSoundInternal             :     Create name='Videojoc FMOD_actual\Build\Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2046592
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 52096
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000215A2EDFC80
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='NO_3-1-1', format=5, channels=1, frequency=48000, lengthbytes=481216, lengthpcm=2993592, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
-[LOG] Thread::initThread                       :     Init FMOD file thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFC, Stack Size: 49152, Semaphore: No, Sleep Time: 10, Looping: Yes.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000021677EAD158
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 2046592
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 52096
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004AFC7DEEC8
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFA5C137B10
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFA5C137AE0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFA5C137BE0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFA5C137CA0
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000216EEFCE868
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Moving Furniture Table Scrapes Bottles Rattle SND1756', format=5, channels=1, frequency=48000, lengthbytes=15328, lengthpcm=79051, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.435464.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 2046592
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 52096
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004AFC7DEEC8
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFA5C137B10
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFA5C137AE0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFA5C137BE0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFA5C137CA0
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000216EEFCE868
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Objects, Furniture, Moving Furniture, Dresser Scrapes 01 SND1748', format=5, channels=1, frequency=48000, lengthbytes=24800, lengthpcm=135327, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.405584.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 2046592
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 52096
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004AFC7DEEC8
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFA5C137B10
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFA5C137AE0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFA5C137BE0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFA5C137CA0
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000216EEFCE868
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Objects, Furniture, Moving Furniture, Dresser Scrapes 01 SND1748 1', format=5, channels=1, frequency=48000, lengthbytes=59040, lengthpcm=338318, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.478943.
-[LOG] SoundI::release                          : NO_3-1-1 (0000021677EAD158)
-[LOG] SoundI::release                          :     NO_3-1-1 (00000215F093F5B8)
-[LOG] SoundI::release                          :     NO_3-1-1 (0000021677EADB78)
-[LOG] SoundI::release                          :  (00000216F49B31C8)
-[LOG] SoundI::release                          :     Objects, Furniture, Moving Furniture, Dresser Scrapes 01 SND1748 (00000215F093F758)
-[LOG] SoundI::release                          :  (00000216F49B0DD8)
-[LOG] SoundI::release                          :     Objects, Furniture, Moving Furniture, Dresser Scrapes 01 SND1748 1 (00000215F375E438)
-[LOG] SoundI::release                          :  (00000216F49B3A68)
-[LOG] SoundI::release                          :     Moving Furniture Table Scrapes Bottles Rattle SND1756 (00000215F093F418)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
@@ -115,5 +28,3 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.
