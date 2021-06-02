@@ -125,11 +125,7 @@ public class PickUp : MonoBehaviour
 
         if (onHand)
         {
-            if (Input.GetMouseButtonDown(0) && handAnimator.GetBool("LookClose"))
-            {
-                handAnimator.SetBool("LookClose", false);
-            }
-            else if (Input.GetMouseButtonDown(0) && !handAnimator.GetBool("LookClose"))
+            if (Input.GetMouseButtonDown(0))
             {
                 if (objectPickUp.GetComponent<TextBox>() != null && objectPickUp.GetComponent<TextBox>().lookCloseObject && objectPickUp.GetComponent<TextBox>().isPickUp)
                 {
@@ -357,7 +353,8 @@ public class PickUp : MonoBehaviour
         objectPickUp.position = handCenter.transform.position;
 
         objectPickUp.localRotation = Quaternion.identity;
-        objectPickUp.localRotation = Quaternion.Euler(objectRotation.rotation);
+        objectPickUp.localRotation = Quaternion.Euler(objectRotation.desiredRotation);
+        objectPickUp.localPosition = objectRotation.desiredPosition;
 
         onHand = true;
     }
