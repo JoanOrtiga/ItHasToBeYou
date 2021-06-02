@@ -5157,6 +5157,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 07f26681687086d489fd776e1b6edc42, type: 3}
   m_PrefabInstance: {fileID: 370133237}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &371748921 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 371748921, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+  m_PrefabInstance: {fileID: 4835156433077709763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &376305441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22396,15 +22401,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9301754
+      value: -1.276
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1644324
+      value: 3.26
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.6288898
+      value: 4.402
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39525,6 +39530,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468394740}
     m_Modifications:
+    - target: {fileID: 911527817635241198, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_Name
+      value: InitialCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842348043558001044, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1588607824}
+    - target: {fileID: 3842348043558001044, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: puzzlePositionCam
+      value: 
+      objectReference: {fileID: 371748921}
+    - target: {fileID: 3842348043558001044, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: initialPositionCam
+      value: 
+      objectReference: {fileID: 4835156433077709764}
     - target: {fileID: 4835156432748238256, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
       propertyPath: m_Name
       value: PuzzlePlanetariNew
@@ -39573,12 +39594,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6429772592158396318, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429772592158396318, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429772592158396318, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.56
+      objectReference: {fileID: 0}
     - target: {fileID: 8838408241926446678, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
       propertyPath: door
       value: 
       objectReference: {fileID: 614381107512707957}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+--- !u!4 &4835156433077709764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6429772592158396318, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+  m_PrefabInstance: {fileID: 4835156433077709763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4835765263834932233
 Transform:
   m_ObjectHideFlags: 0
