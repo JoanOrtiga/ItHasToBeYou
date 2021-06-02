@@ -12,14 +12,23 @@ public class MineralsProperties : MonoBehaviour
     {
         if (this.gameObject.GetComponent<ObjectParameters>().hasBeenPlaced == true)
         {
-            if (transform.parent.gameObject.GetComponent<PlaceMaterial>().materialNumber == materialNumber)
+
+            if (transform.parent.gameObject.GetComponent<PlaceMaterial>()!= null)
             {
-                transform.parent.gameObject.GetComponent<PlaceMaterial>().correctMaterial = true;
+                if (transform.parent.gameObject.GetComponent<PlaceMaterial>().materialNumber == materialNumber)
+                {
+                    transform.parent.gameObject.GetComponent<PlaceMaterial>().correctMaterial = true;
+                }
+                else
+                {
+                    transform.parent.gameObject.GetComponent<PlaceMaterial>().correctMaterial = false;
+                }
             }
-            else
+            else if (transform.parent.gameObject.GetComponent<PlacePlate>() != null)
             {
-                transform.parent.gameObject.GetComponent<PlaceMaterial>().correctMaterial = false;
+                print("PLATE");
             }
+           
             
         }
     }
