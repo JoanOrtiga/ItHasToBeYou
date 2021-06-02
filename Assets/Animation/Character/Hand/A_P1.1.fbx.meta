@@ -1,32 +1,20 @@
 fileFormatVersion: 2
-guid: ed710b144b595594a9d6b9cec4c69cb5
+guid: 76c70e1d7c79c994d9fff03ddee4884b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: P1.1_HandIN
+    second: P1.1_HandIn
   - first:
-      74: 3292976282933739928
-    second: First Contact P1
+      74: 5280524931242985335
+    second: P1.1_PutOn
   - first:
-      74: -5349131079434323096
-    second: P1.2_LoopOnPlace
+      74: -5238234542024358930
+    second: P1.1_Turn
   - first:
-      74: 5612506722986554089
-    second: Last Contact P1
-  - first:
-      74: -6045046744412599465
+      74: 293499935433663596
     second: P1.1_HandOut
-  - first:
-      74: -951981555558684870
-    second: P1.1_First Contact
-  - first:
-      74: -4539874241670852460
-    second: P1.1_LoopOnPlace
-  - first:
-      74: 6273676223728162792
-    second: P1.1_Last Contact
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -56,11 +44,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: P1.1_HandIN
+      name: P1.1_HandIn
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -85,104 +73,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: P1.1_First Contact
+      name: P1.1_PutOn
       takeName: Take 001
       internalID: 0
-      firstFrame: 30
-      lastFrame: 95
+      firstFrame: 44
+      lastFrame: 177
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.27972028
-        functionName: Touch
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: Finished
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: P1.1_LoopOnPlace
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 48
-      lastFrame: 95
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.06388889
-        functionName: Touch
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: Finished
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: P1.1_Last Contact
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 95
-      lastFrame: 140
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -195,6 +97,49 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: P1.1_Turn
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 177
+      lastFrame: 216
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.07171302
+        functionName: Touch
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9947368
+        functionName: Finished
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -203,8 +148,8 @@ ModelImporter:
       name: P1.1_HandOut
       takeName: Take 001
       internalID: 0
-      firstFrame: 140
-      lastFrame: 160
+      firstFrame: 216
+      lastFrame: 260
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
