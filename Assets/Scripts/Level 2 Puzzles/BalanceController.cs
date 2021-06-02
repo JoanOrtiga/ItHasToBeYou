@@ -11,20 +11,72 @@ public class BalanceController : MonoBehaviour, IInteractable
     public Transform initialPositionCam;
     public float transitionSpeed;
 
+    public GameObject[] canvas;
+    public GameObject[] balancePlace;
+
 
     private bool activeCameraTransition = false;
+    public int indexCanvas = 0;
     //private bool activePuzzle;
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        for (int i = 0; i < canvas.Length; i++)
+        {
+            canvas[i].SetActive(false);
+        }
+
+        canvas[0].SetActive(true);
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Interact") && activeCameraTransition == false)
+        if (activeCameraTransition == false)
         {
-            StartCoroutine(CamaraTransition(camera.transform, initialPositionCam, true));
+            if (Input.GetButtonDown("Interact"))
+            {
+                StartCoroutine(CamaraTransition(camera.transform, initialPositionCam, true));
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                indexCanvas -= 1;
+                if (indexCanvas < 0) indexCanvas = 4;
+               
+                for (int i = 0; i < canvas.Length; i++)
+                {
+                    canvas[i].SetActive(false);
+                }
+                canvas[indexCanvas].SetActive(true);
+
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                indexCanvas += 1;
+                if (indexCanvas > 4) indexCanvas = 0;
+
+                for (int i = 0; i < canvas.Length; i++)
+                {
+                    canvas[i].SetActive(false);
+                }
+                canvas[indexCanvas].SetActive(true);
+
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                
+
+
+            }
+
+
+
         }
+        
     }
     public void Interact()
     {
