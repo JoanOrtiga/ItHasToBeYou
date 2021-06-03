@@ -41,7 +41,8 @@ public class StatuesSolver : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(centralPoint.position, radius);
+        if(centralPoint != null)
+            Gizmos.DrawWireSphere(centralPoint.position, radius);
     }
 
     private IEnumerator Die()

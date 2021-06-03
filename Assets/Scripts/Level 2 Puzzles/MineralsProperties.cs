@@ -5,7 +5,7 @@ using UnityEngine;
 public class MineralsProperties : MonoBehaviour
 {
     public int materialNumber;
-    
+    public float weightMetal;
   
   
     void Update()
@@ -26,7 +26,6 @@ public class MineralsProperties : MonoBehaviour
             }
             else if (transform.parent.gameObject.GetComponent<PlacePlate>() != null)
             {
-                print("PLATE");
             }
            
             
