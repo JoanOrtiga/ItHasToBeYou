@@ -22,7 +22,7 @@ public class PickUp : MonoBehaviour
 
     private Animator handAnimator;
 
-    private bool onHand;
+    [HideInInspector] public bool onHand;
 
     public GameObject handCenter;
     private GameObject placeObjectPosition;
@@ -125,17 +125,20 @@ public class PickUp : MonoBehaviour
 
         if (onHand)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (objectPickUp.GetComponent<TextBox>() != null && objectPickUp.GetComponent<TextBox>().lookCloseObject && objectPickUp.GetComponent<TextBox>().isPickUp)
-                {
-                    
-                    objectPickUp.GetComponent<TextBox>().StartTextGetClose();
-                }
 
-               // handAnimator.SetBool("LookClose", true);
-            }
+            objectPickUp.GetComponent<ObjectParameters>().popUp.SetActive(false);
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    //if (objectPickUp.GetComponent<TextBox>() != null && objectPickUp.GetComponent<TextBox>().lookCloseObject && objectPickUp.GetComponent<TextBox>().isPickUp)
+            //    //{
+                    
+            //    //    objectPickUp.GetComponent<TextBox>().StartTextGetClose();
+            //    //}
+
+            //   // handAnimator.SetBool("LookClose", true);
+            //}
         }
+        
     }
 
     private SpriteRenderer popupSPR;
@@ -304,18 +307,18 @@ public class PickUp : MonoBehaviour
         objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = true;
 
 
-
-        if (puzzlePlace == 1)
+        if (placeObjectPosition.GetComponent<PlacePlate>() != null)
         {
+            print("PLACE PLATE");
             placeObjectPosition.GetComponent<PlacePlate>().hasBeenPlaced = true;
             FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlacePlate>().placeSoundPath, transform.position);
-        }
-        else if (puzzlePlace == 2)
+        } 
+        else if (placeObjectPosition.GetComponent<PlaceMaterial>() != null)
         {
-           
+            print("PLACE PLANET");
             placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
             FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlaceMaterial>().placeSoundPath, transform.position);
-            handAnimator.SetBool("LookClose", false);
+           // handAnimator.SetBool("LookClose", false);
         }
        
 

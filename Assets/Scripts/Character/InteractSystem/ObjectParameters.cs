@@ -19,6 +19,7 @@ public class ObjectParameters : MonoBehaviour
     [SerializeField] private bool changeAnim;
     [SerializeField] private string animParam;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private PickUp pickUp;
     private void Awake()
     {
         startPos = transform.position;
@@ -28,6 +29,7 @@ public class ObjectParameters : MonoBehaviour
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        pickUp = FindObjectOfType<PickUp>();
     }
 
     public void ReLocate()
@@ -41,5 +43,10 @@ public class ObjectParameters : MonoBehaviour
 
         if(changeAnim)
             playerController.AnimatorSetBool(animParam, Disable);
+    }
+
+    private void Update()
+    {
+        
     }
 }

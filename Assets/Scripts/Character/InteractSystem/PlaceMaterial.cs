@@ -34,7 +34,7 @@ public class PlaceMaterial : MonoBehaviour
         {
             puzzle.GetComponent<InteractPlanetarium>().allClues[materialNumber - 1] = true;
 
-            if (textDone == false)
+            if (textDone == false && textBox != null)
             {
 
                 textDone = true;

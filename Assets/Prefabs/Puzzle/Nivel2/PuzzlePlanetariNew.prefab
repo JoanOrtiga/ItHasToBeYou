@@ -420,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1012599631298359458}
-  - component: {fileID: 380177394411678239}
+  - component: {fileID: 45505171}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -444,7 +444,7 @@ Transform:
   m_Father: {fileID: 4835156432489889439}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -6.361, z: 0}
---- !u!95 &380177394411678239
+--- !u!95 &45505171
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -454,7 +454,7 @@ Animator:
   m_GameObject: {fileID: 380177394411678232}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9a3a26db136e0704d8bb4ba0bd181569, type: 2}
+  m_Controller: {fileID: 9100000, guid: c878f8adc36292b4b978e210345fc878, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2430,7 +2430,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.005
+  m_Radius: 0.008
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4206884564749481138
 Rigidbody:
@@ -2469,6 +2469,7 @@ MonoBehaviour:
   changeAnim: 1
   animParam: PickUpMaterial 3
   playerController: {fileID: 0}
+  pickUp: {fileID: 0}
 --- !u!114 &1580963276771361105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3292,7 +3293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5406274651955511132}
   m_LocalRotation: {x: -0, y: -0.14303042, z: -0, w: 0.9897183}
-  m_LocalPosition: {x: 1.4853739, y: 0.0018187761, z: 5.930445}
+  m_LocalPosition: {x: 1.4853739, y: 0.001818776, z: 5.930445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7299318443846609752}
@@ -3491,7 +3492,7 @@ MonoBehaviour:
   correctSoundPath: 
   puzzle: {fileID: 8838408241926446679}
   hasBeenPlaced: 0
-  materialNumber: 1
+  materialNumber: 2
   correctMaterial: 0
 --- !u!1 &5636847587926783144
 GameObject:
@@ -3606,7 +3607,7 @@ MonoBehaviour:
   correctSoundPath: 
   puzzle: {fileID: 8838408241926446679}
   hasBeenPlaced: 0
-  materialNumber: 2
+  materialNumber: 1
   correctMaterial: 0
 --- !u!114 &5636847587926783191
 MonoBehaviour:
@@ -4509,7 +4510,7 @@ GameObject:
   - component: {fileID: 7299318443846609758}
   - component: {fileID: 7299318443846609759}
   m_Layer: 0
-  m_Name: Green (5)
+  m_Name: LightBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4523,7 +4524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7299318443846609753}
   m_LocalRotation: {x: -0.00017864998, y: 0.7071069, z: 0.70710665, w: 0.00017862766}
-  m_LocalPosition: {x: -0.6371234, y: 1.6751821, z: -0.0033297027}
+  m_LocalPosition: {x: -0.205, y: 2.031, z: -0.003}
   m_LocalScale: {x: 0.078602254, y: 0.07860223, z: 0.07860224}
   m_Children: []
   m_Father: {fileID: 97058307796764225}
@@ -4618,7 +4619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7299318444039010272}
   m_LocalRotation: {x: -0.00017864998, y: 0.7071069, z: 0.70710665, w: 0.00017862766}
-  m_LocalPosition: {x: -0.89812326, y: 0.4571817, z: -0.00346079}
+  m_LocalPosition: {x: -0.507, y: 0.732, z: -0.003}
   m_LocalScale: {x: 0.07562967, y: 0.07562967, z: 0.075629644}
   m_Children: []
   m_Father: {fileID: 97058307796764225}
@@ -4699,7 +4700,7 @@ GameObject:
   - component: {fileID: 7299318444210513401}
   - component: {fileID: 7299318444210513402}
   m_Layer: 0
-  m_Name: Green (4)
+  m_Name: pink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4713,7 +4714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7299318444210513396}
   m_LocalRotation: {x: -0.00017864998, y: 0.7071069, z: 0.70710665, w: 0.0001786202}
-  m_LocalPosition: {x: 1.143506, y: 1.4151814, z: -0.003653761}
+  m_LocalPosition: {x: 0.857, y: 1.212, z: -0.004}
   m_LocalScale: {x: 0.07183919, y: 0.07183919, z: 0.0718392}
   m_Children: []
   m_Father: {fileID: 4110584846775811905}
@@ -4794,7 +4795,7 @@ GameObject:
   - component: {fileID: 7299318444795999271}
   - component: {fileID: 7299318444795999264}
   m_Layer: 0
-  m_Name: Green (1)
+  m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4808,7 +4809,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7299318444795999266}
   m_LocalRotation: {x: -0.00017864998, y: 0.7071069, z: 0.70710665, w: 0.00017862766}
-  m_LocalPosition: {x: -0.28812262, y: 2.0781822, z: -0.003152943}
+  m_LocalPosition: {x: -1.853, y: 0.643, z: -0.004}
   m_LocalScale: {x: 0.15455192, y: 0.15455192, z: 0.1545519}
   m_Children: []
   m_Father: {fileID: 97058307796764225}
@@ -4889,7 +4890,7 @@ GameObject:
   - component: {fileID: 7299318444992520451}
   - component: {fileID: 7299318444992520508}
   m_Layer: 0
-  m_Name: Green (3)
+  m_Name: Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4903,7 +4904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7299318444992520510}
   m_LocalRotation: {x: -0.00017864998, y: 0.7071069, z: 0.70710665, w: 0.00017862766}
-  m_LocalPosition: {x: -0.917123, y: 0.86418176, z: -0.0034692483}
+  m_LocalPosition: {x: -0.997, y: 0.778, z: -0.003}
   m_LocalScale: {x: 0.08901914, y: 0.08901912, z: 0.089019135}
   m_Children: []
   m_Father: {fileID: 97058307796764225}
@@ -4998,7 +4999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7299318445364844029}
   m_LocalRotation: {x: -0.00017864998, y: 0.7071069, z: 0.70710665, w: 0.0001786202}
-  m_LocalPosition: {x: 0.29450542, y: 0.51318145, z: -0.004085374}
+  m_LocalPosition: {x: 0.11, y: 0.586, z: -0.004}
   m_LocalScale: {x: 0.12934813, y: 0.12934813, z: 0.12934813}
   m_Children: []
   m_Father: {fileID: 4110584846775811905}
@@ -5275,7 +5276,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.13
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &886226712182627377
 Rigidbody:
@@ -5314,6 +5315,7 @@ MonoBehaviour:
   changeAnim: 1
   animParam: PickUpMaterial 3
   playerController: {fileID: 0}
+  pickUp: {fileID: 0}
 --- !u!114 &4973654733000609317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5819,7 +5821,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8191813349558764509}
   m_LocalRotation: {x: -0, y: -0.14303042, z: -0, w: 0.9897183}
-  m_LocalPosition: {x: -0.83900344, y: 0.0018187761, z: 5.243971}
+  m_LocalPosition: {x: -0.8390034, y: 0.001818776, z: 5.243971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7299318445364844028}
@@ -6233,7 +6235,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.005
+  m_Radius: 0.008
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8720789752311194564
 Rigidbody:
@@ -6272,6 +6274,7 @@ MonoBehaviour:
   changeAnim: 1
   animParam: PickUpMaterial 2
   playerController: {fileID: 0}
+  pickUp: {fileID: 0}
 --- !u!114 &4318331918097038021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6425,7 +6428,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.005
+  m_Radius: 0.008
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8720789753097666505
 Rigidbody:
@@ -6464,6 +6467,7 @@ MonoBehaviour:
   changeAnim: 1
   animParam: PickUpMaterial 1
   playerController: {fileID: 0}
+  pickUp: {fileID: 0}
 --- !u!114 &4318331918714542927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6590,7 +6594,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.005
+  m_Radius: 0.008
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8720789753502540334
 Rigidbody:
@@ -6629,6 +6633,7 @@ MonoBehaviour:
   changeAnim: 1
   animParam: PickUpMaterial 3
   playerController: {fileID: 0}
+  pickUp: {fileID: 0}
 --- !u!114 &4318331919420681465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6776,7 +6781,7 @@ MonoBehaviour:
   allClues: 000000
   rotationSpeedHigh: 3
   rotationSpeedLow: 1
-  door: {fileID: 0}
+  door: {fileID: 45505171}
 --- !u!1 &8947927953560476114
 GameObject:
   m_ObjectHideFlags: 0

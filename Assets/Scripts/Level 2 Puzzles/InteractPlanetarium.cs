@@ -46,6 +46,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
 
     private bool playSoundOne = false;
+    private bool winPuzzle = false;
+    
     private void Start()
     {
         puzzleAnimator = puzzle.GetComponent<Animator>();
@@ -153,6 +155,10 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         //print( "Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.z);
         //print( "Local Euler RING ONE: " + ringOne.transform.localEulerAngles.z);
         //print( "Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.z);
+
+        print("Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.y);
+        print("Local Euler RING ONE: " + ringOne.transform.localEulerAngles.y);
+        print("Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.y);
     }
 
 
@@ -172,16 +178,21 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     private void Win()
     {
-        if ((ringZero.transform.localEulerAngles.z < 168 && ringZero.transform.localEulerAngles.z > 152) &&
-            (ringOne.transform.localEulerAngles.z < 348 && ringOne.transform.localEulerAngles.z > 338)
-            && (ringTwo.transform.localEulerAngles.z < 65 && ringTwo.transform.localEulerAngles.z > 45))
+        if ((ringZero.transform.localEulerAngles.y < 248.5 && ringZero.transform.localEulerAngles.y > 245) &&
+            (ringOne.transform.localEulerAngles.y < 71.5 && ringOne.transform.localEulerAngles.y > 67)
+            && (ringTwo.transform.localEulerAngles.y < 251.5 && ringTwo.transform.localEulerAngles.y > 247.5))
         {
             print("Correct rotation");
-            if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
+            if (allClues[0] == true && allClues[1] == true && allClues[2] == true )
             {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/Puerta", door.transform.position);
-
-                   this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
+                if (winPuzzle == false)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/Puerta", door.transform.position);
+                    
+                }
+                winPuzzle = true;
+               // door.Play("EndPuzzleDoorOpen");
+                //   this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
             }
         }
     }
