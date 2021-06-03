@@ -6,11 +6,15 @@ using UnityEngine;
 public class AnimationEventHand : MonoBehaviour
 {
     private PlayerController playerController;
-
+    public Vector3 handRotation;
+    public Vector3 handPosition;
+    
     private void Awake()
     {
         playerController = GetComponentInParent<PlayerController>();
     }
+    
+     
 
     public void Touch()
     {

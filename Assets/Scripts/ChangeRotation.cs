@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,21 +6,31 @@ using UnityEngine;
 public class ChangeRotation : StateMachineBehaviour
 {
     [SerializeField] private Vector3 objectiveEulerRot;
-    private Vector3 defaultRot;
+    //private Vector3 defaultRot;
 
     [SerializeField] private Vector3 objectivePosition;
-    private Vector3 defaultPos;
+    //private Vector3 defaultPos;
+
+    private AnimationEventHand animationEventHand;
+    
+    private void Awake()
+    {
+        animationEventHand = FindObjectOfType<AnimationEventHand>();
+    }
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        defaultRot = animator.transform.localEulerAngles;
+    { 
+        //defaultRot = animator.transform.localEulerAngles;
+        
+        animationEventHand.handRotation = animator.transform.localEulerAngles;
         animator.transform.localEulerAngles = (objectiveEulerRot);
 
-        defaultPos = animator.transform.localPosition;
+        //defaultPos = animator.transform.localPosition;
+        
+        animationEventHand.handPosition = animator.transform.localPosition;
         animator.transform.localPosition = objectivePosition;
-
         
         animator.Update(0.0f);
     }
@@ -31,11 +42,11 @@ public class ChangeRotation : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+  /*  override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.transform.localEulerAngles = defaultRot;
         animator.transform.localPosition = defaultPos;
-    }
+    }*/
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
