@@ -55,12 +55,24 @@ public class BalanceController : MonoBehaviour, IInteractable
             popUp.SetActive(true);
             colliderPuzzle.enabled = true;
            
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition ==false)
             {
-
-                canvas[indexCanvas].SetActive(true);
-                activePuzzle = true;
                 StartCoroutine(CamaraTransition(camera.transform, initialPositionCam, true));
+                print("QUIT");
+                activePuzzle = false;
+                playerController.EnableController(true, true, true, true);
+
+                for (int i = 0; i < canvas.Length; i++)
+                {
+                    canvas[i].SetActive(false);
+                }
+
+                popUpObject[0].SetActive(true);
+                popUpObject[1].SetActive(true);
+                popUpObject[2].SetActive(true);
+                popUpObject[3].SetActive(true);
+                popUpObject[4].SetActive(true);
+
             }
 
             if (balance[0] == true && balance[1] == true)
@@ -291,11 +303,15 @@ public class BalanceController : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        canvas[indexCanvas].SetActive(true);
+        activePuzzle = true;
+       
+
         initialPositionCam.position = camera.transform.position;
         initialPositionCam.rotation = camera.transform.rotation;
         activePuzzle = true;
-
-        StartCoroutine(CamaraTransition(camera.transform, puzzlePositionCam, true));
+        print("Start");
+        StartCoroutine(CamaraTransition(camera.transform, puzzlePositionCam, false));
     }
 
     
@@ -322,7 +338,10 @@ public class BalanceController : MonoBehaviour, IInteractable
             yield return null;
         }
 
-        
+        if (activePuzzle_)
+        {
+            playerController.EnableController(true, true, true, true);
+        }
         
         activeCameraTransition = false;
 
