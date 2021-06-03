@@ -89,13 +89,17 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             {
                 if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
                 {
-                    puzzleAnimator.Play("Puzzle2GetDown");
-                    playSoundOne = false;
-                    print(playSoundOne);
-                    print("Make play sound false");
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
+                    if (winPuzzle == false)
+                    {
+                        puzzleAnimator.Play("Puzzle2GetDown");
+                        playSoundOne = false;
+                        print(playSoundOne);
+                        print("Make play sound false");
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
 
-                    correctMetals = false;
+                        correctMetals = false;
+                    }
+                   
                 }
 
                 activePuzzle = false;
@@ -143,22 +147,25 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
                 ColorMat();
             }
-
-            if (allClues[0] == true && allClues[1] == true && allClues[2] == true && activeCameraTransition)
+            if (winPuzzle == false)
             {
-                PlayAnimation();
+                if (allClues[0] == true && allClues[1] == true && allClues[2] == true && activeCameraTransition)
+                {
+                    PlayAnimation();
+                }
             }
+            
         }
 
         Win();
 
-        //print( "Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.z);
-        //print( "Local Euler RING ONE: " + ringOne.transform.localEulerAngles.z);
-        //print( "Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.z);
+        //print( "Local ROTATION RING ZERO: " + ringZero.transform.localRotation.y + "" + (ringZero.transform.localRotation.y < -0.45 && ringZero.transform.localRotation.y > -0.35));
+        //print( "Local ROTATION RING ONE: " + ringOne.transform.localRotation.y + "" + (ringOne.transform.localRotation.y < 0.46 && ringOne.transform.localRotation.y > 0.38));
+        //print( "Local ROTATION RING TWO: " + ringTwo.transform.localRotation.y + "" + (ringTwo.transform.localRotation.y < -0.375 && ringTwo.transform.localRotation.y > -0.290));
 
-        //print("Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.y);
-        //print("Local Euler RING ONE: " + ringOne.transform.localEulerAngles.y);
-        //print("Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.y);
+        print("Local Euler RING ZERO: " + ringZero.transform.eulerAngles.x);
+        print("Local Euler RING ONE: " + ringOne.transform.eulerAngles.x);
+        print("Local Euler RING TWO: " + ringTwo.transform.eulerAngles.x);
     }
 
 
@@ -178,9 +185,14 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     private void Win()
     {
-        if ((ringZero.transform.localEulerAngles.y < 248.5 && ringZero.transform.localEulerAngles.y > 245) &&
-            (ringOne.transform.localEulerAngles.y < 71.5 && ringOne.transform.localEulerAngles.y > 67)
-            && (ringTwo.transform.localEulerAngles.y < 251.5 && ringTwo.transform.localEulerAngles.y > 247.5))
+
+        //(ringZero.transform.localEulerAngles.y < 248.5 && ringZero.transform.localEulerAngles.y > 245) &&
+        //    (ringOne.transform.localEulerAngles.y < 71.5 && ringOne.transform.localEulerAngles.y > 67)
+        //    && (ringTwo.transform.localEulerAngles.y < 251.5 && ringTwo.transform.localEulerAngles.y > 247.5)
+
+        if ((ringZero.transform.eulerAngles.x < 320 && ringZero.transform.eulerAngles.x > 313) &&
+            (ringOne.transform.eulerAngles.x < 10 && ringOne.transform.eulerAngles.x > 0)
+            && (ringTwo.transform.eulerAngles.x < 309 && ringTwo.transform.eulerAngles.x > 295))
         {
             print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true )
@@ -188,10 +200,18 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 if (winPuzzle == false)
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/Puerta", door.transform.position);
-                    
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
+
                 }
                 winPuzzle = true;
-               // door.Play("EndPuzzleDoorOpen");
+                door.Play("EndPuzzleDoorOpen");
+
+                puzzleAnimator.Play("Puzzle2GetDown");
+                playSoundOne = false;
+                
+               
+
+                correctMetals = false;
                 //   this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
             }
         }
