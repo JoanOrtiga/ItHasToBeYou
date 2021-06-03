@@ -22,7 +22,7 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
             myAnimator.SetTrigger("Rotate");
             animator.SetTrigger("AlignToStars");
             this.enabled = false;
-        }
+        }   
     }
 
     public bool Solved()
