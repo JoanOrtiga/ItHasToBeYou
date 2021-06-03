@@ -98,7 +98,8 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
             yield return null;
         }
 
-        if (!x)
+        print(x);
+        if (x)
         {
             playerController.AnimatorSetBool("P3.1", true);
             x = false;

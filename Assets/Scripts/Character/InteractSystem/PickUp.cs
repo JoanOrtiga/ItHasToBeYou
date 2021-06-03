@@ -304,7 +304,7 @@ public class PickUp : MonoBehaviour
         objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = true;
 
 
-        print(objectPickUp.transform.name);
+
         if (puzzlePlace == 1)
         {
             placeObjectPosition.GetComponent<PlacePlate>().hasBeenPlaced = true;
