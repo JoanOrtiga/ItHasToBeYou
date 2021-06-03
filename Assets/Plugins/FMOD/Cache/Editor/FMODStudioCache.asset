@@ -456,6 +456,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1040
+--- !u!114 &-2100090594658811551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/ObjectSounds/Caldera
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/ObjectSounds/Caldera
+  guid: 27a440fc21c2554eb72381fabbab3bd5
+  Banks:
+  - {fileID: 2774345943386990858}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 52419
 --- !u!114 &-2052937814756679418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,12 +783,14 @@ MonoBehaviour:
   - {fileID: -1582206563916586441}
   - {fileID: 7649172958573962648}
   - {fileID: 8861195731232330515}
+  - {fileID: 3556267090321635434}
+  - {fileID: -2100090594658811551}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2774345943386990858}
   StringsBanks:
   - {fileID: 5344338034649368033}
-  stringsBankWriteTime: 637581986490066359
+  stringsBankWriteTime: 637583282289587795
   cacheVersion: 6
 --- !u!114 &429788719691573394
 MonoBehaviour:
@@ -1104,7 +1129,7 @@ MonoBehaviour:
   Path: Videojoc FMOD_actual/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637581986490056362
+  lastModified: 637583282289527949
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1177,6 +1202,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 180
+--- !u!114 &3556267090321635434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Puzzle 1/Objetos/SelecionarLibro
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Puzzle 1/Objetos/SelecionarLibro
+  guid: 8ada86e5ac594f4cabc5c830907e8201
+  Banks:
+  - {fileID: 2774345943386990858}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 900
 --- !u!114 &3572826141401050788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,11 +1399,11 @@ MonoBehaviour:
   Path: Videojoc FMOD_actual/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637581986490066359
+  lastModified: 637583282289587795
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2366
+    Value: 2462
   Exists: 1
 --- !u!114 &5526017608122607470
 MonoBehaviour:

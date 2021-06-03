@@ -156,9 +156,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         //print( "Local Euler RING ONE: " + ringOne.transform.localEulerAngles.z);
         //print( "Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.z);
 
-        print("Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.y);
-        print("Local Euler RING ONE: " + ringOne.transform.localEulerAngles.y);
-        print("Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.y);
+        //print("Local Euler RING ZERO: " + ringZero.transform.localEulerAngles.y);
+        //print("Local Euler RING ONE: " + ringOne.transform.localEulerAngles.y);
+        //print("Local Euler RING TWO: " + ringTwo.transform.localEulerAngles.y);
     }
 
 

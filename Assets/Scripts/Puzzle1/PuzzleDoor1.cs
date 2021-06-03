@@ -26,8 +26,10 @@ public class PuzzleDoor1 : MonoBehaviour
 
     public void AddBook()
     {
-        booksCounter++;
+        
 
+        booksCounter++;
+        
         if (booksCounter >= booksToOpen)
         {
             animator.SetTrigger("OpenDoor");
