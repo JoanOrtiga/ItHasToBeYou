@@ -8,12 +8,19 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
     [SerializeField] private Switches[] allSwitchesMid;
 
     [SerializeField] private Animator animator;
-    
+    private Animator myAnimator;
+
+    private void Awake()
+    {
+        myAnimator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
-        if (Solved())
+        if (Solved() || Input.GetKeyDown(KeyCode.B))
         {
-            //animator.SetTrigger("PlaceLens");
+            myAnimator.SetTrigger("Rotate");
+            animator.SetTrigger("AlignToStars");
             this.enabled = false;
         }
     }
