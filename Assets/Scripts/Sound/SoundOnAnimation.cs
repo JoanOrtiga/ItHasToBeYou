@@ -18,11 +18,12 @@ public class SoundOnAnimation : MonoBehaviour
 
     public void OpenDoorCinematic()
     {
-
+        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Cinematic/InitalOpenDoor");
     }
 
     public void CloseDoorCinematic()
     {
-
+        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Cinematic/InitialCloseDoor");
+        
     }
 }

@@ -785,12 +785,14 @@ MonoBehaviour:
   - {fileID: 8861195731232330515}
   - {fileID: 3556267090321635434}
   - {fileID: -2100090594658811551}
+  - {fileID: 1415124585243600630}
+  - {fileID: 2882142643091198552}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2774345943386990858}
   StringsBanks:
   - {fileID: 5344338034649368033}
-  stringsBankWriteTime: 637583285207340857
+  stringsBankWriteTime: 637583345889367332
   cacheVersion: 6
 --- !u!114 &429788719691573394
 MonoBehaviour:
@@ -953,6 +955,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4574
+--- !u!114 &1415124585243600630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Cinematic/InitialCloseDoor
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Cinematic/InitialCloseDoor
+  guid: 487d446e35963e48a6e1667f1aa437e6
+  Banks:
+  - {fileID: 2774345943386990858}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2221
 --- !u!114 &1557532456842571257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1154,7 @@ MonoBehaviour:
   Path: Videojoc FMOD_actual/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637583285207330879
+  lastModified: 637583345889357418
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1156,6 +1181,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2461
+--- !u!114 &2882142643091198552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Cinematic/InitalOpenDoor
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Cinematic/InitalOpenDoor
+  guid: 68e4dd336df2ef42a5376364b28cfbcf
+  Banks:
+  - {fileID: 2774345943386990858}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1865
 --- !u!114 &3047076880933059917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,11 +1447,11 @@ MonoBehaviour:
   Path: Videojoc FMOD_actual/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637583285207340857
+  lastModified: 637583345889367332
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2462
+    Value: 2572
   Exists: 1
 --- !u!114 &5526017608122607470
 MonoBehaviour:
