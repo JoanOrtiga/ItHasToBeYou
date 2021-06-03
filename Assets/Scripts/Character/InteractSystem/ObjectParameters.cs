@@ -25,6 +25,11 @@ public class ObjectParameters : MonoBehaviour
         startRot = transform.rotation;
     }
 
+    private void Start()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
+
     public void ReLocate()
     {
         transform.position = startPos;
