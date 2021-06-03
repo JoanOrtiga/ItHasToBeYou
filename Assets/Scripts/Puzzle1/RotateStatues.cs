@@ -125,7 +125,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
         inControl = true;
         playerController.DettachHand();
-        playerController.ChangeLookCloserState(true, true, true);
+        playerController.ChangeLookCloserState(true, true, true, new Vector2(-90, 90));
     }
 
     private IEnumerator AttachPlayer()

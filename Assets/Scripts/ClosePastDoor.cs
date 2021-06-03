@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class ClosePastDoor : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        
     }
 
     private void OnTriggerEnter(Collider other)

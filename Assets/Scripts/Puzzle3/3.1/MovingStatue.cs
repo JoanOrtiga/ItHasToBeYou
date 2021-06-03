@@ -144,17 +144,24 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             if (statuePathFinder.IsInStopPoint(transform.position))
             {
+                playerController.ReAttachHand();
+                playerController.ChangeLookCloserState(false,false,false);
+                playerController.CancelCurrentPuzzle();
                 playerController.AnimatorSetBool("P3.1", false);
                 active = false;
-                playerController.CancelCurrentPuzzle();
+               
                 return;
             }
             else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
-            {
+            { 
+                playerController.ReAttachHand();
+                playerController.ChangeLookCloserState(false,false,false);
+                playerController.CancelCurrentPuzzle();
                 playerController.AnimatorSetBool("P3.1", false);
+            
                 imNearStopPoint = true;
                 active = false;
-                playerController.CancelCurrentPuzzle();
+               
                 return;
             }
         }

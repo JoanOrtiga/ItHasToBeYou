@@ -129,7 +129,7 @@ public class TextBox : MonoBehaviour
 
         if (isTrigger || isLook || isTriggerWithAPreCondition)
         {
-            Destroy(gameObject);
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -174,7 +174,7 @@ public class TextBox : MonoBehaviour
 
         if (isTrigger || isLook)
         {
-            Destroy(gameObject);
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
