@@ -10,6 +10,7 @@ public class DoorSolvedPuzzle : MonoBehaviour
     private IPuzzleSolver puzzle;
     
     private Animator animator;
+    [SerializeField] private ActivateParticles activateParticles;
     
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class DoorSolvedPuzzle : MonoBehaviour
         if(puzzle.Solved() || Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("OpenDoor");
+            activateParticles.CreateParticles(2.3f);
             this.enabled = false;
         }
     }

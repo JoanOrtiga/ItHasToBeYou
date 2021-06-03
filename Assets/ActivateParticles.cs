@@ -8,8 +8,10 @@ public class ActivateParticles : MonoBehaviour
     private ParticleSystem[] particleSystems;
 
     private float timer;
+    private bool activated = false;
     private void Start()
     {
+        particleSystems = GetComponentsInChildren<ParticleSystem>();
         
         foreach (var particle in particleSystems)
         {
@@ -17,9 +19,10 @@ public class ActivateParticles : MonoBehaviour
         }
     }
 
-    private void CreateParticles(float time)
+    public void CreateParticles(float time)
     {
         timer = time;
+        activated = true;
         
         foreach (var particle in particleSystems)
         {
@@ -27,9 +30,22 @@ public class ActivateParticles : MonoBehaviour
         }
     }
 
-    private void StopEmmitting()
+    private void Update()
     {
-        
+        if (activated)
+        {
+            if (timer <= 0)
+            {
+                StopEmmitting();
+                activated = false;
+            }
+            
+            timer -= Time.deltaTime;
+        } 
+    }
+
+    private void StopEmmitting()
+    {  
         foreach (var particle in particleSystems)
         {
             particle.Stop();
