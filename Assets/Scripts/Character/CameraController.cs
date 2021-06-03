@@ -24,8 +24,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector2 lookCloserYLimit = new Vector2(-90, 90);
     public bool lookCloser;
     private float initialYaw;
-    private bool changeX;
-    private bool changeY;
 
     public Transform GetPitchObject()
     {
@@ -62,11 +60,8 @@ public class CameraController : MonoBehaviour
         
         if (lookCloser)
         {
-            if(changeY)
-                desiredPitch = Mathf.Clamp(desiredPitch, lookCloserYLimit.x, lookCloserYLimit.y);
-            
-            if(changeX)
-                desiredYaw = Mathf.Clamp(desiredYaw, lookCloserXLimit.x + initialYaw, lookCloserXLimit.y + initialYaw);
+            desiredPitch = Mathf.Clamp(desiredPitch, lookCloserYLimit.x, lookCloserYLimit.y);
+            desiredYaw = Mathf.Clamp(desiredYaw, lookCloserXLimit.x + initialYaw, lookCloserXLimit.y + initialYaw);
         }
         else
         {
@@ -103,10 +98,8 @@ public class CameraController : MonoBehaviour
         return veryClose;
     }
 
-    public void ChangeInitialYaw(bool x, bool y)
+    public void ChangeInitialYaw()
     {
         initialYaw = desiredYaw;
-        changeX = x;
-        changeY = y;
     }
 }

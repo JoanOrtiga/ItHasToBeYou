@@ -131,11 +131,11 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
 
    
 
-    public void ChangeLookCloserState(bool state, bool x, bool y)
+    public void ChangeLookCloserState(bool state)
     {
         cameraController.enabled = state;
         cameraController.lookCloser = state;
-        cameraController.ChangeInitialYaw(x, y);
+        cameraController.ChangeInitialYaw();
     }
     
     //Animator
