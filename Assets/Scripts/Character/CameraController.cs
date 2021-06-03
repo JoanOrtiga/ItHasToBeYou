@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour
             if (changeY)
             {
                 desiredPitch -= inputVector.y * sensitivity.y * Time.deltaTime;
-                desiredPitch = Mathf.Clamp(desiredPitch, lookCloserYLimit.x + initialPitch, lookCloserYLimit.y + initialPitch);
+                desiredPitch = Mathf.Clamp(desiredPitch, lookCloserYLimit.x , lookCloserYLimit.y );
              
                 pitch = Mathf.Lerp(pitch, desiredPitch, smoothAmount.y * Time.deltaTime);
                 pitchTransform.localEulerAngles = new Vector3(pitch, 0f, 0f);
@@ -77,7 +77,7 @@ public class CameraController : MonoBehaviour
             if (changeX)
             {
                 desiredYaw += inputVector.x * sensitivity.x * Time.deltaTime;
-                desiredYaw = Mathf.Clamp(desiredYaw, lookCloserXLimit.x, lookCloserXLimit.y);
+                desiredYaw = Mathf.Clamp(desiredYaw, lookCloserXLimit.x + initialYaw, lookCloserXLimit.y + initialYaw);
                 yaw = Mathf.Lerp(yaw, desiredYaw, smoothAmount.x * Time.deltaTime);
                 transform.eulerAngles = new Vector3(0f, yaw, 0f);
             }
