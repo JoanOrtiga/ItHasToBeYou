@@ -43,7 +43,6 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
 
     public void Interact()
     {
-        
         pickController.activePuzzle = true;
 
         if(ActiveSide)
@@ -59,7 +58,6 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);        
-        playerController.AnimatorSetBool("P3.1", true);
         
         StartCoroutine(AttachPlayer());
         StartCoroutine(LookAt());
@@ -78,23 +76,42 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
             yield return null;
         }
 
-        /* playerController.DettachHand();
-         playerController.ChangeLookCloserState(true);*/
+        
     }
 
     private IEnumerator AttachPlayer()
     {
-        while ((positonChild.position - playerTransform.position).sqrMagnitude > 0.01 * 0.01)
+        float magnitude = (positonChild.position - playerTransform.position).sqrMagnitude;
+        bool x = true;
+        while (magnitude > 0.01 * 0.01)
         {
             playerTransform.position = Vector3.MoveTowards(playerTransform.position, positonChild.position, moveToSpeed * Time.deltaTime);
             
+            magnitude = (positonChild.position - playerTransform.position).sqrMagnitude;
+
+            if (magnitude < 0.7f * 0.7f && x)
+            {
+                playerController.AnimatorSetBool("P3.1", true);
+                x = false;
+            }
+            
             yield return null;
         }
-        
+
+        print(x);
+        if (x)
+        {
+            playerController.AnimatorSetBool("P3.1", true);
+            x = false;
+        }
+
         statue.ChangeSide(side);
         
         playerTransform.position = positonChild.position;
         playerTransform.parent = positonChild;
+        
+        //playerController.DettachHand();
+       // playerController.ChangeLookCloserState(true, false, true);
     }
 
     private IEnumerator Cooldown()
