@@ -97,21 +97,15 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
             
             yield return null;
         }
-
-        print(x);
+        
         if (x)
         {
             playerController.AnimatorSetBool("P3.1", true);
             x = false;
         }
-
-        statue.ChangeSide(side);
         
         playerTransform.position = positonChild.position;
         playerTransform.parent = positonChild;
-        
-        //playerController.DettachHand();
-       // playerController.ChangeLookCloserState(true, false, true);
     }
 
     private IEnumerator Cooldown()
@@ -155,6 +149,11 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
 
     public void Finished()
     {
-        throw new NotImplementedException();
+        playerController.CancelCurrentPuzzle();
+        statue.ChangeSide(side);
+        
+        playerController.DettachHand();
+        playerController.ChangeLookCloserState(true, false, true, new Vector2(-80, 80));
+    
     }
 }

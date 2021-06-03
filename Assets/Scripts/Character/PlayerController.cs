@@ -131,11 +131,11 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
 
    
 
-    public void ChangeLookCloserState(bool state, bool x, bool y)
+    public void ChangeLookCloserState(bool state, bool x, bool y, Vector2 maxPitch = new Vector2())
     {
         cameraController.enabled = state;
         cameraController.lookCloser = state;
-        cameraController.ChangeInitialYaw(x, y);
+        cameraController.ChangeInitialYaw(x, y, maxPitch);
     }
     
     //Animator
@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
 
     public void Finished()
     {
+        
         if (puzzleTouchController != null)
         {
             puzzleTouchController.Finished();
