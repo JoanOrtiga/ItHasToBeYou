@@ -93,8 +93,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                     {
                         puzzleAnimator.Play("Puzzle2GetDown");
                         playSoundOne = false;
-                        print(playSoundOne);
-                        print("Make play sound false");
+                        
                         FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
 
                         correctMetals = false;
@@ -161,22 +160,16 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         //print( "Local ROTATION RING ZERO: " + ringZero.transform.localRotation.y + "" + (ringZero.transform.localRotation.y < -0.45 && ringZero.transform.localRotation.y > -0.35));
         //print( "Local ROTATION RING ONE: " + ringOne.transform.localRotation.y + "" + (ringOne.transform.localRotation.y < 0.46 && ringOne.transform.localRotation.y > 0.38));
-        //print( "Local ROTATION RING TWO: " + ringTwo.transform.localRotation.y + "" + (ringTwo.transform.localRotation.y < -0.375 && ringTwo.transform.localRotation.y > -0.290));
-
-        print("Local Euler RING ZERO: " + ringZero.transform.eulerAngles.x);
-        print("Local Euler RING ONE: " + ringOne.transform.eulerAngles.x);
-        print("Local Euler RING TWO: " + ringTwo.transform.eulerAngles.x);
+        //print( "Local ROTATION RING TWO: " + ringTwo.transform.localRotation.y + "" + (ringTwo.transform.localRotation.y < -0.375 && ringTwo.transform.localRotation.y > -0.290))
     }
 
 
     private void PlayAnimation()
     {
-        print(playSoundOne);
         if (playSoundOne == false)
         {
             playSoundOne = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
-            print("SOUND");
         }
         puzzleAnimator.enabled = true;
         puzzleAnimator.Play("Puzzle2GetUp");
@@ -194,7 +187,6 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             (ringOne.transform.eulerAngles.x < 10 && ringOne.transform.eulerAngles.x > 0)
             && (ringTwo.transform.eulerAngles.x < 309 && ringTwo.transform.eulerAngles.x > 295))
         {
-            print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true )
             {
                 if (winPuzzle == false)
