@@ -61,9 +61,6 @@ public class CameraController : MonoBehaviour
     {
         if (lookCloser)
         {
-            print(changeX);
-            print(changeY);
-
             if (changeY)
             {
                 desiredPitch -= inputVector.y * sensitivity.y * Time.deltaTime;
