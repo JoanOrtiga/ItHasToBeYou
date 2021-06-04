@@ -144,21 +144,15 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             if (statuePathFinder.IsInStopPoint(transform.position))
             {
-                playerController.ReAttachHand();
-                playerController.ChangeLookCloserState(false,false,false);
-                playerController.CancelCurrentPuzzle();
-                playerController.AnimatorSetBool("P3.1", false);
+                StartCoroutine(LookAt());
                 active = false;
                
                 return;
             }
             else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
-            { 
-                playerController.ReAttachHand();
-                playerController.ChangeLookCloserState(false,false,false);
-                playerController.CancelCurrentPuzzle();
-                playerController.AnimatorSetBool("P3.1", false);
-            
+            {
+                StartCoroutine(LookAt());
+
                 imNearStopPoint = true;
                 active = false;
                
@@ -268,4 +262,20 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
         return false;
     }
+    
+    private IEnumerator LookAt()
+    {
+        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 3f))
+        {
+            yield return null;
+        }
+        
+        playerController.ReAttachHand();
+        playerController.ChangeLookCloserState(false,false,false);
+        playerController.CancelCurrentPuzzle();
+        playerController.AnimatorSetBool("P3.1", false);
+        
+       
+    }
+
 }
