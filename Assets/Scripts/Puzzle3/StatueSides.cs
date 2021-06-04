@@ -75,8 +75,6 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         {
             yield return null;
         }
-
-        
     }
 
     private IEnumerator AttachPlayer()

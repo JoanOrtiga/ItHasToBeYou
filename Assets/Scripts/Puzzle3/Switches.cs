@@ -79,7 +79,6 @@ public class Switches : MonoBehaviour
                 break;
             case SwitchesPosition.mid:
                 transform.position = Vector3.Lerp(transform.position, mid.position, speed * Time.deltaTime);
-                print("DONE");
                 break;
             case SwitchesPosition.bot:
                 transform.position = Vector3.Lerp(transform.position, bot.position, speed * Time.deltaTime);

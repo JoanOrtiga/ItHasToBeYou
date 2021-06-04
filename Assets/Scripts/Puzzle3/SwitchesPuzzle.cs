@@ -21,6 +21,7 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
         {
             if (!x)
                 return;
+            myAnimator.enabled = true;
             myAnimator.SetTrigger("Rotate");
             animator.SetTrigger("AlignToStars");
             this.enabled = false;
