@@ -38,6 +38,7 @@ public class StatuesSolver : MonoBehaviour
                 StartCoroutine(Die());
                 x = false;
                 FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Escaleras Elevandose/Escalera", this.gameObject.transform.position);
+                CamaraShake.ShakeOnce(12, 3, new Vector3(0.35f, 0.35f));
 
             }
             
