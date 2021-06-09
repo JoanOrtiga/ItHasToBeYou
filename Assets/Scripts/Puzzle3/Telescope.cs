@@ -60,6 +60,8 @@ public class Telescope : MonoBehaviour , IInteractable
     {
         if (active)
         {
+            crosshair.ChangeCrosshairState(false, false);
+
             if (Input.GetButtonDown("Interact") && cancelCooldown)
             {
                 FMODUnity.RuntimeManager.PlayOneShot(interactSoundPath, gameObject.transform.position);
@@ -92,6 +94,7 @@ public class Telescope : MonoBehaviour , IInteractable
         if (active)
         {
             crosshair.ChangeCrosshairState(false, false);
+            print(crosshair.interactCrosshair_.activeSelf);
         }
     }
 }
