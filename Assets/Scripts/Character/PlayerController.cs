@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
     public BreathCamera breathCamera { get; private set; }
 
     [SerializeField] private Animator handAnimator;
+    [SerializeField] private Animator secondHandAnimator;
     private Transform hand;
+    private Transform secondHand;
 
     private IAnimationTouch puzzleTouchController;
 
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
         pivot = cameraController.transform.GetChild(0);
 
         hand = handAnimator.transform;
+        secondHand = secondHandAnimator.transform;
     }
 
     /// <summary>
@@ -107,9 +110,12 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
         savePivotRot = pivot.localRotation;
 
         hand.parent = playerMovement.transform;
+        secondHand.parent = playerMovement.transform;
 
         hand.position = initialHandPosition;
+        secondHand.position = initialHandPosition;
         hand.rotation = initialHandRotation;
+        secondHand.rotation = initialHandRotation;
     }
 
     public void ReAttachHand()
@@ -121,9 +127,12 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
         pivot.localRotation = savePivotRot;
 
         hand.parent = breathCamera.transform.parent;
+        secondHand.parent = breathCamera.transform.parent;
 
         hand.position = initialHandPosition;
+        secondHand.position = initialHandPosition;
         hand.rotation = initialHandRotation;
+        secondHand.rotation = initialHandRotation;
 
         cameraController.transform.localRotation = currentCameraRot;
         pivot.localRotation = currentPivotRot;
@@ -165,20 +174,25 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
     public void AnimatorSetFloat(string name, float value)
     {
         handAnimator.SetFloat(name, value);
+        secondHandAnimator.SetFloat(name, value);
+        
     }
 
     public void AnimatorSetBool(string name, bool value)
     {
         handAnimator.SetBool(name, value);
+        secondHandAnimator.SetBool(name, value);
     }
 
     public void AnimatorSetInteger(string name, int value)
     {
         handAnimator.SetInteger(name, value);
+        secondHandAnimator.SetInteger(name, value);
     }
 
     public void AnimatorSetTrigger(string name)
     {
         handAnimator.SetTrigger(name);
+        secondHandAnimator.SetTrigger(name);
     }
 }
