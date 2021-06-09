@@ -22,6 +22,8 @@ public class Telescope : MonoBehaviour , IInteractable
 
     [SerializeField] private Text coordsX;
     [SerializeField] private Text coordsY;
+
+    [SerializeField] private Crosshair crosshair;
     private void Start()
     {
         mainCamera = Camera.main;
@@ -32,6 +34,7 @@ public class Telescope : MonoBehaviour , IInteractable
 
     public void Interact()
     {
+        crosshair.ChangeCrosshairState(false, false);
         active = true;
         _playerController.DisableController(true, true, true);
         cancelCooldown = false;
@@ -55,7 +58,8 @@ public class Telescope : MonoBehaviour , IInteractable
         {
             if (Input.GetButtonDown("Interact") && cancelCooldown)
             {
-               Cancel();
+                
+                Cancel();
             }
 
             Vector3 rotation = pivotCamera.rotation.eulerAngles;
@@ -67,6 +71,7 @@ public class Telescope : MonoBehaviour , IInteractable
 
     private void Cancel()
     {
+        crosshair.ChangeCrosshairState(false, false);
         _playerController.EnableController(true, true, true);
         telescopeCanvas.SetActive(false);
         
