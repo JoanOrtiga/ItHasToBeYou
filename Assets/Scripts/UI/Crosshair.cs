@@ -15,7 +15,6 @@ public class Crosshair : MonoBehaviour
    
     private void Start()
     {
-        
         interactCrosshair_ = crosshairCanvas.transform.GetChild(0).gameObject;
         observeCrosshair_ = crosshairCanvas.transform.GetChild(1).gameObject;
     }
