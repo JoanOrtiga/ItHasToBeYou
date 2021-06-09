@@ -94,7 +94,6 @@ public class Telescope : MonoBehaviour , IInteractable
         if (active)
         {
             crosshair.ChangeCrosshairState(false, false);
-            print(crosshair.interactCrosshair_.activeSelf);
         }
     }
 }
