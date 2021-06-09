@@ -118,6 +118,7 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         {
             if (Input.GetButtonDown("Interact") && cooldowned && !statue.IsActive())
             {
+            
                 pickController.activePuzzle = false;
 
                 StopAllCoroutines();
