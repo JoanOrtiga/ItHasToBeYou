@@ -34,7 +34,6 @@ public class Telescope : MonoBehaviour , IInteractable
 
     public void Interact()
     {
-        crosshair.ChangeCrosshairState(false, false);
         active = true;
         _playerController.DisableController(true, true, true);
         cancelCooldown = false;
@@ -81,5 +80,13 @@ public class Telescope : MonoBehaviour , IInteractable
         telescopeCamera.enabled = false;
         mainCamera.enabled = true;
         telescopeCanvas.SetActive(false);
+    }
+
+    private void LateUpdate()
+    {
+        if (active)
+        {
+            crosshair.ChangeCrosshairState(false, false);
+        }
     }
 }

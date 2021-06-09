@@ -238,7 +238,7 @@ public class PickUp : MonoBehaviour
                 else if (rayCastHit.transform.gameObject.CompareTag("PuzzleInteractable"))
                 {
                     interaction = Interaction.interactPuzzle;
-                    crosshairController.ChangeCrosshairState(true, false);
+                  //  crosshairController.ChangeCrosshairState(true, false);
                 }
                 else if (rayCastHit.transform.CompareTag("PuzzleInteractableWithoutIcon"))
                 {
