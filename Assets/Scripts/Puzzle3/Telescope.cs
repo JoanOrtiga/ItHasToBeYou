@@ -24,6 +24,7 @@ public class Telescope : MonoBehaviour , IInteractable
     [SerializeField] private Text coordsY;
 
     public string interactSoundPath = "event:/INGAME/Puzzle 3/Telescopi/InteractTelescopi";
+    [SerializeField] private Crosshair crosshair;
     private void Start()
     {
         mainCamera = Camera.main;
@@ -74,6 +75,7 @@ public class Telescope : MonoBehaviour , IInteractable
 
     private void Cancel()
     {
+        crosshair.ChangeCrosshairState(false, false);
         _playerController.EnableController(true, true, true);
         telescopeCanvas.SetActive(false);
         
@@ -83,5 +85,13 @@ public class Telescope : MonoBehaviour , IInteractable
         telescopeCamera.enabled = false;
         mainCamera.enabled = true;
         telescopeCanvas.SetActive(false);
+    }
+
+    private void LateUpdate()
+    {
+        if (active)
+        {
+            crosshair.ChangeCrosshairState(false, false);
+        }
     }
 }
