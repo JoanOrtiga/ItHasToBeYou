@@ -67,8 +67,8 @@ public class Telescope : MonoBehaviour , IInteractable
 
             Vector3 rotation = pivotCamera.rotation.eulerAngles;
 
-            coordsX.text = rotation.x.ToString();
-            coordsY.text = rotation.y.ToString();
+            coordsX.text = Mathf.RoundToInt(rotation.x).ToString();
+            coordsY.text = Mathf.RoundToInt(rotation.y).ToString();
         }
     }
 
