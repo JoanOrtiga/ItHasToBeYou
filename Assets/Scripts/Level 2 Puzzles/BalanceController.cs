@@ -31,7 +31,14 @@ public class BalanceController : MonoBehaviour, IInteractable
 
 
     public Animator balanceAnimator;
-    //private bool activePuzzle;
+
+    [Header("SOUNDS")]
+    public string moveUpBalancePath;
+    public string moveDownBalancePath;
+    public string placeObjectBalancePath;
+    public string placeObjectPlatePath;
+    
+
     private void Start()
     {
 
@@ -208,15 +215,19 @@ public class BalanceController : MonoBehaviour, IInteractable
                         {
                            
                             balanceAnimator.Play("BasculaLeftDownAnim");
+                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
+
                         }
                         else if (balanceWeight[0] < balanceWeight[1])
                         {
-                           
+                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
+
                             balanceAnimator.Play("BasculaRightDownAnim");
                         }
                         else if (balanceWeight[0] == balanceWeight[1])
                         {
-                            
+                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
+
                             balanceAnimator.Play("BasculaIdleAnim");
                         }
                     }

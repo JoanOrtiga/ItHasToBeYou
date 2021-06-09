@@ -16076,6 +16076,7 @@ MonoBehaviour:
   pivotCamera: {fileID: 460789412}
   coordsX: {fileID: 3267058141309639160}
   coordsY: {fileID: 3267058140928338330}
+  interactSoundPath: event:/INGAME/Puzzle 3/Telescopi/InteractTelescopi
 --- !u!1001 &686561293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23658,6 +23659,10 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1932320543}
+    - target: {fileID: 3482185658547388817, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: clickSoundPath
+      value: event:/INGAME/Puzzle 3/Dials/Dials
+      objectReference: {fileID: 0}
     - target: {fileID: 3482185658595183401, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -28917,7 +28922,7 @@ MonoBehaviour:
   dial1Range: {x: 220, y: 240}
   dial2Range: {x: 250, y: 280}
   angleAtATime: 10
-  SoundPath: 
+  clickSoundPath: 
 --- !u!65 &1290289519
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33395,7 +33400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1468394740
 Transform:
   m_ObjectHideFlags: 0
@@ -36713,52 +36718,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 971645557}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1594456612
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1594456614}
-  - component: {fileID: 1594456613}
-  m_Layer: 0
-  m_Name: Ambient&ObjectSound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1594456613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594456612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ea3dd2b9f0fd94d969b1f6a0f0c99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  calderaUno: {fileID: 1327038927}
-  calderaDos: {fileID: 2071583821}
-  SoundPathCaldera: event:/INGAME/ObjectSounds/Caldera
---- !u!4 &1594456614
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594456612}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596570399
 GameObject:
@@ -43388,6 +43347,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7332706, y: 2.4742074, z: 1.5215825}
   m_Center: {x: 0.36663532, y: 0.73710394, z: 0.3088005}
+--- !u!1 &1860018848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4090447511173212481, guid: 84666b604f756914aba6788b73cc4d1c, type: 3}
+  m_PrefabInstance: {fileID: 438524077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1864161991
 GameObject:
   m_ObjectHideFlags: 0
@@ -47928,11 +47892,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440f7c530eb9a38448badc4d7c455e86, type: 3}
---- !u!1 &2071583821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dda02b8ceacbb77418560044f58706bd, type: 3}
-  m_PrefabInstance: {fileID: 1828576745}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2073586656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58146,6 +58105,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9217234437364958302}
   m_Mesh: {fileID: -4142219771195877799, guid: 42d4768fd60adf14fad6da2a179239ea, type: 3}
+--- !u!1001 &2994261954493606731
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851629, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994261956019851630, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: calderaDos
+      value: 
+      objectReference: {fileID: 617682354}
+    - target: {fileID: 2994261956019851630, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: calderaUno
+      value: 
+      objectReference: {fileID: 1860018848}
+    - target: {fileID: 2994261956019851631, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
+      propertyPath: m_Name
+      value: Ambient&ObjectSound
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d386976d23f16bf40b5240b7e910f35c, type: 3}
 --- !u!23 &3000394655720721180
 MeshRenderer:
   m_ObjectHideFlags: 0

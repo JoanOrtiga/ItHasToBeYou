@@ -22,6 +22,8 @@ public class Telescope : MonoBehaviour , IInteractable
 
     [SerializeField] private Text coordsX;
     [SerializeField] private Text coordsY;
+
+    public string interactSoundPath = "event:/INGAME/Puzzle 3/Telescopi/InteractTelescopi";
     private void Start()
     {
         mainCamera = Camera.main;
@@ -32,6 +34,10 @@ public class Telescope : MonoBehaviour , IInteractable
 
     public void Interact()
     {
+
+        FMODUnity.RuntimeManager.PlayOneShot(interactSoundPath, gameObject.transform.position);
+
+
         active = true;
         _playerController.DisableController(true, true, true);
         cancelCooldown = false;
@@ -55,7 +61,8 @@ public class Telescope : MonoBehaviour , IInteractable
         {
             if (Input.GetButtonDown("Interact") && cancelCooldown)
             {
-               Cancel();
+                FMODUnity.RuntimeManager.PlayOneShot(interactSoundPath, gameObject.transform.position);
+                Cancel();
             }
 
             Vector3 rotation = pivotCamera.rotation.eulerAngles;
