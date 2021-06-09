@@ -10,6 +10,8 @@ public class PuzzleDoor1 : MonoBehaviour
 
     private Animator animator;
 
+    public string openDoorPath;
+    public string closeDoorPath;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -19,6 +21,7 @@ public class PuzzleDoor1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
+            FMODUnity.RuntimeManager.PlayOneShot(openDoorPath, transform.position);
             animator.SetTrigger("OpenDoor");
             this.enabled = false;
         }
