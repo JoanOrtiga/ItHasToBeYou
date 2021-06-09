@@ -35,8 +35,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     [SerializeField] private float angleAtATime = 10f;
 
-    public string SoundPath;
-
+    public string clickSoundPath;
+    private float timeSound;
 
 
     private enum DialState
@@ -59,7 +59,7 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
     public void Interact()
     {
         
-        //FMODUnity.RuntimeManager.PlayOneShot(NarrativePath,gameObject.transform.position);
+       
         playerController.DisableController(true, true, true);
         active = true;
         dialsCamera.enabled = true;
@@ -78,6 +78,9 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     private void Update()
     {
+
+        timeSound += Time.deltaTime;
+
         if (!active)
             return;
 
@@ -90,6 +93,16 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
         }
 
         float direction = Input.GetAxisRaw("Vertical");
+
+        if (direction != 0)
+        {
+            if (timeSound > 0.25f)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(clickSoundPath, gameObject.transform.position);
+                timeSound = 0;
+            }
+           
+        }
 
         switch (state)
         {

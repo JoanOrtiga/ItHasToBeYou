@@ -162,9 +162,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         Win();
 
-       print( "Local ROTATION RING ZERO: " + ringZero.transform.eulerAngles.x + "" + ((ringZero.transform.eulerAngles.x < 320 && ringZero.transform.eulerAngles.x > 313)));
-       print( "Local ROTATION RING ONE: " + ringOne.transform.eulerAngles.x + "" + (ringOne.transform.eulerAngles.x < 10 && ringOne.transform.eulerAngles.x > 0));
-        print("Local ROTATION RING TWO: " + ringTwo.transform.eulerAngles.x + "" + (ringTwo.transform.eulerAngles.x < 309 && ringTwo.transform.eulerAngles.x > 295));
+//       print( "Local ROTATION RING ZERO: " + ringZero.transform.eulerAngles.x + "" + ((ringZero.transform.eulerAngles.x < 320 && ringZero.transform.eulerAngles.x > 313)));
+   //    print( "Local ROTATION RING ONE: " + ringOne.transform.eulerAngles.x + "" + (ringOne.transform.eulerAngles.x < 10 && ringOne.transform.eulerAngles.x > 0));
+  //      print("Local ROTATION RING TWO: " + ringTwo.transform.eulerAngles.x + "" + (ringTwo.transform.eulerAngles.x < 309 && ringTwo.transform.eulerAngles.x > 295));
 
     }
 
