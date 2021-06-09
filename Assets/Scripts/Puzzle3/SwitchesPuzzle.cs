@@ -9,7 +9,7 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
 
     [SerializeField] private Animator animator;
     private Animator myAnimator;
-
+    private bool x = true;
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
@@ -19,10 +19,16 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
     {
         if (Solved() || Input.GetKeyDown(KeyCode.B))
         {
+            if (!x)
+                return;
+            myAnimator.enabled = true;
             myAnimator.SetTrigger("Rotate");
             animator.SetTrigger("AlignToStars");
             this.enabled = false;
-        }   
+            FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Escaleras Elevandose/Escalera", this.gameObject.transform.position);
+
+
+        }
     }
 
     public bool Solved()
@@ -35,4 +41,6 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
         
         return true;
     }
+
+  
 }

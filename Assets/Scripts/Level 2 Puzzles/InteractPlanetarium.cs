@@ -11,7 +11,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     [SerializeField] private Material NormalMat;
 
     private PlayerController playerController;
-    private BreathCamera camera;
+   [HideInInspector] public BreathCamera camera;
     [SerializeField] private Transform initialPositionCam;
     private int interactingRing = 3;
     private float time;
@@ -47,7 +47,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     private bool playSoundOne = false;
     private bool winPuzzle = false;
-    
+
+    [HideInInspector] public bool finishAnimation = false;
     private void Start()
     {
         puzzleAnimator = puzzle.GetComponent<Animator>();
@@ -93,8 +94,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                     {
                         puzzleAnimator.Play("Puzzle2GetDown");
                         playSoundOne = false;
-                        print(playSoundOne);
-                        print("Make play sound false");
+                        
                         FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
 
                         correctMetals = false;
@@ -110,43 +110,46 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 playerController.EnableController(true, true);
             }
 
-
-            if (Input.GetAxisRaw("Horizontal") >= 0.3f) //Gira derecha
+            if (finishAnimation)
             {
-                if (timeWaitSound > 0.3 && correctMetals)
+                if (Input.GetAxisRaw("Horizontal") >= 0.3f) //Gira derecha
+                {
+                    if (timeWaitSound > 0.3 && correctMetals)
+                    {
+
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/Rotation", gameObject.transform.position);
+                        timeWaitSound = 0;
+                    }
+
+                    puzzleAnimator.enabled = false;
+                    RotateRing(true);
+                }
+                else if (Input.GetAxisRaw("Horizontal") <= -0.3f) //Gira izquierda
                 {
 
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/Rotation", gameObject.transform.position);
-                    timeWaitSound = 0;
-                }
-                
-                puzzleAnimator.enabled = false;
-                RotateRing(true);
-            }
-            else if (Input.GetAxisRaw("Horizontal") <= -0.3f) //Gira izquierda
-            {
+                    if (timeWaitSound > 0.3 && correctMetals)
+                    {
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/Rotation", gameObject.transform.position);
+                        timeWaitSound = 0;
+                    }
 
-                if (timeWaitSound > 0.3 && correctMetals)
+                    puzzleAnimator.enabled = false;
+                    RotateRing(false);
+                }
+
+                if (Input.GetButtonDown("Select"))
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/Rotation", gameObject.transform.position);
-                    timeWaitSound = 0;
-                }
-               
-                puzzleAnimator.enabled = false;
-                RotateRing(false);
-            }
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/SelectRing", ringOne.position);
+                    interactingRing++;
+                    if (interactingRing >= 3)
+                    {
+                        interactingRing = 0;
+                    }
 
-            if (Input.GetButtonDown("Select"))
-            {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/SelectRing", ringOne.position);
-                interactingRing++;
-                if (interactingRing >= 3)
-                {
-                    interactingRing = 0;
+                    ColorMat();
                 }
-
-                ColorMat();
             }
+           
             if (winPuzzle == false)
             {
                 if (allClues[0] == true && allClues[1] == true && allClues[2] == true && activeCameraTransition)
@@ -159,24 +162,19 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         Win();
 
-        //print( "Local ROTATION RING ZERO: " + ringZero.transform.localRotation.y + "" + (ringZero.transform.localRotation.y < -0.45 && ringZero.transform.localRotation.y > -0.35));
-        //print( "Local ROTATION RING ONE: " + ringOne.transform.localRotation.y + "" + (ringOne.transform.localRotation.y < 0.46 && ringOne.transform.localRotation.y > 0.38));
-        //print( "Local ROTATION RING TWO: " + ringTwo.transform.localRotation.y + "" + (ringTwo.transform.localRotation.y < -0.375 && ringTwo.transform.localRotation.y > -0.290));
+       print( "Local ROTATION RING ZERO: " + ringZero.transform.eulerAngles.x + "" + ((ringZero.transform.eulerAngles.x < 320 && ringZero.transform.eulerAngles.x > 313)));
+       print( "Local ROTATION RING ONE: " + ringOne.transform.eulerAngles.x + "" + (ringOne.transform.eulerAngles.x < 10 && ringOne.transform.eulerAngles.x > 0));
+        print("Local ROTATION RING TWO: " + ringTwo.transform.eulerAngles.x + "" + (ringTwo.transform.eulerAngles.x < 309 && ringTwo.transform.eulerAngles.x > 295));
 
-        print("Local Euler RING ZERO: " + ringZero.transform.eulerAngles.x);
-        print("Local Euler RING ONE: " + ringOne.transform.eulerAngles.x);
-        print("Local Euler RING TWO: " + ringTwo.transform.eulerAngles.x);
     }
 
 
     private void PlayAnimation()
     {
-        print(playSoundOne);
         if (playSoundOne == false)
         {
             playSoundOne = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
-            print("SOUND");
         }
         puzzleAnimator.enabled = true;
         puzzleAnimator.Play("Puzzle2GetUp");
@@ -190,11 +188,10 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         //    (ringOne.transform.localEulerAngles.y < 71.5 && ringOne.transform.localEulerAngles.y > 67)
         //    && (ringTwo.transform.localEulerAngles.y < 251.5 && ringTwo.transform.localEulerAngles.y > 247.5)
 
-        if ((ringZero.transform.eulerAngles.x < 320 && ringZero.transform.eulerAngles.x > 313) &&
+        if ((ringZero.transform.eulerAngles.x < 320 && ringZero.transform.eulerAngles.x > 309) &&
             (ringOne.transform.eulerAngles.x < 10 && ringOne.transform.eulerAngles.x > 0)
             && (ringTwo.transform.eulerAngles.x < 309 && ringTwo.transform.eulerAngles.x > 295))
         {
-            print("Correct rotation");
             if (allClues[0] == true && allClues[1] == true && allClues[2] == true )
             {
                 if (winPuzzle == false)

@@ -45,7 +45,5 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
     {
         //Control player parenting.
         StartCoroutine(CoolDown());
-        
-
     }
 }

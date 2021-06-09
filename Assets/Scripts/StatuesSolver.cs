@@ -15,6 +15,8 @@ public class StatuesSolver : MonoBehaviour
     [SerializeField] private Transform playerTransform;
 
     [SerializeField] private float radius;
+
+    private bool x = true;
     private void Update()
     {
         bool solved = true;
@@ -30,9 +32,14 @@ public class StatuesSolver : MonoBehaviour
         {
             if ((playerTransform.position - centralPoint.position).sqrMagnitude > radius * radius)
             {
+                if (!x)
+                    return;
                 animator.SetTrigger("OpenDoor");
                 StartCoroutine(Die());
-                
+                x = false;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Escaleras Elevandose/Escalera", this.gameObject.transform.position);
+                CamaraShake.ShakeOnce(12, 3, new Vector3(0.35f, 0.35f));
+
             }
             
             

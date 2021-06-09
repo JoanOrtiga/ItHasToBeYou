@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -48,6 +49,8 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
     private PlayerController playerController;
     
     [SerializeField] private Transform lockCameraPoint;
+
+    private float time;
     
     public void ChangeSide(Sides side)
     {
@@ -144,20 +147,23 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             if (statuePathFinder.IsInStopPoint(transform.position))
             {
-                playerController.ReAttachHand();
-                playerController.ChangeLookCloserState(false,false,false);
-                playerController.CancelCurrentPuzzle();
                 playerController.AnimatorSetBool("P3.1", false);
+                playerController.ChangeLookCloserState(false,false,false);
+                playerController.ReAttachHand();
+               
+                playerController.CancelCurrentPuzzle();
+               
                 active = false;
                
                 return;
             }
             else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
             { 
-                playerController.ReAttachHand();
-                playerController.ChangeLookCloserState(false,false,false);
-                playerController.CancelCurrentPuzzle();
                 playerController.AnimatorSetBool("P3.1", false);
+                playerController.ChangeLookCloserState(false,false,false);
+                playerController.ReAttachHand();
+                playerController.CancelCurrentPuzzle();
+              
             
                 imNearStopPoint = true;
                 active = false;
@@ -168,11 +174,19 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
         verticalInput = Input.GetAxisRaw("Vertical");
 
-       
+        time += Time.deltaTime;
 
         if (verticalInput != 0)
         {
-            lastDirection = verticalInput; 
+            lastDirection = verticalInput;
+
+            if (time > 1)
+            {
+                
+                CamaraShake.ShakeOnce(1, 3, new Vector3(0.1f, 0.1f));
+                time = 0;
+            }
+           
         }
         
         
