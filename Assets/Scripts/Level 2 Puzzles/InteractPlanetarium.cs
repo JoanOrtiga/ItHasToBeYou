@@ -80,17 +80,12 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             StartCoroutine(CamaraTransition(camera.transform, viewCamara, false));
             activePuzzle = true;
         }
-      
-           
-        
-      
     }
 
 
     void Update()
     {
         timeWaitSound += Time.deltaTime;
-
 
         if (activePuzzle)
         {

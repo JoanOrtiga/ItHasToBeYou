@@ -41,7 +41,7 @@ public class PickUp : MonoBehaviour
     public Crosshair crosshairController;
     public GameObject observeController;
 
-    public bool activePuzzle = false;
+    [HideInInspector] public bool activePuzzle = false;
 
     [SerializeField] private Color pickupColor = Color.yellow;
 
