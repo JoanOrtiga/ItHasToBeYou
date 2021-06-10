@@ -58,6 +58,7 @@ public class ZoomCameraPuzzle : MonoBehaviour
         }
 
         activeCameraTransition = false;
+        puzzleTrigger.finishAnimation = true;
 
         StopCoroutine("CamaraTransition");
     }

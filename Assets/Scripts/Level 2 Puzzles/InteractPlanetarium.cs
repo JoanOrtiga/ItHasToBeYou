@@ -48,7 +48,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private bool playSoundOne = false;
     private bool winPuzzle = false;
 
-    [HideInInspector] public bool finishAnimation = false;
+    public bool finishAnimation = true;
     private void Start()
     {
         puzzleAnimator = puzzle.GetComponent<Animator>();
@@ -65,17 +65,25 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         ringOneMesh = ringOne.GetChild(0).GetComponent<MeshRenderer>();
         ringTwoMesh = ringTwo.GetChild(0).GetComponent<MeshRenderer>();
 
+        finishAnimation = true;
         //ringOne.transform.Rotate(0, 0, 90, Space.Self);
         //ringTwo.transform.Rotate(0, 0, -90, Space.Self);
     }
 
     public void Interact()
     {
-        initialPositionCam.position = camera.transform.position;
-        initialPositionCam.rotation = camera.transform.rotation;
+        if (finishAnimation)
+        {
+            initialPositionCam.position = camera.transform.position;
+            initialPositionCam.rotation = camera.transform.rotation;
 
-        StartCoroutine(CamaraTransition(camera.transform, viewCamara, false));
-        activePuzzle = true;
+            StartCoroutine(CamaraTransition(camera.transform, viewCamara, false));
+            activePuzzle = true;
+        }
+      
+           
+        
+      
     }
 
 
@@ -86,7 +94,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
         if (activePuzzle)
         {
-            if (Input.GetButtonDown("Interact") && activeCameraTransition == false)
+            if (Input.GetButtonDown("Interact") && activeCameraTransition == false && finishAnimation == true)
             {
                 if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
                 {
@@ -296,6 +304,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         if (activePuzzle_)
         {
             playerController.EnableController(true, true, true, true);
+            finishAnimation = true;
         }
         playSoundOne = false;
         activeCameraTransition = false;
