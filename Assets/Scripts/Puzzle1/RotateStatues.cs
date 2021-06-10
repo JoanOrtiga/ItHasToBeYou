@@ -51,17 +51,14 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
         StartCoroutine(LookAt());
         StartCoroutine(AttachPlayer());
+
+        waitNoOtherInput = true;
     }
 
     private void Update()
     {
         if (inControl && !rotating && !waitNoOtherInput)
         {
-           /* if (Input.GetAxisRaw("Horizontal") > 0.5f)
-            {
-                RotateObjective(false);
-                waitNoOtherInput = true;
-            }*/
            if (Input.GetAxisRaw("Horizontal") < -0.5f)
            {
                FMODUnity.RuntimeManager.PlayOneShot(soundPathRotation, gameObject.transform.position);
@@ -79,8 +76,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
             if (Math.Abs(transform.localRotation.eulerAngles.y - rotateObjective.localRotation.eulerAngles.y) < Mathf.Epsilon)
             {
                 rotating = false;
-             
-                
                 UpdateStatueSide();
             }
         }
@@ -124,9 +119,11 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
             yield return null;
         }
 
-        inControl = true;
+        
         playerController.DettachHand();
         playerController.ChangeLookCloserState(true, true, true, new Vector2(-90, 90));
+        
+        inControl = true;
     }
 
     private IEnumerator AttachPlayer()
@@ -158,6 +155,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
         playerController.AnimatorSetBool("P1", true);
         
         playerTransform.position = positionChild.position;
+        waitNoOtherInput = false;
     }
 
     private void RotateObjective(bool left)

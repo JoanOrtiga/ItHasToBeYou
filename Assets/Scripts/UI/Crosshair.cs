@@ -15,7 +15,6 @@ public class Crosshair : MonoBehaviour
    
     private void Start()
     {
-        
         interactCrosshair_ = crosshairCanvas.transform.GetChild(0).gameObject;
         observeCrosshair_ = crosshairCanvas.transform.GetChild(1).gameObject;
     }
@@ -23,7 +22,7 @@ public class Crosshair : MonoBehaviour
 
     public void ChangeCrosshairState(bool interactCrosshair, bool observeCrosshair)
     {
-        //interactCrosshair_.SetActive(interactCrosshair ? true : false);
+        interactCrosshair_.SetActive(interactCrosshair ? true : false);
         observeCrosshair_.SetActive(observeCrosshair ? true : false);
         crosshairIntractAnim.SetBool("Active", interactCrosshair ? true : false);
     }

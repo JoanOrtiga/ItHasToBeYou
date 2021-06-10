@@ -29,9 +29,17 @@ public class BalanceController : MonoBehaviour, IInteractable
     public float[] balanceWeight;
     public int[] indexSelected;
 
+    private bool finishPuzzle;
 
     public Animator balanceAnimator;
-    //private bool activePuzzle;
+
+    [Header("SOUNDS")]
+    public string moveUpBalancePath;
+    public string moveDownBalancePath;
+    public string placeObjectBalancePath;
+    public string placeObjectPlatePath;
+    
+
     private void Start()
     {
 
@@ -55,11 +63,12 @@ public class BalanceController : MonoBehaviour, IInteractable
             popUp.SetActive(true);
             colliderPuzzle.enabled = true;
            
-            if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition ==false)
+            if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition ==false && finishPuzzle)
             {
                 StartCoroutine(CamaraTransition(camera.transform, initialPositionCam, true));
                 print("QUIT");
                 activePuzzle = false;
+                finishPuzzle = false;
                 playerController.EnableController(true, true, true, true);
 
                 for (int i = 0; i < canvas.Length; i++)
@@ -87,6 +96,7 @@ public class BalanceController : MonoBehaviour, IInteractable
 
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
+                    finishPuzzle = true;
                     if (balanceWeight[0] > balanceWeight[1])
                     {
                         
@@ -199,24 +209,28 @@ public class BalanceController : MonoBehaviour, IInteractable
                             canvas[i].SetActive(false);
                         }
 
-                        
 
-                       
+
+                        finishPuzzle = false;
                         
 
                         if (balanceWeight[0] > balanceWeight[1])
                         {
                            
                             balanceAnimator.Play("BasculaLeftDownAnim");
+                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
+
                         }
                         else if (balanceWeight[0] < balanceWeight[1])
                         {
-                           
+                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
+
                             balanceAnimator.Play("BasculaRightDownAnim");
                         }
                         else if (balanceWeight[0] == balanceWeight[1])
                         {
-                            
+                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
+
                             balanceAnimator.Play("BasculaIdleAnim");
                         }
                     }
