@@ -3013,6 +3013,7 @@ MonoBehaviour:
   - {fileID: 990176309}
   - {fileID: 302823529}
   soundPathRotation: event:/INGAME/Puzzle 1/1.1/Rotate
+  soundPathSelect: event:/INGAME/Puzzle 1/1.1/SelectStatue
 --- !u!1 &142347806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 446d54b5f38551f4e805d876cb9e0d4f, type: 3}
@@ -23775,6 +23776,10 @@ PrefabInstance:
       propertyPath: soundPointTower
       value: 
       objectReference: {fileID: 990128354}
+    - target: {fileID: 3482185658547388817, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: clickSoundPath
+      value: event:/INGAME/Puzzle 3/Dials/Dials
+      objectReference: {fileID: 0}
     - target: {fileID: 3482185658595183401, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -27465,6 +27470,7 @@ MonoBehaviour:
   - {fileID: 100583665}
   - {fileID: 1709669990}
   soundPathRotation: event:/INGAME/Puzzle 1/1.1/Rotate
+  soundPathSelect: event:/INGAME/Puzzle 1/1.1/SelectStatue
 --- !u!65 &1221115920
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36273,15 +36279,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.07
+      value: 2.69
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.54
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.52
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalRotation.w
@@ -47107,6 +47113,7 @@ MonoBehaviour:
   - {fileID: 1901654223}
   - {fileID: 1596570400}
   soundPathRotation: event:/INGAME/Puzzle 1/1.1/Rotate
+  soundPathSelect: event:/INGAME/Puzzle 1/1.1/SelectStatue
 --- !u!1 &2009125447 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae4a3d244269fe4b8564d3ba9f311d1, type: 3}
@@ -63973,6 +63980,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1671838505}
     m_Modifications:
+    - target: {fileID: 2449943918738226089, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeSoundPath
+      value: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842348043558001044, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: moveUpBalancePath
+      value: event:/INGAME/Puzzle 2/Balanza/BalanceMoveUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842348043558001044, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: moveDownBalancePath
+      value: event:/INGAME/Puzzle 2/Balanza/BalanceMoveDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842348043558001044, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeObjectPlatePath
+      value: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842348043558001044, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeObjectBalancePath
+      value: event:/INGAME/Puzzle 2/Balanza/PlaceObjectBalance
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142940336200406986, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeSoundPath
+      value: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360064046002185518, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeSoundPath
+      value: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
+      objectReference: {fileID: 0}
     - target: {fileID: 4835156432748238256, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
       propertyPath: m_Name
       value: PuzzlePlanetariNew
@@ -64020,6 +64055,14 @@ PrefabInstance:
     - target: {fileID: 4835156432748238263, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244729765170265458, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeSoundPath
+      value: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452708672800865925, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: placeSoundPath
+      value: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
       objectReference: {fileID: 0}
     - target: {fileID: 8720789752311194565, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
       propertyPath: playerController

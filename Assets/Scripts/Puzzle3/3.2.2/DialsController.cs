@@ -35,7 +35,7 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     [SerializeField] private float angleAtATime = 10f;
 
-    public string clickSoundPath;
+    public string clickSoundPath = "event:/INGAME/Puzzle 3/Dials/Dials";
     private float timeSound;
 
 
