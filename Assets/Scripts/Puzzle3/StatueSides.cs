@@ -146,7 +146,7 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         throw new NotImplementedException();
     }
 
-    public void Finished()
+    public void Finished(int control)
     {
         playerController.CancelCurrentPuzzle();
         statue.ChangeSide(side);

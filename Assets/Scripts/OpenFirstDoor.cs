@@ -41,7 +41,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         playerController.EnableController(true,true,true, true);
     }
     
-    public void Finished()
+    public void Finished(int control)
     {
         //Control player parenting.
         StartCoroutine(CoolDown());

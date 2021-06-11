@@ -14,15 +14,13 @@ public class AnimationEventHand : MonoBehaviour
         playerController = GetComponentInParent<PlayerController>();
     }
     
-     
-
     public void Touch()
     {
         playerController.Touch();
     }
 
-    public void Finished()
+    public void Finished(int control)
     {
-        playerController.Finished();
+        playerController.Finished(control);
     }
 }

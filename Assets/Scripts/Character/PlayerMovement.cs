@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(0f, 1f)]   [SerializeField] private float moveBackwardsSpeedPercent = 0.5f;
     [Range(0f, 1f)]   [SerializeField] private float moveSideSpeedPercent = 0.75f;
     [Range(1f, 100f)] [SerializeField] private float smoothHeadBobSpeed = 5f;
+    [Range(1f, 100f)] [SerializeField] private float smoothHeadBobSimulationSpeed = 2f;
 
     [SerializeField] private HeadBobData headBobData;
 
@@ -102,6 +103,14 @@ public class PlayerMovement : MonoBehaviour
             yawTransform.localPosition = Vector3.Lerp(yawTransform.localPosition,
                 new Vector3(0f, headBob.currentStateHeight, 0f), Time.deltaTime * smoothHeadBobSpeed);
         }
+    }
+
+    public void SimulateHeadBobbing()
+    {
+        headBob.ScrollHeadBob(new Vector2(0.1f,0.1f));
+
+        yawTransform.localPosition = Vector3.Lerp(yawTransform.localPosition,
+            (Vector3.up * headBob.currentStateHeight) + headBob.finalOffset, Time.deltaTime * smoothHeadBobSimulationSpeed);
     }
 
     private void RotateTowardsCamera()
