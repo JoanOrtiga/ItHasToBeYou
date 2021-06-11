@@ -32,12 +32,14 @@ public class BalanceController : MonoBehaviour, IInteractable
     private bool finishPuzzle;
 
     public Animator balanceAnimator;
+    public CanvasTutorial canvasTutorial;
 
     [Header("SOUNDS")]
     public string moveUpBalancePath = "event:/INGAME/Puzzle 2/Balanza/BalanceMoveUp";
     public string moveDownBalancePath;
     public string placeObjectBalancePath;
     public string placeObjectPlatePath;
+    
     
 
     private void Start()
@@ -65,6 +67,7 @@ public class BalanceController : MonoBehaviour, IInteractable
            
             if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && finishPuzzle && (balance[0] == false && balance[1] == false)) //QUIT
             {
+                canvasTutorial.TutorialPuzzle21(false);
                 StartCoroutine(CamaraTransition(camera.transform, initialPositionCam, true));
                 
                 activePuzzle = false;
@@ -220,16 +223,16 @@ public class BalanceController : MonoBehaviour, IInteractable
 
                         finishPuzzle = false;
 
-                        FMODUnity.RuntimeManager.PlayOneShot(moveDownBalancePath, transform.position);
+                        
                         if (balanceWeight[0] > balanceWeight[1])
                         {
-                           
+                            FMODUnity.RuntimeManager.PlayOneShot(moveDownBalancePath, transform.position);
                             balanceAnimator.Play("BasculaLeftDownAnim");
 
                         }
                         else if (balanceWeight[0] < balanceWeight[1])
                         {
-
+                            FMODUnity.RuntimeManager.PlayOneShot(moveDownBalancePath, transform.position);
                             balanceAnimator.Play("BasculaRightDownAnim");
                         }
                         else if (balanceWeight[0] == balanceWeight[1])
@@ -328,7 +331,9 @@ public class BalanceController : MonoBehaviour, IInteractable
         initialPositionCam.position = camera.transform.position;
         initialPositionCam.rotation = camera.transform.rotation;
         activePuzzle = true;
-        print("Start");
+     
+        canvasTutorial.TutorialPuzzle21(true);
+
         StartCoroutine(CamaraTransition(camera.transform, puzzlePositionCam, false));
     }
 

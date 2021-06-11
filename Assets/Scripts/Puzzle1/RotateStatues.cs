@@ -32,6 +32,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     
     private float moveToSpeed = 1f;
 
+    public CanvasTutorial canvasTutorial;
+
     public string soundPathRotation = "event:/INGAME/Puzzle 1/1.1/Rotate";
 
     public string soundPathSelect = "event:/INGAME/Puzzle 1/1.1/SelectStatue";
@@ -47,6 +49,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     {
         if(rotating)
             return;
+
+        canvasTutorial.TutorialPuzzle11(true);
 
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);
@@ -84,6 +88,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
         if (Input.GetButtonDown("Interact") && inControl && !waitNoOtherInput )
         {
+
+            canvasTutorial.TutorialPuzzle11(false);
 
             playerController.ChangeLookCloserState(false, false, false);
             playerController.EnableController(true,true,true,true);

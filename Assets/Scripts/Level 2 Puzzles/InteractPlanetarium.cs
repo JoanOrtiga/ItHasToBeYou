@@ -49,6 +49,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     private bool winPuzzle = false;
 
     public bool finishAnimation = true;
+
+    public CanvasTutorial canvasTutorial;
+
     private void Start()
     {
         puzzleAnimator = puzzle.GetComponent<Animator>();
@@ -79,6 +82,8 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
             StartCoroutine(CamaraTransition(camera.transform, viewCamara, false));
             activePuzzle = true;
+
+            canvasTutorial.TutorialPuzzle22(true);
         }
     }
 
@@ -91,7 +96,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         {
             if (Input.GetButtonDown("Interact") && activeCameraTransition == false && finishAnimation == true)
             {
-                if (allClues[0] == true && allClues[1] == true && allClues[2] == true)
+                if (allClues[0] == true && allClues[1] == true && allClues[2] == true) //QUIT
                 {
                     if (winPuzzle == false)
                     {
@@ -99,7 +104,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                         playSoundOne = false;
                         
                         FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
-
+                        canvasTutorial.TutorialPuzzle22(false);
                         correctMetals = false;
                     }
                    
