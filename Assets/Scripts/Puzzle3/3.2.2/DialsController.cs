@@ -41,6 +41,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     private bool audioOnce = false;
 
+    private CanvasTutorial canvasTutorial;
+
     private enum DialState
     {
         transitioningDial2,
@@ -53,6 +55,9 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     private void Awake()
     {
+
+        canvasTutorial = FindObjectOfType<CanvasTutorial>();
+
         mainCamera = Camera.main;
         playerController = FindObjectOfType<PlayerController>();
     }
@@ -60,7 +65,7 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     public void Interact()
     {
-        
+        canvasTutorial.TutorialPuzzle33(true);
        
         playerController.DisableController(true, true, true);
         active = true;
@@ -92,6 +97,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
             mainCamera.enabled = true;
             dialsCamera.enabled = false;
             active = false;
+            canvasTutorial.TutorialPuzzle33(false);
+
         }
 
         float direction = Input.GetAxisRaw("Vertical");

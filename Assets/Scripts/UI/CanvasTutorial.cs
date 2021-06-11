@@ -8,6 +8,7 @@ public class CanvasTutorial : MonoBehaviour
 
     [Header("Level 1")]
     public GameObject puzzle11;
+    public GameObject puzzle12;
 
     [Header("Level 2")]
     public GameObject puzzle21;
@@ -23,6 +24,14 @@ public class CanvasTutorial : MonoBehaviour
     {
         puzzle11.SetActive(changeState ? true : false);
     }
+    public void TutorialPuzzle12(bool changeState)
+    {
+        puzzle12.SetActive(changeState ? true : false);
+    }
+
+
+
+    //Puzzle 2
 
     public void TutorialPuzzle21(bool changeState)
     {
@@ -34,6 +43,26 @@ public class CanvasTutorial : MonoBehaviour
         puzzle22.SetActive(changeState ? true : false);
     }
 
-   
-    
+
+
+
+
+    //PUZLES 3
+    public void TutorialPuzzle31(bool changeState)
+    {
+        puzzle31.SetActive(changeState ? true : false);
+    }
+
+    public void TutorialPuzzle32(bool changeState)
+    {
+        puzzle32.SetActive(changeState ? true : false);
+    }
+
+    public void TutorialPuzzle33(bool changeState)
+    {
+        puzzle33.SetActive(changeState ? true : false);
+    }
+
+
+
 }
