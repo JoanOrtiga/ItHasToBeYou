@@ -16,6 +16,9 @@ public class StatuesSolver : MonoBehaviour
 
     [SerializeField] private float radius;
 
+
+    public CanvasTutorial canvasTutorial;
+
     private bool x = true;
     private void Update()
     {
@@ -39,6 +42,7 @@ public class StatuesSolver : MonoBehaviour
                 x = false;
                 FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Escaleras Elevandose/Escalera", this.gameObject.transform.position);
                 CamaraShake.ShakeOnce(12, 3, new Vector3(0.35f, 0.35f));
+                canvasTutorial.TutorialPuzzle31(false);
 
             }
             

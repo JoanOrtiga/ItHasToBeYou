@@ -69,6 +69,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         ringTwoMesh = ringTwo.GetChild(0).GetComponent<MeshRenderer>();
 
         finishAnimation = true;
+
+        canvasTutorial = FindObjectOfType<CanvasTutorial>();
+
         //ringOne.transform.Rotate(0, 0, 90, Space.Self);
         //ringTwo.transform.Rotate(0, 0, -90, Space.Self);
     }
