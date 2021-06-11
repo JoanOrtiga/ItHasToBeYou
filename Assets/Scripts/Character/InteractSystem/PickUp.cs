@@ -309,13 +309,12 @@ public class PickUp : MonoBehaviour
 
         if (placeObjectPosition.GetComponent<PlacePlate>() != null)
         {
-            print("PLACE PLATE");
             placeObjectPosition.GetComponent<PlacePlate>().hasBeenPlaced = true;
             FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlacePlate>().placeSoundPath, transform.position);
         } 
         else if (placeObjectPosition.GetComponent<PlaceMaterial>() != null)
         {
-            print("PLACE PLANET");
+
             placeObjectPosition.GetComponent<PlaceMaterial>().hasBeenPlaced = true;
             FMODUnity.RuntimeManager.PlayOneShot(placeObjectPosition.GetComponent<PlaceMaterial>().placeSoundPath, transform.position);
            // handAnimator.SetBool("LookClose", false);

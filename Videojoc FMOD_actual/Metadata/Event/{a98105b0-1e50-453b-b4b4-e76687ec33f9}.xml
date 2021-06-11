@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{a98105b0-1e50-453b-b4b4-e76687ec33f9}">
 		<property name="name">
-			<value>Lupa</value>
+			<value>LupaPickUp</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{5b2c80c8-41fe-4487-b2a7-e852f0dd0da9}</destination>
+			<destination>{e7cce0f1-4398-4939-85c4-303f6745a08e}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{6deab99a-e38d-49ff-8a40-eb006cbf765f}</destination>
@@ -31,6 +31,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{66148e1d-4bee-435e-ab09-7b3041ba8ff4}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{ef093b2d-6def-4549-950f-189bee9d4671}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{6deab99a-e38d-49ff-8a40-eb006cbf765f}">
@@ -66,7 +69,7 @@
 	</object>
 	<object class="GroupTrack" id="{d8130d59-e645-444f-a19b-2b4528074d03}">
 		<relationship name="modules">
-			<destination>{ee67c168-5d92-4fd5-a1d8-8412c4dbec20}</destination>
+			<destination>{94c99f92-7ee2-4bd3-885b-c39fbeefb5a4}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{67b4dcf5-0813-4ee8-bd82-afe5b831adba}</destination>
@@ -75,7 +78,7 @@
 	<object class="Timeline" id="{66148e1d-4bee-435e-ab09-7b3041ba8ff4}">
 		<relationship name="modules">
 			<destination>{fd139500-6532-4125-9ff2-5819a18a435a}</destination>
-			<destination>{ee67c168-5d92-4fd5-a1d8-8412c4dbec20}</destination>
+			<destination>{94c99f92-7ee2-4bd3-885b-c39fbeefb5a4}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{d75a260f-93a0-4c89-9821-1ab12c0950a1}">
@@ -104,6 +107,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{480fc781-f9d7-46ea-8072-97a466d62229}">
+		<property name="volume">
+			<value>-47</value>
+		</property>
 		<property name="name">
 			<value>Coger Lupa</value>
 		</property>
@@ -117,12 +123,12 @@
 			<destination>{d75a260f-93a0-4c89-9821-1ab12c0950a1}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{ee67c168-5d92-4fd5-a1d8-8412c4dbec20}">
+	<object class="SingleSound" id="{94c99f92-7ee2-4bd3-885b-c39fbeefb5a4}">
 		<property name="length">
-			<value>1.4367346938775509</value>
+			<value>0.34356249999999999</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{d8626a11-3a24-4813-bdac-203e66ecd79a}</destination>
+			<destination>{33975798-4b15-42e2-85c2-b10c1aa33614}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{67b4dcf5-0813-4ee8-bd82-afe5b831adba}">

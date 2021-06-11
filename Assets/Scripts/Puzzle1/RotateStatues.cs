@@ -32,7 +32,11 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     
     private float moveToSpeed = 1f;
 
+    public CanvasTutorial canvasTutorial;
+
     public string soundPathRotation = "event:/INGAME/Puzzle 1/1.1/Rotate";
+
+    public string soundPathSelect = "event:/INGAME/Puzzle 1/1.1/SelectStatue";
 
     private void Awake()
     {
@@ -45,6 +49,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     {
         if(rotating)
             return;
+
+        canvasTutorial.TutorialPuzzle11(true);
 
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);

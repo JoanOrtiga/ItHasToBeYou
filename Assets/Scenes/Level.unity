@@ -3012,7 +3012,9 @@ MonoBehaviour:
   - {fileID: 917579257}
   - {fileID: 990176309}
   - {fileID: 302823529}
+  canvasTutorial: {fileID: 1515070294}
   soundPathRotation: event:/INGAME/Puzzle 1/1.1/Rotate
+  soundPathSelect: event:/INGAME/Puzzle 1/1.1/SelectStatue
 --- !u!1 &142347806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 446d54b5f38551f4e805d876cb9e0d4f, type: 3}
@@ -3551,6 +3553,11 @@ Transform:
   m_Father: {fileID: 1320383443}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &169398188 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3482185657899407965, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+  m_PrefabInstance: {fileID: 1042426504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &172568591
 GameObject:
   m_ObjectHideFlags: 0
@@ -22611,6 +22618,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e3a03475c577124d9bc4dacf9c05083, type: 3}
   m_PrefabInstance: {fileID: 989672681}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &990128354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 990128355}
+  m_Layer: 0
+  m_Name: SoundSourseTower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &990128355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990128354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.41, y: -0.45, z: 6.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 169398188}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &990176308
 GameObject:
   m_ObjectHideFlags: 0
@@ -23568,6 +23605,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1797202139}
     m_Modifications:
+    - target: {fileID: 73387606, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 75218809, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_Name
       value: Normal
@@ -23608,9 +23649,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -9.148
       objectReference: {fileID: 0}
+    - target: {fileID: 246615749, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 546380171, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 652566302, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 750185978, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_LocalScale.y
       value: 6.90856
+      objectReference: {fileID: 0}
+    - target: {fileID: 917088535, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312446224, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1600712828, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_Name
@@ -23644,6 +23705,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -171.487
       objectReference: {fileID: 0}
+    - target: {fileID: 1738620801, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1815342077, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004314475, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2025030070, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_LocalScale.y
       value: 6.414939
@@ -23652,9 +23725,29 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0aa0003c02de00946bd51f1e692d644a, type: 2}
+    - target: {fileID: 2027425811, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057365229, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112825460, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141064059, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 467246552223278272, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889431205596050104, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 2091316719869423992, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_IsActive
@@ -23664,6 +23757,30 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1932320543}
+    - target: {fileID: 2571956431532758904, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114518614720984787, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482185657899407964, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: soundPointGear
+      value: 
+      objectReference: {fileID: 1895617641}
+    - target: {fileID: 3482185657899407964, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: soundPointGears
+      value: 
+      objectReference: {fileID: 1895617641}
+    - target: {fileID: 3482185657899407964, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: soundPointTower
+      value: 
+      objectReference: {fileID: 990128354}
+    - target: {fileID: 3482185658547388817, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: clickSoundPath
+      value: event:/INGAME/Puzzle 3/Dials/Dials
+      objectReference: {fileID: 0}
     - target: {fileID: 3482185658595183401, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -23731,6 +23848,46 @@ PrefabInstance:
     - target: {fileID: 3482185659534390040, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
       propertyPath: m_Name
       value: TeacherMoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577262466957116201, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710641301521719020, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966406516254666415, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5210643448697561628, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260857925604177773, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405573981937430074, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786679625904621950, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941943460364083532, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202685706081562799, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806655062895365967, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ece657aa9b0198d43bfe88eb9c71abe5, type: 3}
@@ -25855,6 +26012,14 @@ PrefabInstance:
       value: 0.0018
       objectReference: {fileID: 0}
     - target: {fileID: 1942641609746729103, guid: c3ad5796eb664f1438f174645901f695, type: 3}
+      propertyPath: dropPath
+      value: event:/INGAME/Puzzle 1/Objetos/Lupa/LupaDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942641609746729103, guid: c3ad5796eb664f1438f174645901f695, type: 3}
+      propertyPath: pickUpPath
+      value: event:/INGAME/Puzzle 1/Objetos/Lupa/LupaPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942641609746729103, guid: c3ad5796eb664f1438f174645901f695, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1433600714}
@@ -27305,7 +27470,9 @@ MonoBehaviour:
   - {fileID: 914142202}
   - {fileID: 100583665}
   - {fileID: 1709669990}
+  canvasTutorial: {fileID: 1515070294}
   soundPathRotation: event:/INGAME/Puzzle 1/1.1/Rotate
+  soundPathSelect: event:/INGAME/Puzzle 1/1.1/SelectStatue
 --- !u!65 &1221115920
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28932,6 +29099,7 @@ MonoBehaviour:
   dial2Range: {x: 250, y: 280}
   angleAtATime: 10
   clickSoundPath: 
+  selectSoundPath: event:/INGAME/Puzzle 3/Dials/SelectDials
 --- !u!65 &1290289519
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34100,10 +34268,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3983843035226291126, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3983843035226291130, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -34188,16 +34352,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3983843035764477142, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3983843036524765395, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
+--- !u!114 &1515070294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1515070294, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
+  m_PrefabInstance: {fileID: 1515070288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc76176ff16727241a3a25d22fc924c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1515127052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36114,15 +36281,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.239
+      value: 4.237
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.059
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.451
+      value: 0.329
       objectReference: {fileID: 0}
     - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
       propertyPath: m_LocalRotation.w
@@ -43919,6 +44086,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98139936cc2b01044b05477ab5537858, type: 3}
+--- !u!1 &1895617641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1895617642}
+  m_Layer: 0
+  m_Name: SoundSourseGear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1895617642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895617641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.26, y: 0.017, z: -1.911}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 169398188}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1896534055
 GameObject:
   m_ObjectHideFlags: 0
@@ -44459,6 +44656,9 @@ MonoBehaviour:
   - {fileID: 1657424433330670852}
   - {fileID: 5772848873576526087}
   animator: {fileID: 0}
+  GearLoopSolvedPath: event:/INGAME/Puzzle 3/Mecanismos/MecanismoLoop
+  soundPointGear: {fileID: 0}
+  soundPointTower: {fileID: 0}
 --- !u!1001 &1920226799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46914,7 +47114,9 @@ MonoBehaviour:
   - {fileID: 2111745107}
   - {fileID: 1901654223}
   - {fileID: 1596570400}
+  canvasTutorial: {fileID: 1515070294}
   soundPathRotation: event:/INGAME/Puzzle 1/1.1/Rotate
+  soundPathSelect: event:/INGAME/Puzzle 1/1.1/SelectStatue
 --- !u!1 &2009125447 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae4a3d244269fe4b8564d3ba9f311d1, type: 3}
@@ -63781,6 +63983,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1671838505}
     m_Modifications:
+    - target: {fileID: 3842348043558001044, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: canvasTutorial
+      value: 
+      objectReference: {fileID: 1515070294}
     - target: {fileID: 4835156432748238256, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
       propertyPath: m_Name
       value: PuzzlePlanetariNew
@@ -63841,6 +64047,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1433600714}
+    - target: {fileID: 8838408241926446678, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
+      propertyPath: canvasTutorial
+      value: 
+      objectReference: {fileID: 1515070294}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 218b9551f09a80a4891e5bd3795a429a, type: 3}
 --- !u!4 &4835765263834932233

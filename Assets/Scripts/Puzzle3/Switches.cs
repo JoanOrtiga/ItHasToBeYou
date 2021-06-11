@@ -31,6 +31,7 @@ public class Switches : MonoBehaviour
 
     public bool Solved()
     {
+
         return currentPosition == SwitchesPosition.mid;
     }
     

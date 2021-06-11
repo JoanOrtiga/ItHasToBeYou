@@ -35,9 +35,11 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     [SerializeField] private float angleAtATime = 10f;
 
-    public string clickSoundPath;
+    public string clickSoundPath = "event:/INGAME/Puzzle 3/Dials/Dials";
+    public string selectSoundPath = "event:/INGAME/Puzzle 3/Dials/SelectDials";
     private float timeSound;
 
+    private bool audioOnce = false;
 
     private enum DialState
     {
@@ -135,7 +137,13 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
                 RotateDial(dial2, direction);
                 break;
             case DialState.transitioningDial1:
-               
+                if (audioOnce == true)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(selectSoundPath, gameObject.transform.position);
+
+                    audioOnce = false;
+                }
+                
                 dialsCamera.transform.localPosition = Vector3.Lerp(dialsCamera.transform.localPosition,
                     cameraDial1.transform.localPosition, cameraSpeed * Time.deltaTime);
 
@@ -159,6 +167,13 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
                 break;
             
             case DialState.transitioningDial2:
+
+                if (audioOnce == false)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(selectSoundPath, gameObject.transform.position);
+
+                    audioOnce = true;
+                }
                 
                 dialsCamera.transform.localPosition = Vector3.Lerp(dialsCamera.transform.localPosition,
                     cameraDial2.transform.localPosition, cameraSpeed * Time.deltaTime);
