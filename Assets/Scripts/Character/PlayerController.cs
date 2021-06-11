@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
     public CharacterController characterController { get; private set; }
 
     public BreathCamera breathCamera { get; private set; }
+    
+    public Camera mainCamera { get; private set; }
 
     [SerializeField] private Animator handAnimator;
     [SerializeField] private Animator secondHandAnimator;
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
 
     private void Awake()
     {
+        mainCamera = Camera.main;
+        
         characterController = GetComponent<CharacterController>();
         cameraController = transform.GetComponentInChildren<CameraController>();
         playerMovement = GetComponent<PlayerMovement>();
