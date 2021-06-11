@@ -68,7 +68,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
            if (Input.GetAxisRaw("Horizontal") < -0.5f)
            {
                FMODUnity.RuntimeManager.PlayOneShot(soundPathRotation, gameObject.transform.position);
-               CamaraShake.ShakeOnce(1, 3, new Vector3(0.03f, 0.02f));
                playerController.AnimatorSetTrigger("P1_MoveLeft");
                RotateObjective(true);
                waitNoOtherInput = true;
@@ -184,6 +183,8 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     public void Touch()
     {
         rotating = true;
+        CamaraShake.ShakeOnce(1, 3, new Vector3(0.03f, 0.02f));
+
     }
 
     public void Finished(int control)
