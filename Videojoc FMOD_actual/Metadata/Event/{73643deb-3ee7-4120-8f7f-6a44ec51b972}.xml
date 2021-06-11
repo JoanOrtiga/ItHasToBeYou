@@ -32,6 +32,9 @@
 		<relationship name="timeline">
 			<destination>{424114ff-db91-4c59-9e20-e3958cc57584}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{ef093b2d-6def-4549-950f-189bee9d4671}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{828bb366-a7fa-494c-b14c-caf937a7d6dc}">
 		<relationship name="masterBus">
@@ -57,16 +60,13 @@
 	<object class="EventAutomatableProperties" id="{91e6e975-2f9f-403c-b7bd-0f177c190586}" />
 	<object class="MarkerTrack" id="{91d54300-5cc4-472f-bbd1-1ec207830bc9}" />
 	<object class="GroupTrack" id="{535743c9-efc5-400a-be0b-647adbe66b9e}">
-		<relationship name="modules">
-			<destination>{7d4ef2e0-4304-4c54-a76c-15e527d95286}</destination>
-		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{07df132e-5242-42ea-b379-472595569d73}</destination>
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{5efc71b2-fce0-40b2-9051-abcd5784c3a7}">
 		<relationship name="modules">
-			<destination>{e1cf466a-d048-4b18-8ffe-8a6951451c22}</destination>
+			<destination>{7d4ef2e0-4304-4c54-a76c-15e527d95286}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{66375265-bc4c-4dc3-ab76-97ff83d0df47}</destination>
@@ -75,7 +75,6 @@
 	<object class="Timeline" id="{424114ff-db91-4c59-9e20-e3958cc57584}">
 		<relationship name="modules">
 			<destination>{7d4ef2e0-4304-4c54-a76c-15e527d95286}</destination>
-			<destination>{e1cf466a-d048-4b18-8ffe-8a6951451c22}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{b1a1795e-647c-40ca-bf11-76eff5a2f45f}">
@@ -95,17 +94,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a1102e67-41af-406a-9e53-79b6df537e19}" />
-	<object class="SingleSound" id="{7d4ef2e0-4304-4c54-a76c-15e527d95286}">
-		<property name="start">
-			<value>0.30000000000000004</value>
-		</property>
-		<property name="length">
-			<value>1.0800000000000001</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{6d3bc4d2-1d60-4339-a442-e6d1bbdf8309}</destination>
-		</relationship>
-	</object>
 	<object class="EventMixerGroup" id="{07df132e-5242-42ea-b379-472595569d73}">
 		<property name="name">
 			<value>Ceramica Coger</value>
@@ -120,12 +108,12 @@
 			<destination>{b1a1795e-647c-40ca-bf11-76eff5a2f45f}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{e1cf466a-d048-4b18-8ffe-8a6951451c22}">
-		<property name="length">
-			<value>0.68000000000000005</value>
+	<object class="SingleSound" id="{7d4ef2e0-4304-4c54-a76c-15e527d95286}">
+		<property name="timelockedOffset">
+			<value>0.080000000000000002</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{41f3c9c2-2bac-43fc-97b2-d4cf3123f544}</destination>
+			<destination>{6d3bc4d2-1d60-4339-a442-e6d1bbdf8309}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{66375265-bc4c-4dc3-ab76-97ff83d0df47}">

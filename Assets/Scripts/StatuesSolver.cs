@@ -17,7 +17,7 @@ public class StatuesSolver : MonoBehaviour
     [SerializeField] private float radius;
 
 
-    public CanvasTutorial canvasTutorial;
+    private CanvasTutorial canvasTutorial;
 
     private bool x = true;
     private void Update()
@@ -66,5 +66,10 @@ public class StatuesSolver : MonoBehaviour
 
         this.enabled = false;
 
+    }
+
+    private void Start()
+    {
+        canvasTutorial = FindObjectOfType<CanvasTutorial>();
     }
 }

@@ -410,6 +410,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 456
+--- !u!114 &-4930337239412592681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/INGAME/Puzzle 1/Objetos/Ceramica
+  m_EditorClassIdentifier: 
+  Path: event:/INGAME/Puzzle 1/Objetos/Ceramica
+  guid: eb3d6473e73e20418f7f6a44ec51b972
+  Banks:
+  - {fileID: 2774345943386990858}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-4275704921303366805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,6 +594,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1393
+--- !u!114 &-3101702942387030293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MENU/Mouse/Tracks
+  m_EditorClassIdentifier: 
+  Path: event:/MENU/Mouse/Tracks
+  guid: b0201b89218d6f41ae093c433497aa93
+  Banks:
+  - {fileID: 2774345943386990858}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 440
 --- !u!114 &-2777841707630157267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,12 +1171,14 @@ MonoBehaviour:
   - {fileID: -8476726884410726520}
   - {fileID: -2777841707630157267}
   - {fileID: -1361907662314636686}
+  - {fileID: -3101702942387030293}
+  - {fileID: -4930337239412592681}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2774345943386990858}
   StringsBanks:
   - {fileID: 5344338034649368033}
-  stringsBankWriteTime: 637589763538193321
+  stringsBankWriteTime: 637590440916041655
   cacheVersion: 6
 --- !u!114 &429788719691573394
 MonoBehaviour:
@@ -1492,7 +1540,7 @@ MonoBehaviour:
   Path: Videojoc FMOD_actual/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637589763538173369
+  lastModified: 637590440915941930
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1808,11 +1856,11 @@ MonoBehaviour:
   Path: Videojoc FMOD_actual/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637589763538193321
+  lastModified: 637590440916041655
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 3396
+    Value: 3478
   Exists: 1
 --- !u!114 &5526017608122607470
 MonoBehaviour:
