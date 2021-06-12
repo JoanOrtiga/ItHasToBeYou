@@ -33,12 +33,15 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
     [SerializeField] private float moveToSpeed = 1f;
 
     private PickUp pickController;
+
+    public CanvasTutorial canvasTutorial;
     
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
         pickController = FindObjectOfType<PickUp>();
         playerTransform = playerController.transform;
+        canvasTutorial = FindObjectOfType<CanvasTutorial>();
     }
 
     public void Interact()
@@ -67,6 +70,8 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         otherSide3.SetActive(false);
 
         StartCoroutine(Cooldown());
+
+        canvasTutorial.TutorialPuzzle31(true);
     }
 
     private IEnumerator LookAt()
@@ -133,6 +138,8 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
                 otherSide1.SetActive(true);
                 otherSide2.SetActive(true);
                 otherSide3.SetActive(true);
+                canvasTutorial.TutorialPuzzle31(false);
+
             }
         }
         else

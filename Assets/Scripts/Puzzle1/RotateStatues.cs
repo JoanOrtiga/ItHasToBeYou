@@ -90,6 +90,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
             inControl = false;
             playerController.ChangeLookCloserState(false, false, false);
             StartCoroutine(LookAt(true));
+            canvasTutorial.TutorialPuzzle11(false);
         }
     }
 

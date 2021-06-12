@@ -15,11 +15,9 @@ public class ObjectParameters : MonoBehaviour
     public Vector3 startPos { get; private set; }
     [HideInInspector] public Quaternion startRot;
 
-    [Header("Animation")]
-    [SerializeField] private bool changeAnim;
-    [SerializeField] private string animParam;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private PickUp pickUp;
+   
+     private PlayerController playerController;
+     private PickUp pickUp;
     private void Awake()
     {
         startPos = transform.position;
@@ -41,8 +39,8 @@ public class ObjectParameters : MonoBehaviour
     {
         popUp.gameObject.SetActive(!Disable);
 
-        if(changeAnim)
-            playerController.AnimatorSetBool(animParam, Disable);
+        //if(changeAnim)
+        //    playerController.AnimatorSetBool(animParam, Disable);
     }
 
     private void Update()
