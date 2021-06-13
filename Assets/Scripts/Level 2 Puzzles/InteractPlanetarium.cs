@@ -112,6 +112,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                     }
                    
                 }
+                canvasTutorial.TutorialPuzzle22(false);
 
                 activePuzzle = false;
                 puzzleAnimator.enabled = true;
