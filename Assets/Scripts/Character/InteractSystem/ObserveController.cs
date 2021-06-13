@@ -181,8 +181,6 @@ public class ObserveController : MonoBehaviour, IInteractable
 
 
             yield return null;
-            
-
         }
 
         if (activePuzzle)
