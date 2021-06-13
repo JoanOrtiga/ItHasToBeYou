@@ -20,8 +20,14 @@ public class ControllSwitches : MonoBehaviour, IInteractable
 
     [SerializeField] private float speed = 1f;
 
+    private bool transitioning = false;
+
+    private GameObject saveCameraPosition;
+
+    public Crosshair crosshair;
     private void Awake()
     {
+        saveCameraPosition = new GameObject();
         playerController = FindObjectOfType<PlayerController>();
 
         woodsMaterial = new Material[3];
@@ -38,11 +44,21 @@ public class ControllSwitches : MonoBehaviour, IInteractable
     {
         if (Solved())
             return;
+        
+        if(transitioning)
+            return;
+        
+        if(active)
+            return;
+        
+        saveCameraPosition.transform.position =playerController.mainCamera.transform.position;
+        saveCameraPosition.transform.rotation = playerController.mainCamera.transform.rotation;
+        StartCoroutine(CamaraTransition(playerController.mainCamera.transform, camera.transform, true));
 
-        active = true;
+      /*  active = true;
         playerController.DisableController(true, true, true, true);
         camera.enabled = true;
-        playerController.mainCamera.enabled = false;
+        playerController.mainCamera.enabled = false;*/
         woodsMaterial[position].EnableKeyword("_EMISSION");
     }
 
@@ -53,6 +69,10 @@ public class ControllSwitches : MonoBehaviour, IInteractable
 
         if (Solved())
             return;
+        
+        if(transitioning)
+            return;
+        
 
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -84,10 +104,9 @@ public class ControllSwitches : MonoBehaviour, IInteractable
 
         if (Input.GetButtonDown("Interact"))
         {
+            StartCoroutine(CamaraTransition(playerController.mainCamera.transform, saveCameraPosition.transform, false));
+
             active = false;
-            playerController.EnableController(true, true, true, true);
-            playerController.mainCamera.enabled = true;
-            camera.enabled = false;
 
             woodsMaterial[0].DisableKeyword("_EMISSION");
             woodsMaterial[1].DisableKeyword("_EMISSION");
@@ -122,5 +141,47 @@ public class ControllSwitches : MonoBehaviour, IInteractable
         }
 
         return solved;
+    }
+
+    IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle_)
+    {
+        playerController.DisableController(true, true, true, true);
+        crosshair.ChangeCrosshairState(false,false);
+        active = activePuzzle_;
+        transitioning = true;
+        
+        while (Vector3.Distance(pointA.position, pointB.position) > 0.005f)
+        {
+            pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * speed);
+
+            Vector3 currentAngle = new Vector3(
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x,
+                    Time.deltaTime * speed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y,
+                    Time.deltaTime * speed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z,
+                    Time.deltaTime * speed));
+
+            pointA.eulerAngles = currentAngle;
+            yield return null;
+        }
+
+        if (!activePuzzle_)
+        {
+            pointA.localPosition = Vector3.zero;
+            pointA.rotation = pointB.rotation;
+            playerController.EnableController(true, true, true, true);
+            crosshair.ChangeCrosshairState(true,true);
+        }
+
+        transitioning = false;
+        
+        StopCoroutine("CamaraTransition");
+    }
+
+    private void LateUpdate()
+    {
+        if(active)
+            crosshair.ChangeCrosshairState(false,false);
     }
 }
