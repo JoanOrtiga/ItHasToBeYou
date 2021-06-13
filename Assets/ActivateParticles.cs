@@ -9,7 +9,7 @@ public class ActivateParticles : MonoBehaviour
 
     private float timer;
     private bool activated = false;
-    private void Start()
+    private void Awake()
     {
         particleSystems = GetComponentsInChildren<ParticleSystem>();
         
