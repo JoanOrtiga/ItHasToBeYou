@@ -16,8 +16,11 @@ public class ObjectParameters : MonoBehaviour
     [HideInInspector] public Quaternion startRot;
 
    
-     private PlayerController playerController;
-     private PickUp pickUp;
+    [Header("Animation")]
+    [SerializeField] private bool changeAnim;
+    [SerializeField] private string animParam;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private PickUp pickUp;
     private void Awake()
     {
         startPos = transform.position;
@@ -39,12 +42,7 @@ public class ObjectParameters : MonoBehaviour
     {
         popUp.gameObject.SetActive(!Disable);
 
-        //if(changeAnim)
-        //    playerController.AnimatorSetBool(animParam, Disable);
-    }
-
-    private void Update()
-    {
-        
+        if(changeAnim)
+            playerController.AnimatorSetBool(animParam, Disable);
     }
 }
