@@ -51,6 +51,8 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
     [SerializeField] private Transform lockCameraPoint;
 
     private float time;
+
+    private bool transitioning;
     
     public void ChangeSide(Sides side)
     {
@@ -117,11 +119,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             if (currentRoadType == RoadType.circular)
             {
-
-             /*   transform.RotateAround(rotationPoint.position, Vector3.up,
-                    lastDirection * GetCircularSpeed() * Time.deltaTime);*/
                 MoveToPoint(nearStopPoint);
-
             }
             else if (currentRoadType == RoadType.line)
             {
@@ -142,49 +140,33 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         
         if (active is false)
             return;
+        
+        if(transitioning)
+            return;
 
         if (Input.GetButtonDown("Interact"))
         {
             if (statuePathFinder.IsInStopPoint(transform.position))
             {
-                playerController.AnimatorSetBool("P3.1", false);
-                playerController.ChangeLookCloserState(false,false,false);
-                playerController.ReAttachHand();
-                
-                active = false;
-               
+                StartCoroutine(LookAt());
+                transitioning = true;
                 return;
             }
             else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
             { 
-                playerController.AnimatorSetBool("P3.1", false);
-                playerController.ChangeLookCloserState(false,false,false);
-                playerController.ReAttachHand();
-              
-            
+                StartCoroutine(LookAt());
+                transitioning = true;
                 imNearStopPoint = true;
-                active = false;
-               
                 return;
             }
         }
 
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        time += Time.deltaTime;
-
         if (verticalInput != 0)
         {
             lastDirection = verticalInput;
-
-            if (time > 1)
-            {
-                // CamaraShake.ShakeOnce(1, 3, new Vector3(0.1f, 0.1f));
-                time = 0;
-            }
-            
             playerController.playerMovement.SimulateHeadBobbing();
-           
         }
         
         
@@ -279,5 +261,22 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         }
 
         return false;
+    }
+    
+    private IEnumerator LookAt()
+    {
+       /* while (!playerController.cameraController.LookAt(lockCameraPoint.position, 2f))
+        {
+            yield return null;
+        }*/
+       yield return null;
+        
+        playerController.AnimatorSetBool("P3.1", false);
+               
+        playerController.ChangeLookCloserState(false,false,false);
+        playerController.ReAttachHand();
+
+        transitioning = false;
+        active = false;
     }
 }

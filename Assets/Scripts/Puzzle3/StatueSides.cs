@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
+public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 {
     public MovingStatue.Sides side;
 
@@ -22,7 +22,7 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
     [SerializeField] private GameObject otherSide3;
 
     [SerializeField] private Transform lockCameraPoint;
-    
+
     private bool deActivated = true;
 
     private bool cooldowned = false;
@@ -32,7 +32,7 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
     private PickUp pickController;
 
     public CanvasTutorial canvasTutorial;
-    
+
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -43,26 +43,25 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
 
     public void Interact()
     {
-        if(active)
+        if (active)
             return;
-        
+
         pickController.activePuzzle = true;
         active = true;
-        
+
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);
-        
+
         StartCoroutine(AttachPlayer());
         StartCoroutine(LookAt());
-        
+
         otherSide1.SetActive(false);
         otherSide2.SetActive(false);
         otherSide3.SetActive(false);
-        
-        canvasTutorial.TutorialPuzzle31(true);
 
+        canvasTutorial.TutorialPuzzle31(true);
     }
-    
+
     private IEnumerator LookAt()
     {
         while (!playerController.cameraController.LookAt(lockCameraPoint.position, 3f))
@@ -77,8 +76,9 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         bool x = true;
         while (magnitude > 0.01 * 0.01)
         {
-            playerTransform.position = Vector3.MoveTowards(playerTransform.position, positonChild.position, moveToSpeed * Time.deltaTime);
-            
+            playerTransform.position = Vector3.MoveTowards(playerTransform.position, positonChild.position,
+                moveToSpeed * Time.deltaTime);
+
             magnitude = (positonChild.position - playerTransform.position).sqrMagnitude;
 
             if (magnitude < 0.7f * 0.7f && x)
@@ -86,25 +86,29 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
                 playerController.AnimatorSetBool("P3.1", true);
                 x = false;
             }
-            
+
             yield return null;
         }
-        
+
         if (x)
         {
             playerController.AnimatorSetBool("P3.1", true);
             x = false;
         }
-        
+
         playerTransform.position = positonChild.position;
         playerTransform.parent = positonChild;
     }
-    
-    
+
 
     public void Touch()
     {
         Debug.Log("This shouldn't be called.");
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void Finished(int control)
@@ -117,30 +121,30 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         }
         else if (control == 2)
         {
-            Leave();
+            if (active)
+                Leave();
         }
-        
     }
-    
+
     public void Leave()
     {
         playerController.CancelCurrentPuzzle();
-        
+
         pickController.activePuzzle = false;
         active = false;
 
         StopAllCoroutines();
-                
+
         playerTransform.parent = null;
-        playerController.EnableController(true,true,true, true);
-                
+        playerController.EnableController(true, true, true, true);
+
         otherSide1.SetActive(true);
         otherSide2.SetActive(true);
         otherSide3.SetActive(true);
 
         canvasTutorial.TutorialPuzzle31(false);
     }
-    
+
 /*
     public void Interact()
     {
