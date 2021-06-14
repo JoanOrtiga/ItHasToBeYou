@@ -182,10 +182,11 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
             if (time > 1)
             {
-                
-                CamaraShake.ShakeOnce(1, 3, new Vector3(0.1f, 0.1f));
+                // CamaraShake.ShakeOnce(1, 3, new Vector3(0.1f, 0.1f));
                 time = 0;
             }
+            
+            playerController.playerMovement.SimulateHeadBobbing();
            
         }
         
