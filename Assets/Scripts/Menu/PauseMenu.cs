@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private AudioMixer mixer;
 
     public GameObject pauseMenu;
+    public GameObject optionsMenu;
 
     [SerializeField] private Slider[] soundSliders;
 
@@ -50,6 +51,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause()
     {
+        Cursor.visible = true;
         FMODUnity.RuntimeManager.PlayOneShot("event:/MENU/Select/Tracks", player.position);
         Cursor.lockState = CursorLockMode.Confined;
         IsPaused = true;
@@ -59,6 +61,7 @@ public class PauseMenu : MonoBehaviour
 
     private void UnPause()
     {
+        Cursor.visible = false;
         FMODUnity.RuntimeManager.PlayOneShot("event:/MENU/Return/Tracks", player.position);
         Cursor.lockState = CursorLockMode.Locked;
         IsPaused = false;
@@ -74,6 +77,18 @@ public class PauseMenu : MonoBehaviour
     public void goToMainMenu()
     {
         UnPause();
+    }
+
+    public void ShowOptionsMenu()
+    {
+        optionsMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+    }
+
+    public void HideOptionsMenu()
+    {
+        optionsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
     }
 
     public void MasterSlider(float value)
