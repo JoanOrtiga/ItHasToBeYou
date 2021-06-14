@@ -89,7 +89,7 @@ public class EndGame : MonoBehaviour , IInteractable
             bloom.intensity.value += Time.deltaTime * speedOfBloom ;      
             bloom.diffusion.value += Time.deltaTime * speedOfDiffusion;
             
-            if (endingLight.intensity >= 25)
+            if (endingLight.intensity >= 30)
             {
                 canvasGroup.alpha -= Time.deltaTime;
             }
