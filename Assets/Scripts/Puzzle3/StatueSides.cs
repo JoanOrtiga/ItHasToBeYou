@@ -4,19 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
+public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 {
-
-  //  public MoveableStatue.Sides side;
     public MovingStatue.Sides side;
 
-    //[SerializeField] private MoveableStatue statue;
     [SerializeField] private MovingStatue statue;
 
     private Transform playerTransform;
     private PlayerController playerController;
 
-    private bool ActiveSide;
+    private bool active;
 
     [SerializeField] private Transform positonChild;
 
@@ -25,7 +22,7 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
     [SerializeField] private GameObject otherSide3;
 
     [SerializeField] private Transform lockCameraPoint;
-    
+
     private bool deActivated = true;
 
     private bool cooldowned = false;
@@ -35,7 +32,7 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
     private PickUp pickController;
 
     public CanvasTutorial canvasTutorial;
-    
+
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -44,6 +41,111 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         canvasTutorial = FindObjectOfType<CanvasTutorial>();
     }
 
+    public void Interact()
+    {
+        if (active)
+            return;
+
+        pickController.activePuzzle = true;
+        active = true;
+
+        playerController.SetCurrentPuzzle(this);
+        playerController.DisableController(true, true, true, true);
+
+        StartCoroutine(AttachPlayer());
+        StartCoroutine(LookAt());
+
+        otherSide1.SetActive(false);
+        otherSide2.SetActive(false);
+        otherSide3.SetActive(false);
+
+        canvasTutorial.TutorialPuzzle31(true);
+    }
+
+    private IEnumerator LookAt()
+    {
+        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 3f))
+        {
+            yield return null;
+        }
+    }
+
+    private IEnumerator AttachPlayer()
+    {
+        float magnitude = (positonChild.position - playerTransform.position).sqrMagnitude;
+        bool x = true;
+        while (magnitude > 0.01 * 0.01)
+        {
+            playerTransform.position = Vector3.MoveTowards(playerTransform.position, positonChild.position,
+                moveToSpeed * Time.deltaTime);
+
+            magnitude = (positonChild.position - playerTransform.position).sqrMagnitude;
+
+            if (magnitude < 0.7f * 0.7f && x)
+            {
+                playerController.AnimatorSetBool("P3.1", true);
+                x = false;
+            }
+
+            yield return null;
+        }
+
+        if (x)
+        {
+            playerController.AnimatorSetBool("P3.1", true);
+            x = false;
+        }
+
+        playerTransform.position = positonChild.position;
+        playerTransform.parent = positonChild;
+    }
+
+
+    public void Touch()
+    {
+        Debug.Log("This shouldn't be called.");
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void Finished(int control)
+    {
+        if (control == 1)
+        {
+            statue.ChangeSide(side);
+            playerController.DettachHand();
+            playerController.ChangeLookCloserState(true, false, true, new Vector2(-80, 80));
+        }
+        else if (control == 2)
+        {
+            if (active)
+                Leave();
+        }
+    }
+
+    public void Leave()
+    {
+        playerController.CancelCurrentPuzzle();
+
+        pickController.activePuzzle = false;
+        active = false;
+
+        StopAllCoroutines();
+
+        playerTransform.parent = null;
+        playerController.EnableController(true, true, true, true);
+
+        otherSide1.SetActive(true);
+        otherSide2.SetActive(true);
+        otherSide3.SetActive(true);
+
+        canvasTutorial.TutorialPuzzle31(false);
+    }
+
+/*
     public void Interact()
     {
         pickController.activePuzzle = true;
@@ -160,6 +262,5 @@ public class StatueSides : MonoBehaviour , IInteractable , IAnimationTouch
         
         playerController.DettachHand();
         playerController.ChangeLookCloserState(true, false, true, new Vector2(-80, 80));
-    
-    }
+    }*/
 }
