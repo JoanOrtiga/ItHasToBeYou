@@ -150,9 +150,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
                 playerController.AnimatorSetBool("P3.1", false);
                 playerController.ChangeLookCloserState(false,false,false);
                 playerController.ReAttachHand();
-               
-                playerController.CancelCurrentPuzzle();
-               
+                
                 active = false;
                
                 return;
@@ -162,7 +160,6 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
                 playerController.AnimatorSetBool("P3.1", false);
                 playerController.ChangeLookCloserState(false,false,false);
                 playerController.ReAttachHand();
-                playerController.CancelCurrentPuzzle();
               
             
                 imNearStopPoint = true;

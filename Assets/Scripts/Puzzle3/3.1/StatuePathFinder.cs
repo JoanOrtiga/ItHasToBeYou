@@ -17,6 +17,14 @@ public class StatuePathFinder : MonoBehaviour
     [SerializeField] private float intersectionRange = 0.2f;
     [SerializeField] private float collisionRange = 0.2f;
     [SerializeField] private float obstaclesRange = 0.2f;
+    [SerializeField] private float playerCollisionRange = 3f;
+
+    private PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
 
     /// <summary>
     /// Is statue near a stop point?
@@ -103,6 +111,18 @@ public class StatuePathFinder : MonoBehaviour
                 continue;
             
             if ((statue.position - moveTo).sqrMagnitude < collisionRange * collisionRange)
+            {
+                return false;
+            }
+        }
+
+        foreach (var obstacle in obstaclePoints)
+        {
+            if(obstacle == me)
+                continue;
+            
+            print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);
+            if ((playerController.transform.position - obstacle.position).sqrMagnitude < playerCollisionRange * playerCollisionRange)
             {
                 return false;
             }
