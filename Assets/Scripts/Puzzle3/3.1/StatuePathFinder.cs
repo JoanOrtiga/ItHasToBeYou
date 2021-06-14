@@ -121,7 +121,7 @@ public class StatuePathFinder : MonoBehaviour
             if(obstacle == me)
                 continue;
             
-            print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);
+       //     print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);
             if ((playerController.transform.position - obstacle.position).sqrMagnitude < playerCollisionRange * playerCollisionRange)
             {
                 return false;

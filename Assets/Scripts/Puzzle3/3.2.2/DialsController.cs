@@ -12,9 +12,6 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     private bool active;
 
-    [SerializeField] private Transform dialsCamera;
-
-    private bool cooldown;
 
     [SerializeField] private Transform cameraDial1;
     [SerializeField] private Transform cameraDial2;
@@ -45,6 +42,10 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     [SerializeField] private float transitionSpeed = 5f;
     private bool transitioning = false;
+
+    private Transform savePosition;
+
+    [SerializeField] private GameObject popUpInteraction;
     
     private enum DialState
     {
@@ -60,12 +61,34 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
     {
         canvasTutorial = FindObjectOfType<CanvasTutorial>();
         playerController = FindObjectOfType<PlayerController>();
+        savePosition = new GameObject().transform;
     }
 
 
     public void Interact()
     {
-        StartCoroutine(CameraTransition(playerController.mainCamera.transform, dialsCamera.transform, true));
+        if(!this.enabled)
+            return;
+        
+        savePosition.position = playerController.mainCamera.transform.position;
+        savePosition.rotation = playerController.mainCamera.transform.rotation;
+
+        switch (state)
+        {
+            case DialState.dial1:
+                StartCoroutine(CameraTransition(playerController.mainCamera.transform, cameraDial1.transform, true));
+                break;
+            case DialState.dial2:
+                StartCoroutine(CameraTransition(playerController.mainCamera.transform, cameraDial2.transform, true));
+                break;
+            case DialState.transitioningDial1:
+                StartCoroutine(CameraTransition(playerController.mainCamera.transform, cameraDial1.transform, true));
+
+                break;
+            case DialState.transitioningDial2:
+                StartCoroutine(CameraTransition(playerController.mainCamera.transform, cameraDial2.transform, true));
+                break;
+        }
         
         canvasTutorial.TutorialPuzzle33(true);
        
@@ -87,14 +110,11 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
         timeSound += Time.deltaTime;
 
 
-        if (Input.GetButtonDown("Interact") && cooldown)
+        if (Input.GetButtonDown("Interact"))
         {
-            playerController.EnableController(true, true, true);
-            mainCamera.enabled = true;
-           // dialsCamera.enabled = false;
-            active = false;
+            StartCoroutine(CameraTransition(playerController.mainCamera.transform, savePosition, false));
+            
             canvasTutorial.TutorialPuzzle33(false);
-
         }
 
         float direction = Input.GetAxisRaw("Vertical");
@@ -201,8 +221,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
                 break;
         }
 
-        Vector2 dialRotation = new Vector2(dial1.rotation.eulerAngles.x, dial2.rotation.eulerAngles.x);
-
+        Vector2 dialRotation = new Vector2(dial1.localRotation.eulerAngles.z, dial2.localRotation.eulerAngles.z);
+        
         if (dialRotation.x >= dial1Range.x && dialRotation.x <= dial1Range.y)
         {
             dial1Correct = true;
@@ -212,14 +232,23 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
             dial1Correct = false;
         }
 
-        if ((dialRotation.y >= dial2Range.x && dialRotation.y <= 360) ||
-            (dialRotation.y >= 0 && dialRotation.y <= dial2Range.y))
+        
+        if (dialRotation.y >= dial2Range.x && dialRotation.y <= dial2Range.y)
         {
             dial2Correct = true;
         }
         else
         {
             dial2Correct = false;
+        }
+
+        if (dial1Correct && dial2Correct)
+        {
+            StartCoroutine(CameraTransition(playerController.mainCamera.transform, savePosition, false));
+            popUpInteraction.SetActive(false);
+            canvasTutorial.TutorialPuzzle33(false);
+
+            this.enabled = false;
         }
     }
 
@@ -282,8 +311,9 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
             pointA.localPosition = Vector3.zero;
             pointA.rotation = pointB.rotation;
             playerController.EnableController(true, true, true, true);
+            active = false;
         }
-
+  
         transitioning = false;
         
         StopCoroutine("CamaraTransition");

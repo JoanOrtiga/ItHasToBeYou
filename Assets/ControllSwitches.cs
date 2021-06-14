@@ -27,6 +27,7 @@ public class ControllSwitches : MonoBehaviour, IInteractable
     public Crosshair crosshair;
     private void Awake()
     {
+        crosshair = FindObjectOfType<Crosshair>();
         saveCameraPosition = new GameObject();
         playerController = FindObjectOfType<PlayerController>();
 
@@ -53,6 +54,7 @@ public class ControllSwitches : MonoBehaviour, IInteractable
         
         saveCameraPosition.transform.position =playerController.mainCamera.transform.position;
         saveCameraPosition.transform.rotation = playerController.mainCamera.transform.rotation;
+        
         StartCoroutine(CamaraTransition(playerController.mainCamera.transform, camera.transform, true));
 
       /*  active = true;
@@ -127,17 +129,18 @@ public class ControllSwitches : MonoBehaviour, IInteractable
 
         if (solved)
         {
-            this.enabled = false;
+            
+            
+            StartCoroutine(CamaraTransition(playerController.mainCamera.transform, saveCameraPosition.transform, false));
+
             active = false;
-            playerController.EnableController(true, true, true, true);
-            playerController.mainCamera.enabled = true;
-            camera.enabled = false;
 
             woodsMaterial[0].DisableKeyword("_EMISSION");
             woodsMaterial[1].DisableKeyword("_EMISSION");
             woodsMaterial[2].DisableKeyword("_EMISSION");
 
             gameObject.tag = "Untagged";
+            this.enabled = false;
         }
 
         return solved;

@@ -6,9 +6,12 @@ public class ReturnRotationToNormal : StateMachineBehaviour
 {
     private AnimationEventHand animationEventHand;
     
+    [SerializeField] private string handTag = "RightHand";
+
+    
     private void Awake()
     {
-        animationEventHand = FindObjectOfType<AnimationEventHand>();
+        animationEventHand = GameObject.FindGameObjectWithTag(handTag).GetComponent<AnimationEventHand>();
     }
     
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine

@@ -13,6 +13,8 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
     public string GearLoopSolvedPath = "event:/INGAME/Puzzle 3/Mecanismos/MecanismoLoop";
     public GameObject soundPointGear;
     public GameObject soundPointTower;
+
+    [SerializeField] private EndGame endGame;
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
@@ -24,6 +26,8 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
         {
             if (!x)
                 return;
+            
+            endGame.enabled = true;
             myAnimator.enabled = true;
             myAnimator.SetTrigger("Rotate");
             animator.SetTrigger("AlignToStars");

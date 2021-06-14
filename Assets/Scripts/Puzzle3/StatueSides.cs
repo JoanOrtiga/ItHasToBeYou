@@ -89,6 +89,12 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 
             yield return null;
         }
+        
+        
+        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 3f))
+        {
+            yield return null;
+        }
 
         if (x)
         {
@@ -121,6 +127,7 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
         }
         else if (control == 2)
         {
+            print("hola");
             if (active)
                 Leave();
         }
