@@ -9,10 +9,12 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private Toggle fullScreen;
     Resolution[] resolutions;
 
+    [SerializeField] private RenderTexture renderTexture;
+
     [SerializeField] private Slider masterVolume;
     [SerializeField] private Slider voicesVolume;
     [SerializeField] private Slider SFXVolume;
-    void Start()
+    void Awake()
     {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -30,6 +32,13 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+
+      //  renderTexture.width = resolutions[currentResolutionIndex].width;
+        //renderTexture.height = resolutions[currentResolutionIndex].height;
+        
+        gameObject.SetActive(false);
+       
     }
 
     public void ChangeResolution(int option)
