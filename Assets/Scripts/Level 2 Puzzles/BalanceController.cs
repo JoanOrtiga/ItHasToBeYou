@@ -67,16 +67,15 @@ public class BalanceController : MonoBehaviour, IInteractable
             popUp.SetActive(true);
             colliderPuzzle.enabled = true;
            
-            if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && finishPuzzle && (balance[0] == false && balance[1] == false)) //QUIT
+            if ((Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && finishPuzzle && (balance[0] == false && balance[1] == false) || Input.GetKeyDown(KeyCode.N))) //QUIT
             {
                 canvasTutorial.TutorialPuzzle21(false);
                 playerController.ChangeLookCloserState(false,false,false);
 
-                StartCoroutine(CamaraTransition(playerController.cameraController.transform, initialPositionCam, true));
+                StartCoroutine(CamaraTransition(initialPositionCam, false));
                 
                 activePuzzle = false;
                 finishPuzzle = false;
-                playerController.EnableController(true, true, true, true);
 
                 for (int i = 0; i < canvas.Length; i++)
                 {
@@ -88,7 +87,6 @@ public class BalanceController : MonoBehaviour, IInteractable
                 popUpObject[2].SetActive(true);
                 popUpObject[3].SetActive(true);
                 popUpObject[4].SetActive(true);
-
             }
 
             if (balance[0] == true && balance[1] == true)
@@ -251,7 +249,7 @@ public class BalanceController : MonoBehaviour, IInteractable
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    CamaraTransition(camera.transform, initialPositionCam, true);
+                    CamaraTransition(initialPositionCam, true);
 
                 }
 
@@ -333,33 +331,36 @@ public class BalanceController : MonoBehaviour, IInteractable
         activePuzzle = true;
        
 
-        initialPositionCam.position = camera.transform.position;
-        initialPositionCam.rotation = camera.transform.rotation;
+        initialPositionCam.position = playerController.cameraController.transform.position;
+        initialPositionCam.eulerAngles = new Vector3(playerController.cameraController.transform.GetChild(0).eulerAngles.x,playerController.cameraController.transform.eulerAngles.y);
         activePuzzle = true;
      
         canvasTutorial.TutorialPuzzle21(true);
 
-        StartCoroutine(CamaraTransition(playerController.cameraController.transform, puzzlePositionCam, false));
+                   playerController.DisableController(true, true, true, true);
+        StartCoroutine(CamaraTransition(puzzlePositionCam, true));
     }
 
     
-    IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle_)
+    IEnumerator CamaraTransition(Transform pointB, bool activePuzzle_)
     {
      
         activeCameraTransition = true;
         playerController.DisableController(true, true, true, true);
 
         Transform cameraControllerY = playerController.cameraController.transform;
-        Transform cameraPivotX = cameraControllerY.GetChild(0).transform;
+     //   Transform cameraPivotX = cameraControllerY.GetChild(0).transform;
         
         
-        while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
+        while (Vector3.Distance(cameraControllerY.position, pointB.position) > 0.01f)
         {
-            pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
+            cameraControllerY.position = Vector3.Lerp(cameraControllerY.position, pointB.position, Time.deltaTime * transitionSpeed);
 
-            cameraControllerY.localEulerAngles = new Vector3(0, Mathf.LerpAngle(cameraControllerY.localEulerAngles.y, pointB.localEulerAngles.y, Time.deltaTime * transitionSpeed));
             
-            cameraPivotX.localEulerAngles = new Vector3(Mathf.LerpAngle(cameraPivotX.localEulerAngles.y, pointB.localEulerAngles.x, Time.deltaTime * transitionSpeed), 0);
+            
+            cameraControllerY.eulerAngles = new Vector3(0, Mathf.LerpAngle(cameraControllerY.eulerAngles.y, pointB.eulerAngles.y, Time.deltaTime * transitionSpeed));
+            
+            //cameraPivotX.eulerAngles = new Vector3(Mathf.LerpAngle(cameraPivotX.eulerAngles.y, pointB.eulerAngles.x, Time.deltaTime * transitionSpeed), 0);
             
            /* Vector3 currentAngle = new Vector3(
                 Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x,
@@ -372,15 +373,23 @@ public class BalanceController : MonoBehaviour, IInteractable
            // pointA.eulerAngles = currentAngle;
             yield return null;
         }
+        
+        cameraControllerY.eulerAngles = new Vector3(0, pointB.eulerAngles.y);
+            
+       // cameraPivotX.eulerAngles = new Vector3(pointB.eulerAngles.x, 0);
 
         if (activePuzzle_)
         {
-            playerController.EnableController(true, true, true, true);
+            playerController.ChangeLookCloserState(true,true,true, new Vector2(-20, 50));
+        }
+        else
+        {
+            cameraControllerY.localPosition = Vector3.zero;
+            playerController.EnableController(true,true,true,true);
         }
         
         activeCameraTransition = false;
     
-        playerController.ChangeLookCloserState(true,true,true, new Vector2(-20, 50));
         
         StopCoroutine("CamaraTransition");
     }
@@ -397,33 +406,4 @@ public class BalanceController : MonoBehaviour, IInteractable
             return (false);
         }
     }
-
-/*
-    private Vector2 sensitivity = new Vector2(-200, 200);
-    private float desiredPitch;
-    private float desiredYaw;
-    private float pitch;
-    private float yaw;
-    private Vector2 smoothAmount = new Vector2(5,5);
-    private Vector2 lookCloserYLimit = new Vector2(-90, 90);
-    private Vector2 lookCloserXLimit = new Vector2(-27, 27);
-    private float initialYaw;
-
-    private void RestrictedCamera()
-    {
-        Vector2 inputVector = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-
-
-        desiredPitch -= inputVector.y * sensitivity.y * Time.deltaTime;
-        desiredPitch = Mathf.Clamp(desiredPitch, lookCloserYLimit.x, lookCloserYLimit.y);
-
-        pitch = Mathf.Lerp(pitch, desiredPitch, smoothAmount.y * Time.deltaTime);
-        playerController.mainCamera.transform.localEulerAngles = new Vector3(pitch, 0f, 0f);
-
-        desiredYaw += inputVector.x * sensitivity.x * Time.deltaTime;
-        desiredYaw = Mathf.Clamp(desiredYaw, lookCloserXLimit.x + initialYaw, lookCloserXLimit.y + initialYaw);
-        yaw = Mathf.Lerp(yaw, desiredYaw, smoothAmount.x * Time.deltaTime);
-        playerController.mainCamera.transform.localEulerAngles = new Vector3(0f, yaw, 0f);
-    }
-*/
 }

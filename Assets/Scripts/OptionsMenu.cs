@@ -9,7 +9,8 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private Toggle fullScreen;
     Resolution[] resolutions;
 
-    [SerializeField] private RenderTexture renderTexture;
+    [SerializeField] private Camera seeThroughtCamera;
+    [SerializeField] private Material seeThroughtMaterial;
 
     [SerializeField] private Slider masterVolume;
     [SerializeField] private Slider voicesVolume;
@@ -34,9 +35,8 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
 
 
-      //  renderTexture.width = resolutions[currentResolutionIndex].width;
-        //renderTexture.height = resolutions[currentResolutionIndex].height;
-        
+        UpdateRenderTexture(currentResolutionIndex);
+
         gameObject.SetActive(false);
        
     }
@@ -44,6 +44,15 @@ public class OptionsMenu : MonoBehaviour
     public void ChangeResolution(int option)
     {
         Screen.SetResolution(resolutions[option].width, resolutions[option].height, fullScreen.isOn);
+        
+        UpdateRenderTexture(option);
+    }
+
+    private void UpdateRenderTexture(int option)
+    {
+        seeThroughtCamera.targetTexture.Release();
+        seeThroughtCamera.targetTexture = new RenderTexture(resolutions[option].width, resolutions[option].height, 24);
+        seeThroughtMaterial.mainTexture = seeThroughtCamera.targetTexture;
     }
 
     public void ChangeFullScreen(bool value)
