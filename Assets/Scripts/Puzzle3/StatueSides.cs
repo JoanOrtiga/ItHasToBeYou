@@ -46,6 +46,10 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
         if (active)
             return;
 
+      /*  if(statue.GetActive())
+            return;*/
+        
+        
         pickController.activePuzzle = true;
         active = true;
 
@@ -143,6 +147,7 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
         StopAllCoroutines();
 
         playerTransform.parent = null;
+        playerController.ReAttachHand();
         playerController.EnableController(true, true, true, true);
 
         otherSide1.SetActive(true);
