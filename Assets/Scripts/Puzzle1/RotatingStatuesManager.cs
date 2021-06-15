@@ -9,6 +9,12 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
     [SerializeField] private RotateStatues[] statues;
     public string finishPuzzlePath;
 
+    TextBox textBox;
+
+    private void Start()
+    {
+        textBox = gameObject.GetComponent<TextBox>();
+    }
 
     public bool Solved()
     {
@@ -20,7 +26,8 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
 
         FMODUnity.RuntimeManager.PlayOneShot(finishPuzzlePath, secretDoor.position);
 
-        this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
+        textBox.StartTextPuzzle();
+       
 
         CamaraShake.ShakeOnce(3, 3, new Vector3(0.1f, 0.1f));
 
