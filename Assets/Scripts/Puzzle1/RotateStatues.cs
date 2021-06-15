@@ -41,8 +41,12 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     private bool narrativeAudio;
     TextBox textBox;
 
+    private Crosshair crosshair;
+
     private void Awake()
     {
+        crosshair = FindObjectOfType<Crosshair>();
+        
         canvasTutorial = FindObjectOfType<CanvasTutorial>();
         rotateObjective = new GameObject().transform;
         rotateObjective.parent = transform.parent;
@@ -133,6 +137,14 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
             playerController.CancelCurrentPuzzle();
             playerController.AnimatorSetBool("P1", false);
             playerController.EnableController(true,true,true,true);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (inControl)
+        {
+            crosshair.ChangeCrosshairState(false,false);
         }
     }
 

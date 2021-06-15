@@ -34,7 +34,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
 
     private IEnumerator CoolDown()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.7f);
         playerController.CancelCurrentPuzzle();
         myAnimator.enabled = false;
         playerController.transform.parent = null;

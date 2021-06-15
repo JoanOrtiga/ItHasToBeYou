@@ -116,15 +116,18 @@ public class StatuePathFinder : MonoBehaviour
             }
         }
 
-        foreach (var obstacle in obstaclePoints)
+        foreach (var statue in movingStatues)
         {
-            if(obstacle == me)
+            if(statue == me)
                 continue;
             
+            Debug.DrawRay(playerController.transform.position, (statue.position - playerController.transform.position).normalized);
+
+            
        //     print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);
-            if ((playerController.transform.position - obstacle.position).sqrMagnitude < playerCollisionRange * playerCollisionRange)
+            if ((playerController.transform.position - statue.position).sqrMagnitude < playerCollisionRange * playerCollisionRange)
             {
-                return false;
+               return false;
             }
         }
 
@@ -144,21 +147,6 @@ public class StatuePathFinder : MonoBehaviour
         }
         
         return -1;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-      /*  foreach (var obstacle in obstaclePoints)
-        {
-            if(obstacle == me)
-                continue;
-            
-            //     print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);
-            if ((playerController.transform.position - obstacle.position).sqrMagnitude < playerCollisionRange * playerCollisionRange)
-            {
-                return false;
-            }
-        }*/
     }
 }
 

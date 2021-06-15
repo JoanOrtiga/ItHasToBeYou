@@ -2054,7 +2054,7 @@ GameObject:
   - component: {fileID: 3336573778390302259}
   - component: {fileID: 968948220728050475}
   - component: {fileID: 5024908895986512572}
-  - component: {fileID: 1581662183247820118}
+  - component: {fileID: 1851367805}
   m_Layer: 0
   m_Name: InitialDoor
   m_TagString: Untagged
@@ -2125,8 +2125,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1581662183247820118
-MeshCollider:
+--- !u!65 &1851367805
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2135,10 +2135,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7414509850709746518, guid: 42d4768fd60adf14fad6da2a179239ea, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 223.07553, y: 2241.7227, z: 3639.4597}
+  m_Center: {x: -0.29760143, y: 0.28100863, z: 557.3525}
 --- !u!1 &1753488431605381510
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,6 +5506,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cdb0e92c821180d4a8b658d6ab18d236, type: 3}
       propertyPath: m_Name
       value: 1rPis_PortaSecreta
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cdb0e92c821180d4a8b658d6ab18d236, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb0e92c821180d4a8b658d6ab18d236, type: 3}
