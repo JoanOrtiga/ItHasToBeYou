@@ -42,8 +42,8 @@ public class BalanceController : MonoBehaviour, IInteractable
     public string placeObjectBalancePath;
     public string placeObjectPlatePath;
 
-    [Header("Text puzzle")]
-    public TextBox hasSameWeight;
+   [HideInInspector] public bool hasTryOne;
+    
 
     private void Start()
     {
@@ -241,7 +241,7 @@ public class BalanceController : MonoBehaviour, IInteractable
                         }
                         else if (balanceWeight[0] == balanceWeight[1])
                         {
-                            hasSameWeight.StartTextPuzzle();
+
                             balanceAnimator.Play("BasculaIdleAnim");
                         }
                     }

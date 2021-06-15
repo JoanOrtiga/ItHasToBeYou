@@ -38,7 +38,7 @@ public class PlaceMaterial : MonoBehaviour
             {
 
                 textDone = true;
-                FMODUnity.RuntimeManager.PlayOneShot(correctSoundPath, this.gameObject.transform.position);
+               
                 textBox.StartText();
             }
 
