@@ -86,7 +86,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             StartCoroutine(CamaraTransition(camera.transform, viewCamara, false));
             activePuzzle = true;
 
-            canvasTutorial.TutorialPuzzle22(true);
+            
         }
     }
 
@@ -112,6 +112,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                     }
                    
                 }
+
                 canvasTutorial.TutorialPuzzle22(false);
 
                 activePuzzle = false;
@@ -122,8 +123,10 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 playerController.EnableController(true, true);
             }
 
-            if (finishAnimation)
+           
+            if (finishAnimation && allClues[0] == true && allClues[1] == true && allClues[2] == true)
             {
+                canvasTutorial.TutorialPuzzle22(true);
                 if (Input.GetAxisRaw("Horizontal") >= 0.3f) //Gira derecha
                 {
                     if (timeWaitSound > 0.3 && correctMetals)

@@ -3112,7 +3112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleTrigger: {fileID: 8838408241926446678}
-  transitionSpeed: 3
+  transitionSpeed: 0.2
   finalCameraPosition: {fileID: 1788026704}
 --- !u!1 &4835156431812268302
 GameObject:
@@ -3928,8 +3928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textOne: 
-  pathSoundFmodOne: 
+  textOne: Oh, alright
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-1
   textTwo: 
   pathSoundFmodTwo: 
   isTrigger: 0
@@ -3940,7 +3940,7 @@ MonoBehaviour:
   isPlaceObject: 1
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  textDuration: 4
+  textDuration: 2
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!114 &5636847587903251943
@@ -7829,6 +7829,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 07f26681687086d489fd776e1b6edc42, type: 3}
       propertyPath: m_Name
       value: OpenPapyre (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07f26681687086d489fd776e1b6edc42, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07f26681687086d489fd776e1b6edc42, type: 3}

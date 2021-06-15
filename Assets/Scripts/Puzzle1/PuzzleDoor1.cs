@@ -12,9 +12,13 @@ public class PuzzleDoor1 : MonoBehaviour
 
     public string openDoorPath;
     public string closeDoorPath;
+
+    public LupaPista lupaPista;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+     
     }
 
     private void Update()
@@ -24,6 +28,9 @@ public class PuzzleDoor1 : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot(openDoorPath, transform.position);
             animator.SetTrigger("OpenDoor");
             this.enabled = false;
+            lupaPista.pickUpLupa = false;
+
+            gameObject.GetComponent<TextBox>().StartTextPuzzle();
         }
     }
 
@@ -35,8 +42,11 @@ public class PuzzleDoor1 : MonoBehaviour
         
         if (booksCounter >= booksToOpen)
         {
+            FMODUnity.RuntimeManager.PlayOneShot(openDoorPath, transform.position);
             animator.SetTrigger("OpenDoor");
             this.enabled = false;
+            lupaPista.pickUpLupa = false;
+            gameObject.GetComponent<TextBox>().StartTextPuzzle();
         }
     }
     
