@@ -23,7 +23,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         {
             myAnimator.SetTrigger("P0 OpenDoor");
             playerController.AnimatorSetTrigger("P0 OpenDoor");
-            this.enabled = false;
+            //this.enabled = false;
         }
     }
 
@@ -44,6 +44,6 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
     public void Finished(int control)
     {
         //Control player parenting.
-        StartCoroutine(CoolDown());
+       // StartCoroutine(CoolDown());
     }
 }
