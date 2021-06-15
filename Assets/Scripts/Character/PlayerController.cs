@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
     public CharacterController characterController { get; private set; }
 
     public BreathCamera breathCamera { get; private set; }
+    
+    public Camera mainCamera { get; private set; }
 
     [SerializeField] private Animator handAnimator;
     [SerializeField] private Animator secondHandAnimator;
@@ -21,6 +23,9 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
 
     private Vector3 initialHandPosition;
     private Quaternion initialHandRotation;
+    
+    private Vector3 initialHand2Position;
+    private Quaternion initialHand2Rotation;
 
     Quaternion saveCameraRot;
     Quaternion savePivotRot;
@@ -28,6 +33,8 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
 
     private void Awake()
     {
+        mainCamera = Camera.main;
+        
         characterController = GetComponent<CharacterController>();
         cameraController = transform.GetComponentInChildren<CameraController>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -105,6 +112,9 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
     {
         initialHandPosition = hand.position;
         initialHandRotation = hand.rotation;
+        
+        initialHand2Position = secondHand.position;
+        initialHand2Rotation = secondHand.rotation;
 
         saveCameraRot = cameraController.transform.localRotation;
         savePivotRot = pivot.localRotation;
@@ -113,9 +123,10 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
         secondHand.parent = playerMovement.transform;
 
         hand.position = initialHandPosition;
-        secondHand.position = initialHandPosition;
         hand.rotation = initialHandRotation;
-        secondHand.rotation = initialHandRotation;
+        
+        secondHand.position = initialHand2Position;
+        secondHand.rotation = initialHand2Rotation;
     }
 
     public void ReAttachHand()
@@ -130,9 +141,10 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
         secondHand.parent = breathCamera.transform.parent;
 
         hand.position = initialHandPosition;
-        secondHand.position = initialHandPosition;
+        secondHand.position = initialHand2Position;
+        
         hand.rotation = initialHandRotation;
-        secondHand.rotation = initialHandRotation;
+        secondHand.rotation = initialHand2Rotation;
 
         cameraController.transform.localRotation = currentCameraRot;
         pivot.localRotation = currentPivotRot;
@@ -158,12 +170,12 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
         }
     }
 
-    public void Finished()
+    public void Finished(int control)
     {
         
         if (puzzleTouchController != null)
         {
-            puzzleTouchController.Finished();
+            puzzleTouchController.Finished(control);
         }
         else
         {

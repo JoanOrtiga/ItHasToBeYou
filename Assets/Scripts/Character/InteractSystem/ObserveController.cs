@@ -51,6 +51,8 @@ public class ObserveController : MonoBehaviour, IInteractable
     {
         player.DisableController(true, true, true, true);
 
+        FMODUnity.RuntimeManager.PlayOneShot(observingObject.GetComponent<ObjectParameters>().pickUpPath, observingObject.GetComponent<ObjectParameters>().transform.position);
+
         crosshairController.ChangeCrosshairState(false, false);
         textObserver.text = observingObject.GetComponent<ObserveObject>().text;
         Cursor.visible = true;
@@ -77,7 +79,8 @@ public class ObserveController : MonoBehaviour, IInteractable
                 objectTransform.position = observingObject.GetComponent<ObjectParameters>().startPos;
                 objectTransform.rotation = observingObject.GetComponent<ObjectParameters>().startRot;
 
-                
+                FMODUnity.RuntimeManager.PlayOneShot(observingObject.GetComponent<ObjectParameters>().dropPath, observingObject.GetComponent<ObjectParameters>().transform.position);
+
                 doneTransition = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -163,7 +166,7 @@ public class ObserveController : MonoBehaviour, IInteractable
             observingObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
 
-        while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
+        while (Vector3.Distance(pointA.position, pointB.position) > 0.005f)
         {
             doneTransition = false;
 
@@ -178,8 +181,6 @@ public class ObserveController : MonoBehaviour, IInteractable
 
 
             yield return null;
-            
-
         }
 
         if (activePuzzle)

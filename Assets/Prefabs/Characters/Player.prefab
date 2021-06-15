@@ -57,7 +57,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 50
+  field of view: 66.4
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -87,39 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3f2055581438e48af3bdccd549f9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &2024938819
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148585143132}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86d6d6ee7581f74499e812496a8af227, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2024938818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148585143132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88e0d321d6766ca4384d642476803710, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handRotation: {x: 0, y: 0, z: 0}
-  handPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &990211722
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +341,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handRotation: {x: 0, y: 0, z: 0}
   handPosition: {x: 0, y: 0, z: 0}
+--- !u!95 &2024938819
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148585143132}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86d6d6ee7581f74499e812496a8af227, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2024938818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148585143132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e0d321d6766ca4384d642476803710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handRotation: {x: 0, y: 0, z: 0}
+  handPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4300158159746933286
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +421,7 @@ MonoBehaviour:
   sensitivity: {x: 200, y: 200}
   smoothAmount: {x: 5, y: 5}
   lookAngleMinMax: {x: -90, y: 90}
-  lookCloserXLimit: {x: -35, y: 35}
+  lookCloserXLimit: {x: -27, y: 27}
   lookCloserYLimit: {x: -90, y: 90}
   lookCloser: 0
 --- !u!1 &4300158160264332831
@@ -514,6 +514,7 @@ MonoBehaviour:
   moveBackwardsSpeedPercent: 0.5
   moveSideSpeedPercent: 0.75
   smoothHeadBobSpeed: 5
+  smoothHeadBobSimulationSpeed: 1
   headBobData: {fileID: 11400000, guid: fd51ede42cc20a04da93c2d2fac1e05c, type: 2}
   rayLength: 0.1
   raySphereRadius: 0.2
@@ -546,6 +547,7 @@ MonoBehaviour:
   observeController: {fileID: 0}
   activePuzzle: 0
   pickupColor: {r: 1, g: 0.979328, b: 0.740566, a: 1}
+  canDrop: 0
 --- !u!114 &1350137138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +646,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 50
+  field of view: 66.4
   orthographic: 0
   orthographic size: 5
   m_Depth: 1
@@ -1433,6 +1435,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
+      propertyPath: m_TagString
+      value: LeftHand
       objectReference: {fileID: 0}
     - target: {fileID: 966954873464331901, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2248,6 +2254,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
+      propertyPath: m_TagString
+      value: RightHand
       objectReference: {fileID: 0}
     - target: {fileID: 966954873464331901, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -32,13 +32,21 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     
     private float moveToSpeed = 1f;
 
+    public CanvasTutorial canvasTutorial;
+
     public string soundPathRotation = "event:/INGAME/Puzzle 1/1.1/Rotate";
+
+    public string soundPathSelect = "event:/INGAME/Puzzle 1/1.1/SelectStatue";
+
+    private bool narrativeAudio;
+    TextBox textBox;
 
     private void Awake()
     {
         rotateObjective = new GameObject().transform;
         rotateObjective.parent = transform.parent;
         rotateObjective.localRotation = transform.localRotation;
+        textBox = this.gameObject.GetComponent<TextBox>();
     }
 
     public void Interact()
@@ -46,10 +54,12 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
         if(rotating)
             return;
 
+        canvasTutorial.TutorialPuzzle11(true);
+
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);
 
-        StartCoroutine(LookAt());
+        StartCoroutine(LookAt(false));
         StartCoroutine(AttachPlayer());
 
         waitNoOtherInput = true;
@@ -62,7 +72,6 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
            if (Input.GetAxisRaw("Horizontal") < -0.5f)
            {
                FMODUnity.RuntimeManager.PlayOneShot(soundPathRotation, gameObject.transform.position);
-               CamaraShake.ShakeOnce(1, 3, new Vector3(0.03f, 0.02f));
                playerController.AnimatorSetTrigger("P1_MoveLeft");
                RotateObjective(true);
                waitNoOtherInput = true;
@@ -82,12 +91,10 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
         if (Input.GetButtonDown("Interact") && inControl && !waitNoOtherInput )
         {
-            playerController.ChangeLookCloserState(false, false, false);
-            playerController.EnableController(true,true,true,true);
-            playerController.CancelCurrentPuzzle();
-            playerController.AnimatorSetBool("P1", false);
-            playerController.ReAttachHand();
             inControl = false;
+            playerController.ChangeLookCloserState(false, false, false);
+            StartCoroutine(LookAt(true));
+            canvasTutorial.TutorialPuzzle11(false);
         }
     }
 
@@ -112,18 +119,20 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
         playerTransform = playerController.transform;
     }
 
-    private IEnumerator LookAt()
+    private IEnumerator LookAt(bool ending)
     {
         while (!playerController.cameraController.LookAt(lockCameraPoint.position, 8f))
         {
             yield return null;
         }
 
-        
-        playerController.DettachHand();
-        playerController.ChangeLookCloserState(true, true, true, new Vector2(-90, 90));
-        
-        inControl = true;
+        if (ending)
+        {
+            playerController.ReAttachHand();
+            playerController.CancelCurrentPuzzle();
+            playerController.AnimatorSetBool("P1", false);
+            playerController.EnableController(true,true,true,true);
+        }
     }
 
     private IEnumerator AttachPlayer()
@@ -147,15 +156,20 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
         while ((positionChild.position - playerTransform.position).sqrMagnitude > 0.01 * 0.01)
         {
+            playerController.playerMovement.SimulateHeadBobbing();
             playerTransform.position = Vector3.MoveTowards(playerTransform.position, positionChild.position, moveToSpeed * Time.deltaTime);
             
+            yield return null;
+        }
+        
+        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 8f))
+        {
             yield return null;
         }
         
         playerController.AnimatorSetBool("P1", true);
         
         playerTransform.position = positionChild.position;
-        waitNoOtherInput = false;
     }
 
     private void RotateObjective(bool left)
@@ -163,7 +177,16 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
         if (left)
         {
             rotateObjective.localRotation = Quaternion.Euler(rotateObjective.eulerAngles.x, rotateObjective.eulerAngles.y + 60, rotateObjective.eulerAngles.z);
- 
+
+            if (narrativeAudio  == false)
+            {
+                if (textBox != null)
+                {
+                    narrativeAudio = true;
+                    textBox.StartTextPuzzle();
+                }
+               
+            }
         }
         else
         {
@@ -174,11 +197,21 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     public void Touch()
     {
         rotating = true;
-        
+        CamaraShake.ShakeOnce(1, 3, new Vector3(0.03f, 0.02f));
+
     }
 
-    public void Finished()
+    public void Finished(int control)
     {
+        if (control == 1)
+        {
+            playerController.DettachHand();
+            playerController.ChangeLookCloserState(true, true, true, new Vector2(-25, 55 )); 
+            inControl = true;
+            
+            return;
+        }
+        
         waitNoOtherInput = false;
     }
 }

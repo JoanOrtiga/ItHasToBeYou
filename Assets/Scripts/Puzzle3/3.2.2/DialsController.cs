@@ -12,9 +12,6 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     private bool active;
 
-    [SerializeField] private Camera dialsCamera;
-
-    private bool cooldown;
 
     [SerializeField] private Transform cameraDial1;
     [SerializeField] private Transform cameraDial2;
@@ -35,10 +32,21 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     [SerializeField] private float angleAtATime = 10f;
 
-    public string clickSoundPath;
+    public string clickSoundPath = "event:/INGAME/Puzzle 3/Dials/Dials";
+    public string selectSoundPath = "event:/INGAME/Puzzle 3/Dials/SelectDials";
     private float timeSound;
 
+    private bool audioOnce = false;
 
+    private CanvasTutorial canvasTutorial;
+
+    [SerializeField] private float transitionSpeed = 5f;
+    private bool transitioning = false;
+
+    private Transform savePosition;
+
+    [SerializeField] private GameObject popUpInteraction;
+    
     private enum DialState
     {
         transitioningDial2,
@@ -51,45 +59,62 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
 
     private void Awake()
     {
-        mainCamera = Camera.main;
+        canvasTutorial = FindObjectOfType<CanvasTutorial>();
         playerController = FindObjectOfType<PlayerController>();
+        savePosition = new GameObject().transform;
     }
 
 
     public void Interact()
     {
+        if(!this.enabled)
+            return;
         
+        savePosition.position = playerController.mainCamera.transform.position;
+        savePosition.rotation = playerController.mainCamera.transform.rotation;
+
+        switch (state)
+        {
+            case DialState.dial1:
+                StartCoroutine(CameraTransition(playerController.mainCamera.transform, cameraDial1.transform, true));
+                break;
+            case DialState.dial2:
+                StartCoroutine(CameraTransition(playerController.mainCamera.transform, cameraDial2.transform, true));
+                break;
+            case DialState.transitioningDial1:
+                StartCoroutine(CameraTransition(playerController.mainCamera.transform, cameraDial1.transform, true));
+
+                break;
+            case DialState.transitioningDial2:
+                StartCoroutine(CameraTransition(playerController.mainCamera.transform, cameraDial2.transform, true));
+                break;
+        }
+        
+        canvasTutorial.TutorialPuzzle33(true);
        
-        playerController.DisableController(true, true, true);
+      /*  playerController.DisableController(true, true, true);
         active = true;
         dialsCamera.enabled = true;
         mainCamera.enabled = false;
-
-        cooldown = false;
-
-        StartCoroutine(Cooldown());
-    }
-
-    IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(0.1f);
-        cooldown = true;
+*/
     }
 
     private void Update()
     {
-
-        timeSound += Time.deltaTime;
-
         if (!active)
             return;
+        
+        if (transitioning)
+            return;
+        
+        timeSound += Time.deltaTime;
 
-        if (Input.GetButtonDown("Interact") && cooldown)
+
+        if (Input.GetButtonDown("Interact"))
         {
-            playerController.EnableController(true, true, true);
-            mainCamera.enabled = true;
-            dialsCamera.enabled = false;
-            active = false;
+            StartCoroutine(CameraTransition(playerController.mainCamera.transform, savePosition, false));
+            
+            canvasTutorial.TutorialPuzzle33(false);
         }
 
         float direction = Input.GetAxisRaw("Vertical");
@@ -135,11 +160,17 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
                 RotateDial(dial2, direction);
                 break;
             case DialState.transitioningDial1:
-               
-                dialsCamera.transform.localPosition = Vector3.Lerp(dialsCamera.transform.localPosition,
-                    cameraDial1.transform.localPosition, cameraSpeed * Time.deltaTime);
+                if (audioOnce == true)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(selectSoundPath, gameObject.transform.position);
 
-                if ((dialsCamera.transform.position - cameraDial1.transform.position).sqrMagnitude <
+                    audioOnce = false;
+                }
+                
+                playerController.mainCamera.transform.position = Vector3.Lerp(playerController.mainCamera.transform.position,
+                    cameraDial1.transform.position, cameraSpeed * Time.deltaTime);
+
+                if ((playerController.mainCamera.transform.position - cameraDial1.transform.position).sqrMagnitude <
                     maxDistance * maxDistance)
                 {
                     state = DialState.dial1;
@@ -159,11 +190,18 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
                 break;
             
             case DialState.transitioningDial2:
-                
-                dialsCamera.transform.localPosition = Vector3.Lerp(dialsCamera.transform.localPosition,
-                    cameraDial2.transform.localPosition, cameraSpeed * Time.deltaTime);
 
-                if ((dialsCamera.transform.position - cameraDial2.transform.position).sqrMagnitude <
+                if (audioOnce == false)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(selectSoundPath, gameObject.transform.position);
+
+                    audioOnce = true;
+                }
+                
+                playerController.mainCamera.transform.position = Vector3.Lerp(playerController.mainCamera.transform.position,
+                    cameraDial2.transform.position, cameraSpeed * Time.deltaTime);
+
+                if ((playerController.mainCamera.transform.position - cameraDial2.transform.position).sqrMagnitude <
                     maxDistance * maxDistance)
                 {
                     state = DialState.dial2;
@@ -183,8 +221,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
                 break;
         }
 
-        Vector2 dialRotation = new Vector2(dial1.rotation.eulerAngles.x, dial2.rotation.eulerAngles.x);
-
+        Vector2 dialRotation = new Vector2(dial1.localRotation.eulerAngles.z, dial2.localRotation.eulerAngles.z);
+        
         if (dialRotation.x >= dial1Range.x && dialRotation.x <= dial1Range.y)
         {
             dial1Correct = true;
@@ -194,14 +232,23 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
             dial1Correct = false;
         }
 
-        if ((dialRotation.y >= dial2Range.x && dialRotation.y <= 360) ||
-            (dialRotation.y >= 0 && dialRotation.y <= dial2Range.y))
+        
+        if (dialRotation.y >= dial2Range.x && dialRotation.y <= dial2Range.y)
         {
             dial2Correct = true;
         }
         else
         {
             dial2Correct = false;
+        }
+
+        if (dial1Correct && dial2Correct)
+        {
+            StartCoroutine(CameraTransition(playerController.mainCamera.transform, savePosition, false));
+            popUpInteraction.SetActive(false);
+            canvasTutorial.TutorialPuzzle33(false);
+
+            this.enabled = false;
         }
     }
 
@@ -235,5 +282,40 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
     public bool Solved()
     {
         return dial1Correct && dial2Correct;
+    }
+    
+    IEnumerator CameraTransition(Transform pointA, Transform pointB, bool activePuzzle_)
+    {
+        playerController.DisableController(true, true, true, true);
+        active = activePuzzle_;
+        transitioning = true;
+        
+        while (Vector3.Distance(pointA.position, pointB.position) > 0.005f)
+        {
+            pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
+
+            Vector3 currentAngle = new Vector3(
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x,
+                    Time.deltaTime * transitionSpeed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y,
+                    Time.deltaTime * transitionSpeed),
+                Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z,
+                    Time.deltaTime * transitionSpeed));
+
+            pointA.eulerAngles = currentAngle;
+            yield return null;
+        }
+
+        if (!activePuzzle_)
+        {
+            pointA.localPosition = Vector3.zero;
+            pointA.rotation = pointB.rotation;
+            playerController.EnableController(true, true, true, true);
+            active = false;
+        }
+  
+        transitioning = false;
+        
+        StopCoroutine("CamaraTransition");
     }
 }

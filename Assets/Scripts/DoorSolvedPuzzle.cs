@@ -23,7 +23,7 @@ public class DoorSolvedPuzzle : MonoBehaviour
         if(puzzle.Solved() || Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("OpenDoor");
-            activateParticles.CreateParticles(2.3f);
+            activateParticles.CreateParticles(5f);
             this.enabled = false;
         }
     }

@@ -17,6 +17,14 @@ public class StatuePathFinder : MonoBehaviour
     [SerializeField] private float intersectionRange = 0.2f;
     [SerializeField] private float collisionRange = 0.2f;
     [SerializeField] private float obstaclesRange = 0.2f;
+    [SerializeField] private float playerCollisionRange = 3f;
+
+    private PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
 
     /// <summary>
     /// Is statue near a stop point?
@@ -108,6 +116,18 @@ public class StatuePathFinder : MonoBehaviour
             }
         }
 
+        foreach (var obstacle in obstaclePoints)
+        {
+            if(obstacle == me)
+                continue;
+            
+       //     print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);
+            if ((playerController.transform.position - obstacle.position).sqrMagnitude < playerCollisionRange * playerCollisionRange)
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -125,7 +145,24 @@ public class StatuePathFinder : MonoBehaviour
         
         return -1;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+      /*  foreach (var obstacle in obstaclePoints)
+        {
+            if(obstacle == me)
+                continue;
+            
+            //     print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);
+            if ((playerController.transform.position - obstacle.position).sqrMagnitude < playerCollisionRange * playerCollisionRange)
+            {
+                return false;
+            }
+        }*/
+    }
 }
+
+
 
 [Serializable]
 public struct LinearPath

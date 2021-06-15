@@ -28,7 +28,7 @@ public class TextBox : MonoBehaviour
     private bool activeTrigger;
 
 
-
+    VoiceSoundManager voiceSoundManager;
 
     private void Awake()
     {
@@ -39,6 +39,13 @@ public class TextBox : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().enabled = false;
 
         }
+        if (pathSoundFmodOne != "")
+        {
+            voiceSoundManager = FindObjectOfType<VoiceSoundManager>();
+
+        }
+
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -99,7 +106,11 @@ public class TextBox : MonoBehaviour
     {
         if (pathSoundFmodOne != "")
         {
-            FMODUnity.RuntimeManager.PlayOneShot(pathSoundFmodOne, player.transform.position);
+            voiceSoundManager.Sound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+
+            voiceSoundManager.Sound = FMODUnity.RuntimeManager.CreateInstance(pathSoundFmodOne);
+            voiceSoundManager.Sound.start();
         }
 
         if (isTrigger || isTriggerWithAPreCondition)
@@ -139,7 +150,7 @@ public class TextBox : MonoBehaviour
 
         if (pathSoundFmodOne != "")
         {
-            FMODUnity.RuntimeManager.PlayOneShot(pathSoundFmodTwo, player.transform.position);
+            //FMODUnity.RuntimeManager.PlayOneShot(pathSoundFmodTwo, player.transform.position);
         }
 
         textBox.gameObject.SetActive(true);
@@ -187,5 +198,6 @@ public class TextBox : MonoBehaviour
                 gameObject.GetComponent<BoxCollider>().enabled = true;
             }
         }
+
     }
 }

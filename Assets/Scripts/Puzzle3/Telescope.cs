@@ -25,8 +25,15 @@ public class Telescope : MonoBehaviour , IInteractable
 
     public string interactSoundPath = "event:/INGAME/Puzzle 3/Telescopi/InteractTelescopi";
     [SerializeField] private Crosshair crosshair;
+
+    private CanvasTutorial canvasTutorial;
+
+    [SerializeField] private DialsController dialsController;
+    
     private void Start()
     {
+
+        canvasTutorial = FindObjectOfType<CanvasTutorial>();
         mainCamera = Camera.main;
         
         _playerController = FindObjectOfType<PlayerController>();
@@ -35,9 +42,11 @@ public class Telescope : MonoBehaviour , IInteractable
 
     public void Interact()
     {
-
+        if(!this.enabled)
+            return;
+        
         FMODUnity.RuntimeManager.PlayOneShot(interactSoundPath, gameObject.transform.position);
-
+        canvasTutorial.TutorialPuzzle32(true);
 
         active = true;
         _playerController.DisableController(true, true, true);
@@ -65,6 +74,8 @@ public class Telescope : MonoBehaviour , IInteractable
             if (Input.GetButtonDown("Interact") && cancelCooldown)
             {
                 FMODUnity.RuntimeManager.PlayOneShot(interactSoundPath, gameObject.transform.position);
+                canvasTutorial.TutorialPuzzle32(false);
+
                 Cancel();
             }
 
@@ -73,12 +84,18 @@ public class Telescope : MonoBehaviour , IInteractable
             coordsX.text = Mathf.RoundToInt(rotation.x).ToString();
             coordsY.text = Mathf.RoundToInt(rotation.y).ToString();
         }
+
+        if (dialsController.Solved())
+        {
+            this.enabled = false;
+            Destroy(this);
+        }
     }
 
     private void Cancel()
     {
         crosshair.ChangeCrosshairState(false, false);
-        _playerController.EnableController(true, true, true);
+        _playerController.EnableController(true, true, true,true);
         telescopeCanvas.SetActive(false);
         
         active = false;

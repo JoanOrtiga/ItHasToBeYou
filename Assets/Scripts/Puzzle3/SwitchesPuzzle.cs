@@ -10,6 +10,11 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
     [SerializeField] private Animator animator;
     private Animator myAnimator;
     private bool x = true;
+    public string GearLoopSolvedPath = "event:/INGAME/Puzzle 3/Mecanismos/MecanismoLoop";
+    public GameObject soundPointGear;
+    public GameObject soundPointTower;
+
+    [SerializeField] private EndGame endGame;
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
@@ -21,11 +26,14 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
         {
             if (!x)
                 return;
+            
+            endGame.enabled = true;
             myAnimator.enabled = true;
             myAnimator.SetTrigger("Rotate");
             animator.SetTrigger("AlignToStars");
             this.enabled = false;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Escaleras Elevandose/Escalera", this.gameObject.transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Escaleras Elevandose/Escalera", soundPointTower.transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot(GearLoopSolvedPath, soundPointGear.transform.position);
 
 
         }

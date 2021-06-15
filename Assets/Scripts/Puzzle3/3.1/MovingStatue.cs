@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class MovingStatue : MonoBehaviour , IPuzzleSolver
+public class MovingStatue : MonoBehaviour, IPuzzleSolver
 {
     public enum Sides
     {
@@ -47,15 +47,24 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
     private float lastDirection;
     private PlayerController playerController;
-    
+
     [SerializeField] private Transform lockCameraPoint;
 
     private float time;
+
+    private bool transitioning;
+
+
+    public bool GetActive()
+    {
+        return active;
+    }
     
     public void ChangeSide(Sides side)
     {
         this.playerSide = side;
         StartCoroutine(WaitForActivation());
+        transitioning = false;
 
         switch (currentRoadType)
         {
@@ -95,13 +104,8 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
 
     IEnumerator WaitForActivation()
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.4f);
         active = true;
-    }
-
-    public bool IsActive()
-    {
-        return active;
     }
     
     public static float GetAngleOnAxis(Vector3 self, Vector3 other, Vector3 axis)
@@ -117,17 +121,13 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             if (currentRoadType == RoadType.circular)
             {
-
-             /*   transform.RotateAround(rotationPoint.position, Vector3.up,
-                    lastDirection * GetCircularSpeed() * Time.deltaTime);*/
                 MoveToPoint(nearStopPoint);
-
             }
             else if (currentRoadType == RoadType.line)
             {
                 MoveToPoint(nearStopPoint);
             }
-            
+
             if ((nearStopPoint - transform.position).sqrMagnitude <= 0.06f * 0.06f)
             {
                 transform.position = nearStopPoint;
@@ -135,65 +135,46 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
                 active = false;
                 return;
             }
-            
+
             return;
-            
         }
-        
+
         if (active is false)
+            return;
+
+        if (transitioning)
             return;
 
         if (Input.GetButtonDown("Interact"))
         {
             if (statuePathFinder.IsInStopPoint(transform.position))
             {
-                playerController.AnimatorSetBool("P3.1", false);
-                playerController.ChangeLookCloserState(false,false,false);
-                playerController.ReAttachHand();
-               
-                playerController.CancelCurrentPuzzle();
-               
-                active = false;
-               
+                StartCoroutine(LookAt());
+                transitioning = true;
                 return;
             }
             else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
-            { 
-                playerController.AnimatorSetBool("P3.1", false);
-                playerController.ChangeLookCloserState(false,false,false);
-                playerController.ReAttachHand();
-                playerController.CancelCurrentPuzzle();
-              
-            
+            {
+                StartCoroutine(LookAt());
+                transitioning = true;
                 imNearStopPoint = true;
-                active = false;
-               
                 return;
             }
         }
 
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        time += Time.deltaTime;
-
         if (verticalInput != 0)
         {
             lastDirection = verticalInput;
-
-            if (time > 1)
-            {
-                
-                CamaraShake.ShakeOnce(1, 3, new Vector3(0.1f, 0.1f));
-                time = 0;
-            }
-           
+            playerController.playerMovement.SimulateHeadBobbing();
         }
-        
-        
+
+
         if (verticalInput < 0.1f && verticalInput > -0.1f)
         {
             playerController.AnimatorSetBool("P3.1_PushBackward", false);
-            playerController.AnimatorSetBool("P3.1_PushForward", false); 
+            playerController.AnimatorSetBool("P3.1_PushForward", false);
         }
         else if (verticalInput > 0.1f)
         {
@@ -204,7 +185,7 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         {
             playerController.AnimatorSetBool("P3.1_PushForward", false);
             playerController.AnimatorSetBool("P3.1_PushBackward", true);
-        } 
+        }
 
         if (currentRoadType == RoadType.circular)
         {
@@ -281,5 +262,24 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
         }
 
         return false;
+    }
+
+    private IEnumerator LookAt()
+    {
+        playerController.ChangeLookCloserState(false, false, false);
+
+        while (!playerController.cameraController.LookAt(lockCameraPoint.position, 5f))
+        {
+            yield return null;
+        }
+
+      //  playerController.ReAttachHand();
+
+        playerController.AnimatorSetBool("P3.1", false);
+        playerController.AnimatorSetBool("P3.1_PushBackward", false);
+        playerController.AnimatorSetBool("P3.1_PushForward", false);
+
+        transitioning = false;
+        active = false;
     }
 }

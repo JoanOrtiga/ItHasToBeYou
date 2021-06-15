@@ -32,12 +32,14 @@ public class BalanceController : MonoBehaviour, IInteractable
     private bool finishPuzzle;
 
     public Animator balanceAnimator;
+    public CanvasTutorial canvasTutorial;
 
     [Header("SOUNDS")]
-    public string moveUpBalancePath;
+    public string moveUpBalancePath = "event:/INGAME/Puzzle 2/Balanza/BalanceMoveUp";
     public string moveDownBalancePath;
     public string placeObjectBalancePath;
     public string placeObjectPlatePath;
+    
     
 
     private void Start()
@@ -63,10 +65,11 @@ public class BalanceController : MonoBehaviour, IInteractable
             popUp.SetActive(true);
             colliderPuzzle.enabled = true;
            
-            if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition ==false && finishPuzzle)
+            if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && finishPuzzle && (balance[0] == false && balance[1] == false)) //QUIT
             {
+                canvasTutorial.TutorialPuzzle21(false);
                 StartCoroutine(CamaraTransition(camera.transform, initialPositionCam, true));
-                print("QUIT");
+                
                 activePuzzle = false;
                 finishPuzzle = false;
                 playerController.EnableController(true, true, true, true);
@@ -89,6 +92,8 @@ public class BalanceController : MonoBehaviour, IInteractable
                 colliderPuzzle.enabled = false;
                 popUp.SetActive(false);
 
+                
+
                 for (int i = 0; i < canvas.Length; i++)
                 {
                     canvas[i].SetActive(false);
@@ -97,10 +102,13 @@ public class BalanceController : MonoBehaviour, IInteractable
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     finishPuzzle = true;
+                    FMODUnity.RuntimeManager.PlayOneShot(placeObjectPlatePath, transform.position);
+                    FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, transform.position);
                     if (balanceWeight[0] > balanceWeight[1])
                     {
                         
                         balanceAnimator.Play("BasculaLeftUpAnim");
+                        
                     }
                     else if (balanceWeight[0] < balanceWeight[1])
                     {
@@ -157,6 +165,8 @@ public class BalanceController : MonoBehaviour, IInteractable
                 {
                     if (balance[0] == false)
                     {
+                        FMODUnity.RuntimeManager.PlayOneShot(placeObjectBalancePath, transform.position);
+
                         balance[0] = true;
                         balanceWeight[0] = metalsPlatePlace[indexCanvas].transform.GetChild(1).GetComponent<MineralsProperties>().weightMetal;
                         metalsPlatePlace[indexCanvas].transform.GetChild(1).position = balancePlace[0].transform.position;
@@ -186,7 +196,7 @@ public class BalanceController : MonoBehaviour, IInteractable
                     else if (balance[1] == false)
                     {
                         balance[1] = true;
-
+                        FMODUnity.RuntimeManager.PlayOneShot(placeObjectBalancePath, transform.position);
 
                         indexSelected[1] = indexCanvas;
                         canvas[indexCanvas].SetActive(true);
@@ -212,24 +222,21 @@ public class BalanceController : MonoBehaviour, IInteractable
 
 
                         finishPuzzle = false;
-                        
 
+                        
                         if (balanceWeight[0] > balanceWeight[1])
                         {
-                           
+                            FMODUnity.RuntimeManager.PlayOneShot(moveDownBalancePath, transform.position);
                             balanceAnimator.Play("BasculaLeftDownAnim");
-                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
 
                         }
                         else if (balanceWeight[0] < balanceWeight[1])
                         {
-                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
-
+                            FMODUnity.RuntimeManager.PlayOneShot(moveDownBalancePath, transform.position);
                             balanceAnimator.Play("BasculaRightDownAnim");
                         }
                         else if (balanceWeight[0] == balanceWeight[1])
                         {
-                            FMODUnity.RuntimeManager.PlayOneShot(moveUpBalancePath, gameObject.transform.position);
 
                             balanceAnimator.Play("BasculaIdleAnim");
                         }
@@ -324,7 +331,9 @@ public class BalanceController : MonoBehaviour, IInteractable
         initialPositionCam.position = camera.transform.position;
         initialPositionCam.rotation = camera.transform.rotation;
         activePuzzle = true;
-        print("Start");
+     
+        canvasTutorial.TutorialPuzzle21(true);
+
         StartCoroutine(CamaraTransition(camera.transform, puzzlePositionCam, false));
     }
 

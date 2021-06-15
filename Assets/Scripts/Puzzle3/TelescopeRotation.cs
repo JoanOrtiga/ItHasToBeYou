@@ -44,15 +44,13 @@ public class TelescopeRotation : MonoBehaviour
     private void LateUpdate()
     {
         desiredYaw += inputVector.x * sensitivity.x * Time.deltaTime;
-        desiredPitch -= inputVector.y * sensitivity.y * Time.deltaTime;
 
-        desiredPitch = Mathf.Clamp(desiredPitch,lookAngleMinMax.x,lookAngleMinMax.y);
-        
-        yaw = Mathf.Lerp(yaw,desiredYaw, smoothAmount.x * Time.deltaTime);
-        pitch = Mathf.Lerp(pitch,desiredPitch, smoothAmount.y * Time.deltaTime);
-        
-        transform.eulerAngles = new Vector3(0f,yaw,0f);
-        pitchTransform.localEulerAngles = new Vector3(pitch,0f,0f);
+        desiredPitch -= inputVector.y * sensitivity.y * Time.deltaTime;
+        desiredPitch = Mathf.Clamp(desiredPitch, lookAngleMinMax.x, lookAngleMinMax.y);
+        yaw = Mathf.Lerp(yaw, desiredYaw, smoothAmount.x * Time.deltaTime);
+        pitch = Mathf.Lerp(pitch, desiredPitch, smoothAmount.y * Time.deltaTime);
+        transform.eulerAngles = new Vector3(0f, yaw, 0f);
+        pitchTransform.localEulerAngles = new Vector3(pitch, 0f, 0f);
     }
 
     public bool LookAt(Vector3 point, float speed)

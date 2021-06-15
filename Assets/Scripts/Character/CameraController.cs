@@ -113,7 +113,7 @@ public class CameraController : MonoBehaviour
         desiredPitch = pitch;
 
         bool veryClose = Mathf.Approximately(Mathf.Abs(Quaternion.Dot(pitchTransform.rotation, toRotation)), 1.0f);
-
+        
         return veryClose;
     }
 

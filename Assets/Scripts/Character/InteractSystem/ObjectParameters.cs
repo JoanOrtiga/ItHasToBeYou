@@ -14,12 +14,15 @@ public class ObjectParameters : MonoBehaviour
 
     public Vector3 startPos { get; private set; }
     [HideInInspector] public Quaternion startRot;
+    
 
-    [Header("Animation")]
+     [Header("Animation")]
     [SerializeField] private bool changeAnim;
     [SerializeField] private string animParam;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PickUp pickUp;
+
+    public bool canDrop = true;
     private void Awake()
     {
         startPos = transform.position;
@@ -43,10 +46,5 @@ public class ObjectParameters : MonoBehaviour
 
         if(changeAnim)
             playerController.AnimatorSetBool(animParam, Disable);
-    }
-
-    private void Update()
-    {
-        
     }
 }

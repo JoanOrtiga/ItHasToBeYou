@@ -12,10 +12,12 @@ public class ChangeRotation : StateMachineBehaviour
     //private Vector3 defaultPos;
 
     private AnimationEventHand animationEventHand;
+
+    [SerializeField] private string handTag = "RightHand";
     
     private void Awake()
     {
-        animationEventHand = FindObjectOfType<AnimationEventHand>();
+        animationEventHand = GameObject.FindGameObjectWithTag(handTag).GetComponent<AnimationEventHand>();
     }
 
 
@@ -33,9 +35,6 @@ public class ChangeRotation : StateMachineBehaviour
         animator.transform.localPosition = objectivePosition;
         
         animator.Update(0.0f);
-        
-        Debug.Log(animator.transform.localPosition);
-        Debug.Log(animator.transform.localRotation);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
