@@ -95,7 +95,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     {
         timeWaitSound += Time.deltaTime;
 
-        if (activePuzzle)
+        if (activePuzzle && winPuzzle == false)
         {
             if (Input.GetButtonDown("Interact") && activeCameraTransition == false && finishAnimation == true)
             {
@@ -226,6 +226,11 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 correctMetals = false;
                 //   this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
             }
+        }
+
+        if (winPuzzle == true)
+        {
+            puzzleAnimator.Play("Puzzle2GetDown");
         }
     }
 
