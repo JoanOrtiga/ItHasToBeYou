@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class BalanceController : MonoBehaviour, IInteractable
 {
     [Header("Camara Staff")]
-    public BreathCamera camera;
+    [HideInInspector] public BreathCamera camera;
     public Transform puzzlePositionCam;
     public Transform initialPositionCam;
     public float transitionSpeed;
@@ -30,6 +31,7 @@ public class BalanceController : MonoBehaviour, IInteractable
     public int[] indexSelected;
 
     private bool finishPuzzle;
+    [HideInInspector] public bool haveTryPuzzle;
 
     public Animator balanceAnimator;
     public CanvasTutorial canvasTutorial;
@@ -39,7 +41,8 @@ public class BalanceController : MonoBehaviour, IInteractable
     public string moveDownBalancePath;
     public string placeObjectBalancePath;
     public string placeObjectPlatePath;
-    
+
+   [HideInInspector] public bool hasTryOne;
     
 
     private void Start()
@@ -65,14 +68,15 @@ public class BalanceController : MonoBehaviour, IInteractable
             popUp.SetActive(true);
             colliderPuzzle.enabled = true;
            
-            if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && finishPuzzle && (balance[0] == false && balance[1] == false)) //QUIT
+            if ((Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && finishPuzzle && (balance[0] == false && balance[1] == false) || Input.GetKeyDown(KeyCode.N))) //QUIT
             {
                 canvasTutorial.TutorialPuzzle21(false);
-                StartCoroutine(CamaraTransition(camera.transform, initialPositionCam, true));
+                playerController.ChangeLookCloserState(false,false,false);
+
+                StartCoroutine(CamaraTransition(initialPositionCam, false));
                 
                 activePuzzle = false;
                 finishPuzzle = false;
-                playerController.EnableController(true, true, true, true);
 
                 for (int i = 0; i < canvas.Length; i++)
                 {
@@ -84,7 +88,6 @@ public class BalanceController : MonoBehaviour, IInteractable
                 popUpObject[2].SetActive(true);
                 popUpObject[3].SetActive(true);
                 popUpObject[4].SetActive(true);
-
             }
 
             if (balance[0] == true && balance[1] == true)
@@ -195,6 +198,7 @@ public class BalanceController : MonoBehaviour, IInteractable
                     }
                     else if (balance[1] == false)
                     {
+                        haveTryPuzzle = true;
                         balance[1] = true;
                         FMODUnity.RuntimeManager.PlayOneShot(placeObjectBalancePath, transform.position);
 
@@ -244,11 +248,11 @@ public class BalanceController : MonoBehaviour, IInteractable
                    
                 }
 
-                if (Input.GetKeyDown(KeyCode.E))
+              /*  if (Input.GetKeyDown(KeyCode.E))
                 {
-                    CamaraTransition(camera.transform, initialPositionCam, true);
+                    CamaraTransition(initialPositionCam, true);
 
-                }
+                }*/
 
                 popUpObject[0].SetActive(false);
                 popUpObject[1].SetActive(false);
@@ -328,46 +332,75 @@ public class BalanceController : MonoBehaviour, IInteractable
         activePuzzle = true;
        
 
-        initialPositionCam.position = camera.transform.position;
-        initialPositionCam.rotation = camera.transform.rotation;
+        initialPositionCam.position = playerController.cameraController.transform.position;
+        initialPositionCam.eulerAngles = new Vector3(playerController.cameraController.transform.GetChild(0).eulerAngles.x,playerController.cameraController.transform.eulerAngles.y);
         activePuzzle = true;
      
         canvasTutorial.TutorialPuzzle21(true);
 
-        StartCoroutine(CamaraTransition(camera.transform, puzzlePositionCam, false));
+        playerController.DisableController(true, true, true, true);
+        StartCoroutine(CamaraTransition(puzzlePositionCam, true));
     }
 
     
-    IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle_)
+    IEnumerator CamaraTransition(Transform pointB, bool activePuzzle_)
     {
+     
+        activeCameraTransition = true;
+        playerController.DisableController(true, true, true, true);
+
+        Transform cameraControllerY = playerController.cameraController.transform;
+        Transform cameraPivotX = cameraControllerY.GetChild(0).transform;
         
-        while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
+        
+        while (Vector3.Distance(cameraControllerY.position, pointB.position) > 0.01f)
         {
+            cameraControllerY.position = Vector3.Lerp(cameraControllerY.position, pointB.position, Time.deltaTime * transitionSpeed);
 
-            activeCameraTransition = true;
-            playerController.DisableController(true, true, true, true);
-
-            pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
-
-            Vector3 currentAngle = new Vector3(
+            
+            
+            cameraControllerY.eulerAngles = new Vector3(0, Mathf.LerpAngle(cameraControllerY.eulerAngles.y, pointB.eulerAngles.y, Time.deltaTime * transitionSpeed));
+            
+            //cameraPivotX.eulerAngles = new Vector3(Mathf.LerpAngle(cameraPivotX.eulerAngles.y, pointB.eulerAngles.x, Time.deltaTime * transitionSpeed), 0);
+            
+           /* Vector3 currentAngle = new Vector3(
                 Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x,
                     Time.deltaTime * transitionSpeed),
                 Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y,
                     Time.deltaTime * transitionSpeed),
                 Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z,
-                    Time.deltaTime * transitionSpeed));
+                    Time.deltaTime * transitionSpeed));*/
 
-            pointA.eulerAngles = currentAngle;
+           // pointA.eulerAngles = currentAngle;
             yield return null;
         }
+        
+            
+       // cameraPivotX.eulerAngles = new Vector3(pointB.eulerAngles.x, 0);
 
         if (activePuzzle_)
         {
-            playerController.EnableController(true, true, true, true);
+            
+            playerController.ChangeLookCloserState(true,true,true, new Vector2(-20, 50));
+        }
+        else
+        {
+            while (Math.Abs(cameraControllerY.eulerAngles.y - pointB.eulerAngles.y) > 0.01f)
+            {
+                cameraControllerY.eulerAngles = new Vector3(0, Mathf.LerpAngle(cameraControllerY.eulerAngles.y, pointB.eulerAngles.y, Time.deltaTime * transitionSpeed));
+            }
+            
+
+            
+            cameraControllerY.localPosition = Vector3.zero;
+            playerController.cameraController.ResetDesires();
+            playerController.EnableController(true,true,true,true);
+            print("hola");
         }
         
         activeCameraTransition = false;
-
+    
+        
         StopCoroutine("CamaraTransition");
     }
 
@@ -383,5 +416,4 @@ public class BalanceController : MonoBehaviour, IInteractable
             return (false);
         }
     }
-
 }

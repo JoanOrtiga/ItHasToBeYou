@@ -73,6 +73,7 @@ public class CameraController : MonoBehaviour
 
             if (changeX)
             {
+                print(desiredYaw + " " + yaw);
                 desiredYaw += inputVector.x * sensitivity.x * Time.deltaTime;
                 desiredYaw = Mathf.Clamp(desiredYaw, lookCloserXLimit.x + initialYaw, lookCloserXLimit.y + initialYaw);
                 yaw = Mathf.Lerp(yaw, desiredYaw, smoothAmount.x * Time.deltaTime);
@@ -82,16 +83,14 @@ public class CameraController : MonoBehaviour
         else
         {
             desiredYaw += inputVector.x * sensitivity.x * Time.deltaTime;
-
             desiredPitch -= inputVector.y * sensitivity.y * Time.deltaTime;
+            
             desiredPitch = Mathf.Clamp(desiredPitch, lookAngleMinMax.x, lookAngleMinMax.y);
             yaw = Mathf.Lerp(yaw, desiredYaw, smoothAmount.x * Time.deltaTime);
             pitch = Mathf.Lerp(pitch, desiredPitch, smoothAmount.y * Time.deltaTime);
             transform.eulerAngles = new Vector3(0f, yaw, 0f);
             pitchTransform.localEulerAngles = new Vector3(pitch, 0f, 0f);
         }
-
-   
     }
 
     public bool LookAt(Vector3 point, float speed)
@@ -119,9 +118,20 @@ public class CameraController : MonoBehaviour
 
     public void ChangeInitialYaw(bool x, bool y, Vector2 maxPitch)
     {
-        initialYaw = desiredYaw;
+        initialYaw = transform.eulerAngles.y;
         lookCloserYLimit = maxPitch;
         changeX = x;
         changeY = y;
+
+        ResetDesires();
+    }
+
+    public void ResetDesires()
+    {
+        yaw = transform.rotation.eulerAngles.y;
+        pitch = pitchTransform.localRotation.eulerAngles.x;
+        
+        desiredYaw = yaw;
+        desiredPitch = pitch;
     }
 }

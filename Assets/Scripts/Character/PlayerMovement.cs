@@ -105,9 +105,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void SimulateHeadBobbing()
+    public void SimulateHeadBobbing(float strong = 0.1f)
     {
-        headBob.ScrollHeadBob(new Vector2(0.1f,0.1f));
+        headBob.ScrollHeadBob(new Vector2(strong,strong));
 
         yawTransform.localPosition = Vector3.Lerp(yawTransform.localPosition,
             (Vector3.up * headBob.currentStateHeight) + headBob.finalOffset, Time.deltaTime * smoothHeadBobSimulationSpeed);
