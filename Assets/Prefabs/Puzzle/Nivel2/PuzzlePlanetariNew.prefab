@@ -804,12 +804,14 @@ MonoBehaviour:
   - 0
   - 0
   indexSelected: ffffffffffffffff
+  haveTryPuzzle: 0
   balanceAnimator: {fileID: 6354143729284672393}
   canvasTutorial: {fileID: 0}
   moveUpBalancePath: event:/INGAME/Puzzle 2/Balanza/BalanceMoveUp
   moveDownBalancePath: event:/INGAME/Puzzle 2/Balanza/BalanceMoveDown
   placeObjectBalancePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectBalance
   placeObjectPlatePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
+  hasSameWeight: {fileID: 0}
 --- !u!1 &776625725125995227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb0bb315b080204b9bbe15099f29be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasBeenPlaced: 0
+  hasBeenPlaced: 1
   placeSoundPath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
 --- !u!1 &1249218839793151619
 GameObject:
@@ -1682,7 +1684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb0bb315b080204b9bbe15099f29be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasBeenPlaced: 0
+  hasBeenPlaced: 1
   placeSoundPath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
 --- !u!1 &1945289672046564757
 GameObject:
@@ -2172,7 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb0bb315b080204b9bbe15099f29be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasBeenPlaced: 0
+  hasBeenPlaced: 1
   placeSoundPath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
 --- !u!1 &3369808678548214499
 GameObject:
@@ -2920,6 +2922,7 @@ MonoBehaviour:
   animParam: PickUpMaterial 1
   playerController: {fileID: 0}
   pickUp: {fileID: 0}
+  canDrop: 1
 --- !u!114 &1580963276771361105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5213,6 +5216,7 @@ MonoBehaviour:
   animParam: PickUpMaterial 1
   playerController: {fileID: 0}
   pickUp: {fileID: 0}
+  canDrop: 1
 --- !u!114 &4973654733000609317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5786,7 +5790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb0bb315b080204b9bbe15099f29be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasBeenPlaced: 0
+  hasBeenPlaced: 1
   placeSoundPath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
 --- !u!1 &8191813349558764509
 GameObject:
@@ -6269,6 +6273,7 @@ MonoBehaviour:
   animParam: PickUpMaterial 2
   playerController: {fileID: 0}
   pickUp: {fileID: 0}
+  canDrop: 1
 --- !u!114 &4318331918097038021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6462,6 +6467,7 @@ MonoBehaviour:
   animParam: PickUpMaterial 1
   playerController: {fileID: 0}
   pickUp: {fileID: 0}
+  canDrop: 1
 --- !u!114 &4318331918714542927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6628,6 +6634,7 @@ MonoBehaviour:
   animParam: PickUpMaterial 3
   playerController: {fileID: 0}
   pickUp: {fileID: 0}
+  canDrop: 1
 --- !u!114 &4318331919420681465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7042,7 +7049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb0bb315b080204b9bbe15099f29be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasBeenPlaced: 0
+  hasBeenPlaced: 1
   placeSoundPath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
 --- !u!1001 &1331451900170913321
 PrefabInstance:
