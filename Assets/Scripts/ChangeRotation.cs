@@ -35,11 +35,6 @@ public class ChangeRotation : StateMachineBehaviour
         animator.transform.localPosition = objectivePosition;
         
         animator.Update(0.0f);
-        
-        Debug.Log(handTag);
-        
-        Debug.Log(animator.transform.localPosition);
-        Debug.Log(animator.transform.localRotation);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -116,7 +116,7 @@ public class StatuePathFinder : MonoBehaviour
             }
         }
 
-        foreach (var obstacle in obstaclePoints)
+      /*  foreach (var obstacle in obstaclePoints)
         {
             if(obstacle == me)
                 continue;
@@ -126,7 +126,7 @@ public class StatuePathFinder : MonoBehaviour
             {
                 return false;
             }
-        }
+        }*/
 
         return true;
     }
