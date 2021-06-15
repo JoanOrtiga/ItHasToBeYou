@@ -32,7 +32,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
     
     private float moveToSpeed = 1f;
 
-    public CanvasTutorial canvasTutorial;
+    private CanvasTutorial canvasTutorial;
 
     public string soundPathRotation = "event:/INGAME/Puzzle 1/1.1/Rotate";
 
@@ -43,6 +43,7 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
     private void Awake()
     {
+        canvasTutorial = FindObjectOfType<CanvasTutorial>();
         rotateObjective = new GameObject().transform;
         rotateObjective.parent = transform.parent;
         rotateObjective.localRotation = transform.localRotation;
