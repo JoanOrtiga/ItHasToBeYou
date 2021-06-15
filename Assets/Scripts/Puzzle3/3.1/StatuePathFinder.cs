@@ -116,7 +116,7 @@ public class StatuePathFinder : MonoBehaviour
             }
         }
 
-      /*  foreach (var obstacle in obstaclePoints)
+        foreach (var obstacle in obstaclePoints)
         {
             if(obstacle == me)
                 continue;
@@ -126,7 +126,7 @@ public class StatuePathFinder : MonoBehaviour
             {
                 return false;
             }
-        }*/
+        }
 
         return true;
     }
@@ -145,7 +145,24 @@ public class StatuePathFinder : MonoBehaviour
         
         return -1;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+      /*  foreach (var obstacle in obstaclePoints)
+        {
+            if(obstacle == me)
+                continue;
+            
+            //     print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);
+            if ((playerController.transform.position - obstacle.position).sqrMagnitude < playerCollisionRange * playerCollisionRange)
+            {
+                return false;
+            }
+        }*/
+    }
 }
+
+
 
 [Serializable]
 public struct LinearPath

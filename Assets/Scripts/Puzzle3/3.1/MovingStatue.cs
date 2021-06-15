@@ -54,10 +54,17 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
 
     private bool transitioning;
 
+
+    public bool GetActive()
+    {
+        return active;
+    }
+    
     public void ChangeSide(Sides side)
     {
         this.playerSide = side;
         StartCoroutine(WaitForActivation());
+        transitioning = false;
 
         switch (currentRoadType)
         {
@@ -97,15 +104,10 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
 
     IEnumerator WaitForActivation()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.4f);
         active = true;
     }
-
-    public bool IsActive()
-    {
-        return active;
-    }
-
+    
     public static float GetAngleOnAxis(Vector3 self, Vector3 other, Vector3 axis)
     {
         Vector3 perpendicularSelf = Vector3.Cross(axis, self);
@@ -271,11 +273,11 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
             yield return null;
         }
 
-        yield return null;
-
-        playerController.ReAttachHand();
+      //  playerController.ReAttachHand();
 
         playerController.AnimatorSetBool("P3.1", false);
+        playerController.AnimatorSetBool("P3.1_PushBackward", false);
+        playerController.AnimatorSetBool("P3.1_PushForward", false);
 
         transitioning = false;
         active = false;
