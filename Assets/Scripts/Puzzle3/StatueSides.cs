@@ -92,7 +92,12 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
                 x = false;
             }
 
+            playerController.playerMovement.SimulateHeadBobbing(0.2f);
+
+            playerController.cameraController.LookAt(lockCameraPoint.position, 3f);
+           
             yield return null;
+      
         }
         
         
