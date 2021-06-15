@@ -45,6 +45,8 @@ public class PickUp : MonoBehaviour
 
     [SerializeField] private Color pickupColor = Color.yellow;
 
+    [HideInInspector] public bool canDrop = true;
+
     public enum Interaction
     {
         drop,
@@ -115,13 +117,14 @@ public class PickUp : MonoBehaviour
                     ObservObject();
                 }
             }
-            else if (Input.GetButtonDown("Interact") && onHand)
+            else if (Input.GetButtonDown("Interact") && onHand && canDrop)
             {
                 print("DROP OBJECT");
                 DropObject();
             }
         }
         
+       
 
         if (onHand)
         {
@@ -141,6 +144,22 @@ public class PickUp : MonoBehaviour
         
     }
 
+    public void CustomDrop()
+    {
+        if (objectPickUp != null)
+        {
+            objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
+            Destroy(objectPickUp.gameObject, 1.3f);
+            FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().dropPath, transform.position);
+        }
+
+        onHand = false;
+        
+        InvokeRepeating("CheckForObject", checkEveryTime, checkEveryTime);
+        canDrop = true;
+    }
+
+    
     private SpriteRenderer popupSPR;
     private bool changingColor = false;
 
@@ -348,12 +367,15 @@ public class PickUp : MonoBehaviour
        
         objectPickUp = rayCastHit.transform;
 
-        FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().pickUpPath, transform.position);
+        objectParameters = objectPickUp.GetComponent<ObjectParameters>();
+        
+        FMODUnity.RuntimeManager.PlayOneShot(objectParameters.pickUpPath, transform.position);
 
-        objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(true);
+        objectParameters.DisablePopUp(true);
+        canDrop = objectParameters.canDrop;
         objectPickUpRigidBody = objectPickUp.GetComponent<Rigidbody>();
         objectRotation = objectPickUp.GetComponent<ObjectOnHand>();
-        objectParameters = objectPickUp.GetComponent<ObjectParameters>();
+       
 
 
         objectPickUpRigidBody.isKinematic = true;

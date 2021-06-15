@@ -21,6 +21,8 @@ public class ObjectParameters : MonoBehaviour
     [SerializeField] private string animParam;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PickUp pickUp;
+
+    public bool canDrop = true;
     private void Awake()
     {
         startPos = transform.position;

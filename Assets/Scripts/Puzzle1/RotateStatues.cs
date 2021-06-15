@@ -38,11 +38,15 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
 
     public string soundPathSelect = "event:/INGAME/Puzzle 1/1.1/SelectStatue";
 
+    private bool narrativeAudio;
+    TextBox textBox;
+
     private void Awake()
     {
         rotateObjective = new GameObject().transform;
         rotateObjective.parent = transform.parent;
         rotateObjective.localRotation = transform.localRotation;
+        textBox = this.gameObject.GetComponent<TextBox>();
     }
 
     public void Interact()
@@ -173,7 +177,16 @@ public class RotateStatues : MonoBehaviour , IInteractable , IAnimationTouch
         if (left)
         {
             rotateObjective.localRotation = Quaternion.Euler(rotateObjective.eulerAngles.x, rotateObjective.eulerAngles.y + 60, rotateObjective.eulerAngles.z);
- 
+
+            if (narrativeAudio  == false)
+            {
+                if (textBox != null)
+                {
+                    narrativeAudio = true;
+                    textBox.StartTextPuzzle();
+                }
+               
+            }
         }
         else
         {

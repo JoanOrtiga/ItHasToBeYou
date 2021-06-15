@@ -8,7 +8,8 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
     public Transform secretDoor; 
     [SerializeField] private RotateStatues[] statues;
     public string finishPuzzlePath;
-    
+
+
     public bool Solved()
     {
         foreach (var statue in statues)
@@ -18,6 +19,9 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
         }
 
         FMODUnity.RuntimeManager.PlayOneShot(finishPuzzlePath, secretDoor.position);
+
+        this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
+
         CamaraShake.ShakeOnce(3, 3, new Vector3(0.1f, 0.1f));
 
         statues[0].gameObject.tag = "Untagged";

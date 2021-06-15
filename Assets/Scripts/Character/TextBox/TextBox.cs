@@ -199,9 +199,5 @@ public class TextBox : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-
-        }
     }
 }
