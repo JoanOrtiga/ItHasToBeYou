@@ -51,9 +51,10 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true, true, true, true);
-
-        StartCoroutine(AttachPlayer());
+        
         StartCoroutine(LookAt());
+        StartCoroutine(AttachPlayer());
+      
 
         otherSide1.SetActive(false);
         otherSide2.SetActive(false);
@@ -127,7 +128,6 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
         }
         else if (control == 2)
         {
-            print("hola");
             if (active)
                 Leave();
         }
