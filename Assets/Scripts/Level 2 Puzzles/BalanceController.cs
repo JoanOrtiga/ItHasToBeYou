@@ -43,7 +43,6 @@ public class BalanceController : MonoBehaviour, IInteractable
 
     [Header("Text puzzle")]
     public TextBox hasSameWeight;
-    
 
     private void Start()
     {
@@ -71,7 +70,8 @@ public class BalanceController : MonoBehaviour, IInteractable
             if (Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && finishPuzzle && (balance[0] == false && balance[1] == false)) //QUIT
             {
                 canvasTutorial.TutorialPuzzle21(false);
-                
+                playerController.ChangeLookCloserState(false,false,false);
+
                 StartCoroutine(CamaraTransition(playerController.cameraController.transform, initialPositionCam, true));
                 
                 activePuzzle = false;
@@ -345,24 +345,31 @@ public class BalanceController : MonoBehaviour, IInteractable
     
     IEnumerator CamaraTransition(Transform pointA, Transform pointB, bool activePuzzle_)
     {
+     
+        activeCameraTransition = true;
+        playerController.DisableController(true, true, true, true);
+
+        Transform cameraControllerY = playerController.cameraController.transform;
+        Transform cameraPivotX = cameraControllerY.GetChild(0).transform;
+        
         
         while (Vector3.Distance(pointA.position, pointB.position) > 0.01f)
         {
-
-            activeCameraTransition = true;
-            playerController.DisableController(true, true, true, true);
-
             pointA.position = Vector3.Lerp(pointA.position, pointB.position, Time.deltaTime * transitionSpeed);
 
-            Vector3 currentAngle = new Vector3(
+            cameraControllerY.localEulerAngles = new Vector3(0, Mathf.LerpAngle(cameraControllerY.localEulerAngles.y, pointB.localEulerAngles.y, Time.deltaTime * transitionSpeed));
+            
+            cameraPivotX.localEulerAngles = new Vector3(Mathf.LerpAngle(cameraPivotX.localEulerAngles.y, pointB.localEulerAngles.x, Time.deltaTime * transitionSpeed), 0);
+            
+           /* Vector3 currentAngle = new Vector3(
                 Mathf.LerpAngle(pointA.rotation.eulerAngles.x, pointB.rotation.eulerAngles.x,
                     Time.deltaTime * transitionSpeed),
                 Mathf.LerpAngle(pointA.rotation.eulerAngles.y, pointB.rotation.eulerAngles.y,
                     Time.deltaTime * transitionSpeed),
                 Mathf.LerpAngle(pointA.rotation.eulerAngles.z, pointB.rotation.eulerAngles.z,
-                    Time.deltaTime * transitionSpeed));
+                    Time.deltaTime * transitionSpeed));*/
 
-            pointA.eulerAngles = currentAngle;
+           // pointA.eulerAngles = currentAngle;
             yield return null;
         }
 
@@ -372,10 +379,9 @@ public class BalanceController : MonoBehaviour, IInteractable
         }
         
         activeCameraTransition = false;
-
-        initialYaw = playerController.mainCamera.transform.localEulerAngles.y;
-
-
+    
+        playerController.ChangeLookCloserState(true,true,true, new Vector2(-20, 50));
+        
         StopCoroutine("CamaraTransition");
     }
 
@@ -392,7 +398,7 @@ public class BalanceController : MonoBehaviour, IInteractable
         }
     }
 
-
+/*
     private Vector2 sensitivity = new Vector2(-200, 200);
     private float desiredPitch;
     private float desiredYaw;
@@ -419,5 +425,5 @@ public class BalanceController : MonoBehaviour, IInteractable
         yaw = Mathf.Lerp(yaw, desiredYaw, smoothAmount.x * Time.deltaTime);
         playerController.mainCamera.transform.localEulerAngles = new Vector3(0f, yaw, 0f);
     }
-
+*/
 }
