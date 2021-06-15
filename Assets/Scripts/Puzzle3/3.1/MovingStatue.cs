@@ -270,11 +270,13 @@ public class MovingStatue : MonoBehaviour , IPuzzleSolver
             yield return null;
         }*/
        yield return null;
+       
+       playerController.ChangeLookCloserState(false,false,false);
+       playerController.ReAttachHand();
         
         playerController.AnimatorSetBool("P3.1", false);
                
-        playerController.ChangeLookCloserState(false,false,false);
-        playerController.ReAttachHand();
+     
 
         transitioning = false;
         active = false;

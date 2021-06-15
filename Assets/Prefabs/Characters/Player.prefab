@@ -57,7 +57,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 50
+  field of view: 66.4
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -421,7 +421,7 @@ MonoBehaviour:
   sensitivity: {x: 200, y: 200}
   smoothAmount: {x: 5, y: 5}
   lookAngleMinMax: {x: -90, y: 90}
-  lookCloserXLimit: {x: -35, y: 35}
+  lookCloserXLimit: {x: -27, y: 27}
   lookCloserYLimit: {x: -90, y: 90}
   lookCloser: 0
 --- !u!1 &4300158160264332831
@@ -547,6 +547,7 @@ MonoBehaviour:
   observeController: {fileID: 0}
   activePuzzle: 0
   pickupColor: {r: 1, g: 0.979328, b: 0.740566, a: 1}
+  canDrop: 0
 --- !u!114 &1350137138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,7 +646,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 50
+  field of view: 66.4
   orthographic: 0
   orthographic size: 5
   m_Depth: 1
@@ -1434,6 +1435,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
+      propertyPath: m_TagString
+      value: LeftHand
       objectReference: {fileID: 0}
     - target: {fileID: 966954873464331901, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2249,6 +2254,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
+      propertyPath: m_TagString
+      value: RightHand
       objectReference: {fileID: 0}
     - target: {fileID: 966954873464331901, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

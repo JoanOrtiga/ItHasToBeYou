@@ -27,6 +27,9 @@ public class Telescope : MonoBehaviour , IInteractable
     [SerializeField] private Crosshair crosshair;
 
     private CanvasTutorial canvasTutorial;
+
+    [SerializeField] private DialsController dialsController;
+    
     private void Start()
     {
 
@@ -39,7 +42,9 @@ public class Telescope : MonoBehaviour , IInteractable
 
     public void Interact()
     {
-
+        if(!this.enabled)
+            return;
+        
         FMODUnity.RuntimeManager.PlayOneShot(interactSoundPath, gameObject.transform.position);
         canvasTutorial.TutorialPuzzle32(true);
 
@@ -79,12 +84,18 @@ public class Telescope : MonoBehaviour , IInteractable
             coordsX.text = Mathf.RoundToInt(rotation.x).ToString();
             coordsY.text = Mathf.RoundToInt(rotation.y).ToString();
         }
+
+        if (dialsController.Solved())
+        {
+            this.enabled = false;
+            Destroy(this);
+        }
     }
 
     private void Cancel()
     {
         crosshair.ChangeCrosshairState(false, false);
-        _playerController.EnableController(true, true, true);
+        _playerController.EnableController(true, true, true,true);
         telescopeCanvas.SetActive(false);
         
         active = false;

@@ -13,40 +13,34 @@ public class PuzzleDoor1 : MonoBehaviour
     public string openDoorPath;
     public string closeDoorPath;
 
-    public LupaPista lupaPista;
-
+    private PickUp pickUp;
     private void Awake()
     {
+        pickUp = FindObjectOfType<PickUp>();
+        
         animator = GetComponent<Animator>();
-     
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
+            pickUp.CustomDrop();
             FMODUnity.RuntimeManager.PlayOneShot(openDoorPath, transform.position);
             animator.SetTrigger("OpenDoor");
             this.enabled = false;
-            lupaPista.pickUpLupa = false;
-
-            gameObject.GetComponent<TextBox>().StartTextPuzzle();
         }
     }
 
     public void AddBook()
     {
-        
-
         booksCounter++;
         
         if (booksCounter >= booksToOpen)
         {
-            FMODUnity.RuntimeManager.PlayOneShot(openDoorPath, transform.position);
+            pickUp.CustomDrop();
             animator.SetTrigger("OpenDoor");
             this.enabled = false;
-            lupaPista.pickUpLupa = false;
-            gameObject.GetComponent<TextBox>().StartTextPuzzle();
         }
     }
     
