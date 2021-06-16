@@ -73,7 +73,7 @@ public class CameraController : MonoBehaviour
 
             if (changeX)
             {
-                print(desiredYaw + " " + yaw);
+
                 desiredYaw += inputVector.x * sensitivity.x * Time.deltaTime;
                 desiredYaw = Mathf.Clamp(desiredYaw, lookCloserXLimit.x + initialYaw, lookCloserXLimit.y + initialYaw);
                 yaw = Mathf.Lerp(yaw, desiredYaw, smoothAmount.x * Time.deltaTime);
