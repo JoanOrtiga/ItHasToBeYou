@@ -6147,7 +6147,7 @@ MonoBehaviour:
   intersectionRange: 0.2
   collisionRange: 0.7
   obstaclesRange: 0.2
-  playerCollisionRange: 0.3
+  playerCollisionRange: 1
 --- !u!1 &2314338229658748843
 GameObject:
   m_ObjectHideFlags: 0
@@ -7967,6 +7967,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185658478225275}
   lockCameraPoint: {fileID: 3482185658228743227}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185657813921332
 GameObject:
   m_ObjectHideFlags: 0
@@ -8925,6 +8926,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185659340920514}
   lockCameraPoint: {fileID: 3482185659376196949}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185658015414707
 GameObject:
   m_ObjectHideFlags: 0
@@ -9538,6 +9540,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185658100770537}
   lockCameraPoint: {fileID: 3482185659797930281}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185658104712736
 GameObject:
   m_ObjectHideFlags: 0
@@ -9691,6 +9694,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185658050920644}
   lockCameraPoint: {fileID: 3482185657835557019}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185658180957239
 GameObject:
   m_ObjectHideFlags: 0
@@ -10292,6 +10296,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185658434220516}
   lockCameraPoint: {fileID: 3482185658015414706}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185658337759072
 GameObject:
   m_ObjectHideFlags: 0
@@ -10736,6 +10741,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185659150773483}
   lockCameraPoint: {fileID: 3482185659751388788}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185658477846845
 GameObject:
   m_ObjectHideFlags: 0
@@ -13439,6 +13445,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185658300540078}
   lockCameraPoint: {fileID: 3482185658104712735}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185659128055543
 GameObject:
   m_ObjectHideFlags: 0
@@ -14232,6 +14239,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185659508541582}
   lockCameraPoint: {fileID: 3482185657715980650}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185659234327603
 GameObject:
   m_ObjectHideFlags: 0
@@ -14988,6 +14996,7 @@ MonoBehaviour:
   linearMovingSpeed: 2
   torre: {fileID: 3482185658397444332}
   lockCameraPoint: {fileID: 3482185659781562876}
+  pathMoveSound: event:/INGAME/Puzzle 3/Statue/MoveStatue
 --- !u!1 &3482185659426914441
 GameObject:
   m_ObjectHideFlags: 0
@@ -17256,7 +17265,6 @@ GameObject:
   - component: {fileID: 7619444030083659502}
   - component: {fileID: 2566553900324103972}
   - component: {fileID: 4271725898667314292}
-  - component: {fileID: 4271725898667314291}
   - component: {fileID: 4271725898667314290}
   m_Layer: 11
   m_Name: Telescope
@@ -17344,36 +17352,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7299371532340227975, guid: 42d4768fd60adf14fad6da2a179239ea, type: 3}
---- !u!114 &4271725898667314291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4271725898667314293}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textOne: The crystals act as converters of the soul! Sulphur, mercury and salt,
-    the vitality, the soul and the body.  The crystals receive and convert the being
-    of the person and transmute it into the energy of the universe, preserving it
-    in the moon itself. But I need to know on which moon the teacher's soul is at.
-  pathSoundFmodOne: event:/Narrativa/No/3-3-3
-  textTwo: 
-  pathSoundFmodTwo: 
-  isTrigger: 0
-  isInteraction: 0
-  isPickUp: 0
-  isLook: 1
-  isCompletePuzzle: 0
-  isPlaceObject: 0
-  isTriggerWithAPreCondition: 0
-  lookCloseObject: 0
-  textDuration: 18
-  textDone: 0
-  preTrigger: {fileID: 0}
 --- !u!65 &4271725898667314290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24737,13 +24715,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c564137d5f358ad4c8f53a87c4877cef, type: 3}
---- !u!4 &4024401764431440704 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c564137d5f358ad4c8f53a87c4877cef, type: 3}
-  m_PrefabInstance: {fileID: 3482185659238141099}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4364652941615067642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c564137d5f358ad4c8f53a87c4877cef, type: 3}
+  m_PrefabInstance: {fileID: 3482185659238141099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4024401764431440704 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c564137d5f358ad4c8f53a87c4877cef, type: 3}
   m_PrefabInstance: {fileID: 3482185659238141099}
   m_PrefabAsset: {fileID: 0}
