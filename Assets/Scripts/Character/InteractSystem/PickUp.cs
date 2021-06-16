@@ -383,14 +383,19 @@ public class PickUp : MonoBehaviour
 
         if (objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced == true)
         {
+            print("HAS BEEN PLACE");
+            print(objectPickUp.transform.parent.gameObject.transform.name);
+
             if (objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>() != null)
             {
+                print("Place Material");
                 objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced = false;
 
             }
             else if (objectPickUp.transform.parent.gameObject.GetComponent<PlacePlate>() != null)
             {
                 objectPickUp.transform.parent.gameObject.GetComponent<PlacePlate>().hasBeenPlaced = false;
+                print("PLACE placte");
 
             }
             objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = false;

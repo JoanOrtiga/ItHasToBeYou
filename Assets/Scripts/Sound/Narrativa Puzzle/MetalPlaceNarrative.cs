@@ -9,28 +9,30 @@ public class MetalPlaceNarrative : MonoBehaviour
     public TextBox placeMatirialCorrect;
     public TextBox placeMatirialWithOutPuzzle;
 
-    private bool playSoundOne;
-    private bool playSoundTwo;
+    private bool playSoundOne =false;
+    private bool playSoundTwo = false;
+    PlaceMaterial placeMaterial;
     void Start()
     {
-        
+        placeMaterial = gameObject.GetComponent<PlaceMaterial>();   
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (balanceController.haveTryPuzzle == false && playSoundOne == false)
+        if (balanceController.haveTryPuzzle == false && playSoundOne == false && placeMaterial.hasBeenPlaced)
         {
-            if (placeMatirialWithOutPuzzle != null)
-            {
-                playSoundOne = true;
-                placeMatirialWithOutPuzzle.StartTextPuzzle();
-            }
-        }
-        else if(balanceController.haveTryPuzzle == true && playSoundTwo == false)
-        {
+            print("SOUNDS PLACE 1");
             playSoundOne = true;
-            placeMatirialCorrect.StartTextPuzzle();
+            placeMatirialWithOutPuzzle.StartText();
+            
+        }
+        else if(balanceController.haveTryPuzzle == true && playSoundTwo == false && placeMaterial.hasBeenPlaced)
+        {
+            print("SOUNDS PLACE 2");
+
+            playSoundTwo = true;
+            placeMatirialCorrect.StartText();
         }
     }
 }

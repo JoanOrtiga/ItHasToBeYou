@@ -7,6 +7,8 @@ using UnityEngine.Audio;
 
 public class MovingStatue : MonoBehaviour, IPuzzleSolver
 {
+    public FMOD.Studio.EventInstance Sound;
+
     public enum Sides
     {
         front,
@@ -54,7 +56,9 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
 
     private bool transitioning;
 
+    public string pathMoveSound;
 
+    private bool soundActive = false;
     public bool GetActive()
     {
         return active;
@@ -164,10 +168,26 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
 
         verticalInput = Input.GetAxisRaw("Vertical");
 
+
+        
         if (verticalInput != 0)
         {
+
+            ///////////////
+            if (soundActive == false)
+            {
+                soundActive = true;
+                Sound = FMODUnity.RuntimeManager.CreateInstance(pathMoveSound);
+                Sound.start();
+            }
+
             lastDirection = verticalInput;
             playerController.playerMovement.SimulateHeadBobbing();
+        }
+        else
+        {
+            soundActive = false;
+            Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
 

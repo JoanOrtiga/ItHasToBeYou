@@ -97,6 +97,7 @@ public class TextBox : MonoBehaviour
     {
         if (textDone == false && isCompletePuzzle)
         {
+
             player.textBoxActive++;
             StopCoroutine(TextBoxStart());
             StartCoroutine(TextBoxStart());
