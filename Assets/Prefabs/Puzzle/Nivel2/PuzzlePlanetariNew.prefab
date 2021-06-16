@@ -677,6 +677,7 @@ GameObject:
   - component: {fileID: 5155145974302429041}
   - component: {fileID: 1896059240}
   - component: {fileID: 6014432928299969772}
+  - component: {fileID: 4117721096443997535}
   m_Layer: 7
   m_Name: TriggerPuzzle
   m_TagString: PuzzleInteractable
@@ -816,7 +817,7 @@ MonoBehaviour:
   placeObjectPlatePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
   hasTryOne: 0
   diferentWeights: {fileID: 5155145974302429041}
-  firstToPut: {fileID: 6014432928299969772}
+  firstToPut: {fileID: 4117721096443997535}
 --- !u!114 &5155145974302429041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,6 +869,31 @@ MonoBehaviour:
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!114 &6014432928299969772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759624455560263358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Still need some more metals
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-13
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.9
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &4117721096443997535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2923,7 +2949,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4f3ced5a696dd3a4d890604fa458a67a, type: 2}
+  - {fileID: 2100000, guid: 8292dfacaff2a0c46acb0626e8c4ce7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5448,7 +5474,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 748586405eb633f49a52b9a6e3f780a2, type: 2}
+  - {fileID: 2100000, guid: a27383ee2a2817348b69c38c4caa5f09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6472,7 +6498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8720789752311194575}
   m_LocalRotation: {x: 0.06875671, y: 0.9969883, z: 0.02029167, w: -0.029584315}
-  m_LocalPosition: {x: -1.429, y: 0.411, z: 2.161}
+  m_LocalPosition: {x: -1.4196, y: 0.4106, z: 2.1372}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6143476450108915636}
@@ -6506,7 +6532,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7caf7f5bf2bec224986f68b0ce3922d0, type: 2}
+  - {fileID: 2100000, guid: a0bc12b3682c87f4ebe30207365ca808, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6865,7 +6891,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7caf7f5bf2bec224986f68b0ce3922d0, type: 2}
+  - {fileID: 2100000, guid: ce91a0d8b807e28418e625a328e0bd85, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8022,14 +8048,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
---- !u!4 &6143476450108915636 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
-  m_PrefabInstance: {fileID: 4835156433003014721}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6143476450108915637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1611143389144602100, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
+  m_PrefabInstance: {fileID: 4835156433003014721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6143476450108915636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
   m_PrefabInstance: {fileID: 4835156433003014721}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4835156433060022934
