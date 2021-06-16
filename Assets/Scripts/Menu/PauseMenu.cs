@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject optionsMenu;
+    public GameObject controlsMenu;
 
     [SerializeField] private Slider[] soundSliders;
 
@@ -33,6 +34,7 @@ public class PauseMenu : MonoBehaviour
             soundSliders[3].value = PlayerPrefs.GetFloat("VoicesVolume");
         }
         
+        pauseMenu.SetActive(false);
     }
 
     private void Update()
@@ -82,13 +84,13 @@ public class PauseMenu : MonoBehaviour
     public void ShowOptionsMenu()
     {
         optionsMenu.SetActive(true);
-        pauseMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
     public void HideOptionsMenu()
     {
         optionsMenu.SetActive(false);
-        pauseMenu.SetActive(true);
+        controlsMenu.SetActive(true);
     }
 
     public void MasterSlider(float value)
