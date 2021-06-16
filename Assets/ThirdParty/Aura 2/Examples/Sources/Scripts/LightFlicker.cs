@@ -40,10 +40,13 @@ namespace Aura2API
         private float _time;
         private float _timeLeft;
 
+        private Light light;
+
         private void Start()
         {
-            Random.InitState((int)transform.position.x + (int)transform.position.y);
-            _initialFactor = GetComponent<Light>().intensity;
+            //Random.InitState((int)transform.position.x + (int)transform.position.y);
+            light = GetComponent<Light>();
+            _initialFactor = light.intensity;
         }
 
         //
@@ -85,7 +88,7 @@ namespace Aura2API
             {
                 float weight = _deltaTime / _timeLeft;
                 _currentFactor = Mathf.Lerp(_currentFactor, _targetFactor, weight);
-                GetComponent<Light>().intensity = _initialFactor * _currentFactor;
+                light.intensity = _initialFactor * _currentFactor;
                 _currentPos = Vector3.Lerp(_currentPos, _targetPos, weight);
                 transform.localPosition = _currentPos;
                 _timeLeft -= _deltaTime;

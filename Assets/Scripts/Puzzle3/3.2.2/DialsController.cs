@@ -46,6 +46,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
     private Transform savePosition;
 
     [SerializeField] private GameObject popUpInteraction;
+    public TextBox narrativeTextBox;
+    private bool narrativeDone;
     
     private enum DialState
     {
@@ -247,7 +249,12 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
             StartCoroutine(CameraTransition(playerController.mainCamera.transform, savePosition, false));
             popUpInteraction.SetActive(false);
             canvasTutorial.TutorialPuzzle33(false);
-
+            if (narrativeDone == false)
+            {
+                narrativeTextBox.StartTextPuzzle();
+                narrativeDone = true;
+            }
+            //
             this.enabled = false;
         }
     }
