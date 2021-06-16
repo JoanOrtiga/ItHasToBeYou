@@ -675,6 +675,8 @@ GameObject:
   - component: {fileID: 6302479372810316731}
   - component: {fileID: 3842348043558001044}
   - component: {fileID: 5155145974302429041}
+  - component: {fileID: 1896059240}
+  - component: {fileID: 6014432928299969772}
   m_Layer: 7
   m_Name: TriggerPuzzle
   m_TagString: PuzzleInteractable
@@ -807,12 +809,14 @@ MonoBehaviour:
   indexSelected: ffffffffffffffff
   haveTryPuzzle: 0
   balanceAnimator: {fileID: 6354143729284672393}
+  canvasTutorial: {fileID: 0}
   moveUpBalancePath: event:/INGAME/Puzzle 2/Balanza/BalanceMoveUp
   moveDownBalancePath: event:/INGAME/Puzzle 2/Balanza/BalanceMoveDown
   placeObjectBalancePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectBalance
   placeObjectPlatePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
   hasTryOne: 0
-  tryToPut: {fileID: 5155145974302429041}
+  diferentWeights: {fileID: 5155145974302429041}
+  firstToPut: {fileID: 6014432928299969772}
 --- !u!114 &5155145974302429041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,8 +831,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Looks like these metals have different sizes and weights
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-14
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -838,6 +840,56 @@ MonoBehaviour:
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
   textDuration: 2.4
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &1896059240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759624455560263358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Still need some more metals
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-13
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.9
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &6014432928299969772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759624455560263358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Still need some more metals
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-13
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.9
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!1 &776625725125995227
@@ -1180,8 +1232,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -1689,8 +1739,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -1775,7 +1823,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: de846768eecda124ebffff8c74c51b47, type: 3}
+  - {fileID: 2100000, guid: 1b97c0ab730ac2644959594cb8737273, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2178,8 +2226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -2843,7 +2889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4348249623407936617}
   m_LocalRotation: {x: 0.0017880346, y: 0.9784932, z: -0.07935371, w: 0.19039647}
-  m_LocalPosition: {x: 0.16540182, y: 0.7484999, z: 1.8037028}
+  m_LocalPosition: {x: 2.99, y: 0.886, z: 4.286}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 297706047774790620}
@@ -3866,6 +3912,7 @@ GameObject:
   - component: {fileID: 5155145974302429042}
   - component: {fileID: 5155145974302429043}
   - component: {fileID: 2044394162}
+  - component: {fileID: 129055239}
   m_Layer: 10
   m_Name: PlaceJupiter
   m_TagString: PuzzleInteractable
@@ -3981,13 +4028,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Tin which corresponds to Jupiter
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-3
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
   isLook: 0
-  isCompletePuzzle: 0
+  isCompletePuzzle: 1
   isPlaceObject: 0
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
@@ -4008,7 +4053,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 3842348043558001044}
   placeMatirialCorrect: {fileID: 5155145974302429042}
-  placeMatirialWithOutPuzzle: {fileID: 2044394162}
+  placeMatirialWrong: {fileID: 2044394162}
+  placeMatirialWithOutPuzzle: {fileID: 129055239}
 --- !u!114 &2044394162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4021,19 +4067,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textOne: This is may not work in this one
-  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
-  textTwo: 
-  pathSoundFmodTwo: 
+  textOne: I think that this one doesn't go here
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-16
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
   isLook: 0
-  isCompletePuzzle: 0
+  isCompletePuzzle: 1
   isPlaceObject: 0
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  textDuration: 4
+  textDuration: 1.7
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &129055239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636847587903251960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Stil dont know what to do with this or where to put it
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 3
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!1 &5636847587926783144
@@ -4052,6 +4121,7 @@ GameObject:
   - component: {fileID: 5155145974302429044}
   - component: {fileID: 5155145974302429045}
   - component: {fileID: 1023189050}
+  - component: {fileID: 827232944}
   m_Layer: 10
   m_Name: PlaceVenyus
   m_TagString: PuzzleInteractable
@@ -4167,13 +4237,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Copper for Venus
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-4
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
   isLook: 0
-  isCompletePuzzle: 0
+  isCompletePuzzle: 1
   isPlaceObject: 0
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
@@ -4194,7 +4262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 3842348043558001044}
   placeMatirialCorrect: {fileID: 5155145974302429044}
-  placeMatirialWithOutPuzzle: {fileID: 1023189050}
+  placeMatirialWrong: {fileID: 1023189050}
+  placeMatirialWithOutPuzzle: {fileID: 827232944}
 --- !u!114 &1023189050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4208,18 +4277,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textOne: This is may not work in this one
-  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
-  textTwo: 
-  pathSoundFmodTwo: 
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-11
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
   isLook: 0
-  isCompletePuzzle: 0
+  isCompletePuzzle: 1
   isPlaceObject: 0
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  textDuration: 4
+  textDuration: 2
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &827232944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636847587926783144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Stil dont know what to do with this or where to put it
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 3
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!1 &5636847588186280098
@@ -4238,6 +4330,7 @@ GameObject:
   - component: {fileID: 5155145974302429039}
   - component: {fileID: 5155145974302429040}
   - component: {fileID: 1243719818}
+  - component: {fileID: 594211824}
   m_Layer: 10
   m_Name: PlaceSaturno
   m_TagString: PuzzleInteractable
@@ -4353,13 +4446,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Lead for Saturn
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-5
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
   isLook: 0
-  isCompletePuzzle: 0
+  isCompletePuzzle: 1
   isPlaceObject: 0
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
@@ -4380,7 +4471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 3842348043558001044}
   placeMatirialCorrect: {fileID: 5155145974302429039}
-  placeMatirialWithOutPuzzle: {fileID: 1243719818}
+  placeMatirialWrong: {fileID: 1243719818}
+  placeMatirialWithOutPuzzle: {fileID: 594211824}
 --- !u!114 &1243719818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4393,19 +4485,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textOne: This is may not work in this one
-  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
-  textTwo: 
-  pathSoundFmodTwo: 
+  textOne: Don't think this is the right place
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-17
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
   isLook: 0
-  isCompletePuzzle: 0
+  isCompletePuzzle: 1
   isPlaceObject: 0
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
-  textDuration: 4
+  textDuration: 1.9
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &594211824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636847588186280098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Stil dont know what to do with this or where to put it
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 3
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!1 &5647488736251439314
@@ -5957,8 +6072,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -6224,7 +6337,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: de846768eecda124ebffff8c74c51b47, type: 3}
+  - {fileID: 2100000, guid: 1b97c0ab730ac2644959594cb8737273, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6359,7 +6472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8720789752311194575}
   m_LocalRotation: {x: 0.06875671, y: 0.9969883, z: 0.02029167, w: -0.029584315}
-  m_LocalPosition: {x: -1.444, y: 0.711, z: 2.313}
+  m_LocalPosition: {x: -1.429, y: 0.411, z: 2.161}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6143476450108915636}
@@ -6509,8 +6622,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Okey, there are so many metals, and it's not exactly my speciality...
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-6
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 1
@@ -6553,7 +6664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8720789753097666508}
   m_LocalRotation: {x: 0.008784489, y: 0.94397676, z: -0.038914423, w: 0.32759202}
-  m_LocalPosition: {x: -1.688, y: 0.722, z: 2.532}
+  m_LocalPosition: {x: 9.1677, y: 0.3597, z: 9.4427}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6143476450160942947}
@@ -7216,8 +7327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -7324,14 +7433,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
---- !u!4 &297706047774790620 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
-  m_PrefabInstance: {fileID: 1331451900170913321}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &297706047774790621 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1611143389144602100, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
+  m_PrefabInstance: {fileID: 1331451900170913321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &297706047774790620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
   m_PrefabInstance: {fileID: 1331451900170913321}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4835156431160836152
@@ -7822,14 +7931,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
---- !u!1 &6143476450048365416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1611143389144602100, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
-  m_PrefabInstance: {fileID: 4835156432946103964}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6143476450048365417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
+  m_PrefabInstance: {fileID: 4835156432946103964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6143476450048365416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1611143389144602100, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
   m_PrefabInstance: {fileID: 4835156432946103964}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4835156433003014721
@@ -8004,14 +8113,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
---- !u!4 &6143476450160942947 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
-  m_PrefabInstance: {fileID: 4835156433060022934}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6143476450160942946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1611143389144602100, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
+  m_PrefabInstance: {fileID: 4835156433060022934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6143476450160942947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
   m_PrefabInstance: {fileID: 4835156433060022934}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4835156433148432356
@@ -8157,14 +8266,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5335dbd90366cd4796f4a5dbb416c51, type: 3}
---- !u!1 &4640646059515591886 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b5335dbd90366cd4796f4a5dbb416c51, type: 3}
-  m_PrefabInstance: {fileID: 5523536097804747167}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5417042747520345716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5335dbd90366cd4796f4a5dbb416c51, type: 3}
+  m_PrefabInstance: {fileID: 5523536097804747167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4640646059515591886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b5335dbd90366cd4796f4a5dbb416c51, type: 3}
   m_PrefabInstance: {fileID: 5523536097804747167}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5798364547188137101
@@ -8338,14 +8447,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
---- !u!4 &5204952867771161469 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
-  m_PrefabInstance: {fileID: 6800535966206938760}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5204952867771161468 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1611143389144602100, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
+  m_PrefabInstance: {fileID: 6800535966206938760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5204952867771161469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1611143389144602101, guid: 488df9f33b6fe30479abed00a9f1523e, type: 3}
   m_PrefabInstance: {fileID: 6800535966206938760}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7877478741114356705

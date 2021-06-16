@@ -9,13 +9,6 @@ public class TextBox : MonoBehaviour
     public string textOne;
     public string pathSoundFmodOne;
 
-    [Header("Text Two")]
-    public string textTwo;
-    public string pathSoundFmodTwo;
-
-   
-    
-
     public bool isTrigger, isInteraction, isPickUp, isLook, isCompletePuzzle, isPlaceObject, isTriggerWithAPreCondition, lookCloseObject;
     private GameObject textBox;
 
@@ -155,7 +148,6 @@ public class TextBox : MonoBehaviour
         }
 
         textBox.gameObject.SetActive(true);
-        textBox.gameObject.GetComponent<Text>().text = textTwo;
 
 
         yield return new WaitForSeconds(textDuration);
@@ -174,7 +166,8 @@ public class TextBox : MonoBehaviour
 
         textDone = true;
         textBox.gameObject.SetActive(true);
-        textBox.gameObject.GetComponent<Text>().text = textTwo;
+        
+        
 
         yield return new WaitForSeconds(textDuration);
 
