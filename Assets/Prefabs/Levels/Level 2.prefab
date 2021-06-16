@@ -1157,8 +1157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -2553,8 +2551,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -3034,12 +3030,14 @@ MonoBehaviour:
   indexSelected: ffffffffffffffff
   haveTryPuzzle: 0
   balanceAnimator: {fileID: 5715980857942242281}
+  canvasTutorial: {fileID: 0}
   moveUpBalancePath: event:/INGAME/Puzzle 2/Balanza/BalanceMoveUp
   moveDownBalancePath: event:/INGAME/Puzzle 2/Balanza/BalanceMoveDown
   placeObjectBalancePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectBalance
   placeObjectPlatePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
   hasTryOne: 0
-  tryToPut: {fileID: 5834285444485437201}
+  diferentWeights: {fileID: 0}
+  firstToPut: {fileID: 0}
 --- !u!114 &5834285444485437201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3054,8 +3052,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Looks like these metals have different sizes and weights
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-14
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -6027,8 +6023,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -23180,8 +23174,6 @@ MonoBehaviour:
   textOne: Wait... omg Erline... you are investigating the transmutation of the soul,
     the forbidden practice, that's why you hide all of this.
   pathSoundFmodOne: event:/Narrativa/No/3-2-1
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -32221,8 +32213,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Copper for Venus
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-4
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -32248,6 +32238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 2463338635339792884}
   placeMatirialCorrect: {fileID: 5834285444485437204}
+  placeMatirialWrong: {fileID: 0}
   placeMatirialWithOutPuzzle: {fileID: 1692590674297305178}
 --- !u!114 &1692590674297305178
 MonoBehaviour:
@@ -32263,8 +32254,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: This is may not work in this one
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -32407,8 +32396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Tin which corresponds to Jupiter
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-3
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -32434,6 +32421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 2463338635339792884}
   placeMatirialCorrect: {fileID: 5834285444485437202}
+  placeMatirialWrong: {fileID: 0}
   placeMatirialWithOutPuzzle: {fileID: 1692590675419685586}
 --- !u!114 &1692590675419685586
 MonoBehaviour:
@@ -32449,8 +32437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: This is may not work in this one
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -32593,8 +32579,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Lead for Saturn
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-5
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -32620,6 +32604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 2463338635339792884}
   placeMatirialCorrect: {fileID: 5834285444485437199}
+  placeMatirialWrong: {fileID: 0}
   placeMatirialWithOutPuzzle: {fileID: 1692590675133739242}
 --- !u!114 &1692590675133739242
 MonoBehaviour:
@@ -32635,8 +32620,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: This is may not work in this one
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -34343,8 +34326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -55044,8 +55025,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: Okey, there are so many metals, and it's not exactly my speciality...
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-6
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 1
@@ -57305,8 +57284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
