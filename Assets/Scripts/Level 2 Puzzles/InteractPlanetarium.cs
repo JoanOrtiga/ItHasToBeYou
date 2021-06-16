@@ -50,8 +50,9 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
     public bool finishAnimation = true;
 
-    public CanvasTutorial canvasTutorial;
+     CanvasTutorial canvasTutorial;
 
+    private SphereCollider collider;
     private void Start()
     {
         puzzleAnimator = puzzle.GetComponent<Animator>();
@@ -71,7 +72,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
         finishAnimation = true;
 
         canvasTutorial = FindObjectOfType<CanvasTutorial>();
-
+        collider = GetComponent<SphereCollider>();
         //ringOne.transform.Rotate(0, 0, 90, Space.Self);
         //ringTwo.transform.Rotate(0, 0, -90, Space.Self);
     }
@@ -95,7 +96,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
     {
         timeWaitSound += Time.deltaTime;
 
-        if (activePuzzle)
+        if (activePuzzle && winPuzzle == false)
         {
             if (Input.GetButtonDown("Interact") && activeCameraTransition == false && finishAnimation == true)
             {
@@ -169,6 +170,7 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
             {
                 if (allClues[0] == true && allClues[1] == true && allClues[2] == true && activeCameraTransition)
                 {
+
                     PlayAnimation();
                 }
             }
@@ -213,20 +215,31 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/Puerta", door.transform.position);
                     FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 2/Planetario/PlanetarioGetUp", ringOne.transform.position);
+                    puzzleAnimator.Play("Puzzle2GetDown");
 
+
+                    canvasTutorial.TutorialPuzzle22(false);
+
+                    activePuzzle = false;
+                    puzzleAnimator.enabled = true;
+
+                    StartCoroutine(CamaraTransition(camera.transform, initialPositionCam, true));
+
+                    playerController.EnableController(true, true);
                 }
                 winPuzzle = true;
                 door.Play("EndPuzzleDoorOpen");
 
-                puzzleAnimator.Play("Puzzle2GetDown");
-                playSoundOne = false;
                 
-               
+                playSoundOne = false;
 
+                collider.enabled = false;
+                
                 correctMetals = false;
-                //   this.gameObject.GetComponent<TextBox>().StartTextPuzzle();
             }
         }
+
+       
     }
 
     private void RotateRing(bool rotationUp) // true Derecha & False Izquierda
