@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -253,11 +254,11 @@ public class BalanceController : MonoBehaviour, IInteractable
                    
                 }
 
-                if (Input.GetKeyDown(KeyCode.E))
+              /*  if (Input.GetKeyDown(KeyCode.E))
                 {
                     CamaraTransition(initialPositionCam, true);
 
-                }
+                }*/
 
                 popUpObject[0].SetActive(false);
                 popUpObject[1].SetActive(false);
@@ -343,7 +344,7 @@ public class BalanceController : MonoBehaviour, IInteractable
      
         canvasTutorial.TutorialPuzzle21(true);
 
-                   playerController.DisableController(true, true, true, true);
+        playerController.DisableController(true, true, true, true);
         StartCoroutine(CamaraTransition(puzzlePositionCam, true));
     }
 
@@ -355,7 +356,7 @@ public class BalanceController : MonoBehaviour, IInteractable
         playerController.DisableController(true, true, true, true);
 
         Transform cameraControllerY = playerController.cameraController.transform;
-     //   Transform cameraPivotX = cameraControllerY.GetChild(0).transform;
+        Transform cameraPivotX = cameraControllerY.GetChild(0).transform;
         
         
         while (Vector3.Distance(cameraControllerY.position, pointB.position) > 0.01f)
@@ -380,18 +381,27 @@ public class BalanceController : MonoBehaviour, IInteractable
             yield return null;
         }
         
-        cameraControllerY.eulerAngles = new Vector3(0, pointB.eulerAngles.y);
             
        // cameraPivotX.eulerAngles = new Vector3(pointB.eulerAngles.x, 0);
 
         if (activePuzzle_)
         {
+            
             playerController.ChangeLookCloserState(true,true,true, new Vector2(-20, 50));
         }
         else
         {
+            while (Math.Abs(cameraControllerY.eulerAngles.y - pointB.eulerAngles.y) > 0.01f)
+            {
+                cameraControllerY.eulerAngles = new Vector3(0, Mathf.LerpAngle(cameraControllerY.eulerAngles.y, pointB.eulerAngles.y, Time.deltaTime * transitionSpeed));
+            }
+            
+
+            
             cameraControllerY.localPosition = Vector3.zero;
+            playerController.cameraController.ResetDesires();
             playerController.EnableController(true,true,true,true);
+            print("hola");
         }
         
         activeCameraTransition = false;
