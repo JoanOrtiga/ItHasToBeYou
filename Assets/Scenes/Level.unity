@@ -15314,8 +15314,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -18345,6 +18343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1026728546, guid: 394ec31bca86e284ab889dba29729f86, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1828413404, guid: 394ec31bca86e284ab889dba29729f86, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -19014,8 +19016,6 @@ MonoBehaviour:
     transmutation. You know that, thats why u asked me to bring it, but it seems
     like something went wrong...
   pathSoundFmodOne: event:/Narrativa/No/3-3-2
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 1
   isPickUp: 0
@@ -22396,43 +22396,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 120062976, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 370868101, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 375151470, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 774671476, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 906779901, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 906779901, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 906779901, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1054496810, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1174426239, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1789229285, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1789229289, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: seeThroughtCamera
@@ -22440,15 +22440,15 @@ PrefabInstance:
       objectReference: {fileID: 1588607822}
     - target: {fileID: 1811202063, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2037159689, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2037159689, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3983843034967995229, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -22580,11 +22580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3983843035764477140, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3983843035764477141, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 11.175659
+      value: 11.175537
       objectReference: {fileID: 0}
     - target: {fileID: 3983843035987414858, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_IsActive
@@ -22646,9 +22646,13 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3983843036493738872, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
+    - target: {fileID: 3983843036428787637, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983843036493738872, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3983843036590910838, guid: 33c4b5a0ea50020439b5dd8b2c965d0e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -29444,6 +29448,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98139936cc2b01044b05477ab5537858, type: 3}
+--- !u!1 &1896059233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1016008881203057172, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+  m_PrefabInstance: {fileID: 5155145974302429033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1896059235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4835156433077709787, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+  m_PrefabInstance: {fileID: 5155145974302429033}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896059233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1896059240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896059233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Still need some more metals
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-13
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.9
+  textDone: 0
+  preTrigger: {fileID: 0}
 --- !u!1 &1896534055
 GameObject:
   m_ObjectHideFlags: 0
@@ -34781,8 +34826,6 @@ MonoBehaviour:
     of the person and transmute it into the energy of the universe, preserving it
     in the moon itself. But I need to know on which moon the teacher's soul is at.
   pathSoundFmodOne: event:/Narrativa/No/3-3-3
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -37986,8 +38029,6 @@ MonoBehaviour:
     of the person and transmute it into the energy of the universe, preserving it
     in the moon itself. But I need to know on which moon the teacher's soul is at.
   pathSoundFmodOne: event:/Narrativa/No/3-3-3
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
@@ -43987,9 +44028,17 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3585410571885837630, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: firstToPut
+      value: 
+      objectReference: {fileID: 1896059240}
+    - target: {fileID: 3585410571885837630, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
       propertyPath: canvasTutorial
       value: 
       objectReference: {fileID: 1515070294}
+    - target: {fileID: 3585410571885837630, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: diferentWeights
+      value: 
+      objectReference: {fileID: 1896059235}
     - target: {fileID: 3752756060493341973, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -44174,6 +44223,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5908291334035848913, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908291334035848913, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.886
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908291334035848913, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.286
+      objectReference: {fileID: 0}
     - target: {fileID: 5911729795444594797, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -44226,6 +44287,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 9049232244710721377, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.429
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049232244710721377, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.411
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049232244710721377, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.161
+      objectReference: {fileID: 0}
     - target: {fileID: 9049232244710721391, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
       propertyPath: playerController
       value: 
@@ -44234,6 +44307,18 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1433600714}
+    - target: {fileID: 9049232245497191266, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.1677
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049232245497191266, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3597
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049232245497191266, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.4427
+      objectReference: {fileID: 0}
     - target: {fileID: 9049232245633369733, guid: ccddb6a3de0823f49886931a9f81c3cc, type: 3}
       propertyPath: playerController
       value: 
@@ -46321,8 +46406,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOne: 
   pathSoundFmodOne: 
-  textTwo: 
-  pathSoundFmodTwo: 
   isTrigger: 0
   isInteraction: 0
   isPickUp: 0
