@@ -152,7 +152,7 @@ public class PickUp : MonoBehaviour
         if (objectPickUp != null)
         {
             objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
-            Destroy(objectPickUp.gameObject, 1.3f);
+            Destroy(objectPickUp.gameObject,0.5f);
             FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().dropPath, transform.position);
         }
 
