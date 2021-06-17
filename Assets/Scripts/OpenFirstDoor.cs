@@ -27,7 +27,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !running)
+        if (!running)
         {
             myAnimator.SetTrigger("P0 OpenDoor");
             playerController.AnimatorSetTrigger("P0 OpenDoor");
