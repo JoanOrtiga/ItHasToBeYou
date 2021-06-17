@@ -302,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838860427}
   m_LocalRotation: {x: -0, y: -0.20854503, z: -0, w: 0.9780128}
-  m_LocalPosition: {x: -0.14, y: 0.011999965, z: 0.881}
+  m_LocalPosition: {x: -0.137, y: 0.018, z: 0.666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4300158160965257709}
@@ -601,6 +601,8 @@ GameObject:
   - component: {fileID: 4300158160549236836}
   - component: {fileID: 473455489}
   - component: {fileID: 473455490}
+  - component: {fileID: 810831326}
+  - component: {fileID: 810831325}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -805,6 +807,83 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
   ListenerNumber: -1
+--- !u!108 &810831326
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300158160549236835}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!114 &810831325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300158160549236835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcd06815c47d30489f70df42db56a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frustumSettings:
+    baseSettings: {fileID: 0}
+    qualitySettings: {fileID: 0}
 --- !u!1 &4300158160699245174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,11 +2762,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
---- !u!1 &1533772768455636620 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1533772766884342911, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
-  m_PrefabInstance: {fileID: 1840782067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919132147639723938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
@@ -2696,6 +2770,11 @@ GameObject:
 --- !u!4 &543450651892743448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
+  m_PrefabInstance: {fileID: 1840782067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1533772768455636620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1533772766884342911, guid: fb51a7895bcf44c46af12e3172121b00, type: 3}
   m_PrefabInstance: {fileID: 1840782067}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2550270651655353732 stripped
