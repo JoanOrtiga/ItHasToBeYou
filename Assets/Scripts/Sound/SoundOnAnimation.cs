@@ -34,4 +34,22 @@ public class SoundOnAnimation : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot(soundsPath);
     }
 
+    public void StartFootSteps()
+    {
+        InvokeRepeating("CallFootsteps", 0, 1f);
+
+       
+    }
+    public void StopFootSteps()
+    {
+        CancelInvoke();
+    }
+
+    void CallFootsteps()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Foostep/FootWood");
+      
+    }
+
 }
