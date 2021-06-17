@@ -44,7 +44,7 @@ namespace Aura2API
 
         private void Start()
         {
-            //Random.InitState((int)transform.position.x + (int)transform.position.y);
+            Random.InitState((int)transform.position.x + (int)transform.position.y);
             light = GetComponent<Light>();
             _initialFactor = light.intensity;
         }
