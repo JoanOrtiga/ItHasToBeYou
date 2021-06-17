@@ -10,6 +10,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
     private Animator myAnimator;
 
     [SerializeField] private GameObject letter;
+    [SerializeField] private GameObject letterToObserve;
 
     private bool destroyLetter = false;
     private bool running = false;
@@ -20,6 +21,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         playerController = FindObjectOfType<PlayerController>();
         playerController.SetCurrentPuzzle(this);
         playerController.DisableController(true,true,true, true);
+        letterToObserve.SetActive(false);
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         if (Input.GetKeyDown(KeyCode.E) && destroyLetter)
         {
             playerController.AnimatorSetBool("ReadLetter", false);
+            letterToObserve.SetActive(true);
         }
     }
 
