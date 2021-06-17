@@ -11,7 +11,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
 
     [SerializeField] private GameObject letter;
 
-    public bool destroyLetter = false;
+    private bool destroyLetter = false;
     private bool running = false;
     
     private void Start()
@@ -44,7 +44,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
 
     private IEnumerator CoolDown()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         destroyLetter = true;
     }
     
