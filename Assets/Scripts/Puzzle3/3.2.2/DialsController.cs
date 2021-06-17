@@ -48,6 +48,8 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
     [SerializeField] private GameObject popUpInteraction;
     public TextBox narrativeTextBox;
     private bool narrativeDone;
+
+    public GameObject switches;
     
     private enum DialState
     {
@@ -255,6 +257,7 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
                 narrativeDone = true;
             }
             //
+            switches.SetActive(true);
             this.enabled = false;
         }
     }
