@@ -228,7 +228,6 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
         Vector2 dialRotation = new Vector2(dial1.localRotation.eulerAngles.z, dial2.localRotation.eulerAngles.z);
         
         
-        print(dialRotation);
         if (dialRotation.x >= dial1Range.x && dialRotation.x <= dial1Range.y)
         {
             dial1Correct = true;
