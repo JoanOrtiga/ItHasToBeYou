@@ -146,6 +146,25 @@ public class ObserveController : MonoBehaviour, IInteractable
                   
                 }
             }
+            else if (observingObject.GetComponent<ObserveObject>().hasTwoText == true)
+            {
+                hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, mainCamara.transform.position, out rayCastHit, DetectLayerMask.value);
+
+                Debug.DrawLine(observingObject.transform.GetChild(0).transform.position, mainCamara.GetComponent<Transform>().position, Color.green);
+                if (!hit && doneTransition)
+                {
+
+
+                    textObserver.text = observingObject.GetComponent<ObserveObject>().text;
+                }
+                else
+                {
+
+                    textObserver.text = observingObject.GetComponent<ObserveObject>().textTwo;
+                }
+
+                observerCanvas.transform.GetChild(0).gameObject.SetActive(true);
+            }
           
         }
     }
