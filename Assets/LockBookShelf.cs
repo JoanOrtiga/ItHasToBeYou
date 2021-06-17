@@ -36,6 +36,8 @@ public class LockBookShelf : MonoBehaviour
     {
         solved.Invoke();
         
+        //AQUI VA EL SO DE BOOKSHELF COMPLETED
+        
         foreach (var book in interactBooks)
         {
             book.enabled = false;
