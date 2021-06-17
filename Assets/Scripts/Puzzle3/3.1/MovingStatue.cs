@@ -306,8 +306,6 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
             yield return null;
         }
 
-      //  playerController.ReAttachHand();
-
         playerController.AnimatorSetBool("P3.1", false);
         playerController.AnimatorSetBool("P3.1_PushBackward", false);
         playerController.AnimatorSetBool("P3.1_PushForward", false);

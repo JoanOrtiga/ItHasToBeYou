@@ -293,11 +293,12 @@ public class PickUp : MonoBehaviour
                 //////
 
                 timeLook += Time.deltaTime;
-                if (rayCastHit.transform.gameObject.GetComponent<TextBox>().textDone == false && (timeLook > timeForLooking))
-                {
-                    timeLook = 0;
-                    rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
-                }
+                if(rayCastHit.transform.gameObject.GetComponent<TextBox>()!=null)
+                    if (rayCastHit.transform.gameObject.GetComponent<TextBox>().textDone == false && (timeLook > timeForLooking))
+                    {
+                      timeLook = 0;
+                      rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
+                  }
 
                 
             }
