@@ -8,8 +8,6 @@ public class Activate3rFloor : MonoBehaviour
     public GameObject floor1;
     public GameObject floor2;
     public GameObject floor3;
-
-    public Animator door;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -17,7 +15,6 @@ public class Activate3rFloor : MonoBehaviour
         {
             floor3.SetActive(true);
             floor1.SetActive(false);
-            door.Play("EndPuzzleDoorOpen");
         }
     }
 
