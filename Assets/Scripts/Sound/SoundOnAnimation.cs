@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SoundOnAnimation : MonoBehaviour
 {
+
+    public string soundsPath;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,4 +28,10 @@ public class SoundOnAnimation : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Cinematic/InitialCloseDoor");
         
     }
+
+    public void playSounds()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(soundsPath);
+    }
+
 }
