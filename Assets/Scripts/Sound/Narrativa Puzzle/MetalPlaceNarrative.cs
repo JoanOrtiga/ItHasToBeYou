@@ -29,6 +29,12 @@ public class MetalPlaceNarrative : MonoBehaviour
             placeMatirialWithOutPuzzle.StartTextPuzzle();
             
         }
+        else if(balanceController.haveTryPuzzle == true && playSoundTwo == false && placeMaterial.correctMaterial && placeMaterial.hasBeenPlaced)
+        {
+            print("CORRECT MATIRIAL");
+            playSoundTwo = true;
+            placeMatirialCorrect.StartTextPuzzle();
+        }
         else if (balanceController.haveTryPuzzle == true && playSoundThree == false && placeMaterial.correctMaterial == false && placeMaterial.hasBeenPlaced)
         {
             playSoundThree = true;
@@ -36,13 +42,7 @@ public class MetalPlaceNarrative : MonoBehaviour
             print("WRONG MATIRIAL");
             placeMatirialWrong.textDone = false;
         }
-        else if(balanceController.haveTryPuzzle == true && playSoundTwo == false && placeMaterial.correctMaterial && placeMaterial.hasBeenPlaced)
-        {
-            print("CORRECT MATIRIAL");
-            playSoundTwo = true;
-            placeMatirialCorrect.StartTextPuzzle();
-        }
-        
+
 
         if (placeMaterial.hasBeenPlaced == false)
         {

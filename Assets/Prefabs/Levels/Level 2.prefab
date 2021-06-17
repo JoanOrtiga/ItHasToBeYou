@@ -3098,7 +3098,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007250802771788942}
   m_LocalRotation: {x: 0.0031457196, y: -0.9671205, z: 0.254017, w: 0.01197672}
-  m_LocalPosition: {x: 0.18942359, y: 1.5091238, z: 1.8039165}
+  m_LocalPosition: {x: 0.146, y: 1.292, z: 1.49}
   m_LocalScale: {x: 2.4361503, y: 2.4361508, z: 2.4361503}
   m_Children: []
   m_Father: {fileID: 2121911529058278331}
@@ -3153,6 +3153,7 @@ GameObject:
   - component: {fileID: 4614973390217311195}
   - component: {fileID: 2463338635339792884}
   - component: {fileID: 5834285444485437201}
+  - component: {fileID: 8168789114785868149}
   m_Layer: 7
   m_Name: TriggerPuzzle
   m_TagString: PuzzleInteractable
@@ -3291,8 +3292,8 @@ MonoBehaviour:
   placeObjectBalancePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectBalance
   placeObjectPlatePath: event:/INGAME/Puzzle 2/Balanza/PlaceObjectPlate
   hasTryOne: 0
-  diferentWeights: {fileID: 0}
-  firstToPut: {fileID: 0}
+  diferentWeights: {fileID: 5834285444485437201}
+  firstToPut: {fileID: 8168789114785868149}
 --- !u!114 &5834285444485437201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3316,6 +3317,31 @@ MonoBehaviour:
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
   textDuration: 2.4
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &8168789114785868149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159458613603856094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Coloca material en un plato
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-13
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.9
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!1 &2210832627508904113
@@ -22170,7 +22196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5094980702737226836
 Transform:
   m_ObjectHideFlags: 0
@@ -23391,6 +23417,8 @@ MonoBehaviour:
   isObserving: 0
   hasText: 1
   text: 'Transmutation of silver with different elements '
+  textTwo: 
+  hasTwoText: 0
 --- !u!114 &6081169462113997758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32392,6 +32420,7 @@ GameObject:
   - component: {fileID: 5834285444485437204}
   - component: {fileID: 5834285444485437205}
   - component: {fileID: 1692590674297305178}
+  - component: {fileID: 359048575}
   m_Layer: 10
   m_Name: PlaceVenyus
   m_TagString: PuzzleInteractable
@@ -32532,7 +32561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 2463338635339792884}
   placeMatirialCorrect: {fileID: 5834285444485437204}
-  placeMatirialWrong: {fileID: 0}
+  placeMatirialWrong: {fileID: 359048575}
   placeMatirialWithOutPuzzle: {fileID: 1692590674297305178}
 --- !u!114 &1692590674297305178
 MonoBehaviour:
@@ -32546,7 +32575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textOne: This is may not work in this one
+  textOne: Stil dont know what to do with this or where to put it
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
   isTrigger: 0
   isInteraction: 0
@@ -32557,6 +32586,31 @@ MonoBehaviour:
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
   textDuration: 4
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &359048575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6433199945426742472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Dont think this is the right place
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-17
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.9
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!1 &6433199945467051416
@@ -32575,6 +32629,7 @@ GameObject:
   - component: {fileID: 5834285444485437202}
   - component: {fileID: 5834285444485437203}
   - component: {fileID: 1692590675419685586}
+  - component: {fileID: 1655260374}
   m_Layer: 10
   m_Name: PlaceJupiter
   m_TagString: PuzzleInteractable
@@ -32715,7 +32770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 2463338635339792884}
   placeMatirialCorrect: {fileID: 5834285444485437202}
-  placeMatirialWrong: {fileID: 0}
+  placeMatirialWrong: {fileID: 1655260374}
   placeMatirialWithOutPuzzle: {fileID: 1692590675419685586}
 --- !u!114 &1692590675419685586
 MonoBehaviour:
@@ -32729,7 +32784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textOne: This is may not work in this one
+  textOne: Stil dont know what to do with this or where to put it
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
   isTrigger: 0
   isInteraction: 0
@@ -32740,6 +32795,31 @@ MonoBehaviour:
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
   textDuration: 4
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &1655260374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6433199945467051416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: I think that this one doesn't go here
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-16
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.6
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!1 &6433199946253584578
@@ -32758,6 +32838,7 @@ GameObject:
   - component: {fileID: 5834285444485437199}
   - component: {fileID: 5834285444485437200}
   - component: {fileID: 1692590675133739242}
+  - component: {fileID: 1248062016}
   m_Layer: 10
   m_Name: PlaceSaturno
   m_TagString: PuzzleInteractable
@@ -32898,7 +32979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balanceController: {fileID: 2463338635339792884}
   placeMatirialCorrect: {fileID: 5834285444485437199}
-  placeMatirialWrong: {fileID: 0}
+  placeMatirialWrong: {fileID: 1248062016}
   placeMatirialWithOutPuzzle: {fileID: 1692590675133739242}
 --- !u!114 &1692590675133739242
 MonoBehaviour:
@@ -32912,7 +32993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textOne: This is may not work in this one
+  textOne: Stil dont know what to do with this or where to put it
   pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-10
   isTrigger: 0
   isInteraction: 0
@@ -32923,6 +33004,31 @@ MonoBehaviour:
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
   textDuration: 4
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &1248062016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6433199946253584578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: This may not work in this one
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-11
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 2
   textDone: 0
   preTrigger: {fileID: 0}
 --- !u!1 &6453062767994223353
