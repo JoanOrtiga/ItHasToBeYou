@@ -33,8 +33,13 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 
     public CanvasTutorial canvasTutorial;
 
+    private TextBox statuesNarrative;
+    public StatuesSolver statueSolver;
+    public int statueNumber;
+
     private void Awake()
     {
+        statuesNarrative = GetComponent<TextBox>();
         playerController = FindObjectOfType<PlayerController>();
         pickController = FindObjectOfType<PickUp>();
         playerTransform = playerController.transform;
@@ -114,6 +119,16 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
             x = false;
         }
 
+
+        print(statuesNarrative != null);
+        if (statuesNarrative != null && (statueSolver.narativeStatues[statueNumber] == false))
+        {
+            statueSolver.narativeStatues[statueNumber] = true;
+
+            print("SOUNDS STATUE");
+            statuesNarrative.StartTextPuzzle();
+        }
+
         playerTransform.position = positonChild.position;
         playerTransform.parent = positonChild;
     }
@@ -162,6 +177,8 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
         otherSide3.SetActive(true);
 
         canvasTutorial.TutorialPuzzle31(false);
+
+        //STOP
     }
 
 /*

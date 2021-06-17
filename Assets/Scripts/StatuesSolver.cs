@@ -24,12 +24,15 @@ public class StatuesSolver : MonoBehaviour
 
     private bool x = true;
 
+     public bool[] narativeStatues;
+
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
         canvasTutorial = FindObjectOfType<CanvasTutorial>();
     }
 
+   
     private void Update()
     {
         bool solved = true;
