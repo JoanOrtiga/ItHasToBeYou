@@ -45,13 +45,15 @@ public class StatuesSolver : MonoBehaviour
                 solved = false;
             }
         }
+        
+        
 
         if (solved || Input.GetKeyDown(KeyCode.L))
         {
             if ((playerController.transform.position - centralPoint.position).sqrMagnitude > radius * radius)
             {
-                /*if (!x)
-                    return;*/
+                if (!x)
+                    return;
                 animator.SetTrigger("OpenDoor");
                 StartCoroutine(LookAt());
                 StartCoroutine(Die());
