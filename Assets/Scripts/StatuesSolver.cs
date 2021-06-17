@@ -20,6 +20,8 @@ public class StatuesSolver : MonoBehaviour
     private CanvasTutorial canvasTutorial;
 
     private bool x = true;
+
+    public bool[] narativeStatues;
     private void Update()
     {
         bool solved = true;

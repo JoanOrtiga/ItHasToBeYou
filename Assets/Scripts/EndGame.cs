@@ -34,7 +34,10 @@ public class EndGame : MonoBehaviour , IInteractable
     [SerializeField] private GameObject canvasCredits;
     [SerializeField] private Transform canvasPanel;
     [SerializeField] private float creditsSpeed;
-    
+
+
+    private bool audioOnce;
+    public TextBox textBoxFinal;
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -49,8 +52,12 @@ public class EndGame : MonoBehaviour , IInteractable
         
         if(active)
             return;
-        
-        
+
+        if (audioOnce == false)
+        {
+            audioOnce = true;
+            textBoxFinal.StartTextPuzzle();
+        }
         //FALTA REPRODUIR AUDIO FINAL
         
         active = true;
@@ -84,6 +91,7 @@ public class EndGame : MonoBehaviour , IInteractable
     {
         if (active && waiting)
         {
+
             endingLight.intensity += Time.deltaTime * speedOfLight;
             
             bloom.intensity.value += Time.deltaTime * speedOfBloom ;      
