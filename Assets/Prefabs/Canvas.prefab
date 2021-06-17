@@ -512,7 +512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00005722046}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 41.6739}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &141361771
@@ -679,7 +679,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1515070296}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: ChangeFullScreen
         m_Mode: 0
@@ -1330,7 +1330,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1515070296}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: ChangeResolution
         m_Mode: 0
@@ -3048,8 +3048,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2037159690}
   m_HandleRect: {fileID: 2037159689}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.722174
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5563,7 +5563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3983843036524765396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6012,7 +6012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7565899407386311609
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6706,7 +6706,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3983843035226291131}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: goToMainMenu
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

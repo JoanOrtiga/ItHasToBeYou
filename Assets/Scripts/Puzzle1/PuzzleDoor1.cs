@@ -5,19 +5,17 @@ using UnityEngine;
 
 public class PuzzleDoor1 : MonoBehaviour
 {
-    private int booksCounter = 0;
-    [SerializeField] private int booksToOpen = 3;
+    private int booksShelfCounter = 0;
+    [SerializeField] private int bookShelfsToOpen = 4;
 
     private Animator animator;
 
     public string openDoorPath;
-    public string closeDoorPath;
-
+    
     private PickUp pickUp;
     private void Awake()
     {
         pickUp = FindObjectOfType<PickUp>();
-        
         animator = GetComponent<Animator>();
     }
 
@@ -32,20 +30,16 @@ public class PuzzleDoor1 : MonoBehaviour
         }
     }
 
-    public void AddBook()
+    public void AddBookShelf()
     {
-        booksCounter++;
-        
-        if (booksCounter >= booksToOpen)
+        booksShelfCounter++;
+
+        if (booksShelfCounter >= bookShelfsToOpen)
         {
             pickUp.CustomDrop();
+            FMODUnity.RuntimeManager.PlayOneShot(openDoorPath, transform.position);
             animator.SetTrigger("OpenDoor");
             this.enabled = false;
         }
-    }
-    
-    public void SubstractBook()
-    {
-        booksCounter--;
     }
 }
