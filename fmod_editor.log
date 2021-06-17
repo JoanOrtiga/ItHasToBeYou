@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000021118522688 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000018F337D93C8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -15,14 +15,191 @@
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9554816
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 134752
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007260A5F068
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC49557B10
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC49557AE0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC49557BE0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC49557CA0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018F0DD0B798
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='OpenDoor', format=5, channels=1, frequency=48000, lengthbytes=16192, lengthpcm=89526, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.331067.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9554816
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 134752
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007260A5F068
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC49557B10
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC49557AE0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC49557BE0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC49557CA0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018F0DD0B798
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Menú_Aceptar_1', format=5, channels=1, frequency=48000, lengthbytes=7552, lengthpcm=39127, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.832550.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9554816
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 134752
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007260A5F068
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC49557B10
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC49557AE0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC49557BE0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC49557CA0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018F0DD0B798
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Menú_Aceptar_2', format=5, channels=1, frequency=48000, lengthbytes=8096, lengthpcm=40320, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.798645.
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SoundI::release                          : CreakyWood (0000018F36FA9A98)
+[LOG] SoundI::release                          :     CreakyWood (0000018F426F8A88)
+[LOG] SoundI::release                          :     CreakyWood (000001906AE0FE18)
+[LOG] SoundI::release                          : ambient sound puzzle 2 (0000018F36FA9738)
+[LOG] SoundI::release                          :     ambient sound puzzle 2 (0000018F426FA968)
+[LOG] SoundI::release                          :     ambient sound puzzle 2 (000001906AE10838)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3BF6FA08)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F42700468)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93E308)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3F6BB3E8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FDF08)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D6F98)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3BF6FBB8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F42703528)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93E4B8)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (00000190AF241998)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FDD68)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D68D8)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3BF6FD68)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F427029C8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93D228)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (00000190AF241128)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FB188)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE10688)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F41E796B8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F42703048)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93ED28)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F43F5A068)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426F8DC8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE10328)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F41E78AE8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F42704228)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93D078)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F43F5A8D8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FDBC8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE0F248)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F41E791A8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FB808)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D6068)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (000001906ABF22B8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426F9AC8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE10178)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F41E79358)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FB668)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D7D18)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (000001906ABF2108)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FD888)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE10D48)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3374A268)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FB4C8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D7B68)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (000001906ABF2978)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FCEC8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE10B98)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3374A418)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FB328)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D7808)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018EDDC09FC8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FAE48)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE0FC68)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3374A928)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426F9FA8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D6578)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018EDDC09E18)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FD548)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE0FAB8)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3374A778)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426F9E08)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D6728)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018EDDC09AB8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FAB08)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (000001906AE0F908)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3374AAD8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426F92A8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D74A8)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F4F2FAAC8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F42702688)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93D3D8)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F36E5BB08)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426F9C68)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D72F8)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F4F2FA918)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F427002C8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93DDF8)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F36E5B958)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426F80C8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D63C8)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3BF6F6A8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F427024E8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93D738)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F36E5B448)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426F8F68)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D6A88)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3BF6FF18)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F42700E28)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F3C93DA98)
+[LOG] SoundI::release                          : Wind, Interior, Howling Wind By Window SND54297 29 (0000018F36E5BE68)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F426FE0A8)
+[LOG] SoundI::release                          :     Wind, Interior, Howling Wind By Window SND54297 29 (0000018F458D7148)
+[LOG] SoundI::release                          : Fire, Burning, Stove, Inset Fireplace, House Chimney, Open Window, Nice Fire, Burning Roar, Low Rumble 02 (LCR) SND37160 (0000018EDDC093F8)
+[LOG] SoundI::release                          :     Fire, Burning, Stove, Inset Fireplace, House Chimney, Open Window, Nice Fire, Burning Roar, Low Rumble 02 (LCR) SND37160 (0000018F426FDA28)
+[LOG] SoundI::release                          :     Fire, Burning, Stove, Inset Fireplace, House Chimney, Open Window, Nice Fire, Burning Roar, Low Rumble 02 (LCR) SND37160 (000001906AE0FFC8)
+[LOG] SoundI::release                          : Water, Bubbles, Liquid, Bubbling SND11785 (0000018EDDC0AB98)
+[LOG] SoundI::release                          :     Water, Bubbles, Liquid, Bubbling SND11785 (0000018F426FCD28)
+[LOG] SoundI::release                          :     Water, Bubbles, Liquid, Bubbling SND11785 (000001906AE104D8)
+[LOG] SoundI::release                          : Fire, Burning, Stove, Inset Fireplace, House Chimney, Open Window, Nice Fire, Burning Roar, Low Rumble 02 (LCR) SND37160 (0000018EDDC08EE8)
+[LOG] SoundI::release                          :     Fire, Burning, Stove, Inset Fireplace, House Chimney, Open Window, Nice Fire, Burning Roar, Low Rumble 02 (LCR) SND37160 (0000018F426F9928)
+[LOG] SoundI::release                          :     Fire, Burning, Stove, Inset Fireplace, House Chimney, Open Window, Nice Fire, Burning Roar, Low Rumble 02 (LCR) SND37160 (000001906AE0F3F8)
+[LOG] SoundI::release                          : Water, Bubbles, Liquid, Bubbling SND11785 (0000018EDDC09758)
+[LOG] SoundI::release                          :     Water, Bubbles, Liquid, Bubbling SND11785 (0000018F426FC848)
+[LOG] SoundI::release                          :     Water, Bubbles, Liquid, Bubbling SND11785 (000001906AE0F758)
+[LOG] SoundI::release                          : MusicBackground (0000018F36FA9FA8)
+[LOG] SoundI::release                          :     MusicBackground (0000018F426F8C28)
+[LOG] SoundI::release                          :     MusicBackground (000001906AE0F098)
+[LOG] SoundI::release                          :  (0000018F343CC048)
+[LOG] SoundI::release                          :     OpenDoor (0000018F42702EA8)
+[LOG] SoundI::release                          :  (0000018F343CC608)
+[LOG] SoundI::release                          :     Menú_Aceptar_1 (0000018F426FEDA8)
+[LOG] SoundI::release                          :  (0000018F343CBED8)
+[LOG] SoundI::release                          :     Menú_Aceptar_2 (0000018F426FF0E8)
+[LOG] SoundI::release                          :  (000001906ADB4078)
+[LOG] SoundI::release                          :     Torch (0000018F426FE728)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
 [LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
