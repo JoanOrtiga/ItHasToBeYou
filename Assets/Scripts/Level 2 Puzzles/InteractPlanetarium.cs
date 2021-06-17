@@ -53,8 +53,11 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
      CanvasTutorial canvasTutorial;
 
     private SphereCollider collider;
+
+    private TextBox narrationInteract;
     private void Start()
     {
+        narrationInteract = GetComponent<TextBox>();
         puzzleAnimator = puzzle.GetComponent<Animator>();
 
         allClues = new bool[3];
@@ -164,6 +167,10 @@ public class InteractPlanetarium : MonoBehaviour, IInteractable
 
                     ColorMat();
                 }
+            }
+            else
+            {
+                narrationInteract.StartTextPuzzle();
             }
            
             if (winPuzzle == false)
