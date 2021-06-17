@@ -59,6 +59,8 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
     public string pathMoveSound;
 
     private bool soundActive = false;
+
+    private TextBox statuesNarrative;
     public bool GetActive()
     {
         return active;
@@ -101,6 +103,7 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         playerController = FindObjectOfType<PlayerController>();
         nearStopPoint = new Vector3();
         transform.LookAt(rotationPoint, Vector3.up);
+        statuesNarrative = GetComponent<TextBox>();
 
         /*  transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
               transform.rotation.eulerAngles.z);*/
@@ -164,6 +167,12 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
                 imNearStopPoint = true;
                 return;
             }
+
+
+           
+
+
+
         }
 
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -173,7 +182,7 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         if (verticalInput != 0)
         {
 
-            ///////////////
+            
             if (soundActive == false)
             {
                 soundActive = true;
