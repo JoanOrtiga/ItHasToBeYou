@@ -119,8 +119,7 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
             x = false;
         }
 
-
-        print(statuesNarrative != null);
+        
         if (statuesNarrative != null && (statueSolver.narativeStatues[statueNumber] == false))
         {
             statueSolver.narativeStatues[statueNumber] = true;
