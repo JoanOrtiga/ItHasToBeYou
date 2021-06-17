@@ -239,6 +239,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7667913051705779445}
+  - {fileID: 8363910878639129179}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -249,13 +250,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7667913052204005240}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92c72ff25a9a3e446b6bbf35100099d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letter: {fileID: 0}
-  destroyLetter: 0
+  letter: {fileID: 4863542767148060288}
+  letterToObserve: {fileID: 0}
 --- !u!95 &7667913052204005243
 Animator:
   serializedVersion: 3
@@ -287,3 +288,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587df1e570bd1604b8c66b53fb1a4060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundsPath: 
+--- !u!1001 &5746504824606819419
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7667913052204005241}
+    m_Modifications:
+    - target: {fileID: 810831325, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: frustumSettings.baseSettings
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 810831325, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: frustumSettings.qualitySettings
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 990211725, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.35336837
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5561445
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.6256976
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.6952308
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.101434216
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7041344
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.10276179
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332802, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: observeController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332802, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: crosshairController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300158160264332831, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+--- !u!4 &8363910878639129179 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4300158160264332800, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+  m_PrefabInstance: {fileID: 5746504824606819419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4863542767148060288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149540834011, guid: d1101d9bd7894f94d8c992cf68e56453, type: 3}
+  m_PrefabInstance: {fileID: 5746504824606819419}
+  m_PrefabAsset: {fileID: 0}

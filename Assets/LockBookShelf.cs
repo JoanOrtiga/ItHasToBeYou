@@ -35,8 +35,10 @@ public class LockBookShelf : MonoBehaviour
     private void LockBooks()
     {
         solved.Invoke();
-        
+
         //AQUI VA EL SO DE BOOKSHELF COMPLETED
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 1/BookComplete");
         
         foreach (var book in interactBooks)
         {
