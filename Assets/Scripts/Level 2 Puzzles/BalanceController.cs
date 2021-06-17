@@ -34,7 +34,7 @@ public class BalanceController : MonoBehaviour, IInteractable
     [HideInInspector] public bool haveTryPuzzle = false;
 
     public Animator balanceAnimator;
-     CanvasTutorial canvasTutorial;
+    public CanvasTutorial canvasTutorial;
 
     [Header("SOUNDS")]
     public string moveUpBalancePath = "event:/INGAME/Puzzle 2/Balanza/BalanceMoveUp";
@@ -43,13 +43,15 @@ public class BalanceController : MonoBehaviour, IInteractable
     public string placeObjectPlatePath;
 
    [HideInInspector] public bool hasTryOne;
-    public TextBox tryToPut;
+    public TextBox diferentWeights;
+    public TextBox firstToPut;
+    private bool putFirstMatirial;
     
     
 
     private void Start()
     {
-
+        canvasTutorial = FindObjectOfType<CanvasTutorial>();
         colliderPuzzle = gameObject.GetComponent<BoxCollider>();
         playerController = FindObjectOfType<PlayerController>();
         camera = FindObjectOfType<BreathCamera>();
@@ -65,12 +67,24 @@ public class BalanceController : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        if (putFirstMatirial == false)
+        {
+            if (metalsPlatePlace[0].hasBeenPlaced || metalsPlatePlace[1].hasBeenPlaced || metalsPlatePlace[2].hasBeenPlaced)
+            {
+                putFirstMatirial = true;
+                firstToPut.StartTextPuzzle();
+            }
+        }
+       
+
         if (MetalsOnPlace())
-        {       
+        {
+          
+
             popUp.SetActive(true);
             colliderPuzzle.enabled = true;
            
-            if ((Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && finishPuzzle && (balance[0] == false && balance[1] == false) || Input.GetKeyDown(KeyCode.N))) //QUIT
+            if ((Input.GetButtonDown("Interact") && activePuzzle && activeCameraTransition == false && (balance[0] == false && balance[1] == false))) //QUIT
             {
                 canvasTutorial.TutorialPuzzle21(false);
                 playerController.ChangeLookCloserState(false,false,false);
@@ -170,6 +184,8 @@ public class BalanceController : MonoBehaviour, IInteractable
                 {
                     if (balance[0] == false)
                     {
+                      
+
                         FMODUnity.RuntimeManager.PlayOneShot(placeObjectBalancePath, transform.position);
 
                         balance[0] = true;
@@ -202,7 +218,7 @@ public class BalanceController : MonoBehaviour, IInteractable
                     {
                         if (haveTryPuzzle == false)
                         {
-                            tryToPut.StartTextPuzzle();
+                            diferentWeights.StartTextPuzzle();
                         }
                         haveTryPuzzle = true;
                         balance[1] = true;
@@ -335,7 +351,6 @@ public class BalanceController : MonoBehaviour, IInteractable
     public void Interact()
     {
         canvas[indexCanvas].SetActive(true);
-        activePuzzle = true;
        
 
         initialPositionCam.position = playerController.cameraController.transform.position;
@@ -401,7 +416,7 @@ public class BalanceController : MonoBehaviour, IInteractable
             cameraControllerY.localPosition = Vector3.zero;
             playerController.cameraController.ResetDesires();
             playerController.EnableController(true,true,true,true);
-            print("hola");
+
         }
         
         activeCameraTransition = false;

@@ -47,6 +47,9 @@ public class PickUp : MonoBehaviour
 
     [HideInInspector] public bool canDrop = true;
 
+    float timeLook = 0;
+    public float timeForLooking = 1.5f;
+
     public enum Interaction
     {
         drop,
@@ -287,14 +290,21 @@ public class PickUp : MonoBehaviour
             }
             else if (rayCastHit.transform.gameObject.layer == lookObjectLayer)
             {
-                if (rayCastHit.transform.gameObject.GetComponent<TextBox>().textDone == false)
+                //////
+
+                timeLook += Time.deltaTime;
+                if (rayCastHit.transform.gameObject.GetComponent<TextBox>().textDone == false && (timeLook > timeForLooking))
                 {
+                    timeLook = 0;
                     rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
                 }
+
                 
             }
             else
             {
+                timeLook = 0;
+
                 interaction = Interaction.none;
             }
 
@@ -383,19 +393,19 @@ public class PickUp : MonoBehaviour
 
         if (objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced == true)
         {
-            print("HAS BEEN PLACE");
+
             print(objectPickUp.transform.parent.gameObject.transform.name);
 
             if (objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>() != null)
             {
-                print("Place Material");
+                
                 objectPickUp.transform.parent.gameObject.GetComponent<PlaceMaterial>().hasBeenPlaced = false;
 
             }
             else if (objectPickUp.transform.parent.gameObject.GetComponent<PlacePlate>() != null)
             {
                 objectPickUp.transform.parent.gameObject.GetComponent<PlacePlate>().hasBeenPlaced = false;
-                print("PLACE placte");
+              
 
             }
             objectPickUp.GetComponent<ObjectParameters>().hasBeenPlaced = false;

@@ -33,6 +33,7 @@ public class Telescope : MonoBehaviour , IInteractable
     private void Start()
     {
 
+        crosshair = FindObjectOfType<Crosshair>();
         canvasTutorial = FindObjectOfType<CanvasTutorial>();
         mainCamera = Camera.main;
         

@@ -7,10 +7,12 @@ public class MetalPlaceNarrative : MonoBehaviour
     public BalanceController balanceController;
 
     public TextBox placeMatirialCorrect;
+    public TextBox placeMatirialWrong;
     public TextBox placeMatirialWithOutPuzzle;
 
     private bool playSoundOne =false;
     private bool playSoundTwo = false;
+    private bool playSoundThree = false;
     PlaceMaterial placeMaterial;
     void Start()
     {
@@ -22,17 +24,29 @@ public class MetalPlaceNarrative : MonoBehaviour
     {
         if (balanceController.haveTryPuzzle == false && playSoundOne == false && placeMaterial.hasBeenPlaced)
         {
-            print("SOUNDS PLACE 1");
+            print("NO TRY THE PUZZLE");
             playSoundOne = true;
-            placeMatirialWithOutPuzzle.StartText();
+            placeMatirialWithOutPuzzle.StartTextPuzzle();
             
         }
-        else if(balanceController.haveTryPuzzle == true && playSoundTwo == false && placeMaterial.hasBeenPlaced)
+        else if (balanceController.haveTryPuzzle == true && playSoundThree == false && placeMaterial.correctMaterial == false && placeMaterial.hasBeenPlaced)
         {
-            print("SOUNDS PLACE 2");
-
+            playSoundThree = true;
+            placeMatirialWrong.StartTextPuzzle();
+            print("WRONG MATIRIAL");
+            placeMatirialWrong.textDone = false;
+        }
+        else if(balanceController.haveTryPuzzle == true && playSoundTwo == false && placeMaterial.correctMaterial && placeMaterial.hasBeenPlaced)
+        {
+            print("CORRECT MATIRIAL");
             playSoundTwo = true;
-            placeMatirialCorrect.StartText();
+            placeMatirialCorrect.StartTextPuzzle();
+        }
+        
+
+        if (placeMaterial.hasBeenPlaced == false)
+        {
+            playSoundThree = false;
         }
     }
 }
