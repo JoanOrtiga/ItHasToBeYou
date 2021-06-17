@@ -152,7 +152,7 @@ public class PickUp : MonoBehaviour
         if (objectPickUp != null)
         {
             objectPickUp.GetComponent<ObjectParameters>().DisablePopUp(false);
-            Destroy(objectPickUp.gameObject, 1.3f);
+            Destroy(objectPickUp.gameObject,0.5f);
             FMODUnity.RuntimeManager.PlayOneShot(objectPickUp.GetComponent<ObjectParameters>().dropPath, transform.position);
         }
 
@@ -293,11 +293,12 @@ public class PickUp : MonoBehaviour
                 //////
 
                 timeLook += Time.deltaTime;
-                if (rayCastHit.transform.gameObject.GetComponent<TextBox>().textDone == false && (timeLook > timeForLooking))
-                {
-                    timeLook = 0;
-                    rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
-                }
+                if(rayCastHit.transform.gameObject.GetComponent<TextBox>()!=null)
+                    if (rayCastHit.transform.gameObject.GetComponent<TextBox>().textDone == false && (timeLook > timeForLooking))
+                    {
+                      timeLook = 0;
+                      rayCastHit.transform.gameObject.GetComponent<TextBox>().StartText();
+                  }
 
                 
             }

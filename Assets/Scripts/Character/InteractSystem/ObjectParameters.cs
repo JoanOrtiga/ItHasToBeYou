@@ -47,4 +47,10 @@ public class ObjectParameters : MonoBehaviour
         if(changeAnim)
             playerController.AnimatorSetBool(animParam, Disable);
     }
+
+    public void FinishAnimation(bool active)
+    {
+        if(changeAnim)
+            playerController.AnimatorSetBool(animParam, active);
+    }
 }
