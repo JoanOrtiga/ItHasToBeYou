@@ -29,6 +29,8 @@ public class Telescope : MonoBehaviour , IInteractable
     private CanvasTutorial canvasTutorial;
 
     [SerializeField] private DialsController dialsController;
+
+    public BoxCollider boxColliderNarrative;
     
     private void Start()
     {
@@ -43,6 +45,8 @@ public class Telescope : MonoBehaviour , IInteractable
 
     public void Interact()
     {
+
+
         if(!this.enabled)
             return;
         
@@ -58,6 +62,8 @@ public class Telescope : MonoBehaviour , IInteractable
         telescopeCamera.enabled = true;
         mainCamera.enabled = false;
         telescopeCanvas.SetActive(true);
+
+        boxColliderNarrative.enabled = true;
     }
 
     IEnumerator Cooldown()
