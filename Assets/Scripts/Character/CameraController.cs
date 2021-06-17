@@ -64,16 +64,14 @@ public class CameraController : MonoBehaviour
             if (changeY)
             {
                 desiredPitch -= inputVector.y * sensitivity.y * Time.deltaTime;
-                desiredPitch = Mathf.Clamp(desiredPitch, lookCloserYLimit.x , lookCloserYLimit.y );
-             
+                desiredPitch = Mathf.Clamp(desiredPitch, lookCloserYLimit.x, lookCloserYLimit.y);
+
                 pitch = Mathf.Lerp(pitch, desiredPitch, smoothAmount.y * Time.deltaTime);
                 pitchTransform.localEulerAngles = new Vector3(pitch, 0f, 0f);
-
             }
 
             if (changeX)
             {
-
                 desiredYaw += inputVector.x * sensitivity.x * Time.deltaTime;
                 desiredYaw = Mathf.Clamp(desiredYaw, lookCloserXLimit.x + initialYaw, lookCloserXLimit.y + initialYaw);
                 yaw = Mathf.Lerp(yaw, desiredYaw, smoothAmount.x * Time.deltaTime);
@@ -107,13 +105,33 @@ public class CameraController : MonoBehaviour
 
         yaw = transform.rotation.eulerAngles.y;
         pitch = pitchTransform.localRotation.eulerAngles.x;
-
+        
         desiredYaw = yaw;
         desiredPitch = pitch;
 
         bool veryClose = Mathf.Approximately(Mathf.Abs(Quaternion.Dot(pitchTransform.rotation, toRotation)), 1.0f);
-        
+
         return veryClose;
+    }
+
+    public void LookAtBruto(Vector3 point)
+    {
+        
+        Vector3 direction = point - pitchTransform.position;
+        Quaternion toRotation = Quaternion.LookRotation(direction, transform.up);
+
+        Vector3 totalRotation =
+            new Vector3(pitchTransform.localRotation.eulerAngles.x, transform.rotation.eulerAngles.y);
+        Quaternion finalRotation = toRotation;
+
+        pitchTransform.localRotation = Quaternion.Euler(finalRotation.eulerAngles.x, 0, 0);
+        transform.rotation = Quaternion.Euler(0, finalRotation.eulerAngles.y, 0);
+
+        yaw = transform.rotation.eulerAngles.y;
+        pitch = pitchTransform.localRotation.eulerAngles.x;
+        
+        desiredYaw = yaw;
+        desiredPitch = pitch;
     }
 
     public void ChangeInitialYaw(bool x, bool y, Vector2 maxPitch)
@@ -131,7 +149,21 @@ public class CameraController : MonoBehaviour
         yaw = transform.rotation.eulerAngles.y;
         pitch = pitchTransform.localRotation.eulerAngles.x;
         
+
         desiredYaw = yaw;
         desiredPitch = pitch;
+
+        inputVector = new Vector2(0, 0);
+    }
+
+
+    public void SafeResetDesires()
+    {
+        yaw = transform.localRotation.eulerAngles.y;
+        pitch = pitchTransform.localRotation.eulerAngles.x;
+        desiredYaw = yaw;
+        desiredPitch = pitch;
+
+        inputVector = new Vector2(0, 0);
     }
 }

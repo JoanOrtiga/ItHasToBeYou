@@ -15,9 +15,14 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
     public GameObject soundPointTower;
 
     [SerializeField] private EndGame endGame;
+
+    private PlayerController playerController;
+    [SerializeField] private Transform lookAtMidRoom;
+    
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     private void Update()
@@ -26,7 +31,7 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
         {
             if (!x)
                 return;
-            
+
             endGame.enabled = true;
             myAnimator.enabled = true;
             myAnimator.SetTrigger("Rotate");
@@ -49,6 +54,4 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
         
         return true;
     }
-
-  
 }
