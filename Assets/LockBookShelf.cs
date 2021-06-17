@@ -24,8 +24,6 @@ public class LockBookShelf : MonoBehaviour
 
     public void SubstractBook()
     {
-        booksCounter--;
-        
         if (booksCounter >= booksToOpen)
         {
             LockBooks();
