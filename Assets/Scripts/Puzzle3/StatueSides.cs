@@ -177,6 +177,8 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
         otherSide3.SetActive(true);
 
         canvasTutorial.TutorialPuzzle31(false);
+
+        //STOP
     }
 
 /*
