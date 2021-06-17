@@ -20,6 +20,11 @@ public class LoadNewScene : MonoBehaviour
     }
     #endif
 
+    private void Start()
+    {
+        LoadNextScene(sceneToLoad);
+    }
+
     public void LoadNextScene(string _sceneToLoad)
     {
         StartCoroutine(LoadScene(_sceneToLoad));
@@ -44,9 +49,6 @@ public class LoadNewScene : MonoBehaviour
                 asyncLoad.allowSceneActivation = true;
 
             }
-          
         }
-        
-        
     }
 }
