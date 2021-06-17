@@ -158,6 +158,8 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
             {
                 StartCoroutine(LookAt());
                 transitioning = true;
+                Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
                 return;
             }
             else if (statuePathFinder.NearStopPoint(transform.position, out nearStopPoint))
@@ -165,11 +167,13 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
                 StartCoroutine(LookAt());
                 transitioning = true;
                 imNearStopPoint = true;
+                Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
                 return;
+
             }
 
 
-           
 
 
 
