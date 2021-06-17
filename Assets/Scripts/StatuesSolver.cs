@@ -45,6 +45,8 @@ public class StatuesSolver : MonoBehaviour
                 solved = false;
             }
         }
+        
+        
 
         print(solved);
 
@@ -52,8 +54,8 @@ public class StatuesSolver : MonoBehaviour
         {
             if ((playerController.transform.position - centralPoint.position).sqrMagnitude > radius * radius)
             {
-                /*if (!x)
-                    return;*/
+                if (!x)
+                    return;
                 animator.SetTrigger("OpenDoor");
                 StartCoroutine(LookAt());
                 StartCoroutine(Die());
