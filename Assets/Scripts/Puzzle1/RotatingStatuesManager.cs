@@ -7,7 +7,7 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
 {
     public Transform secretDoor; 
     [SerializeField] private RotateStatues[] statues;
-    public string finishPuzzlePath;
+
 
     TextBox textBox;
 
@@ -24,7 +24,7 @@ public class RotatingStatuesManager : MonoBehaviour , IPuzzleSolver
                 return false;
         }
 
-        FMODUnity.RuntimeManager.PlayOneShot(finishPuzzlePath, secretDoor.position);
+    
 
         textBox.StartTextPuzzle();
        
