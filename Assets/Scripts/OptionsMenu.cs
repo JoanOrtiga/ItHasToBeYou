@@ -15,21 +15,25 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private Slider masterVolume;
     [SerializeField] private Slider voicesVolume;
     [SerializeField] private Slider SFXVolume;
+
     void Awake()
     {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
         int currentResolutionIndex = 0;
-        for(int i=0; i <resolutions.Length; i++)
+        for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
-            if(resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            
+                options.Add(option);
+            
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
             {
                 currentResolutionIndex = i;
             }
         }
+
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
@@ -38,13 +42,12 @@ public class OptionsMenu : MonoBehaviour
         UpdateRenderTexture(currentResolutionIndex);
 
         gameObject.SetActive(false);
-       
     }
 
     public void ChangeResolution(int option)
     {
         Screen.SetResolution(resolutions[option].width, resolutions[option].height, fullScreen.isOn);
-        
+
         UpdateRenderTexture(option);
     }
 

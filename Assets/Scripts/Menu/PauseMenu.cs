@@ -113,4 +113,9 @@ public class PauseMenu : MonoBehaviour
         mixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20);
         PlayerPrefs.SetFloat("MusicVolume", value);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
