@@ -14,7 +14,8 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
 
     private bool destroyLetter = false;
     private bool running = false;
-    
+
+    private bool simulateHeadBobbing = false;
     private void Start()
     {
         myAnimator = GetComponent<Animator>();
@@ -37,6 +38,11 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         {
             playerController.AnimatorSetBool("ReadLetter", false);
             letterToObserve.SetActive(true);
+        }
+
+        if (simulateHeadBobbing && !destroyLetter)
+        {
+            playerController.playerMovement.SimulateHeadBobbing();
         }
     }
 
@@ -68,6 +74,8 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         
         playerController.AnimatorSetBool("ReadLetter", true);
         letter.SetActive(true);
+        
         StartCoroutine(CoolDown());
+        simulateHeadBobbing = true;
     }
 }

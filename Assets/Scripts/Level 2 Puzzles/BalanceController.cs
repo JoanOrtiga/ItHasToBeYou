@@ -411,17 +411,13 @@ public class BalanceController : MonoBehaviour, IInteractable
                 cameraControllerY.eulerAngles = new Vector3(0, Mathf.LerpAngle(cameraControllerY.eulerAngles.y, pointB.eulerAngles.y, Time.deltaTime * transitionSpeed));
             }
             
-
-            
             cameraControllerY.localPosition = Vector3.zero;
             playerController.cameraController.ResetDesires();
             playerController.EnableController(true,true,true,true);
-
         }
         
         activeCameraTransition = false;
-    
-        
+  
         StopCoroutine("CamaraTransition");
     }
 
