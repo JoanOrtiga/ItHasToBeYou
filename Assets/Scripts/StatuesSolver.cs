@@ -46,6 +46,8 @@ public class StatuesSolver : MonoBehaviour
             }
         }
 
+        print(solved);
+
         if (solved || Input.GetKeyDown(KeyCode.L))
         {
             if ((playerController.transform.position - centralPoint.position).sqrMagnitude > radius * radius)
