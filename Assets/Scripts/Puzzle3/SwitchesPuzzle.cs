@@ -18,10 +18,13 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
 
     private PlayerController playerController;
     [SerializeField] private Transform lookAtMidRoom;
+
+    private TextBox textboxNarrative;
     
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
+        textboxNarrative = GetComponent<TextBox>();
         playerController = FindObjectOfType<PlayerController>();
     }
 
@@ -39,6 +42,7 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
             this.enabled = false;
             FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Escaleras Elevandose/Escalera", soundPointTower.transform.position);
             FMODUnity.RuntimeManager.PlayOneShot(GearLoopSolvedPath, soundPointGear.transform.position);
+            textboxNarrative.StartTextPuzzle();
 
 
         }
