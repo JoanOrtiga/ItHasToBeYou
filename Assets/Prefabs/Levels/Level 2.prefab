@@ -4371,6 +4371,7 @@ GameObject:
   - component: {fileID: 964284004532762857}
   - component: {fileID: 9203618151842049548}
   - component: {fileID: 6778766442688614504}
+  - component: {fileID: 2064653316}
   m_Layer: 7
   m_Name: TriggerPuzzle
   m_TagString: PuzzleInteractable
@@ -4555,6 +4556,31 @@ MonoBehaviour:
   isPickUp: 0
   isLook: 0
   isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.9
+  textDone: 0
+  preTrigger: {fileID: 0}
+--- !u!114 &2064653316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655139951326746563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: You planned this very meticulously
+  pathSoundFmodOne: event:/Narrativa/Object/4-2-1
+  isTrigger: 0
+  isInteraction: 1
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 0
   isPlaceObject: 0
   isTriggerWithAPreCondition: 0
   lookCloseObject: 0
@@ -6655,6 +6681,7 @@ GameObject:
   - component: {fileID: 5330347663558859471}
   - component: {fileID: 4799506204099100456}
   - component: {fileID: 4799506204099100459}
+  - component: {fileID: 1078559619}
   m_Layer: 7
   m_Name: Controller
   m_TagString: PuzzleInteractable
@@ -6764,6 +6791,31 @@ MonoBehaviour:
   rotationSpeedLow: 1
   door: {fileID: 0}
   finishAnimation: 0
+--- !u!114 &1078559619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799506204099100458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f20c7e3c8e0334faced09bf8f9888c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOne: Dosent looks like is working right now
+  pathSoundFmodOne: event:/Narrativa/Puzzles/2-2-8
+  isTrigger: 0
+  isInteraction: 0
+  isPickUp: 0
+  isLook: 0
+  isCompletePuzzle: 1
+  isPlaceObject: 0
+  isTriggerWithAPreCondition: 0
+  lookCloseObject: 0
+  textDuration: 1.8
+  textDone: 0
+  preTrigger: {fileID: 0}
 --- !u!1 &4870235778725503102
 GameObject:
   m_ObjectHideFlags: 0
@@ -55874,7 +55926,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8875184369362953805}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
