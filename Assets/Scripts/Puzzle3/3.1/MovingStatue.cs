@@ -187,35 +187,41 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         {
 
             
-            if (soundActive == false)
-            {
-                soundActive = true;
-                Sound = FMODUnity.RuntimeManager.CreateInstance(pathMoveSound);
-                Sound.start();
-            }
+            
 
             lastDirection = verticalInput;
             
         }
-        else
-        {
-            soundActive = false;
-            Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        }
+     
 
 
         if (verticalInput < 0.1f && verticalInput > -0.1f)
         {
             playerController.AnimatorSetBool("P3.1_PushBackward", false);
             playerController.AnimatorSetBool("P3.1_PushForward", false);
+
+             Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundActive = false;
         }
         else if (verticalInput > 0.1f)
         {
+            if (soundActive == false)
+            {
+                soundActive = true;
+                Sound = FMODUnity.RuntimeManager.CreateInstance(pathMoveSound);
+                Sound.start();
+            }
             playerController.AnimatorSetBool("P3.1_PushBackward", false);
             playerController.AnimatorSetBool("P3.1_PushForward", true);
         }
         else if (verticalInput < -0.1f)
         {
+            if (soundActive == false)
+            {
+                soundActive = true;
+                Sound = FMODUnity.RuntimeManager.CreateInstance(pathMoveSound);
+                Sound.start();
+            }
             playerController.AnimatorSetBool("P3.1_PushForward", false);
             playerController.AnimatorSetBool("P3.1_PushBackward", true);
         }
@@ -264,6 +270,9 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         {
             transform.position = lastPosition;
             transform.rotation = lastRotation;
+
+            Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundActive = false;
         }
         else
         {
@@ -283,6 +292,9 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         {
             transform.position = lastPosition;
             transform.rotation = lastRotation;
+
+            Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundActive = false;
         }
         else
         {

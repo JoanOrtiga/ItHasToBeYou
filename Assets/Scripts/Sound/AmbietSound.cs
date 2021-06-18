@@ -23,6 +23,7 @@ public class AmbietSound : MonoBehaviour
 
         FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Sonido Ambiente/CreakyWood");
         FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Sonido Ambiente/Ambiet");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Sonido Ambiente/MusicBackground");
 
         FMODUnity.RuntimeManager.PlayOneShot(SoundPathCaldera,calderaUno.transform.position);
         FMODUnity.RuntimeManager.PlayOneShot(SoundPathCaldera,calderaDos.transform.position);
