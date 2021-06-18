@@ -22,8 +22,6 @@ public class StatuesSolver : MonoBehaviour
 
     private CanvasTutorial canvasTutorial;
 
-    public GameObject changeEmissive;
-
     private bool x = true;
 
      public bool[] narativeStatues;
@@ -64,7 +62,6 @@ public class StatuesSolver : MonoBehaviour
                     this.gameObject.transform.position);
                 //CamaraShake.ShakeOnce(12, 3, new Vector3(0.35f, 0.35f));
                 canvasTutorial.TutorialPuzzle31(false);
-                changeEmissive.SetActive(true);
             }
         }
     }
