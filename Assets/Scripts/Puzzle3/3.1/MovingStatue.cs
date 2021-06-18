@@ -195,7 +195,7 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
             }
 
             lastDirection = verticalInput;
-            playerController.playerMovement.SimulateHeadBobbing();
+            
         }
         else
         {
@@ -265,6 +265,10 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
             transform.position = lastPosition;
             transform.rotation = lastRotation;
         }
+        else
+        {
+            playerController.playerMovement.SimulateHeadBobbing(0.05f);
+        }
     }
 
     private void MoveToPoint(Vector3 point)
@@ -279,6 +283,10 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         {
             transform.position = lastPosition;
             transform.rotation = lastRotation;
+        }
+        else
+        {
+            playerController.playerMovement.SimulateHeadBobbing(0.05f);
         }
     }
 
