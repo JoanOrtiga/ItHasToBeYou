@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
         }
         else
         {
-            Debug.Log("Puzzle Is null");
+//            Debug.Log("Puzzle Is null");
         }
     }
     

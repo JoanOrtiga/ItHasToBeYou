@@ -91,7 +91,11 @@ public class EndGame : MonoBehaviour , IInteractable
     {
         if (active && waiting)
         {
-
+            if (bloom.intensity.value <= 450f)
+            {
+                
+            
+                
             endingLight.intensity += Time.deltaTime * speedOfLight;
             
             bloom.intensity.value += Time.deltaTime * speedOfBloom ;      
@@ -101,7 +105,7 @@ public class EndGame : MonoBehaviour , IInteractable
             {
                 canvasGroup.alpha -= Time.deltaTime;
             }
-
+            }
             if (endingLight.intensity >= 31)
             {
                 canvasPanel.transform.position += new Vector3(0, creditsSpeed * Time.deltaTime, 0);

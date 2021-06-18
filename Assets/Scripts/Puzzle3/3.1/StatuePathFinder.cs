@@ -121,7 +121,7 @@ public class StatuePathFinder : MonoBehaviour
             if(statue == me)
                 continue;
             
-            Debug.DrawRay(playerController.transform.position, (statue.position - playerController.transform.position).normalized);
+           // Debug.DrawRay(playerController.transform.position, (statue.position - playerController.transform.position).normalized);
 
             
        //     print((playerController.transform.position - obstacle.position).sqrMagnitude + " " + obstaclesRange * obstaclesRange);

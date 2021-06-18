@@ -51,9 +51,7 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
     private PlayerController playerController;
 
     [SerializeField] private Transform lockCameraPoint;
-
-    private float time;
-
+    
     private bool transitioning;
 
     public string pathMoveSound;

@@ -58,10 +58,7 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
       
         if(statueSolver.isSolved)
             return;
-        
-      
-        
-        
+
         pickController.activePuzzle = true;
         active = true;
 
@@ -126,18 +123,17 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
             x = false;
         }
 
-
-        print(statuesNarrative != null);
+        
         if (statuesNarrative != null && (statueSolver.narativeStatues[statueNumber] == false))
         {
             statueSolver.narativeStatues[statueNumber] = true;
 
-            print("SOUNDS STATUE");
             statuesNarrative.StartTextPuzzle();
         }
 
         playerTransform.position = positonChild.position;
         playerTransform.parent = positonChild;
+        print(playerTransform.parent.name);
     }
 
 
@@ -148,6 +144,8 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 
     private void Update()
     {
+   
+        
         if (statueSolver.isSolved)
         {
             gameObject.tag = "Untagged";
@@ -159,9 +157,13 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
     {
         if (control == 1)
         {
+            playerTransform.position = positonChild.position;
+            playerTransform.parent = positonChild;
             statue.ChangeSide(side);
             playerController.DettachHand();
             playerController.ChangeLookCloserState(true, false, true, new Vector2(-80, 80));
+            playerTransform.position = positonChild.position;
+            playerTransform.parent = positonChild;
         }
         else if (control == 2)
         {
