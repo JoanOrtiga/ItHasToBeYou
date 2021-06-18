@@ -16,8 +16,11 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
     private bool running = false;
 
     private bool simulateHeadBobbing = false;
+    public CanvasTutorial canvasTutorial;
     private void Start()
     {
+
+    
         myAnimator = GetComponent<Animator>();
         playerController = FindObjectOfType<PlayerController>();
         playerController.SetCurrentPuzzle(this);
@@ -38,6 +41,9 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         {
             playerController.AnimatorSetBool("ReadLetter", false);
             letterToObserve.SetActive(true);
+
+            canvasTutorial.TutorialPuzzleIntro(false);
+
         }
 
         if (simulateHeadBobbing && !destroyLetter)
@@ -77,5 +83,10 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
         
         StartCoroutine(CoolDown());
         simulateHeadBobbing = true;
+    }
+
+    public void activeTutorial()
+    {
+        canvasTutorial.TutorialPuzzleIntro(true);
     }
 }
