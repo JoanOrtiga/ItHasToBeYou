@@ -74,6 +74,8 @@ public class EndGame : MonoBehaviour , IInteractable
         
         canvasCredits.SetActive(true);
         
+        
+        
      /*   foreach (var useless in canvasToDeActivate)
         {
             useless.SetActive(false);
