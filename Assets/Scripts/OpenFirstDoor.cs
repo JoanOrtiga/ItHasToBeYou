@@ -72,7 +72,7 @@ public class OpenFirstDoor : MonoBehaviour , IAnimationTouch
             myAnimator.enabled = false;
             playerController.transform.parent = null;
             playerController.EnableController(true,true,true, true);
-            Destroy(letter, 0.2f);
+            letter.SetActive(false);
             this.enabled = false;
 
             return;
