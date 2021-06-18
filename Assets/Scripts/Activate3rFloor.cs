@@ -17,12 +17,17 @@ public class Activate3rFloor : MonoBehaviour
         {
             floor3.SetActive(true);
             floor1.SetActive(false);
-            door.Play("EndPuzzleDoorOpen");
+            door.Play("CloseDoor");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        floor2.SetActive(false);
+        if (other.CompareTag("Player"))
+        {
+            floor2.SetActive(false);
+            this.enabled = false;
+        }
+       
     }
 }

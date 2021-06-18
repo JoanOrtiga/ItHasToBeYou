@@ -252,12 +252,7 @@ public class DialsController : MonoBehaviour, IInteractable, IPuzzleSolver
             StartCoroutine(CameraTransition(playerController.mainCamera.transform, savePosition, false));
             popUpInteraction.SetActive(false);
             canvasTutorial.TutorialPuzzle33(false);
-            if (narrativeDone == false)
-            {
-                narrativeTextBox.StartTextPuzzle();
-                narrativeDone = true;
-            }
-            //
+            
             switches.SetActive(true);
             this.enabled = false;
         }

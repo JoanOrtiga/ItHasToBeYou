@@ -46,6 +46,8 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
         canvasTutorial = FindObjectOfType<CanvasTutorial>();
     }
 
+    
+    
     public void Interact()
     {
         if (active)
@@ -53,6 +55,11 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 
       /*  if(statue.GetActive())
             return;*/
+      
+        if(statueSolver.isSolved)
+            return;
+        
+      
         
         
         pickController.activePuzzle = true;
@@ -140,7 +147,11 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 
     private void Update()
     {
-        
+        if (statueSolver.isSolved)
+        {
+            gameObject.tag = "Untagged";
+        }
+            
     }
 
     public void Finished(int control)

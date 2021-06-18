@@ -28,6 +28,8 @@ public class StatuesSolver : MonoBehaviour
 
      public bool[] narativeStatues;
 
+     public bool isSolved;
+
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -45,11 +47,9 @@ public class StatuesSolver : MonoBehaviour
                 solved = false;
             }
         }
-        
-        
 
-        print(solved);
-
+        isSolved = solved;
+        
         if (solved || Input.GetKeyDown(KeyCode.L))
         {
             if ((playerController.transform.position - centralPoint.position).sqrMagnitude > radius * radius)
