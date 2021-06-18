@@ -60,7 +60,8 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
 
     private bool soundActive = false;
 
-    private TextBox statuesNarrative;
+    private bool soundCorrectActive = false;
+
     public bool GetActive()
     {
         return active;
@@ -103,7 +104,7 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         playerController = FindObjectOfType<PlayerController>();
         nearStopPoint = new Vector3();
         transform.LookAt(rotationPoint, Vector3.up);
-        statuesNarrative = GetComponent<TextBox>();
+       
 
         /*  transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
               transform.rotation.eulerAngles.z);*/
@@ -187,35 +188,41 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         {
 
             
-            if (soundActive == false)
-            {
-                soundActive = true;
-                Sound = FMODUnity.RuntimeManager.CreateInstance(pathMoveSound);
-                Sound.start();
-            }
+            
 
             lastDirection = verticalInput;
-            playerController.playerMovement.SimulateHeadBobbing();
+            
         }
-        else
-        {
-            soundActive = false;
-            Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        }
+     
 
 
         if (verticalInput < 0.1f && verticalInput > -0.1f)
         {
             playerController.AnimatorSetBool("P3.1_PushBackward", false);
             playerController.AnimatorSetBool("P3.1_PushForward", false);
+
+             Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundActive = false;
         }
         else if (verticalInput > 0.1f)
         {
+            if (soundActive == false)
+            {
+                soundActive = true;
+                Sound = FMODUnity.RuntimeManager.CreateInstance(pathMoveSound);
+                Sound.start();
+            }
             playerController.AnimatorSetBool("P3.1_PushBackward", false);
             playerController.AnimatorSetBool("P3.1_PushForward", true);
         }
         else if (verticalInput < -0.1f)
         {
+            if (soundActive == false)
+            {
+                soundActive = true;
+                Sound = FMODUnity.RuntimeManager.CreateInstance(pathMoveSound);
+                Sound.start();
+            }
             playerController.AnimatorSetBool("P3.1_PushForward", false);
             playerController.AnimatorSetBool("P3.1_PushBackward", true);
         }
@@ -264,6 +271,13 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         {
             transform.position = lastPosition;
             transform.rotation = lastRotation;
+
+            Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundActive = false;
+        }
+        else
+        {
+            playerController.playerMovement.SimulateHeadBobbing(0.05f);
         }
     }
 
@@ -279,6 +293,13 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
         {
             transform.position = lastPosition;
             transform.rotation = lastRotation;
+
+            Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundActive = false;
+        }
+        else
+        {
+            playerController.playerMovement.SimulateHeadBobbing(0.05f);
         }
     }
 
@@ -291,6 +312,13 @@ public class MovingStatue : MonoBehaviour, IPuzzleSolver
     {
         if ((target.position - transform.position).sqrMagnitude <= targetRange * targetRange)
         {
+            if (soundCorrectActive == false)
+            {
+                soundCorrectActive = true;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Puzzle 3/Mecanismos/Macnismo");
+
+            }
+
             return true;
         }
 

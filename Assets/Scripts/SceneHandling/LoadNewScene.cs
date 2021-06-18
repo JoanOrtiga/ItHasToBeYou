@@ -32,6 +32,8 @@ public class LoadNewScene : MonoBehaviour
 
     private IEnumerator LoadScene(string sceneToLoad)
     {
+        yield return new WaitForSeconds(2);
+
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
         
         asyncLoad.allowSceneActivation = false;
@@ -45,7 +47,7 @@ public class LoadNewScene : MonoBehaviour
             if (progress >= 0.9f)
             {
                 //We add extra time in loading screen.
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(3);
                 asyncLoad.allowSceneActivation = true;
 
             }
