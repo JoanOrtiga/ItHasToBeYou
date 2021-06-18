@@ -49,9 +49,6 @@ public class LoadNewScene : MonoBehaviour
                 asyncLoad.allowSceneActivation = true;
 
             }
-          
         }
-        
-        
     }
 }

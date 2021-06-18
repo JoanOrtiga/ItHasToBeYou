@@ -14,7 +14,7 @@ public class ControllingIdle : StateMachineBehaviour
         {
             render = animator.GetComponentsInChildren<Renderer>();
         }
-
+        
         foreach (var renderer in render)
         {
             renderer.enabled = false;
