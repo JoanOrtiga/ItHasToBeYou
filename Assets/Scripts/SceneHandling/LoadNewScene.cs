@@ -47,7 +47,7 @@ public class LoadNewScene : MonoBehaviour
             if (progress >= 0.9f)
             {
                 //We add extra time in loading screen.
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(2);
                 asyncLoad.allowSceneActivation = true;
 
             }

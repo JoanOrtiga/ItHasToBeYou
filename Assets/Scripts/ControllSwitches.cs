@@ -25,6 +25,8 @@ public class ControllSwitches : MonoBehaviour, IInteractable
     private GameObject saveCameraPosition;
 
     public Crosshair crosshair;
+    public GameObject popup;
+    
     private void Awake()
     {
         crosshair = FindObjectOfType<Crosshair>();
@@ -51,6 +53,8 @@ public class ControllSwitches : MonoBehaviour, IInteractable
         
         if(active)
             return;
+        
+        popup.SetActive(false);
         
         saveCameraPosition.transform.position =playerController.mainCamera.transform.position;
         saveCameraPosition.transform.rotation = playerController.mainCamera.transform.rotation;
@@ -113,6 +117,8 @@ public class ControllSwitches : MonoBehaviour, IInteractable
             woodsMaterial[0].DisableKeyword("_EMISSION");
             woodsMaterial[1].DisableKeyword("_EMISSION");
             woodsMaterial[2].DisableKeyword("_EMISSION");
+            
+            popup.SetActive(true);
         }
     }
 
