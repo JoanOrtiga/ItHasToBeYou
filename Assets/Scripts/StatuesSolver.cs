@@ -28,10 +28,14 @@ public class StatuesSolver : MonoBehaviour
 
      public bool isSolved;
 
+    private TextBox narrativaFinalPuzzle;
+    private bool narrativeDone = false;
+
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
         canvasTutorial = FindObjectOfType<CanvasTutorial>();
+        narrativaFinalPuzzle = GetComponent<TextBox>();
     }
 
    
@@ -50,6 +54,12 @@ public class StatuesSolver : MonoBehaviour
         
         if (solved || Input.GetKeyDown(KeyCode.L))
         {
+            if (narrativeDone == false)
+            {
+                narrativeDone = true;
+                narrativaFinalPuzzle.StartTextPuzzle();
+
+            }
             if ((playerController.transform.position - centralPoint.position).sqrMagnitude > radius * radius)
             {
                 if (!x)
