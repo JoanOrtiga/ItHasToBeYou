@@ -19,7 +19,6 @@ public class ControllingIdle : StateMachineBehaviour
         
         foreach (var renderer in render)
         {
-            Debug.Log(renderer.gameObject.name);
             renderer.enabled = false;
         }
 

@@ -20,6 +20,7 @@ public class StatuesSolver : MonoBehaviour
     [SerializeField] private Transform lookAtMidRoom;
     [SerializeField] private float lookAtSpeed;
 
+    
     private CanvasTutorial canvasTutorial;
 
     private bool x = true;
@@ -31,6 +32,8 @@ public class StatuesSolver : MonoBehaviour
     private TextBox narrativaFinalPuzzle;
     private bool narrativeDone = false;
 
+    public FMOD.Studio.EventInstance Sound;
+    
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -58,8 +61,11 @@ public class StatuesSolver : MonoBehaviour
             {
                 narrativeDone = true;
                 narrativaFinalPuzzle.StartTextPuzzle();
-
+                Sound = FMODUnity.RuntimeManager.CreateInstance("event:/INGAME/Puzzle 3/EarthQuake");
+                Sound.start();
+                CamaraShake.ShakeOnce(20, 5f, new Vector3(0.1f, 0.1f));
             }
+            
             if ((playerController.transform.position - centralPoint.position).sqrMagnitude > radius * radius)
             {
                 if (!x)
@@ -72,6 +78,8 @@ public class StatuesSolver : MonoBehaviour
                     this.gameObject.transform.position);
                 //CamaraShake.ShakeOnce(12, 3, new Vector3(0.35f, 0.35f));
                 canvasTutorial.TutorialPuzzle31(false);
+                    
+                
             }
         }
     }
@@ -86,6 +94,8 @@ public class StatuesSolver : MonoBehaviour
         }*/
 
         yield return new WaitForSeconds(7f);
+
+        Sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         
       //  playerController.cameraController.ResetDesires();
 
