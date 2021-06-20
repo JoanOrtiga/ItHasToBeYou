@@ -20,7 +20,7 @@ public class DoorSolvedPuzzle : MonoBehaviour
 
     private void Update()
     {
-        if(puzzle.Solved() || Input.GetKeyDown(KeyCode.K))
+        if(puzzle.Solved())
         {
             animator.SetTrigger("OpenDoor");
             activateParticles.CreateParticles(5f);

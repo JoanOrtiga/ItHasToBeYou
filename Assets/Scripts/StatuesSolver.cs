@@ -57,7 +57,7 @@ public class StatuesSolver : MonoBehaviour
 
         isSolved = solved;
         
-        if (solved || Input.GetKeyDown(KeyCode.L))
+        if (solved)
         {
             if (narrativeDone == false)
             {

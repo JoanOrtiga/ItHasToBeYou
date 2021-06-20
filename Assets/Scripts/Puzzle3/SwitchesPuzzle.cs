@@ -30,7 +30,7 @@ public class SwitchesPuzzle : MonoBehaviour , IPuzzleSolver
 
     private void Update()
     {
-        if (Solved() || Input.GetKeyDown(KeyCode.B))
+        if (Solved())
         {
             if (!x)
                 return;

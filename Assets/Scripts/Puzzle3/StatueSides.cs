@@ -144,13 +144,10 @@ public class StatueSides : MonoBehaviour, IInteractable, IAnimationTouch
 
     private void Update()
     {
-   
-        
         if (statueSolver.isSolved)
         {
             gameObject.tag = "Untagged";
         }
-            
     }
 
     public void Finished(int control)
