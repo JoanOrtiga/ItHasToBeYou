@@ -29,9 +29,15 @@ public class CameraController : MonoBehaviour
     private bool changeX;
     private bool changeY;
 
+ 
     public Transform GetPitchObject()
     {
         return pitchTransform;
+    }
+
+    public void SetSensitivity(int changer)
+    {
+        sensitivity = new Vector2(changer, changer);
     }
 
     private void Awake()

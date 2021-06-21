@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
@@ -16,6 +17,11 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private Slider voicesVolume;
     [SerializeField] private Slider SFXVolume;
 
+    public CameraController playerCameraController;
+    
+    [SerializeField] private PostProcessVolume volume;
+    private ColorGrading colorGrading;
+    
     void Awake()
     {
         resolutions = Screen.resolutions;
@@ -42,6 +48,9 @@ public class OptionsMenu : MonoBehaviour
         UpdateRenderTexture(currentResolutionIndex);
 
         gameObject.SetActive(false);
+        
+        volume.profile.TryGetSettings(out colorGrading);
+
     }
 
     public void ChangeResolution(int option)
@@ -57,9 +66,24 @@ public class OptionsMenu : MonoBehaviour
         seeThroughtCamera.targetTexture = new RenderTexture(resolutions[option].width, resolutions[option].height, 24);
         seeThroughtMaterial.mainTexture = seeThroughtCamera.targetTexture;
     }
+    
+    public void ChangeQualitySettings(int quality)
+    {
+        QualitySettings.SetQualityLevel(quality);
+    }
 
     public void ChangeFullScreen(bool value)
     {
         Screen.fullScreen = value;
+    }
+
+    public void ChangeSensivity(float sensitivity)
+    {
+        playerCameraController.SetSensitivity((int)sensitivity);
+    }
+
+    public void ChangeBrightness(float brightness)
+    {
+        colorGrading.postExposure.value = brightness;
     }
 }
