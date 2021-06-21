@@ -23,6 +23,8 @@ public class ObjectParameters : MonoBehaviour
     [SerializeField] private PickUp pickUp;
 
     public bool canDrop = true;
+    
+    public bool disableCollider = false;
     private void Awake()
     {
         startPos = transform.position;
@@ -43,6 +45,13 @@ public class ObjectParameters : MonoBehaviour
     public void DisablePopUp(bool Disable)
     {
         popUp.gameObject.SetActive(!Disable);
+
+        if (disableCollider)
+        {
+         
+                GetComponent<Collider>().enabled = !Disable;
+            
+        }
 
         if(changeAnim)
             playerController.AnimatorSetBool(animParam, Disable);
