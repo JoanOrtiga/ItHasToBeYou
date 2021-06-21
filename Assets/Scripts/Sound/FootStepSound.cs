@@ -40,20 +40,22 @@ public class FootStepSound : MonoBehaviour
 
         woodLayer = LayerMask.NameToLayer("Wood");
         stairsLayer = LayerMask.NameToLayer("Stairs");
+        
+        InvokeRepeating("PlayerMoving", 0f, 0.15f);
     }
 
-
+    
 
     void Update()
     {
-        
-        PlayerMoving();
+       
+       // PlayerMoving();
 
 
         ray = new Ray(pivot.transform.position, Vector3.down);
         hitted = Physics.Raycast(ray, out rayCastHit, checkDistance, DetectLayerMask.value);
 
-        Debug.DrawRay(pivot.transform.position, Vector3.down * checkDistance);
+      //  Debug.DrawRay(pivot.transform.position, Vector3.down * checkDistance);
 
 
         if (hitted == true)
@@ -95,19 +97,31 @@ public class FootStepSound : MonoBehaviour
 
     }
 
-
+    private Vector3 lastPosition;
 
     void PlayerMoving()
     {
-        if (player.inputVector.x > 0 || player.inputVector.y > 0 || player.inputVector.x < 0 || player.inputVector.y < 0)
+        print((player.transform.position - lastPosition).sqrMagnitude);
+        if ((player.transform.position - lastPosition).sqrMagnitude >= 0.01f)
         {
-
             playerIsMoving = true;
         }
         else
         {
             playerIsMoving = false;
         }
+        
+       /*
+        if (player.inputVector.x > 0 || player.inputVector.y > 0 || player.inputVector.x < 0 || player.inputVector.y < 0)
+        {
+            playerIsMoving = true;
+        }
+        else
+        {
+            playerIsMoving = false;
+        }*/
+
+        lastPosition = player.transform.position;
     }
 
     void CallFootsteps()
