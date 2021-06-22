@@ -42,8 +42,7 @@ public class MetalPlaceNarrative : MonoBehaviour
             print("WRONG MATIRIAL");
             placeMatirialWrong.textDone = false;
         }
-
-
+        
         if (placeMaterial.hasBeenPlaced == false)
         {
             playSoundThree = false;

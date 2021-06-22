@@ -14,17 +14,17 @@ public class ObjectParameters : MonoBehaviour
 
     public Vector3 startPos { get; private set; }
     [HideInInspector] public Quaternion startRot;
-    
 
-     [Header("Animation")]
-    [SerializeField] private bool changeAnim;
+
+    [Header("Animation")] [SerializeField] private bool changeAnim;
     [SerializeField] private string animParam;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PickUp pickUp;
 
     public bool canDrop = true;
-    
+
     public bool disableCollider = false;
+
     private void Awake()
     {
         startPos = transform.position;
@@ -42,24 +42,23 @@ public class ObjectParameters : MonoBehaviour
         transform.position = startPos;
         transform.rotation = startRot;
     }
+
     public void DisablePopUp(bool Disable)
     {
         popUp.gameObject.SetActive(!Disable);
 
         if (disableCollider)
         {
-         
-                GetComponent<Collider>().enabled = !Disable;
-            
+            GetComponent<Collider>().enabled = !Disable;
         }
 
-        if(changeAnim)
+        if (changeAnim)
             playerController.AnimatorSetBool(animParam, Disable);
     }
 
     public void FinishAnimation(bool active)
     {
-        if(changeAnim)
+        if (changeAnim)
             playerController.AnimatorSetBool(animParam, active);
     }
 }

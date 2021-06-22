@@ -101,7 +101,6 @@ public class FootStepSound : MonoBehaviour
 
     void PlayerMoving()
     {
-        print((player.transform.position - lastPosition).sqrMagnitude);
         if ((player.transform.position - lastPosition).sqrMagnitude >= 0.01f)
         {
             playerIsMoving = true;
