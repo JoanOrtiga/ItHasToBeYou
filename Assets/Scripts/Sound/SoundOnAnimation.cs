@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,17 @@ public class SoundOnAnimation : MonoBehaviour
 {
 
     public string soundsPath;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private VoiceSoundManager voiceSoundManager;
+
+    private void Awake()
     {
-        
+        voiceSoundManager = FindObjectOfType<VoiceSoundManager>();
     }
 
     public void OpenDoorCinematic()
     {
+        
         FMODUnity.RuntimeManager.PlayOneShot("event:/INGAME/Cinematic/InitalOpenDoor");
     }
 
@@ -31,14 +29,14 @@ public class SoundOnAnimation : MonoBehaviour
 
     public void playSounds()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(soundsPath);
+        voiceSoundManager.Sound = FMODUnity.RuntimeManager.CreateInstance(soundsPath);
+        voiceSoundManager.Sound.start();
+        //FMODUnity.RuntimeManager.PlayOneShot(soundsPath);
     }
 
     public void StartFootSteps()
     {
-        InvokeRepeating("CallFootsteps", 0, 1f);
-
-       
+       // InvokeRepeating("CallFootsteps", 0, 1f);
     }
     public void StopFootSteps()
     {
