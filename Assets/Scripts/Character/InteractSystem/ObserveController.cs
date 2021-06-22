@@ -38,7 +38,7 @@ public class ObserveController : MonoBehaviour, IInteractable
     bool draging;
     bool doneTransition = false;
     private bool active = false;
-
+ 
   
 
     private void Awake()
@@ -61,7 +61,7 @@ public class ObserveController : MonoBehaviour, IInteractable
         active = true;
         observingObject.GetComponent<ObjectParameters>().DisablePopUp(true);
         StartCoroutine(ObjetTransition(observingObject.transform, pivotPlayerView.transform, false));
-
+        
     }
 
 
@@ -130,9 +130,9 @@ public class ObserveController : MonoBehaviour, IInteractable
         {
             if (observingObject.GetComponent<ObserveObject>().hasText == true)
             {
-                hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, mainCamara.transform.position, out rayCastHit, DetectLayerMask.value);
+                
                
-                Debug.DrawLine(observingObject.transform.GetChild(0).transform.position, mainCamara.GetComponent<Transform>().position, Color.green);
+                //Debug.DrawLine(observingObject.transform.GetChild(0).transform.position, mainCamara.GetComponent<Transform>().position, Color.green);
                 if (!hit && doneTransition)
                 {
                     // print(rayCastHit.transform.name);
@@ -148,17 +148,19 @@ public class ObserveController : MonoBehaviour, IInteractable
             }
             else if (observingObject.GetComponent<ObserveObject>().hasTwoText == true)
             {
-                hit = Physics.Linecast(observingObject.transform.GetChild(0).transform.position, mainCamara.transform.position, out rayCastHit, DetectLayerMask.value);
+            
+
 
                 Debug.DrawLine(observingObject.transform.GetChild(0).transform.position, mainCamara.GetComponent<Transform>().position, Color.green);
                 if (!hit && doneTransition)
                 {
-
+                    print("TEXT ONE");
 
                     textObserver.text = observingObject.GetComponent<ObserveObject>().text;
                 }
-                else
+                else if(hit && doneTransition)
                 {
+                    print("TEXT TWO");
 
                     textObserver.text = observingObject.GetComponent<ObserveObject>().textTwo;
                 }
@@ -173,6 +175,7 @@ public class ObserveController : MonoBehaviour, IInteractable
    
     IEnumerator ObjetTransition(Transform pointA, Transform pointB, bool activePuzzle)
     {
+        observerCanvas.SetActive(false);
         if (activePuzzle)
         {
             observerCanvas.SetActive(false);
