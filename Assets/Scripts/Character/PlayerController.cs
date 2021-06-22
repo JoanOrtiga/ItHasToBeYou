@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour , IAnimationTouch
 
     private void Awake()
     {
+        Application.targetFrameRate = -1;
+        QualitySettings.vSyncCount = 0;
+    
         mainCamera = Camera.main;
         
         characterController = GetComponent<CharacterController>();
