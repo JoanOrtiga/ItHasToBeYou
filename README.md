@@ -11,17 +11,14 @@ Extra links of documentation:
 
 [Beta](https://www.youtube.com/watch?v=pACD8Rn3Wew)
 
-Team:
-Programming:
+**Team:**
+**Programming:**
 Marina Chavarria Gonzalez
 Joan Ortiga Balcells
-Artist:
+**Artist:**
+Marc Galdo Ojeda
+Andrea Raya Martínez
+Pol Serra Farré
 **Designer:**
 Júlia Blasco Allepúz
 Pol Serra Farré
-Joan Ortiga Balcells | Twitter | Linkedin | joanortiga.site | github
-Júlia Blasco Allepuz
-Marc Galdo Ojeda  | Twitter | Linkedin | ArtStation
-Marina Chavarria Gonzalez  Twitter | Linkedin | Web
-Andrea Raya Martínez  | Twitter | Linkedin | ArtStation
-Pol Serra Farré | Twitter | Linkedin | ArtStation
