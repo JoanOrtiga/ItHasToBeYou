@@ -13,8 +13,8 @@ Extra links of documentation:
 
 **Team:**
 **Programming:**
-Marina Chavarria Gonzalez
-Joan Ortiga Balcells
+- Marina Chavarria Gonzalez
+- Joan Ortiga Balcells
 **Artist:**
 Marc Galdo Ojeda
 Andrea Raya Martínez
