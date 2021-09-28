@@ -13,12 +13,12 @@ Extra links of documentation:
 
 **Team:**
 - **Programming:**
-- Marina Chavarria Gonzalez
-- Joan Ortiga Balcells
-**Artist:**
-Marc Galdo Ojeda
-Andrea Raya Martínez
-Pol Serra Farré
-**Designer:**
-Júlia Blasco Allepúz
-Pol Serra Farré
+  - Marina Chavarria Gonzalez
+  - Joan Ortiga Balcells
+- **Artist:**
+  - Marc Galdo Ojeda
+  - Andrea Raya Martínez
+  - Pol Serra Farré
+- **Designer:**
+  - Júlia Blasco Allepúz
+  - Pol Serra Farré
