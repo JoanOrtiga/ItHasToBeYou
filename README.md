@@ -12,7 +12,7 @@ Extra links of documentation:
 [Beta](https://www.youtube.com/watch?v=pACD8Rn3Wew)
 
 **Team:**
-**Programming:**
+- **Programming:**
 - Marina Chavarria Gonzalez
 - Joan Ortiga Balcells
 **Artist:**
