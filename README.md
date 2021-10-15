@@ -3,6 +3,9 @@ It has to be you is a narrative-puzzle singleplayer game, set in a fantasy world
 
 Game was made in 3 months
 
+[Walkthrought](https://www.youtube.com/watch?v=fCqeCHn5q1U)
+[Teaser Trailer](https://www.youtube.com/watch?v=pH8nd1L2Fr4)
+
 Extra links of documentation:
 
 [Prototype](https://www.youtube.com/watch?v=bjLBX1HoCGU&)
@@ -10,6 +13,8 @@ Extra links of documentation:
 [Alpha](https://www.youtube.com/watch?v=OTp4gB4HM-s)
 
 [Beta](https://www.youtube.com/watch?v=pACD8Rn3Wew)
+
+
 
 **Team:**
 - **Programming:**
